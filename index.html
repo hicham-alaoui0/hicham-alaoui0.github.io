@@ -6,121 +6,75 @@
     <title>Hicham Alaoui - Portfolio</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- AOS CSS for Animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-trail"></div>
-
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
         <div class="container">
             <div class="logo">Hicham Alaoui</div>
             <nav>
                 <ul>
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#resume">Resume</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" data-aos="fade-up">
+    <!-- Home Section -->
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hello, I'm Hicham Alaoui</h1>
+            <h1>Hicham Alaoui</h1>
             <p>Data Science Engineer</p>
             <div class="buttons">
                 <a href="#resume" class="btn">Resume</a>
                 <a href="#portfolio" class="btn">Portfolio</a>
             </div>
-            <div class="social-icons">
-                <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
-                <a href="#"><img src="images/github-icon.png" alt="GitHub"></a>
-                <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
-            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="https://wa.me/212762389821" target="_blank"><img src="images/whatsapp-icon.png" alt="WhatsApp"></a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" data-aos="fade-right">
+    <section id="about">
         <div class="container">
             <h2>About</h2>
-            <p>Data Science Engineer with a passion for leveraging data to drive impactful solutions. Skilled in Machine Learning, Big Data, and Statistical Analysis.</p>
-            <p>Email: <a href="mailto:halaoui@insea.ac.ma">halaoui@insea.ac.ma</a></p>
-            <p>Phone: +212 762389821</p>
+            <p>
+                Data Science Engineer with a passion for leveraging data to drive impactful solutions. Skilled in Machine Learning, Big Data, and Statistical Analysis.
+            </p>
         </div>
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" data-aos="fade-left">
+    <section id="resume">
         <div class="container">
             <h2>Resume</h2>
-            <div class="skills">
-                <h3>Software Skills</h3>
-                <ul>
-                    <li>Python <span class="bar"><span style="width: 90%;"></span></span></li>
-                    <li>R <span class="bar"><span style="width: 80%;"></span></span></li>
-                    <li>SQL <span class="bar"><span style="width: 75%;"></span></span></li>
-                </ul>
-            </div>
-            <div class="experience">
-                <h3>Experience</h3>
-                <p><strong>Data Scientist Intern</strong> - gaea21, Geneva, Switzerland (Jun 2024 - Sep 2024)</p>
-                <ul>
-                    <li>Developed machine learning models to predict CO2 emissions.</li>
-                    <li>Automated data extraction processes, reducing manual workload by 30%.</li>
-                </ul>
-                <p><strong>Data Analyst Intern</strong> - High Commission for Planning, Rabat, Morocco (Jul 2023 - Aug 2023)</p>
-                <ul>
-                    <li>Improved accuracy of policy decisions through advanced data analysis.</li>
-                </ul>
-            </div>
-            <div class="education">
-                <h3>Education</h3>
-                <p><strong>INSEA</strong> - Rabat, Morocco (2022 - 2025)</p>
-                <p>Specialization in Data Science, Big Data, and Statistical Analysis.</p>
-            </div>
+            <p>
+                Experienced in predictive modeling, statistical analysis, and data visualization. Skilled in Python, R, and SQL.
+            </p>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" data-aos="fade-up">
+    <section id="portfolio">
         <div class="container">
             <h2>Portfolio</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-aos="zoom-in">
+                <div class="portfolio-item">
                     <h3>Fraud Detection</h3>
                     <p>Developed a fraud detection system with 99.7% accuracy using XGBoost.</p>
                 </div>
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="portfolio-item">
                     <h3>Algorithmic Trading</h3>
                     <p>Optimized portfolio returns using machine learning strategies.</p>
                 </div>
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
-                    <h3>CO2 Emission Prediction</h3>
-                    <p>Built models to predict emissions using agricultural data.</p>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" data-aos="fade-up">
-        <div class="container">
-            <h2>Contact</h2>
-            <form action="https://formspree.io/f/my-form" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
         </div>
     </section>
 
@@ -128,17 +82,5 @@
     <footer>
         <p>&copy; 2024 Hicham Alaoui. All Rights Reserved.</p>
     </footer>
-
-    <!-- AOS JavaScript -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-        });
-    </script>
-    <!-- Custom Script -->
-    <script src="script.js"></script>
 </body>
 </html>

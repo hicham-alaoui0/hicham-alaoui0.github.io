@@ -4,7 +4,6 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #1a1a1a;
     color: #fff;
-    scroll-behavior: smooth;
 }
 
 a {
@@ -17,40 +16,10 @@ a:hover {
     color: #ff4081;
 }
 
-h1, h2, h3 {
-    margin: 0;
-    font-weight: bold;
-}
-
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* Custom Cursor */
-.cursor, .cursor-trail {
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
-
-.cursor {
-    width: 15px;
-    height: 15px;
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: transform 0.1s ease-out;
-}
-
-.cursor-trail {
-    width: 30px;
-    height: 30px;
-    background-color: rgba(255, 255, 255, 0.3);
-    transition: transform 0.2s ease-out;
 }
 
 /* Header */
@@ -62,11 +31,6 @@ header {
     background: rgba(0, 0, 0, 0.9);
     padding: 20px 0;
     z-index: 1000;
-    transition: background 0.3s ease-in-out;
-}
-
-header.scrolled {
-    background: rgba(0, 0, 0, 0.8);
 }
 
 header .logo {
@@ -87,30 +51,31 @@ header nav ul li a {
 }
 
 /* Hero Section */
-#hero {
+.hero {
     height: 100vh;
     background: url('images/hero-bg.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
 }
 
-#hero h1 {
+.hero-content h1 {
     font-size: 4em;
     color: #fff;
 }
 
-#hero p {
+.hero-content p {
     font-size: 1.5em;
     margin: 20px 0;
 }
 
-#hero .buttons {
+.hero .buttons {
     margin-top: 30px;
 }
 
-#hero .btn {
+.hero .btn {
     display: inline-block;
     padding: 15px 30px;
     margin: 10px;
@@ -121,17 +86,20 @@ header nav ul li a {
     transition: background 0.3s ease;
 }
 
-#hero .btn:hover {
+.hero .btn:hover {
     background: #ff4081;
 }
 
 .social-icons {
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .social-icons img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin: 0 10px;
     transition: transform 0.3s ease;
 }
@@ -156,40 +124,12 @@ header nav ul li a {
 #resume {
     padding: 100px 0;
     background: #1a1a1a;
+    text-align: center;
 }
 
 #resume h2 {
     font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.skills ul {
-    list-style: none;
-    padding: 0;
-}
-
-.skills li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
-}
-
-.skills .bar {
-    background: #333;
-    height: 8px;
-    flex: 1;
-    margin-left: 10px;
-    position: relative;
-    border-radius: 5px;
-}
-
-.skills .bar span {
-    background: #00bcd4;
-    height: 100%;
-    display: block;
-    border-radius: 5px;
 }
 
 /* Portfolio Section */
@@ -229,51 +169,6 @@ header nav ul li a {
     color: #ccc;
 }
 
-/* Contact Section */
-#contact {
-    padding: 100px 0;
-    background: #1a1a1a;
-    text-align: center;
-}
-
-#contact h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-#contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#contact input, #contact textarea {
-    width: 100%;
-    padding: 15px;
-    background-color: #333;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1em;
-}
-
-#contact button {
-    padding: 15px;
-    background-color: #00bcd4;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-#contact button:hover {
-    background-color: #ff4081;
-}
-
 /* Footer */
 footer {
     padding: 20px 0;
@@ -281,16 +176,4 @@ footer {
     text-align: center;
     color: #777;
     font-size: 0.9em;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
 }
