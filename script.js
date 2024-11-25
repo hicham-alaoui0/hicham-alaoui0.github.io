@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+
     navToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 // Close mobile menu if open
                 navLinks.classList.remove('active');
-                
+
                 // Smooth scroll to target
                 target.scrollIntoView({
                     behavior: 'smooth',
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Project cards hover effect
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-10px)';
@@ -112,14 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const waitTime = 2000;
 
     function typeEffect() {
-        const titleElement = document.querySelector('.hero h2');
+        const titleElement = document.querySelector('.typed-container .typed-text');
         const currentTitle = titles[titleIndex];
 
         if (isDeleting) {
-            // Removing characters
             titleElement.textContent = currentTitle.substring(0, charIndex - 1);
             charIndex--;
-            
+
             if (charIndex === 0) {
                 isDeleting = false;
                 titleIndex = (titleIndex + 1) % titles.length;
@@ -127,10 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
         } else {
-            // Adding characters
             titleElement.textContent = currentTitle.substring(0, charIndex + 1);
             charIndex++;
-            
+
             if (charIndex === currentTitle.length) {
                 isDeleting = true;
                 setTimeout(typeEffect, waitTime);
@@ -141,19 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
     }
 
-    // Start typing effect
     setTimeout(typeEffect, waitTime);
 
-    // Form validation for contact section (if added later)
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-    };
-
-    // Optional: Add scroll to top button
+    // Scroll-to-top button
     const createScrollTopButton = () => {
         const button = document.createElement('button');
         button.innerHTML = '↑';
@@ -179,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createScrollTopButton();
 
-    // Add preloader (optional)
+    // Preloader
     window.addEventListener('load', () => {
         const preloader = document.querySelector('.preloader');
         if (preloader) {

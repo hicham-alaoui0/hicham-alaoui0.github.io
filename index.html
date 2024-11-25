@@ -3,181 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hicham Alaoui - Data Scientist & ML Engineer</title>
+    <meta name="description" content="Hicham Alaoui - Data Scientist & Machine Learning Engineer Portfolio">
+    <title>Hicham Alaoui - Data Scientist Portfolio</title>
+    <!-- CSS Links -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header Section -->
     <header id="home">
         <nav class="navbar">
-            <div class="nav-brand">HA</div>
+            <div class="nav-brand">
+                <span class="highlight">H</span>A
+            </div>
             <div class="nav-toggle">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="tel:+212762389821">+212 762 389 821</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="tel:+212762389821" class="nav-contact">+212 762 389 821</a></li>
             </ul>
         </nav>
 
         <div class="hero">
-            <div class="hero-content">
-                <h1>Hicham Alaoui</h1>
-                <h2>Data Scientist | Machine Learning Engineer</h2>
-                <div class="cta-buttons">
-                    <a href="path-to-your-resume.pdf" class="btn btn-primary">Resume</a>
-                    <a href="#portfolio" class="btn btn-secondary">Portfolio</a>
-                </div>
-                <div class="social-icons">
-                    <a href="your-linkedin-url" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="your-github-url" target="_blank"><i class="fab fa-github"></i></a>
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-text">
+                    <h1>Hicham Alaoui</h1>
+                    <div class="typed-container">
+                        <span class="typed-text">Data Scientist | Machine Learning Engineer</span>
+                    </div>
+                    <p class="hero-description">
+                        Passionate Data Scientist and Machine Learning Engineer specializing in predictive modeling,
+                        statistical analysis, and data-driven solutions.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" download="Hicham_Alaoui_CV.pdf">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-project-diagram"></i> View Projects
+                        </a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/in/hicham-alaoui-08ba35206" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/hicham-alaoui0" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:halaoui@insea.ac.ma" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="section">
         <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
             <div class="about-grid">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:halaoui@insea.ac.ma">halaoui@insea.ac.ma</a></p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+212762389821">+212 762 389 821</a></p>
+                <div class="about-image" data-aos="fade-right">
+                    <div class="image-container">
+                        <img src="profile-image.jpg" alt="Hicham Alaoui" class="profile-image">
+                    </div>
                 </div>
-                <div class="profile-image">
-                    <img src="path-to-your-photo.jpg" alt="Hicham Alaoui">
-                </div>
-                <div class="bio">
-                    <h3>About Me</h3>
-                    <p>Étudiant en troisième année à l'Institut National de Statistique et d'Économie Appliquée (INSEA), spécialisé en Économie Appliquée – Statistique et Big Data. Passionné par la Data Science, l'Analyse de Données et l'Économétrie, avec des expériences pratiques en Machine Learning et Modélisation Statistique.</p>
+                <div class="about-content" data-aos="fade-left">
+                    <p class="about-text">
+                        Étudiant en troisième année à l'Institut National de Statistique et d'Économie Appliquée (INSEA), 
+                        spécialisé en Économie Appliquée – Statistique et Big Data. Passionné par l'exploration des données 
+                        et la modélisation statistique, avec une solide expérience en Machine Learning, Analyse de Données, 
+                        et Économétrie.
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value">halaoui@insea.ac.ma</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone:</span>
+                            <span class="info-value">+212 762 389 821</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location:</span>
+                            <span class="info-value">Rabat, Morocco</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Languages:</span>
+                            <span class="info-value">English, French, Arabic</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume-section">
+    <!-- Experience Section -->
+    <section id="experience" class="section">
         <div class="container">
-            <div class="skills">
-                <h3>Technical Skills</h3>
-                <div class="skill-category">
-                    <h4>Programming Languages & Tools</h4>
-                    <div class="skill-bars">
-                        <div class="skill-item">
-                            <span>Python</span>
-                            <div class="progress-bar" data-level="90"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>R</span>
-                            <div class="progress-bar" data-level="85"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>SQL</span>
-                            <div class="progress-bar" data-level="80"></div>
-                        </div>
-                        <!-- Add more skills -->
-                    </div>
+            <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <h3>Data Scientist Intern</h3>
+                    <span class="company">gaea21, Geneva, Switzerland</span>
+                    <span class="date">June 2024 - September 2024</span>
+                    <ul>
+                        <li>Developed machine learning models for CO2 emissions prediction with 85% accuracy</li>
+                        <li>Created automated data extraction system reducing manual tasks by 30%</li>
+                        <li>Designed NLP model for automated article generation reaching 5,000 monthly visitors</li>
+                    </ul>
                 </div>
-
-                <div class="skill-category">
-                    <h4>Languages</h4>
-                    <div class="skill-bars">
-                        <div class="skill-item">
-                            <span>French</span>
-                            <div class="progress-bar" data-level="100"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>English</span>
-                            <div class="progress-bar" data-level="90"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Arabic</span>
-                            <div class="progress-bar" data-level="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience">
-                <h3>Professional Experience</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024</div>
-                        <div class="timeline-content">
-                            <h4>Data Scientist Intern</h4>
-                            <h5>gaea21, Geneva, Switzerland</h5>
-                            <ul>
-                                <li>Developed machine learning models for predicting CO2 emissions with 85% accuracy</li>
-                                <li>Created a sustainability-focused NLP article generator, reaching 5,000 monthly visitors</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023</div>
-                        <div class="timeline-content">
-                            <h4>Data Analyst Intern</h4>
-                            <h5>Haut Commissariat au Plan, Rabat, Morocco</h5>
-                            <ul>
-                                <li>Enhanced data-driven decisions by analyzing complex economic datasets</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="education">
-                <h3>Education</h3>
-                <div class="education-item">
-                    <h4>Institut National de Statistique et d'Économie Appliquée (INSEA)</h4>
-                    <h5>Applied Economics – Statistics and Big Data</h5>
-                    <p>Expected Graduation: 2025</p>
-                </div>
-            </div>
-
-            <div class="projects">
-                <h3>Featured Projects</h3>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h4>Credit Card Fraud Detection</h4>
-                        <p>Achieved 99.7% accuracy using logistic regression and XGBoost</p>
-                    </div>
-                    <div class="project-card">
-                        <h4>Algorithmic Trading Model</h4>
-                        <p>Boosted portfolio returns by 10% with machine learning</p>
-                    </div>
-                    <div class="project-card">
-                        <h4>CO2 Emissions Prediction</h4>
-                        <p>Built predictive models using 30+ agricultural variables</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hobbies">
-                <h3>Hobbies & Interests</h3>
-                <div class="hobby-icons">
-                    <div class="hobby-item">
-                        <i class="fas fa-plane"></i>
-                        <span>Traveling</span>
-                    </div>
-                    <div class="hobby-item">
-                        <i class="fas fa-laptop-code"></i>
-                        <span>Technology</span>
-                    </div>
-                    <div class="hobby-item">
-                        <i class="fas fa-microscope"></i>
-                        <span>Research</span>
-                    </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <h3>Data Analyst Intern</h3>
+                    <span class="company">Haut Commissariat au Plan, Rabat, Morocco</span>
+                    <span class="date">July 2023 - August 2023</span>
+                    <ul>
+                        <li>Analyzed complex economic datasets improving national policy decisions by 15%</li>
+                        <li>Conducted competitive analysis and developed data-driven recommendations</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Science & Machine Learning</h3>
+                    <ul>
+                        <li>Python (90%)</li>
+                        <li>TensorFlow & Keras (85%)</li>
+                        <li>SQL (85%)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hicham Alaoui. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
 </body>
 </html>

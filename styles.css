@@ -183,46 +183,7 @@ body {
     filter: grayscale(0%);
 }
 
-/* Resume Section */
-.resume-section {
-    padding: 100px 0;
-}
-
-/* Skills */
-.skill-category {
-    margin-bottom: 40px;
-}
-
-.skill-bars {
-    display: grid;
-    gap: 20px;
-}
-
-.skill-item {
-    display: grid;
-    gap: 10px;
-}
-
-.progress-bar {
-    height: 8px;
-    background-color: var(--secondary-bg);
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-}
-
-.progress-bar::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: var(--accent-color);
-    width: 0;
-    transition: width 1s ease;
-}
-
-/* Timeline */
+/* Timeline Section */
 .timeline {
     position: relative;
     padding: 40px 0;
@@ -279,36 +240,6 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Hobbies */
-.hobby-icons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
-}
-
-.hobby-item {
-    text-align: center;
-}
-
-.hobby-item i {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: var(--accent-color);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-toggle {
@@ -343,44 +274,19 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .timeline::before {
-        left: 0;
-    }
-
-    .timeline-item {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline-date {
-        text-align: left;
-    }
-
     .project-grid {
         grid-template-columns: 1fr;
     }
+}
 
-    .hobby-icons {
-        flex-direction: column;
-        gap: 20px;
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-}
-
-/* Progress Bar Animation */
-.skill-item.animate .progress-bar::after {
-    width: var(--skill-level);
-}
-
-/* Utility Classes */
-.text-center {
-    text-align: center;
-}
-
-.mb-4 {
-    margin-bottom: 40px;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    text-align: center;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
