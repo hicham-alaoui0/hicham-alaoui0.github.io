@@ -90,7 +90,7 @@ nav ul {
 
 /* Hero Section */
 .hero {
-    background-image: url('images/hero-bg.jpg');
+    background-image: url('\assets\images\hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -273,7 +273,7 @@ footer {
 
 /* Backgrounds */
 .hero {
-    background-image: url('images/hero-bg.jpg');
+    background-image: url('\assets\images\hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -282,8 +282,42 @@ footer {
 }
 
 .section-padding {
-    background-image: url('images/section-bg.jpg');
+    background-image: url('\assets\images\section-bg.jpg');
     background-size: cover;
     background-position: center;
     padding: 60px 0;
+}
+
+/* Adjusting the layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.skill {
+    flex: 1 1 100px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+}
+
+/* Additional spacing for sections */
+.section-padding {
+    margin-top: 40px;
 }
