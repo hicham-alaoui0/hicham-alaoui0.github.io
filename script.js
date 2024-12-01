@@ -1,28 +1,31 @@
 // Wait for DOM to fully load
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav');
 
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    mobileMenuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
+        if (!mobileMenuBtn.contains(e.target) && !nav.contains(e.target)) {
+            nav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
         }
     });
 
     // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('.nav-link').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 // Close mobile menu if open
-                navLinks.classList.remove('active');
+                nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
 
                 // Smooth scroll to target
                 target.scrollIntoView({
@@ -33,49 +36,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Skill bars animation
-    const animateSkillBars = () => {
-        document.querySelectorAll('.skill-item').forEach(item => {
-            const progressBar = item.querySelector('.progress-bar');
-            const skillLevel = progressBar.getAttribute('data-level');
-            progressBar.style.setProperty('--skill-level', `${skillLevel}%`);
-            item.classList.add('animate');
+    // Skills animation
+    const animateSkills = () => {
+        document.querySelectorAll('.skill').forEach(skill => {
+            const progress = skill.querySelector('.progress');
+            const width = progress.style.width;
+            progress.style.width = '0';
+            setTimeout(() => {
+                progress.style.transition = 'width 1s ease-in-out';
+                progress.style.width = width;
+            }, 100);
         });
     };
 
-    // Intersection Observer for skill bars
-    const skillsSection = document.querySelector('.skills');
-    const skillsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkillBars();
-                skillsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
+    // Intersection Observer for skills
+    const skillsContainer = document.querySelector('.skills-container');
+    if (skillsContainer) {
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkills();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
 
-    if (skillsSection) {
-        skillsObserver.observe(skillsSection);
+        skillsObserver.observe(skillsContainer);
     }
 
-    // Navbar background change on scroll
-    const navbar = document.querySelector('.navbar');
+    // Header background change on scroll
+    const header = document.querySelector('.sticky-header');
     const heroSection = document.querySelector('.hero');
 
-    const updateNavbar = () => {
-        if (window.scrollY > (heroSection.offsetHeight / 2)) {
-            navbar.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
+    const updateHeader = () => {
+        if (window.scrollY > 0) {
+            header.classList.add('scrolled');
         } else {
-            navbar.style.backgroundColor = 'rgba(18, 18, 18, 0.7)';
+            header.classList.remove('scrolled');
         }
     };
 
-    window.addEventListener('scroll', updateNavbar);
+    window.addEventListener('scroll', updateHeader);
 
-    // Project cards hover effect
-    const projectCards = document.querySelectorAll('.project-card');
+    // Portfolio cards hover effect
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
 
-    projectCards.forEach(card => {
+    portfolioCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-10px)';
         });
@@ -85,96 +91,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Lazy loading for timeline items
+    // Animate timeline items
     const observeTimeline = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
             }
         });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.timeline-item').forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'all 0.6s ease';
         observeTimeline.observe(item);
     });
 
-    // Typing effect for hero section
-    const titles = ["Data Scientist", "Machine Learning Engineer"];
-    let titleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingSpeed = 100;
-    const deletingSpeed = 50;
-    const waitTime = 2000;
+    // Typing effect for hero heading
+    const typingText = document.querySelector('.typing-text');
+    if (typingText) {
+        const text = typingText.textContent;
+        typingText.textContent = '';
+        let i = 0;
 
-    function typeEffect() {
-        const titleElement = document.querySelector('.typed-container .typed-text');
-        const currentTitle = titles[titleIndex];
-
-        if (isDeleting) {
-            titleElement.textContent = currentTitle.substring(0, charIndex - 1);
-            charIndex--;
-
-            if (charIndex === 0) {
-                isDeleting = false;
-                titleIndex = (titleIndex + 1) % titles.length;
-                setTimeout(typeEffect, waitTime / 2);
-                return;
-            }
-        } else {
-            titleElement.textContent = currentTitle.substring(0, charIndex + 1);
-            charIndex++;
-
-            if (charIndex === currentTitle.length) {
-                isDeleting = true;
-                setTimeout(typeEffect, waitTime);
-                return;
+        function typeWriter() {
+            if (i < text.length) {
+                typingText.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
             }
         }
 
-        setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
+        setTimeout(typeWriter, 500);
     }
 
-    setTimeout(typeEffect, waitTime);
-
-    // Scroll-to-top button
-    const createScrollTopButton = () => {
-        const button = document.createElement('button');
-        button.innerHTML = '↑';
-        button.className = 'scroll-top';
-        button.style.display = 'none';
-        document.body.appendChild(button);
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                button.style.display = 'block';
-            } else {
-                button.style.display = 'none';
-            }
+    // Contact form handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Message sent successfully!');
+            contactForm.reset();
         });
+    }
 
-        button.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    };
-
-    createScrollTopButton();
-
-    // Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.querySelector('.preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        }
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
     });
 });
