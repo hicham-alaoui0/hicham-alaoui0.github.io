@@ -159,4 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('scroll', toggleBackToTopButton);
+
+    // Skills click event
+    document.querySelectorAll('.skill').forEach(skill => {
+        skill.addEventListener('click', () => {
+            const skillName = skill.querySelector('span').textContent;
+            alert(`You clicked on ${skillName}!`); // Replace with your desired action
+        });
+    });
 });
