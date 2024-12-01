@@ -102,6 +102,8 @@ nav ul {
 .hero-content {
     text-align: center;
     color: var(--white);
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .typing-text {
@@ -176,6 +178,27 @@ nav ul {
     margin: 40px auto;
 }
 
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.skill-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.skill-card i {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
 .skill {
     margin-bottom: 20px;
 }
@@ -206,9 +229,10 @@ nav ul {
 }
 
 .portfolio-card {
+    position: relative;
+    overflow: hidden;
     background: var(--white);
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: var(--transition);
 }
@@ -220,7 +244,32 @@ nav ul {
 }
 
 .portfolio-content {
-    padding: 20px;
+    padding: 25px;
+}
+
+.portfolio-content h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.portfolio-content p {
+    color: var(--light-text);
+    margin-bottom: 20px;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.learn-more-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 /* Contact Form */
