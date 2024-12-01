@@ -3,128 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hicham Alaoui - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <title>Hicham Alaoui - Data Science Portfolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo" data-aos="fade-right">Hicham Alaoui</div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
             <h1 class="typing-text">Hicham Alaoui</h1>
             <p class="fade-in">Data Science & Machine Learning Engineer</p>
             <p class="fade-in">Third-year student at INSEA specializing in Applied Economics, Statistics and Big Data</p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Contact Me</a>
-                <a href="assets/cv.pdf" class="btn btn-secondary">Download CV</a>
+            <div class="buttons">
+                <a href="#experience" class="btn btn-primary">View Experience</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+        <div class="social-icons" data-aos="fade-left">
+            <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/212762389821" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://github.com" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
+            <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>Data Scientist Intern</h3>
+                <h4>gaea21, Geneva, Switzerland (Jun 2024 - Sep 2024)</h4>
+                <ul>
+                    <li>Developed machine learning models to predict CO2 emissions with 85% accuracy</li>
+                    <li>Collaborated with international teams for data extraction automation</li>
+                    <li>Created automated system for FAOSTAT data extraction, reducing manual tasks by 30%</li>
+                    <li>Generated 100+ sustainability articles using NLP models</li>
+                </ul>
+            </div>
+            <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>Data Analyst Intern</h3>
+                <h4>Haut Commissariat au Plan, Rabat, Morocco (July 2023 - August 2023)</h4>
+                <ul>
+                    <li>Cleaned and analyzed complex economic data, improving national policy decision accuracy by 15%</li>
+                    <li>Conducted competitive analysis and developed data-driven recommendations</li>
+                    <li>Collaborated with cross-functional teams on strategic reports</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="section-padding">
-        <h2 class="section-title">Key Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Data Science & Machine Learning</h3>
-                <p>Python (pandas, NumPy, scikit-learn, TensorFlow, Keras), R, SQL</p>
-            </div>
-            <div class="skill-category">
-                <h3>Visualization Tools</h3>
-                <p>Tableau, Power BI, Matplotlib, Seaborn</p>
-            </div>
-            <div class="skill-category">
-                <h3>Statistical Modeling</h3>
-                <p>Econometrics, Statistical Analysis</p>
-            </div>
-            <div class="skill-category">
-                <h3>Database Management</h3>
-                <p>MySQL</p>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Key Skills</h2>
+            <div class="skills-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="skill-category">
+                    <h3>Data Science & Machine Learning</h3>
+                    <p>Python (pandas, NumPy, scikit-learn, TensorFlow, Keras), R, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Visualization Tools</h3>
+                    <p>Tableau, Power BI, Matplotlib, Seaborn</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Statistical Modeling</h3>
+                    <p>Econometrics, Statistical Analysis</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Database Management</h3>
+                    <p>MySQL</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="section-padding">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <h3>Credit Card Fraud Detection</h3>
-                <p>Achieved 99.7% accuracy using classification methods (Logistic Regression, Random Forest, XGBoost) on 284,807 transactions</p>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Credit Card Fraud Detection</h3>
+                    <p>Achieved 99.7% accuracy using classification methods (Logistic Regression, Random Forest, XGBoost) on 284,807 transactions</p>
+                </div>
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Automated MySQL Data Migration Pipeline</h3>
+                    <p>Created automated data pipeline using APIs, reducing manual errors by 30%</p>
+                </div>
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>CO2 Emissions Prediction Model</h3>
+                    <p>Developed machine learning model with 85% accuracy using Random Forest and XGBoost</p>
+                </div>
             </div>
-            <div class="portfolio-card">
-                <h3>Automated MySQL Data Migration Pipeline</h3>
-                <p>Created automated data pipeline using APIs, reducing manual errors by 30%</p>
-            </div>
-            <div class="portfolio-card">
-                <h3>CO2 Emissions Prediction Model</h3>
-                <p>Developed machine learning model with 85% accuracy using Random Forest and XGBoost</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section-padding">
-        <h2 class="section-title">Professional Experience</h2>
-        
-        <div class="experience-item">
-            <h3>Data Scientist Intern</h3>
-            <h4>gaea21, Geneva, Switzerland (Jun 2024 - Sep 2024)</h4>
-            <ul>
-                <li>Developed machine learning models to predict CO2 emissions with 85% accuracy</li>
-                <li>Collaborated with international teams for data extraction automation</li>
-                <li>Created automated system for FAOSTAT data extraction, reducing manual tasks by 30%</li>
-                <li>Generated 100+ sustainability articles using NLP models</li>
-            </ul>
-        </div>
-
-        <div class="experience-item">
-            <h3>Data Analyst Intern</h3>
-            <h4>Haut Commissariat au Plan, Rabat, Morocco (July 2023 - August 2023)</h4>
-            <ul>
-                <li>Cleaned and analyzed complex economic data, improving national policy decision accuracy by 15%</li>
-                <li>Conducted competitive analysis and developed data-driven recommendations</li>
-                <li>Collaborated with cross-functional teams on strategic reports</li>
-            </ul>
         </div>
     </section>
 
     <!-- Certifications Section -->
     <section id="certifications" class="section-padding">
-        <h2 class="section-title">Certifications</h2>
-        <div class="certifications-grid">
-            <div class="certification-item">
-                <h3>Python for Everybody Specialization</h3>
-                <p>University of Michigan</p>
-                <a href="https://coursera.org/verify/specialization/J9WD2EEGY4GE" target="_blank">View Certificate</a>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Python for Everybody Specialization</h3>
+                    <p>University of Michigan</p>
+                    <a href="https://coursera.org/verify/specialization/J9WD2EEGY4GE" target="_blank">View Certificate</a>
+                </div>
+                <div class="certification-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Neural Networks and Deep Learning</h3>
+                    <p>DeepLearning.AI</p>
+                    <a href="https://coursera.org/verify/8UCZ93RNGFBG" target="_blank">View Certificate</a>
+                </div>
             </div>
-            <div class="certification-item">
-                <h3>Neural Networks and Deep Learning</h3>
-                <p>DeepLearning.AI</p>
-                <a href="https://coursera.org/verify/8UCZ93RNGFBG" target="_blank">View Certificate</a>
-            </div>
-            <!-- Add other certifications similarly -->
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section-padding">
-        <h2 class="section-title">Contact Me</h2>
-        <form class="contact-form">
-            <div class="form-group">
-                <input type="text" placeholder="Your Name" required>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
+            <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>hicham.alaoui@example.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+212 762 389 821</p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+        </div>
     </section>
 
-    <script src="js/main.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Hicham Alaoui. All Rights Reserved.</p>
+                <div class="footer-social">
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/212762389821" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
