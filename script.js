@@ -78,30 +78,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateHeader);
 
-    // Portfolio cards hover effect
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
-
-    portfolioCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
-    });
-
-    // Animate timeline items
-    const observeTimeline = new IntersectionObserver((entries) => {
+    // Animate elements on scroll
+    const animateElements = document.querySelectorAll('.animate');
+    const animateObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('show');
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.timeline-item').forEach(item => {
-        observeTimeline.observe(item);
+    animateElements.forEach(element => {
+        animateObserver.observe(element);
+    });
+
+    // Experience timeline animation
+    const experienceItems = document.querySelectorAll('.experience-item');
+    const experienceObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    experienceItems.forEach(item => {
+        experienceObserver.observe(item);
+    });
+
+    // Certification hover effects
+    const certificationItems = document.querySelectorAll('.certification-item');
+    certificationItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('hover');
+        });
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('hover');
+        });
+    });
+
+    // Image loading animation
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('load', () => {
+            img.classList.add('loaded');
+        });
     });
 
     // Typing effect for hero heading

@@ -172,6 +172,66 @@ nav ul {
     margin-bottom: 50px;
 }
 
+/* Experience Section */
+.experience-item {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.experience-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.experience-item h4 {
+    color: var(--light-text);
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.experience-item ul {
+    padding-left: 20px;
+}
+
+.experience-item li {
+    margin-bottom: 8px;
+}
+
+/* Certifications Section */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.certification-item {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.certification-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.certification-item a {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.certification-item a:hover {
+    text-decoration: underline;
+}
+
 /* Skills */
 .skills-container {
     max-width: 600px;
