@@ -3,26 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hicham Alaoui - Data Science Portfolio</title>
-    <!-- Meta tags and title -->
+    <title>Hicham Alaoui - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Add Three.js and other libraries -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- 3D Animated Background -->
-    <canvas id="bg-canvas"></canvas>
-
-    <!-- Hero Section with 3D Elements -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="profile-container">
-                <img src="assets/images/profile.jpg" alt="Hicham Alaoui" class="profile-image">
-                <div class="floating-particles"></div>
-            </div>
             <h1 class="typing-text">Hicham Alaoui</h1>
             <p class="fade-in">Data Science & Machine Learning Engineer</p>
             <div class="hero-cta">
@@ -30,14 +19,12 @@
                 <a href="assets/cv.pdf" class="btn btn-secondary">Download CV</a>
             </div>
         </div>
-        <div class="floating-data-sphere"></div>
     </section>
 
-    <!-- Skills Section with Interactive Icons -->
+    <!-- Skills Section -->
     <section id="skills" class="section-padding">
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-grid">
-            <!-- Programming Languages -->
             <div class="skill-category">
                 <h3>Programming</h3>
                 <div class="skills-icons">
@@ -48,33 +35,30 @@
                             <p>Libraries: pandas, NumPy, scikit-learn, TensorFlow, Keras</p>
                         </div>
                     </div>
-                    <!-- Add other programming skills -->
+                    <div class="skill-icon" data-skill="R">
+                        <img src="assets/icons/skills/r-lang.svg" alt="R">
+                        <div class="skill-tooltip">
+                            <h4>R</h4>
+                            <p>Data analysis and visualization</p>
+                        </div>
+                    </div>
+                    <div class="skill-icon" data-skill="SQL">
+                        <img src="assets/icons/skills/sql.svg" alt="SQL">
+                        <div class="skill-tooltip">
+                            <h4>SQL</h4>
+                            <p>Database management and queries</p>
+                        </div>
+                    </div>
+                    <!-- Add more skills as needed -->
                 </div>
             </div>
-
-            <!-- Data Visualization -->
-            <div class="skill-category">
-                <h3>Data Visualization</h3>
-                <div class="skills-icons">
-                    <!-- Add visualization tools -->
-                </div>
-            </div>
-
-            <!-- Add other skill categories -->
         </div>
     </section>
 
-    <!-- Projects Section with 3D Cards -->
+    <!-- Projects Section -->
     <section id="projects" class="section-padding">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="ml">Machine Learning</button>
-            <button class="filter-btn" data-filter="data">Data Analysis</button>
-            <button class="filter-btn" data-filter="visualization">Visualization</button>
-        </div>
         <div class="projects-grid">
-            <!-- Credit Card Fraud Detection -->
             <div class="project-card" data-category="ml">
                 <div class="project-card-inner">
                     <div class="project-card-front">
@@ -96,27 +80,45 @@
                     </div>
                 </div>
             </div>
-            <!-- Add other projects -->
+            <!-- Add more projects as needed -->
         </div>
     </section>
 
-    <!-- Experience Timeline -->
+    <!-- Experience Section -->
     <section id="experience" class="section-padding">
         <h2 class="section-title">Professional Journey</h2>
         <div class="timeline">
-            <!-- Add experience items -->
+            <div class="timeline-item">
+                <h3>Data Scientist Intern</h3>
+                <h4>Gaea21, Geneva, Switzerland (Jun 2024 - Sep 2024)</h4>
+                <p>Developed machine learning models to predict CO2 emissions with 85% accuracy.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Data Analyst Intern</h3>
+                <h4>Haut Commissariat au Plan, Rabat, Morocco (July 2023 - August 2023)</h4>
+                <p>Cleaned and analyzed complex economic data, improving national policy decision accuracy by 15%.</p>
+            </div>
+            <!-- Add more experience items as needed -->
         </div>
     </section>
 
-    <!-- Contact Section with 3D Elements -->
+    <!-- Contact Section -->
     <section id="contact" class="section-padding">
-        <!-- Add contact form and info -->
+        <h2 class="section-title">Contact Me</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
     </section>
 
-    <!-- Scripts -->
-    <script src="js/three.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
