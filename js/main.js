@@ -46,7 +46,7 @@ skillIcons.forEach(icon => {
     icon.addEventListener('mouseenter', () => {
         tooltip.style.opacity = '1';
         tooltip.style.transform = 'translateY(0)';
-    });
+    });L+
     
     icon.addEventListener('mouseleave', () => {
         tooltip.style.opacity = '0';
