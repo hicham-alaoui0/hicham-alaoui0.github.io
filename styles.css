@@ -90,7 +90,7 @@ nav ul {
 
 /* Hero Section */
 .hero {
-    background-image: url('\assets\images\hero-bg.jpg');
+    background-image: url('/assets/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -273,7 +273,7 @@ footer {
 
 /* Backgrounds */
 .hero {
-    background-image: url('\assets\images\hero-bg.jpg');
+    background-image: url('/assets/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -282,7 +282,7 @@ footer {
 }
 
 .section-padding {
-    background-image: url('\assets\images\section-bg.jpg');
+    background-image: url('/assets/images/section-bg.jpg');
     background-size: cover;
     background-position: center;
     padding: 60px 0;
