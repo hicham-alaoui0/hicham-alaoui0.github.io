@@ -54,7 +54,7 @@ body {
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: #8B4513;
 }
 
 nav ul {
@@ -337,21 +337,21 @@ footer {
     font-size: 16px;
     transition: background-color 0.3s, backdrop-filter 0.3s;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: var(--white);
+    border: 2px solid #8B4513;
+    color: #fff;
 }
 
 .btn-primary {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .btn-secondary {
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--primary-color);
+    color: #8B4513;
 }
 
 .btn-secondary:hover {
@@ -362,4 +362,20 @@ footer {
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+/* Social Icons */
+.social-icons {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-icon img {
+    width: 24px;
+    height: 24px;
 }
