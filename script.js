@@ -167,4 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`You clicked on ${skillName}!`); // Replace with your desired action
         });
     });
+
+    // Dynamic Text Transition
+    const titles = ["Data Scientist", "Machine Learning Engineer", "Innovator"];
+    let currentTitleIndex = 0;
+    const titleElement = document.querySelector('.fade-in');
+
+    const changeTitle = () => {
+        titleElement.textContent = titles[currentTitleIndex];
+        currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+    };
+
+    setInterval(changeTitle, 3000); // Change title every 3 seconds
 });
