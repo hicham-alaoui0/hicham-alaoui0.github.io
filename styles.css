@@ -379,3 +379,95 @@ footer {
     width: 20px;
     height: 20px;
 }
+
+/* 3D Text Effect */
+.three-d-text {
+    font-size: 48px;
+    font-weight: 700;
+    color: #8B4513;
+    text-shadow: 
+        0 1px 0 #ccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0,0,0,.15);
+    transition: all 0.3s ease;
+}
+
+.three-d-text:hover {
+    transform: translateY(-5px);
+}
+
+/* Main Skills Styling */
+.main-skills-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+.main-skill {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 300px;
+    text-align: center;
+}
+
+.main-skill h3 {
+    color: #8B4513;
+    margin-bottom: 10px;
+}
+
+.sub-skills {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-skill:hover {
+    transform: translateY(-5px);
+}
+
+.main-skill:hover .sub-skills {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.sub-skills span {
+    padding: 5px;
+    border-radius: 5px;
+    background: #f5f5f5;
+    transition: all 0.3s ease;
+}
+
+.sub-skills span:hover {
+    background: #e0e0e0;
+    transform: scale(1.05);
+}

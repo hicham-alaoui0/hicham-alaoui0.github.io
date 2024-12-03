@@ -170,13 +170,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamic Text Transition
     const titles = ["Data Scientist", "Machine Learning Engineer", "Innovator"];
-    let currentTitleIndex = 0;
-    const titleElement = document.querySelector('.fade-in');
+    let currentIndex = 0;
+    const titleElement = document.getElementById('changing-title');
 
-    const changeTitle = () => {
-        titleElement.textContent = titles[currentTitleIndex];
-        currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-    };
+    function updateTitle() {
+        titleElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            titleElement.textContent = titles[currentIndex];
+            titleElement.style.opacity = '1';
+            currentIndex = (currentIndex + 1) % titles.length;
+        }, 500);
+    }
 
-    setInterval(changeTitle, 3000); // Change title every 3 seconds
+    // Initial call
+    updateTitle();
+    // Change title every 3 seconds
+    setInterval(updateTitle, 3000);
 });
