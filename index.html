@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="background-pattern">
+        <div class="pattern-overlay"></div>
+    </div>
     <!-- Header Section -->
     <header class="sticky-header">
         <div class="container">
@@ -101,12 +104,50 @@
     <!-- About Section -->
     <section id="about" class="section-padding">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="about-content" data-aos="fade-up" data-aos-delay="200">
-                <div class="about-text">
-                    <p>
-                        I’m a curious and motivated third-year engineering student at INSEA, specializing in Applied Economics, Statistics, and Big Data. I enjoy exploring the world of data, whether it's building predictive models, diving into machine learning, or uncovering insights through analysis. With experience in tools like Python, R, and SQL, I’ve worked on projects ranging from emissions modeling to algorithmic trading. I’m passionate about turning complex data into meaningful solutions, especially in fields like finance, sustainability, and tech. Always eager to learn, collaborate, and take on new challenges!
-                    </p>
+            <h2 class="section-title glowing-text" data-aos="fade-up">About Me</h2>
+            <div class="about-grid">
+                <div class="about-card" data-aos="fade-right">
+                    <div class="about-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Engineering Student at INSEA</p>
+                    <p>Specializing in Applied Economics, Statistics, and Big Data</p>
+                </div>
+                
+                <div class="about-card" data-aos="fade-up">
+                    <div class="about-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Expertise</h3>
+                    <p>Data Science | Machine Learning | Econometrics</p>
+                    <div class="expertise-bars">
+                        <div class="expertise-bar">
+                            <span class="label">Python</span>
+                            <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="expertise-bar">
+                            <span class="label">R</span>
+                            <div class="bar"><div class="fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="expertise-bar">
+                            <span class="label">SQL</span>
+                            <div class="bar"><div class="fill" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-card" data-aos="fade-left">
+                    <div class="about-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Goals</h3>
+                    <p>Passionate about turning complex data into meaningful solutions</p>
+                    <div class="goals-list">
+                        <span>Innovation</span>
+                        <span>Problem Solving</span>
+                        <span>Continuous Learning</span>
+                    </div>
                 </div>
             </div>
         </div>

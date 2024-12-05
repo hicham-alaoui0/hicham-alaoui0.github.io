@@ -362,65 +362,75 @@ nav ul {
 }
 
 .portfolio-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
     overflow: hidden;
 }
 
-.portfolio-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+.portfolio-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 65%, rgba(139, 69, 19, 0.1) 75%, transparent 85%);
+    animation: shine 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
 }
 
 .portfolio-icon {
-    font-size: 2.5em;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f5f5f5, #fff);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.portfolio-icon i {
+    font-size: 2em;
     color: #8B4513;
-    margin-bottom: 20px;
-    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-.portfolio-content h3 {
-    color: #2c3e50;
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.portfolio-content p {
-    color: #666;
-    font-size: 0.95em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
+.portfolio-card:hover .portfolio-icon i {
+    transform: rotateY(360deg);
 }
 
 .tech-stack {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: auto;
 }
 
 .tech-stack span {
-    background: #f5f5f5;
-    color: #8B4513;
-    padding: 5px 12px;
+    padding: 5px 15px;
     border-radius: 15px;
+    background: linear-gradient(135deg, #f5f5f5, #fff);
+    color: #8B4513;
     font-size: 0.85em;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .tech-stack span:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
     background: #8B4513;
     color: white;
-    transform: scale(1.05);
 }
 
 /* Contact Form */
@@ -973,4 +983,148 @@ footer {
     .timeline-item:nth-child(even)::after {
         left: 40px;
     }
+}
+
+/* Add these dynamic background styles */
+.background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        linear-gradient(45deg, transparent 49%, #f0f0f0 49% 51%, transparent 51%) 0 0/30px 30px,
+        linear-gradient(-45deg, transparent 49%, #f0f0f0 49% 51%, transparent 51%) 0 0/30px 30px;
+    animation: patternMove 60s linear infinite;
+}
+
+.pattern-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+}
+
+@keyframes patternMove {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
+}
+
+/* Add these creative styles for the About section */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #8B4513, #D2691E);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.about-card:hover::before {
+    transform: scaleX(1);
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.about-icon {
+    font-size: 2.5em;
+    color: #8B4513;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.expertise-bars {
+    margin-top: 20px;
+}
+
+.expertise-bar {
+    margin: 15px 0;
+}
+
+.expertise-bar .label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.bar {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8B4513, #D2691E);
+    border-radius: 4px;
+    transform-origin: left;
+    animation: fillBar 1.5s ease forwards;
+}
+
+@keyframes fillBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+.goals-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.goals-list span {
+    background: #f5f5f5;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: #8B4513;
+    transition: all 0.3s ease;
+}
+
+.goals-list span:hover {
+    background: #8B4513;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Add glowing text effect for section titles */
+.glowing-text {
+    position: relative;
+    color: #8B4513;
+    text-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+    animation: glowing 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowing {
+    from { text-shadow: 0 0 10px rgba(139, 69, 19, 0.3); }
+    to { text-shadow: 0 0 20px rgba(139, 69, 19, 0.6); }
 }
