@@ -37,23 +37,63 @@
 
     <!-- Home Section -->
     <section id="home" class="hero">
+        <div class="particles-bg" id="particles-js"></div>
         <div class="social-icons" data-aos="fade-left">
             <a href="https://linkedin.com" target="_blank" class="social-icon">
-                <img src="/assets/icons/social/linkedin.svg" alt="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+                <span class="social-tooltip">Connect on LinkedIn</span>
             </a>
             <a href="https://github.com" target="_blank" class="social-icon">
-                <img src="/assets/icons/social/github.svg" alt="GitHub">
+                <i class="fab fa-github"></i>
+                <span class="social-tooltip">Follow on GitHub</span>
             </a>
             <a href="https://wa.me/212762389821" target="_blank" class="social-icon">
-                <img src="/assets/icons/social/WhatsApp.svg" alt="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span class="social-tooltip">Chat on WhatsApp</span>
             </a>
         </div>
         <div class="hero-content" data-aos="fade-up">
-            <h1 class="three-d-text">Hicham Alaoui</h1>
-            <p id="changing-title" class="fade-in">Data Scientist</p>
-            <div class="buttons">
-                <a href="/CV/CV-Final.pdf" class="btn btn-primary" target="_blank">View Resume</a>
-                <a href="#portfolio" class="btn btn-secondary">Explore Portfolio</a>
+            <div class="hero-greeting">Hello, I'm</div>
+            <h1 class="hero-title">
+                <span class="three-d-text">Hicham Alaoui</span>
+                <span class="hero-emoji">👋</span>
+            </h1>
+            <div class="hero-subtitle">
+                <span class="typing-wrapper">I'm a</span>
+                <span id="changing-title" class="profession-text"></span>
+                <span class="cursor">|</span>
+            </div>
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
+                Transforming complex data into meaningful insights
+                <span class="highlight">One algorithm at a time</span>
+            </p>
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+            <div class="buttons" data-aos="fade-up" data-aos-delay="400">
+                <a href="/CV/CV-Final.pdf" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    <i class="fas fa-project-diagram"></i> View Projects
+                </a>
+            </div>
+            <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="500">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="scroll-text">Scroll to explore</div>
             </div>
         </div>
     </section>
@@ -415,5 +455,42 @@
         });
     </script>
     <button class="back-to-top" aria-label="Back to Top">↑</button>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#8B4513' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#8B4513',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
 </body>
 </html>
