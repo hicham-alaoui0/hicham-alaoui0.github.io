@@ -272,8 +272,7 @@ nav ul {
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 30px; /* Changed from left: 50% to right: 30px */
     text-align: center;
 }
 
