@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Typing effect for hero heading
-    const typingText = document.querySelector('.typing-text');
+    const typingText = document.querySelector('.typing-wrapper');
     if (typingText) {
         const text = typingText.textContent;
         typingText.textContent = '';
