@@ -160,9 +160,12 @@ nav ul {
 }
 
 .profession-text {
-    color: #4a90e2;
+    color: #8B4513;
     font-weight: 600;
     min-width: 200px;
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .cursor {

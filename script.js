@@ -168,28 +168,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dynamic Text Transition
+    // Dynamic text animation for profession titles
     function initDynamicTitle() {
         const titles = ["Data Scientist", "Machine Learning Engineer", "Innovator"];
+        const professionText = document.querySelector('.profession-text');
         let currentIndex = 0;
-        const titleElement = document.getElementById('changing-title');
         
-        if (!titleElement) return;
+        if (!professionText) return;
 
-        function updateTitle() {
-            titleElement.style.opacity = '0';
+        // Initial text
+        professionText.textContent = titles[0];
+
+        setInterval(() => {
+            // Fade out
+            professionText.style.opacity = '0';
+            
             setTimeout(() => {
-                titleElement.textContent = titles[currentIndex];
-                titleElement.style.opacity = '1';
+                // Change text and fade in
                 currentIndex = (currentIndex + 1) % titles.length;
+                professionText.textContent = titles[currentIndex];
+                professionText.style.opacity = '1';
             }, 500);
-        }
-
-        // Initial call
-        updateTitle();
-        // Change title every 3 seconds
-        setInterval(updateTitle, 3000);
+        }, 3000);
     }
 
-    initDynamicTitle();
+    // Call the function when the document is loaded
+    document.addEventListener('DOMContentLoaded', initDynamicTitle);
 });
