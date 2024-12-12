@@ -454,6 +454,110 @@
         </div>
     </section>
 
+    <!-- Collaborate Section -->
+    <section id="collaborate" class="section-padding">
+        <div class="container">
+            <h2 class="section-title glowing-text" data-aos="fade-up">Let's Create Something Amazing</h2>
+            <p class="section-subtitle" data-aos="fade-up">Transform your ideas into reality with data-driven solutions</p>
+            
+            <div class="services-grid" data-aos="fade-up">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Data Science Solutions</h3>
+                    <p>Turn your raw data into actionable insights</p>
+                    <ul class="service-features">
+                        <li>Data Analysis</li>
+                        <li>Predictive Modeling</li>
+                        <li>Business Intelligence</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" onclick="selectService('Machine Learning')">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Automate and optimize with intelligent systems</p>
+                    <ul class="service-features">
+                        <li>Custom AI Solutions</li>
+                        <li>Deep Learning Models</li>
+                        <li>Process Automation</li>
+                    </ul>
+                    <div class="select-overlay">
+                        <span>Start Project</span>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="selectService('Econometrics')">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Economic Analysis</h3>
+                    <p>Make data-driven economic decisions</p>
+                    <ul class="service-features">
+                        <li>Statistical Analysis</li>
+                        <li>Economic Modeling</li>
+                        <li>Policy Research</li>
+                    </ul>
+                    <div class="select-overlay">
+                        <span>Start Project</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Request Form -->
+            <div class="project-request-form" id="serviceForm" style="display: none;" data-aos="fade-up">
+                <h3>Tell Me About Your Project</h3>
+                <form action="https://formsubmit.co/halaoui@insea.ac.ma" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Selected Service</label>
+                        <input type="text" name="selected_service" id="selectedService" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Description</label>
+                        <textarea name="project_details" placeholder="Share your project goals, challenges, and expectations..." required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Timeline</label>
+                            <select name="timeline" required>
+                                <option value="">When do you want to start?</option>
+                                <option value="immediately">As Soon as Possible</option>
+                                <option value="1-2-weeks">In 1-2 Weeks</option>
+                                <option value="1-month">Within a Month</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Scale</label>
+                            <select name="project_scale" required>
+                                <option value="">Select project size</option>
+                                <option value="small">Small (1-2 weeks)</option>
+                                <option value="medium">Medium (2-4 weeks)</option>
+                                <option value="large">Large (1+ months)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="_subject" value="New Project Inquiry!">
+                    <input type="hidden" name="_template" value="table">
+                    <button type="submit" class="btn btn-primary">Let's Get Started</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section-padding">
         <div class="container">

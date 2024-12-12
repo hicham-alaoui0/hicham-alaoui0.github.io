@@ -229,4 +229,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    function selectService(serviceName) {
+        const form = document.getElementById('serviceForm');
+        form.style.display = 'block';
+        document.getElementById('selectedService').value = serviceName;
+        
+        // Add smooth animation
+        setTimeout(() => {
+            form.classList.add('visible');
+            form.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }, 100);
+    }
+
+    // Update the service card click handlers
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // Get the service name from the card's h3 element
+            const serviceName = this.querySelector('h3').textContent;
+            
+            // Show the form
+            const form = document.getElementById('serviceForm');
+            form.style.display = 'block';
+            
+            // Set the selected service
+            document.getElementById('selectedService').value = serviceName;
+            
+            // Smooth scroll to form
+            form.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+            
+            // Add visible class for animation
+            setTimeout(() => {
+                form.classList.add('visible');
+            }, 100);
+        });
+
+        // Add hover effects
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
 });
