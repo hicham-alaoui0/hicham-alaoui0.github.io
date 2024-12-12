@@ -459,16 +459,22 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
             <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
-                <form class="contact-form">
+                <form class="contact-form" action="https://formsubmit.co/halaoui@insea.ac.ma" method="POST">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
+                        <textarea name="message" placeholder="Your Message" required></textarea>
                     </div>
+                    <!-- Optional: Add a honeypot to prevent spam -->
+                    <input type="text" name="_honey" style="display:none">
+                    <!-- Disable captcha -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <!-- Specify redirect after submission -->
+                    <input type="hidden" name="_next" value="https://hicham-alaoui0.github.io/thanks.html">
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
                 <div class="contact-info">

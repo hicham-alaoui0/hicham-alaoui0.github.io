@@ -17,8 +17,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: #f9f9f9;
+    color: #333;
+    background-color: #ffffff;
 }
 
 .container {
@@ -96,10 +96,8 @@ nav ul {
     padding: 100px 20px;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    background: #ffffff;
     overflow: hidden;
-    background-image: none;
-    backdrop-filter: blur(10px);
 }
 
 .particles-bg {
@@ -123,7 +121,7 @@ nav ul {
     font-size: 1.5em;
     color: #8B4513;
     margin-bottom: 10px;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .hero-title {
@@ -159,6 +157,7 @@ nav ul {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-weight: 600;
 }
 
 .profession-text {
@@ -182,9 +181,10 @@ nav ul {
 
 .hero-description {
     font-size: 1.2em;
-    color: #666;
+    color: #333;
     margin-bottom: 30px;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .highlight {
@@ -557,8 +557,22 @@ footer {
 }
 
 .section-padding {
+    position: relative;
     background: transparent;
     padding: 60px 20px;
+    z-index: 1;
+}
+
+/* Add a subtle section separator */
+.section-padding:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: rgba(139, 69, 19, 0.1);
 }
 
 /* Adjusting the layout */
@@ -571,6 +585,8 @@ footer {
 .section-title {
     margin-bottom: 20px;
     text-align: center;
+    color: #8B4513;
+    font-weight: 700;
 }
 
 .skills-container {
@@ -910,6 +926,7 @@ footer {
     transition: transform 0.3s ease;
     opacity: 1;
     visibility: visible;
+    color: #333;
 }
 
 .timeline-content:hover {
@@ -930,11 +947,13 @@ footer {
     color: #2c3e50;
     margin-bottom: 15px;
     font-size: 1.2em;
+    font-weight: 600;
 }
 
-.timeline-item p {
+.timeline-item p, 
+.timeline-item li {
     margin: 8px 0;
-    color: #666;
+    color: #333;
     line-height: 1.6;
 }
 
@@ -998,24 +1017,12 @@ footer {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: 
-        linear-gradient(45deg, transparent 49%, #f0f0f0 49% 51%, transparent 51%) 0 0/30px 30px,
-        linear-gradient(-45deg, transparent 49%, #f0f0f0 49% 51%, transparent 51%) 0 0/30px 30px;
-    animation: patternMove 60s linear infinite;
+    background: #ffffff;
+    opacity: 1;
 }
 
 .pattern-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
-}
-
-@keyframes patternMove {
-    from { background-position: 0 0; }
-    to { background-position: 100% 100%; }
+    display: none;
 }
 
 /* Add these creative styles for the About section */
@@ -1168,4 +1175,72 @@ html {
 a:focus, button:focus {
     outline: 3px solid var(--primary-color);
     outline-offset: 3px;
+}
+
+/* Add these styles for the thank you page */
+.thank-you-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.thank-you-container h1 {
+    color: #8B4513;
+    margin-bottom: 20px;
+}
+
+.thank-you-container p {
+    color: #333;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+/* Update contact form styles */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8B4513;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    background: #8B4513;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #A0522D;
 }
