@@ -168,30 +168,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dynamic text animation for profession titles
-    function initDynamicTitle() {
-        const titles = ["Data Scientist", "Machine Learning Engineer", "Innovator"];
-        const professionText = document.querySelector('.profession-text');
-        let currentIndex = 0;
+    // Add intersection observer for better scroll animations
+    const observeElements = (elements, className) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(className);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elements.forEach(el => observer.observe(el));
+    };
+
+    // Add theme toggle functionality
+    const addThemeToggle = () => {
+        const header = document.querySelector('.sticky-header .container');
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'theme-toggle';
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        themeToggle.onclick = () => document.body.classList.toggle('dark-mode');
+        header.appendChild(themeToggle);
+    };
+
+    // Add search functionality
+    const addSearch = () => {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const searchInput = document.createElement('input');
+        searchInput.type = 'search';
+        searchInput.placeholder = 'Search projects...';
+        searchInput.className = 'portfolio-search';
         
-        if (!professionText) return;
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            portfolioItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
 
-        // Initial text
-        professionText.textContent = titles[0];
+        document.querySelector('#portfolio .container').insertBefore(
+            searchInput, 
+            document.querySelector('.portfolio-grid')
+        );
+    };
 
-        setInterval(() => {
-            // Fade out
-            professionText.style.opacity = '0';
-            
-            setTimeout(() => {
-                // Change text and fade in
-                currentIndex = (currentIndex + 1) % titles.length;
-                professionText.textContent = titles[currentIndex];
-                professionText.style.opacity = '1';
-            }, 500);
-        }, 3000);
+    // Initialize new features
+    addThemeToggle();
+    addSearch();
+    observeElements(document.querySelectorAll('.portfolio-item'), 'visible');
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        });
     }
-
-    // Call the function when the document is loaded
-    document.addEventListener('DOMContentLoaded', initDynamicTitle);
 });
