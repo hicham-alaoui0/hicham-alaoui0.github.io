@@ -1,659 +1,756 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hicham Alaoui - Data Science Portfolio</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- Animation Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- PWA Support -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#4a90e2">
-    
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#4a90e2" />
+
     <!-- SEO Improvements -->
-    <meta name="description" content="Hicham Alaoui - Data Scientist Portfolio showcasing projects in machine learning, data analysis, and econometrics">
-    <meta name="keywords" content="data science, machine learning, portfolio, econometrics, python, R">
-    
+    <meta
+      name="description"
+      content="Hicham Alaoui - Data Scientist Portfolio showcasing projects in machine learning, data analysis, and econometrics"
+    />
+    <meta
+      name="keywords"
+      content="data science, machine learning, portfolio, econometrics, python, R"
+    />
+
     <!-- Social Media Preview -->
-    <meta property="og:title" content="Hicham Alaoui - Data Science Portfolio">
-    <meta property="og:description" content="Explore my data science projects and professional experience">
-    <meta property="og:image" content="/assets/images/preview.jpg">
-    <meta property="og:url" content="https://your-website.com">
-    
+    <meta
+      property="og:title"
+      content="Hicham Alaoui - Data Science Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Explore my data science projects and professional experience"
+    />
+    <meta property="og:image" content="/assets/images/preview.jpg" />
+    <meta property="og:url" content="https://your-website.com" />
+
     <!-- Preload Critical Resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  </head>
+  <body>
     <div class="background-pattern">
-        <div class="pattern-overlay"></div>
+      <div class="pattern-overlay"></div>
     </div>
     <!-- Header Section -->
     <header class="sticky-header">
-        <div class="container">
-            <div class="logo" data-aos="fade-right">Hicham Alaoui</div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#resume" class="nav-link">Resume</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="container">
+        <div class="logo" data-aos="fade-right">Hicham Alaoui</div>
+        <nav>
+          <ul>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#resume" class="nav-link">Resume</a></li>
+            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </div>
     </header>
 
     <!-- Home Section -->
     <section id="home" class="hero">
-        <div class="particles-bg" id="particles-js"></div>
-        <div class="social-icons" data-aos="fade-left">
-            <a href="https://linkedin.com" target="_blank" class="social-icon">
-                <i class="fab fa-linkedin"></i>
-                <span class="social-tooltip">Connect on LinkedIn</span>
-            </a>
-            <a href="https://github.com" target="_blank" class="social-icon">
-                <i class="fab fa-github"></i>
-                <span class="social-tooltip">Follow on GitHub</span>
-            </a>
-            <a href="https://wa.me/212762389821" target="_blank" class="social-icon">
-                <i class="fab fa-whatsapp"></i>
-                <span class="social-tooltip">Chat on WhatsApp</span>
-            </a>
+      <div class="particles-bg" id="particles-js"></div>
+      <div class="social-icons" data-aos="fade-left">
+        <a
+          href="https://linkedin.com/in/hicham-alaoui-08ba35206"
+          target="_blank"
+          class="social-icon"
+        >
+          <i class="fab fa-linkedin"></i>
+          <span class="social-tooltip">Connect on LinkedIn</span>
+        </a>
+        <a
+          href="https://github.com/hicham-alaoui0"
+          target="_blank"
+          class="social-icon"
+        >
+          <i class="fab fa-github"></i>
+          <span class="social-tooltip">Follow on GitHub</span>
+        </a>
+        <a
+          href="https://wa.me/212762389821"
+          target="_blank"
+          class="social-icon"
+        >
+          <i class="fab fa-whatsapp"></i>
+          <span class="social-tooltip">Chat on WhatsApp</span>
+        </a>
+      </div>
+      <div class="hero-content" data-aos="fade-up">
+        <div class="hero-greeting">Hello, I'm</div>
+        <h1 class="hero-title">
+          <span class="three-d-text">Hicham Alaoui</span>
+          <span class="hero-emoji">👋</span>
+        </h1>
+        <div class="hero-subtitle">
+          <span>I'm a</span>
+          <span class="profession-text"></span>
         </div>
-        <div class="hero-content" data-aos="fade-up">
-            <div class="hero-greeting">Hello, I'm</div>
-            <h1 class="hero-title">
-                <span class="three-d-text">Hicham Alaoui</span>
-                <span class="hero-emoji">👋</span>
-            </h1>
-            <div class="hero-subtitle">
-                <span>I'm a</span>
-                <span class="profession-text">Data Scientist</span>
-            </div>
-            <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
-                Transforming complex data into meaningful insights
-                <span class="highlight">One algorithm at a time</span>
-            </p>
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
-                <div class="stat-item">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">5+</span>
-                    <span class="stat-label">Certifications</span>
-                </div>
-            </div>
-            <div class="buttons" data-aos="fade-up" data-aos-delay="400">
-                <a href="/CV/CV-Final.pdf" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-download"></i> Download CV
-                </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                    <i class="fas fa-project-diagram"></i> View Projects
-                </a>
-            </div>
-            <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="500">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <div class="scroll-text">Scroll to explore</div>
-            </div>
+        <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
+          Transforming complex data into meaningful insights
+          <span class="highlight">One algorithm at a time</span>
+        </p>
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
         </div>
+        <div class="buttons" data-aos="fade-up" data-aos-delay="400">
+          <a href="/CV/CV-Final.pdf" class="btn btn-primary" target="_blank">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+          <a href="#portfolio" class="btn btn-secondary">
+            <i class="fas fa-project-diagram"></i> View Projects
+          </a>
+        </div>
+        <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="500">
+          <div class="mouse">
+            <div class="wheel"></div>
+          </div>
+          <div class="scroll-text">Scroll to explore</div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section-padding">
-        <div class="container">
-            <h2 class="section-title glowing-text" data-aos="fade-up">About Me</h2>
-            <div class="about-grid">
-                <div class="about-card" data-aos="fade-right">
-                    <div class="about-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3>Education</h3>
-                    <p>Engineering Student at INSEA</p>
-                    <p>Specializing in Applied Economics, Statistics, and Big Data</p>
-                </div>
-                
-                <div class="about-card" data-aos="fade-up">
-                    <div class="about-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Expertise</h3>
-                    <p>Data Science | Machine Learning | Econometrics</p>
-                    <div class="expertise-bars">
-                        <div class="expertise-bar">
-                            <span class="label">Python</span>
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                        </div>
-                        <div class="expertise-bar">
-                            <span class="label">R</span>
-                            <div class="bar"><div class="fill" style="width: 85%"></div></div>
-                        </div>
-                        <div class="expertise-bar">
-                            <span class="label">SQL</span>
-                            <div class="bar"><div class="fill" style="width: 80%"></div></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-card" data-aos="fade-left">
-                    <div class="about-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Goals</h3>
-                    <p>Passionate about turning complex data into meaningful solutions</p>
-                    <div class="goals-list">
-                        <span>Innovation</span>
-                        <span>Problem Solving</span>
-                        <span>Continuous Learning</span>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title glowing-text" data-aos="fade-up">About Me</h2>
+        <div class="about-grid">
+          <div class="about-card" data-aos="fade-right">
+            <div class="about-icon">
+              <i class="fas fa-user-graduate"></i>
             </div>
+            <h3>Education</h3>
+            <p>INSEA – Rabat</p>
+            <p>
+              Ingénieur d'État : économie appliquée, statistique et big data
+              (2022–2025)
+            </p>
+          </div>
+
+          <div class="about-card" data-aos="fade-up">
+            <div class="about-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Expertise</h3>
+            <p>Data Science | Machine Learning | Econometrics</p>
+            <div class="expertise-bars">
+              <div class="expertise-bar">
+                <span class="label">Python</span>
+                <div class="bar">
+                  <div class="fill" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="expertise-bar">
+                <span class="label">R</span>
+                <div class="bar">
+                  <div class="fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="expertise-bar">
+                <span class="label">SQL</span>
+                <div class="bar">
+                  <div class="fill" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-card" data-aos="fade-left">
+            <div class="about-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3>Résumé</h3>
+            <p>
+              Ingénieur passionné par la transformation de données en solutions
+              concrètes. Mon approche allie curiosité et pragmatisme pour
+              concevoir des outils d'aide à la décision efficaces.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">My Skills</h2>
-            <div class="main-skills-container" data-aos="fade-up">
-                <div class="main-skill" data-category="data-science">
-                    <h3>Data Science</h3>
-                    <div class="sub-skills">
-                        <span>Python</span>
-                        <span>Pandas</span>
-                        <span>NumPy</span>
-                        <span>SQL</span>
-                    </div>
-                </div>
-                <div class="main-skill" data-category="machine-learning">
-                    <h3>Machine Learning</h3>
-                    <div class="sub-skills">
-                        <span>Scikit-learn</span>
-                        <span>TensorFlow</span>
-                        <span>Neural Networks</span>
-                        <span>Deep Learning</span>
-                    </div>
-                </div>
-                <div class="main-skill" data-category="econometrics">
-                    <h3>Econometrics</h3>
-                    <div class="sub-skills">
-                        <span>R</span>
-                        <span>Statistical Analysis</span>
-                        <span>Time Series</span>
-                        <span>Regression Models</span>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">My Skills</h2>
+        <div class="main-skills-container" data-aos="fade-up">
+          <div class="main-skill" data-category="data-science">
+            <h3>Data Science</h3>
+            <div class="sub-skills">
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>Scikit-learn</span>
             </div>
+          </div>
+          <div class="main-skill" data-category="ai">
+            <h3>AI / DL</h3>
+            <div class="sub-skills">
+              <span>TensorFlow</span>
+              <span>Keras</span>
+              <span>Transformers</span>
+              <span>LSTM</span>
+              <span>CNN</span>
+              <span>EVT</span>
+            </div>
+          </div>
+          <div class="main-skill" data-category="quant">
+            <h3>Quant</h3>
+            <div class="sub-skills">
+              <span>Calcul stochastique</span>
+              <span>Monte-Carlo</span>
+            </div>
+          </div>
+          <div class="main-skill" data-category="viz">
+            <h3>Viz / BI</h3>
+            <div class="sub-skills">
+              <span>Streamlit</span>
+              <span>Tableau</span>
+              <span>Power BI</span>
+              <span>Grafana</span>
+            </div>
+          </div>
+          <div class="main-skill" data-category="languages">
+            <h3>Langages</h3>
+            <div class="sub-skills">
+              <span>Python</span>
+              <span>R</span>
+              <span>SQL</span>
+              <span>C/C++</span>
+              <span>VBA</span>
+            </div>
+          </div>
+          <div class="main-skill" data-category="soft-skills">
+            <h3>Soft Skills</h3>
+            <div class="sub-skills">
+              <span>Communication</span>
+              <span>Pensée analytique</span>
+              <span>Adaptabilité</span>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Certifications Section -->
     <section id="certifications" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-card" data-aos="fade-up">
-                    <div class="certification-logo">
-                        <img src="/assets/certificats/google-icon-logo-svgrepo-com.svg" alt="Google">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Process Data from Dirty to Clean</h3>
-                        <p>Google</p>
-                        <div class="certification-meta">
-                            <span class="date">Issued April 8, 2024</span>
-                            <a href="/coursera cerfifs/Coursera CQ2W8JLADQDB.pdf" class="verify-btn" target="_blank">
-                                <i class="fas fa-certificate"></i> Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="certification-card" data-aos="fade-up">
-                    <div class="certification-logo">
-                        <img src="/assets/certificats/university-of-michigan-seeklogo.svg" alt="University of Michigan">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python for Everybody Specialization</h3>
-                        <p>University of Michigan</p>
-                        <div class="certification-meta">
-                            <span class="date">Issued November 21, 2023</span>
-                            <a href="/coursera cerfifs/Coursera J9WD2EEGY4GE.pdf" class="verify-btn" target="_blank">
-                                <i class="fas fa-certificate"></i> Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="certification-card" data-aos="fade-up">
-                    <div class="certification-logo">
-                        <img src="/assets/certificats/google-icon-logo-svgrepo-com.svg" alt="Google">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Ask Questions to Make Data-Driven Decisions</h3>
-                        <p>Google</p>
-                        <div class="certification-meta">
-                            <span class="date">Issued March 15, 2023</span>
-                            <a href="/coursera cerfifs/Coursera Y85VG359FYD5.pdf" class="verify-btn" target="_blank">
-                                <i class="fas fa-certificate"></i> Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="certification-card" data-aos="fade-up">
-                    <div class="certification-logo">
-                        <img src="/assets/certificats/ibm-svgrepo-com.svg" alt="IBM">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python Project for Data Science</h3>
-                        <p>IBM</p>
-                        <div class="certification-meta">
-                            <span class="date">Issued March 28, 2023</span>
-                            <a href="/coursera cerfifs/Coursera ZPFFUS53YT3R.pdf" class="verify-btn" target="_blank">
-                                <i class="fas fa-certificate"></i> Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="certification-card" data-aos="fade-up">
-                    <div class="certification-logo">
-                        <img src="/assets/certificats/dlai-logo.svg" alt="DeepLearning.AI">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Neural Networks and Deep Learning</h3>
-                        <p>DeepLearning.AI</p>
-                        <div class="certification-meta">
-                            <span class="date">Issued December 10, 2023</span>
-                            <a href="/coursera cerfifs/Coursera 8UCZ93RNGFBG.pdf" class="verify-btn" target="_blank">
-                                <i class="fas fa-certificate"></i> Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+        <div class="certifications-grid">
+          <div class="certification-card" data-aos="fade-up">
+            <div class="certification-logo">
+              <img
+                src="/assets/certificats/google-icon-logo-svgrepo-com.svg"
+                alt="Google"
+              />
             </div>
+            <div class="certification-content">
+              <h3>Prepare Data for Exploration</h3>
+              <p>Google</p>
+              <div class="certification-meta">
+                <span class="date">Issued April 2023</span>
+                <a
+                  href="https://www.coursera.org/account/accomplishments/certificate/2WPJXSWPRW5U"
+                  class="verify-btn"
+                  target="_blank"
+                >
+                  <i class="fas fa-certificate"></i> Verify
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="certification-card" data-aos="fade-up">
+            <div class="certification-logo">
+              <img
+                src="/assets/certificats/university-of-michigan-seeklogo.svg"
+                alt="University of Michigan"
+              />
+            </div>
+            <div class="certification-content">
+              <h3>Python for Everybody Specialization</h3>
+              <p>University of Michigan</p>
+              <div class="certification-meta">
+                <span class="date">Issued November 21, 2023</span>
+                <a
+                  href="/coursera cerfifs/Coursera J9WD2EEGY4GE.pdf"
+                  class="verify-btn"
+                  target="_blank"
+                >
+                  <i class="fas fa-certificate"></i> Verify
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="certification-card" data-aos="fade-up">
+            <div class="certification-logo">
+              <img src="/assets/certificats/ibm-svgrepo-com.svg" alt="IBM" />
+            </div>
+            <div class="certification-content">
+              <h3>Python Project for Data Science</h3>
+              <p>IBM</p>
+              <div class="certification-meta">
+                <span class="date">Issued March 28, 2023</span>
+                <a
+                  href="/coursera cerfifs/Coursera ZPFFUS53YT3R.pdf"
+                  class="verify-btn"
+                  target="_blank"
+                >
+                  <i class="fas fa-certificate"></i> Verify
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="certification-card" data-aos="fade-up">
+            <div class="certification-logo">
+              <img
+                src="/assets/certificats/dlai-logo.svg"
+                alt="DeepLearning.AI"
+              />
+            </div>
+            <div class="certification-content">
+              <h3>Neural Networks and Deep Learning</h3>
+              <p>DeepLearning.AI</p>
+              <div class="certification-meta">
+                <span class="date">Issued December 10, 2023</span>
+                <a
+                  href="/coursera cerfifs/Coursera 8UCZ93RNGFBG.pdf"
+                  class="verify-btn"
+                  target="_blank"
+                >
+                  <i class="fas fa-certificate"></i> Verify
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Resume Section -->
     <section id="resume" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Jun 2024 - Sep 2024</span>
-                        <h3>Data Scientist</h3>
-                        <h4>gaea21, Genève, Suisse</h4>
-                        <ul>
-                            <li>Developed machine learning models to predict CO2 emissions with 85% accuracy based on more than 30 agricultural variables</li>
-                            <li>Collaborated with an international team to automate data extraction and provide strategic recommendations to stakeholders</li>
-                            <li>Created an automated data management system for FAOSTAT, reducing manual tasks by 30%</li>
-                            <li>Designed a NLP model to generate over 100 articles on sustainability topics, reaching an audience of 5,000 monthly visitors</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Juillet 2023 - Août 2023</span>
-                        <h3>Data Analyst</h3>
-                        <h4>Haut Commissariat au Plan, Rabat, Maroc</h4>
-                        <ul>
-                            <li>Cleaned, analyzed, and visualized complex economic data, improving national policy decision accuracy by 15%</li>
-                            <li>Conducted competitive analysis and formulated data-driven recommendations to enhance long-term economic planning</li>
-                            <li>Worked with cross-functional teams to integrate data into strategic reports for policymakers</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Professional Experience
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="timeline-date">Mar 2025 - Aug 2025</span>
+              <h3>Data Scientist (Stage PFE)</h3>
+              <h4>Société Générale ATS, Casablanca</h4>
+              <ul>
+                <li>
+                  Conception et déploiement d'un pipeline temps réel pour
+                  recalibrer les limites pré-trade, libérant
+                  <strong>1,8&nbsp;M€ de RWA</strong>
+                </li>
+                <li>
+                  Développement d'un modèle EVT Peak-Over-Threshold atteignant
+                  <strong>94&nbsp;% de précision</strong> avec 1,3&nbsp;% de
+                  faux positifs sur 12M+ transactions
+                </li>
+                <li>
+                  Industrialisation de la chaîne MLOps complète incluant tests
+                  unitaires (89&nbsp;% de couverture), monitoring Grafana et
+                  déploiement Docker via GitHub
+                </li>
+                <li>
+                  Automatisation des contrôles réglementaires via Streamlit
+                  réduisant le temps de traitement de <strong>80&nbsp;%</strong>
+                </li>
+              </ul>
             </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="timeline-date">Jun 2024 - Sep 2024</span>
+              <h3>Data Scientist (Stage PFA)</h3>
+              <h4>GAEA21, Genève</h4>
+              <ul>
+                <li>
+                  Développement de modèles ML prédictifs d'émissions CO₂ sur 50k
+                  observations multisectorielles
+                </li>
+                <li>
+                  Conception d'un générateur d'articles LSTM (fr) →
+                  <strong>20+ articles</strong> publiés, 92&nbsp;% score
+                  Perplexity
+                </li>
+                <li>Déploiement d'un microservice NLP</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="timeline-date">Jul 2023 - Aug 2023</span>
+              <h3>Data Analyst (Stage)</h3>
+              <h4>Haut-Commissariat au Plan, Rabat</h4>
+              <ul>
+                <li>
+                  Migration d'1&nbsp;million de records socio-économiques vers
+                  PostgreSQL → réduction de
+                  <strong>40&nbsp;% de la latence</strong> des requêtes
+                </li>
+                <li>
+                  Construction d'indicateurs de pauvreté multidimensionnelle
+                  (ARIMA, ARDL)
+                </li>
+                <li>Automatisation des tableaux de bord Power BI</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">My Work</h2>
-            <div class="portfolio-grid">
-                <!-- Credit Card Fraud Detection -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Credit Card Fraud Detection</h3>
-                            <p>Applied classification methods (Logistic Regression, Random Forest, XGBoost) on 284,807 transactions to detect fraud with 99.7% accuracy.</p>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Scikit-learn</span>
-                                <span>XGBoost</span>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">My Work</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" data-aos="fade-up">
+            <div class="portfolio-card">
+              <div class="portfolio-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="portfolio-content">
+                <h3>FarmVision</h3>
+                <p>
+                  Plateforme ML de phyto-diagnostic pour vertical farming —
+                  précision <strong>92&nbsp;%</strong>, utilisée par SkyFarms.
+                </p>
+                <div class="tech-stack">
+                  <span>TensorFlow</span>
+                  <span>Computer Vision</span>
+                  <span>Streamlit</span>
                 </div>
-
-                <!-- Data Migration Pipeline -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Data Migration to MySQL with Automated Pipeline</h3>
-                            <p>Designed a pipeline to extract, clean, and integrate data into a MySQL database, reducing manual errors by 30%.</p>
-                            <div class="tech-stack">
-                                <span>MySQL</span>
-                                <span>Python</span>
-                                <span>ETL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Algorithmic Trading -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Machine Learning Model for Algorithmic Trading</h3>
-                            <p>Developed an algorithmic trading model using historical stock market data to optimize portfolio returns by 10% over six months.</p>
-                            <div class="tech-stack">
-                                <span>XGBoost</span>
-                                <span>Python</span>
-                                <span>Financial Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Econometric Analysis -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-globe-europe"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Comparative Econometric Analysis</h3>
-                            <p>Conducted sustainability and economic growth analysis using the ARDL model, modeling 47 years of economic data to assess the impact of imports, exports, and energy consumption.</p>
-                            <div class="tech-stack">
-                                <span>R</span>
-                                <span>ARDL</span>
-                                <span>Economic Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Poverty Analysis -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-chart-pie"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Multidimensional Poverty Analysis in Morocco</h3>
-                            <p>Leveraged the Multidimensional Poverty Index (MPI) to analyze socio-economic data across 12 key indicators and provided regional strategic recommendations.</p>
-                            <div class="tech-stack">
-                                <span>Statistical Analysis</span>
-                                <span>Data Visualization</span>
-                                <span>Policy Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Article Generator -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Automated Sustainability Article Generator</h3>
-                            <p>Designed an NLP model to automatically generate over 100 articles on sustainability topics, reaching a monthly audience of 5,000 visitors.</p>
-                            <div class="tech-stack">
-                                <span>NLP</span>
-                                <span>Python</span>
-                                <span>Machine Learning</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CO2 Emissions -->
-                <div class="portfolio-item" data-aos="fade-up">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>CO2 Emissions Prediction Model</h3>
-                            <p>Developed a machine learning model based on agricultural data with an 85% prediction accuracy.</p>
-                            <div class="tech-stack">
-                                <span>Machine Learning</span>
-                                <span>Environmental Analysis</span>
-                                <span>Data Modeling</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+          <div class="portfolio-item" data-aos="fade-up">
+            <div class="portfolio-card">
+              <div class="portfolio-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="portfolio-content">
+                <h3>Trading Algo XGBoost</h3>
+                <p>
+                  Modèle algorithmique
+                  <strong>+10&nbsp;% CAGR</strong> (back-tests 2018–2023) sur
+                  300k lignes intraday — GitHub.
+                </p>
+                <div class="tech-stack">
+                  <span>XGBoost</span>
+                  <span>Python</span>
+                  <span>Backtesting</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="section-padding">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Languages</h2>
+        <div class="languages-list" data-aos="fade-up" data-aos-delay="200">
+          <span>Arabe</span>
+          <span>Français</span>
+          <span>Anglais</span>
+        </div>
+      </div>
     </section>
 
     <!-- Collaborate Section -->
     <section id="collaborate" class="section-padding">
-        <div class="container">
-            <h2 class="section-title glowing-text" data-aos="fade-up">Let's Create Something Amazing</h2>
-            <p class="section-subtitle" data-aos="fade-up">Transform your ideas into reality with data-driven solutions</p>
-            
-            <div class="services-grid" data-aos="fade-up">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Data Science Solutions</h3>
-                    <p>Turn your raw data into actionable insights</p>
-                    <ul class="service-features">
-                        <li>Data Analysis</li>
-                        <li>Predictive Modeling</li>
-                        <li>Business Intelligence</li>
-                    </ul>
-                </div>
+      <div class="container">
+        <h2 class="section-title glowing-text" data-aos="fade-up">
+          Let's Create Something Amazing
+        </h2>
+        <p class="section-subtitle" data-aos="fade-up">
+          Transform your ideas into reality with data-driven solutions
+        </p>
 
-                <div class="service-card" onclick="selectService('Machine Learning')">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Automate and optimize with intelligent systems</p>
-                    <ul class="service-features">
-                        <li>Custom AI Solutions</li>
-                        <li>Deep Learning Models</li>
-                        <li>Process Automation</li>
-                    </ul>
-                    <div class="select-overlay">
-                        <span>Start Project</span>
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="selectService('Econometrics')">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Economic Analysis</h3>
-                    <p>Make data-driven economic decisions</p>
-                    <ul class="service-features">
-                        <li>Statistical Analysis</li>
-                        <li>Economic Modeling</li>
-                        <li>Policy Research</li>
-                    </ul>
-                    <div class="select-overlay">
-                        <span>Start Project</span>
-                    </div>
-                </div>
+        <div class="services-grid" data-aos="fade-up">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-brain"></i>
             </div>
+            <h3>Data Science Solutions</h3>
+            <p>Turn your raw data into actionable insights</p>
+            <ul class="service-features">
+              <li>Data Analysis</li>
+              <li>Predictive Modeling</li>
+              <li>Business Intelligence</li>
+            </ul>
+          </div>
 
-            <!-- Project Request Form -->
-            <div class="project-request-form" id="serviceForm" style="display: none;" data-aos="fade-up">
-                <h3>Tell Me About Your Project</h3>
-                <form action="https://formsubmit.co/hichamalaoui975@gmail.com" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Your Email</label>
-                            <input type="email" name="email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Selected Service</label>
-                        <input type="text" name="selected_service" id="selectedService" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Project Description</label>
-                        <textarea name="project_details" placeholder="Share your project goals, challenges, and expectations..." required></textarea>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Timeline</label>
-                            <select name="timeline" required>
-                                <option value="">When do you want to start?</option>
-                                <option value="immediately">As Soon as Possible</option>
-                                <option value="1-2-weeks">In 1-2 Weeks</option>
-                                <option value="1-month">Within a Month</option>
-                                <option value="flexible">Flexible</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Project Scale</label>
-                            <select name="project_scale" required>
-                                <option value="">Select project size</option>
-                                <option value="small">Small (1-2 weeks)</option>
-                                <option value="medium">Medium (2-4 weeks)</option>
-                                <option value="large">Large (1+ months)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <input type="hidden" name="_subject" value="New Project Inquiry!">
-                    <input type="hidden" name="_template" value="table">
-                    <button type="submit" class="btn btn-primary">Let's Get Started</button>
-                </form>
+          <div class="service-card" onclick="selectService('Machine Learning')">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
             </div>
+            <h3>AI & Machine Learning</h3>
+            <p>Automate and optimize with intelligent systems</p>
+            <ul class="service-features">
+              <li>Custom AI Solutions</li>
+              <li>Deep Learning Models</li>
+              <li>Process Automation</li>
+            </ul>
+            <div class="select-overlay">
+              <span>Start Project</span>
+            </div>
+          </div>
+
+          <div class="service-card" onclick="selectService('Econometrics')">
+            <div class="service-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Economic Analysis</h3>
+            <p>Make data-driven economic decisions</p>
+            <ul class="service-features">
+              <li>Statistical Analysis</li>
+              <li>Economic Modeling</li>
+              <li>Policy Research</li>
+            </ul>
+            <div class="select-overlay">
+              <span>Start Project</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Project Request Form -->
+        <div
+          class="project-request-form"
+          id="serviceForm"
+          style="display: none"
+          data-aos="fade-up"
+        >
+          <h3>Tell Me About Your Project</h3>
+          <form
+            action="https://formsubmit.co/halaoui@insea.ac.ma"
+            method="POST"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="name" required />
+              </div>
+              <div class="form-group">
+                <label>Your Email</label>
+                <input type="email" name="email" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Selected Service</label>
+              <input
+                type="text"
+                name="selected_service"
+                id="selectedService"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label>Project Description</label>
+              <textarea
+                name="project_details"
+                placeholder="Share your project goals, challenges, and expectations..."
+                required
+              ></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Timeline</label>
+                <select name="timeline" required>
+                  <option value="">When do you want to start?</option>
+                  <option value="immediately">As Soon as Possible</option>
+                  <option value="1-2-weeks">In 1-2 Weeks</option>
+                  <option value="1-month">Within a Month</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Project Scale</label>
+                <select name="project_scale" required>
+                  <option value="">Select project size</option>
+                  <option value="small">Small (1-2 weeks)</option>
+                  <option value="medium">Medium (2-4 weeks)</option>
+                  <option value="large">Large (1+ months)</option>
+                </select>
+              </div>
+            </div>
+            <input type="hidden" name="_subject" value="New Project Inquiry!" />
+            <input type="hidden" name="_template" value="table" />
+            <button type="submit" class="btn btn-primary">
+              Let's Get Started
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
-            <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
-                <form class="contact-form" action="https://formsubmit.co/hichamalaoui975@gmail.com" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                    </div>
-                    <!-- Optional: Add a honeypot to prevent spam -->
-                    <input type="text" name="_honey" style="display:none">
-                    <!-- Disable captcha -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <!-- Specify redirect after submission -->
-                    <input type="hidden" name="_next" value="https://hicham-alaoui0.github.io/thanks.html">
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>hichamalaoui975@gmail.com</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+212 762 389 821</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
+        <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+          <form
+            class="contact-form"
+            action="https://formsubmit.co/halaoui@insea.ac.ma"
+            method="POST"
+          >
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required />
             </div>
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <!-- Optional: Add a honeypot to prevent spam -->
+            <input type="text" name="_honey" style="display: none" />
+            <!-- Disable captcha -->
+            <input type="hidden" name="_captcha" value="false" />
+            <!-- Specify redirect after submission -->
+            <input
+              type="hidden"
+              name="_next"
+              value="https://hicham-alaoui0.github.io/thanks.html"
+            />
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <p>halaoui@insea.ac.ma</p>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <p>+212 762 389 821</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2024 Hicham Alaoui. All Rights Reserved.</p>
-                <div class="footer-social">
-                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://wa.me/212762389821" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2024 Hicham Alaoui. All Rights Reserved.</p>
+          <div class="footer-social">
+            <a
+              href="https://linkedin.com/in/hicham-alaoui-08ba35206"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="https://github.com/hicham-alaoui0" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://wa.me/212762389821" target="_blank"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
         </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="script.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
     </script>
     <button class="back-to-top" aria-label="Back to Top">↑</button>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#8B4513' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: false },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#8B4513',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'repulse' },
-                    onclick: { enable: true, mode: 'push' },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#8B4513" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: false },
+          size: { value: 3, random: true },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#8B4513",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" },
+            resize: true,
+          },
+        },
+        retina_detect: true,
+      });
     </script>
-</body>
+  </body>
 </html>
