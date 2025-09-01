@@ -1,756 +1,267 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hicham Alaoui - Data Science Portfolio</title>
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Animation Library -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- PWA Support -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#4a90e2" />
-
-    <!-- SEO Improvements -->
-    <meta
-      name="description"
-      content="Hicham Alaoui - Data Scientist Portfolio showcasing projects in machine learning, data analysis, and econometrics"
-    />
-    <meta
-      name="keywords"
-      content="data science, machine learning, portfolio, econometrics, python, R"
-    />
-
-    <!-- Social Media Preview -->
-    <meta
-      property="og:title"
-      content="Hicham Alaoui - Data Science Portfolio"
-    />
-    <meta
-      property="og:description"
-      content="Explore my data science projects and professional experience"
-    />
-    <meta property="og:image" content="/assets/images/preview.jpg" />
-    <meta property="og:url" content="https://your-website.com" />
-
-    <!-- Preload Critical Resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  </head>
-  <body>
-    <div class="background-pattern">
-      <div class="pattern-overlay"></div>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hicham Alaoui · Data Scientist & Econometrics-driven problem solver</title>
+  <meta name="description" content="Portfolio – Data Scientist & Econometrics-driven problem solver for markets and sustainability. Quant ML, EVT risk, trading algorithms, CO₂ modeling." />
+  <meta name="keywords" content="Data Scientist, Econometrics, Quant, EVT, Trading Algorithm, CO2 Emissions, Risk, Machine Learning" />
+  <link rel="canonical" href="https://hicham-alaoui0.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hicham Alaoui · Data Scientist" />
+  <meta property="og:description" content="Data Scientist & Econometrics-driven problem solver for markets and sustainability." />
+  <meta property="og:url" content="https://hicham-alaoui0.github.io/" />
+  <meta property="og:image" content="/assets/images/hero-bg.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0e6e55" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/icon-192x192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#0e6e55',accent:'#a16f0b',neutral:{50:'#f8fafc',900:'#1f2937'}},fontFamily:{sans:['Inter','system-ui','sans-serif'],heading:['Poppins','Inter','system-ui','sans-serif']}}}};</script>
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Hicham Alaoui",
+    "jobTitle":"Data Scientist",
+    "description":"Data Scientist & Econometrics-driven problem solver for markets and sustainability.",
+    "url":"https://hicham-alaoui0.github.io/",
+    "sameAs":[
+      "https://www.linkedin.com/in/hicham-alaoui-08ba35206",
+      "https://github.com/hicham-alaoui0"
+    ]
+  }</script>
+</head>
+<body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 font-sans antialiased">
+  <a href="#main" class="skip-link absolute left-2 top-2 px-3 py-1 bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 rounded focus:outline-none focus:ring focus:ring-accent" data-i18n="skip.to.content">Skip to content</a>
+  <header class="w-full backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200 dark:border-neutral-700 sticky top-0 z-50" aria-label="Primary">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 py-3">
+      <div class="flex items-center gap-2">
+        <span class="text-lg font-heading font-semibold tracking-wide text-primary">Hicham Alaoui</span>
+        <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary" data-i18n="badge.role">Data Scientist</span>
+      </div>
+      <nav aria-label="Main navigation">
+        <button id="navToggle" class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200" aria-expanded="false" aria-controls="navMenu"><span class="sr-only">Menu</span>☰</button>
+        <ul id="navMenu" class="hidden sm:flex flex-col sm:flex-row gap-6 font-medium" data-i18n-scope="nav">
+          <li><a href="#experience" class="nav-link" data-i18n="experience">Experience</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="projects">Projects</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="skills">Skills</a></li>
+          <li><a href="#certifications" class="nav-link" data-i18n="certifications">Certifications</a></li>
+          <li><a href="#languages" class="nav-link" data-i18n="languages">Languages</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="langToggle" class="px-3 py-1 text-sm rounded border border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800" aria-label="Toggle language">FR</button>
+        <button id="themeToggle" class="w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 flex items-center justify-center" aria-label="Toggle dark mode">🌙</button>
+      </div>
     </div>
-    <!-- Header Section -->
-    <header class="sticky-header">
-      <div class="container">
-        <div class="logo" data-aos="fade-right">Hicham Alaoui</div>
-        <nav>
-          <ul>
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#resume" class="nav-link">Resume</a></li>
-            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="mobile-menu-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </header>
-
-    <!-- Home Section -->
-    <section id="home" class="hero">
-      <div class="particles-bg" id="particles-js"></div>
-      <div class="social-icons" data-aos="fade-left">
-        <a
-          href="https://linkedin.com/in/hicham-alaoui-08ba35206"
-          target="_blank"
-          class="social-icon"
-        >
-          <i class="fab fa-linkedin"></i>
-          <span class="social-tooltip">Connect on LinkedIn</span>
-        </a>
-        <a
-          href="https://github.com/hicham-alaoui0"
-          target="_blank"
-          class="social-icon"
-        >
-          <i class="fab fa-github"></i>
-          <span class="social-tooltip">Follow on GitHub</span>
-        </a>
-        <a
-          href="https://wa.me/212762389821"
-          target="_blank"
-          class="social-icon"
-        >
-          <i class="fab fa-whatsapp"></i>
-          <span class="social-tooltip">Chat on WhatsApp</span>
-        </a>
-      </div>
-      <div class="hero-content" data-aos="fade-up">
-        <div class="hero-greeting">Hello, I'm</div>
-        <h1 class="hero-title">
-          <span class="three-d-text">Hicham Alaoui</span>
-          <span class="hero-emoji">👋</span>
-        </h1>
-        <div class="hero-subtitle">
-          <span>I'm a</span>
-          <span class="profession-text"></span>
-        </div>
-        <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
-          Transforming complex data into meaningful insights
-          <span class="highlight">One algorithm at a time</span>
-        </p>
-        <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
-          <div class="stat-item">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Projects</span>
+  </header>
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section id="hero" class="relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 pt-20 pb-16 md:pt-28 md:pb-24 grid gap-12 md:grid-cols-2 items-center">
+        <div class="space-y-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight">
+            <span class="block" data-i18n="hero.name">Hicham Alaoui</span>
+            <span class="mt-2 block text-primary" data-i18n="hero.role">Data Scientist & Econometrics-driven problem solver for markets and sustainability.</span>
+          </h1>
+          <p class="text-neutral-700 dark:text-neutral-300 max-w-prose" data-i18n="hero.tagline">I build quantifiable, resilient data & ML systems: EVT pre-trade risk calibration, CO₂ emission forecasting, algorithmic trading, and applied econometrics.</p>
+          <div class="flex flex-wrap gap-3" aria-label="Key stats">
+            <span class="badge">EVT / Risk</span>
+            <span class="badge">CO₂ ML</span>
+            <span class="badge">Trading XGBoost</span>
+            <span class="badge">Time Series</span>
+            <span class="badge">MLOps</span>
           </div>
-          <div class="stat-item">
-            <span class="stat-number">5+</span>
-            <span class="stat-label">Certifications</span>
+          <div class="flex flex-wrap gap-4 pt-2" aria-label="Primary actions">
+            <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary" data-i18n="cta.download" download>Download CV</a>
+            <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary" data-i18n="cta.email">Email me</a>
           </div>
         </div>
-        <div class="buttons" data-aos="fade-up" data-aos-delay="400">
-          <a href="/CV/CV-Final.pdf" class="btn btn-primary" target="_blank">
-            <i class="fas fa-download"></i> Download CV
-          </a>
-          <a href="#portfolio" class="btn btn-secondary">
-            <i class="fas fa-project-diagram"></i> View Projects
-          </a>
-        </div>
-        <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="500">
-          <div class="mouse">
-            <div class="wheel"></div>
-          </div>
-          <div class="scroll-text">Scroll to explore</div>
+        <div class="relative">
+          <img src="/assets/images/hero-bg.jpg" alt="" class="rounded-lg shadow-md w-full aspect-video object-cover hero-image" loading="lazy" />
+          <div class="absolute inset-0 rounded-lg ring-1 ring-primary/20 pointer-events-none"></div>
         </div>
       </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="section-padding">
-      <div class="container">
-        <h2 class="section-title glowing-text" data-aos="fade-up">About Me</h2>
-        <div class="about-grid">
-          <div class="about-card" data-aos="fade-right">
-            <div class="about-icon">
-              <i class="fas fa-user-graduate"></i>
-            </div>
-            <h3>Education</h3>
-            <p>INSEA – Rabat</p>
-            <p>
-              Ingénieur d'État : économie appliquée, statistique et big data
-              (2022–2025)
-            </p>
-          </div>
-
-          <div class="about-card" data-aos="fade-up">
-            <div class="about-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3>Expertise</h3>
-            <p>Data Science | Machine Learning | Econometrics</p>
-            <div class="expertise-bars">
-              <div class="expertise-bar">
-                <span class="label">Python</span>
-                <div class="bar">
-                  <div class="fill" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="expertise-bar">
-                <span class="label">R</span>
-                <div class="bar">
-                  <div class="fill" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="expertise-bar">
-                <span class="label">SQL</span>
-                <div class="bar">
-                  <div class="fill" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-card" data-aos="fade-left">
-            <div class="about-icon">
-              <i class="fas fa-bullseye"></i>
-            </div>
-            <h3>Résumé</h3>
-            <p>
-              Ingénieur passionné par la transformation de données en solutions
-              concrètes. Mon approche allie curiosité et pragmatisme pour
-              concevoir des outils d'aide à la décision efficaces.
-            </p>
-          </div>
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="experience">Experience</h2>
         </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section-padding">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">My Skills</h2>
-        <div class="main-skills-container" data-aos="fade-up">
-          <div class="main-skill" data-category="data-science">
-            <h3>Data Science</h3>
-            <div class="sub-skills">
-              <span>Pandas</span>
-              <span>NumPy</span>
-              <span>Scikit-learn</span>
-            </div>
-          </div>
-          <div class="main-skill" data-category="ai">
-            <h3>AI / DL</h3>
-            <div class="sub-skills">
-              <span>TensorFlow</span>
-              <span>Keras</span>
-              <span>Transformers</span>
-              <span>LSTM</span>
-              <span>CNN</span>
-              <span>EVT</span>
-            </div>
-          </div>
-          <div class="main-skill" data-category="quant">
-            <h3>Quant</h3>
-            <div class="sub-skills">
-              <span>Calcul stochastique</span>
-              <span>Monte-Carlo</span>
-            </div>
-          </div>
-          <div class="main-skill" data-category="viz">
-            <h3>Viz / BI</h3>
-            <div class="sub-skills">
-              <span>Streamlit</span>
-              <span>Tableau</span>
-              <span>Power BI</span>
-              <span>Grafana</span>
-            </div>
-          </div>
-          <div class="main-skill" data-category="languages">
-            <h3>Langages</h3>
-            <div class="sub-skills">
-              <span>Python</span>
-              <span>R</span>
-              <span>SQL</span>
-              <span>C/C++</span>
-              <span>VBA</span>
-            </div>
-          </div>
-          <div class="main-skill" data-category="soft-skills">
-            <h3>Soft Skills</h3>
-            <div class="sub-skills">
-              <span>Communication</span>
-              <span>Pensée analytique</span>
-              <span>Adaptabilité</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section-padding">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Certifications</h2>
-        <div class="certifications-grid">
-          <div class="certification-card" data-aos="fade-up">
-            <div class="certification-logo">
-              <img
-                src="/assets/certificats/google-icon-logo-svgrepo-com.svg"
-                alt="Google"
-              />
-            </div>
-            <div class="certification-content">
-              <h3>Prepare Data for Exploration</h3>
-              <p>Google</p>
-              <div class="certification-meta">
-                <span class="date">Issued April 2023</span>
-                <a
-                  href="https://www.coursera.org/account/accomplishments/certificate/2WPJXSWPRW5U"
-                  class="verify-btn"
-                  target="_blank"
-                >
-                  <i class="fas fa-certificate"></i> Verify
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="certification-card" data-aos="fade-up">
-            <div class="certification-logo">
-              <img
-                src="/assets/certificats/university-of-michigan-seeklogo.svg"
-                alt="University of Michigan"
-              />
-            </div>
-            <div class="certification-content">
-              <h3>Python for Everybody Specialization</h3>
-              <p>University of Michigan</p>
-              <div class="certification-meta">
-                <span class="date">Issued November 21, 2023</span>
-                <a
-                  href="/coursera cerfifs/Coursera J9WD2EEGY4GE.pdf"
-                  class="verify-btn"
-                  target="_blank"
-                >
-                  <i class="fas fa-certificate"></i> Verify
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="certification-card" data-aos="fade-up">
-            <div class="certification-logo">
-              <img src="/assets/certificats/ibm-svgrepo-com.svg" alt="IBM" />
-            </div>
-            <div class="certification-content">
-              <h3>Python Project for Data Science</h3>
-              <p>IBM</p>
-              <div class="certification-meta">
-                <span class="date">Issued March 28, 2023</span>
-                <a
-                  href="/coursera cerfifs/Coursera ZPFFUS53YT3R.pdf"
-                  class="verify-btn"
-                  target="_blank"
-                >
-                  <i class="fas fa-certificate"></i> Verify
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="certification-card" data-aos="fade-up">
-            <div class="certification-logo">
-              <img
-                src="/assets/certificats/dlai-logo.svg"
-                alt="DeepLearning.AI"
-              />
-            </div>
-            <div class="certification-content">
-              <h3>Neural Networks and Deep Learning</h3>
-              <p>DeepLearning.AI</p>
-              <div class="certification-meta">
-                <span class="date">Issued December 10, 2023</span>
-                <a
-                  href="/coursera cerfifs/Coursera 8UCZ93RNGFBG.pdf"
-                  class="verify-btn"
-                  target="_blank"
-                >
-                  <i class="fas fa-certificate"></i> Verify
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section-padding">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-          Professional Experience
-        </h2>
-        <div class="timeline">
-          <div class="timeline-item">
+        <ol class="timeline" aria-label="Experience timeline">
+          <li class="timeline-card">
+            <div class="timeline-point" aria-hidden="true"></div>
             <div class="timeline-content">
-              <span class="timeline-date">Mar 2025 - Aug 2025</span>
-              <h3>Data Scientist (Stage PFE)</h3>
-              <h4>Société Générale ATS, Casablanca</h4>
-              <ul>
-                <li>
-                  Conception et déploiement d'un pipeline temps réel pour
-                  recalibrer les limites pré-trade, libérant
-                  <strong>1,8&nbsp;M€ de RWA</strong>
-                </li>
-                <li>
-                  Développement d'un modèle EVT Peak-Over-Threshold atteignant
-                  <strong>94&nbsp;% de précision</strong> avec 1,3&nbsp;% de
-                  faux positifs sur 12M+ transactions
-                </li>
-                <li>
-                  Industrialisation de la chaîne MLOps complète incluant tests
-                  unitaires (89&nbsp;% de couverture), monitoring Grafana et
-                  déploiement Docker via GitHub
-                </li>
-                <li>
-                  Automatisation des contrôles réglementaires via Streamlit
-                  réduisant le temps de traitement de <strong>80&nbsp;%</strong>
-                </li>
+              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h3 class="card-title">Société Générale – ATS</h3>
+                <span class="date-chip">Mar–Aug 2025</span>
+              </header>
+              <p class="role">Data Scientist (Pre-trade Risk / EVT)</p>
+              <ul class="card-list">
+                <li>Real‑time limit recalibration pipeline freeing <strong>€1.8M RWA</strong>.</li>
+                <li>EVT POT model: <strong>1.3% FP</strong>, high recall across 12M+ trades.</li>
+                <li>End‑to‑end CI/CD (tests 89% cov), Docker, Grafana monitoring dashboards.</li>
+                <li>Regulatory control automation (Streamlit) ↓ manual review time 80%.</li>
               </ul>
+              <div class="stack-row"><span>EVT</span><span>C++</span><span>Python</span><span>Docker</span><span>Grafana</span></div>
             </div>
-          </div>
-
-          <div class="timeline-item">
+          </li>
+          <li class="timeline-card">
+            <div class="timeline-point" aria-hidden="true"></div>
             <div class="timeline-content">
-              <span class="timeline-date">Jun 2024 - Sep 2024</span>
-              <h3>Data Scientist (Stage PFA)</h3>
-              <h4>GAEA21, Genève</h4>
-              <ul>
-                <li>
-                  Développement de modèles ML prédictifs d'émissions CO₂ sur 50k
-                  observations multisectorielles
-                </li>
-                <li>
-                  Conception d'un générateur d'articles LSTM (fr) →
-                  <strong>20+ articles</strong> publiés, 92&nbsp;% score
-                  Perplexity
-                </li>
-                <li>Déploiement d'un microservice NLP</li>
+              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h3 class="card-title">GAEA21</h3>
+                <span class="date-chip">Jun–Sep 2024</span>
+              </header>
+              <p class="role">Data Scientist (CO₂ Emissions)</p>
+              <ul class="card-list">
+                <li>Multi‑sector CO₂ emission predictive models over 50k observations.</li>
+                <li>LSTM French article generator → 20+ sustainability briefs (92% perplexity score proxy).</li>
+                <li>Deployed lightweight NLP microservice for content automation.</li>
               </ul>
+              <div class="stack-row"><span>LSTM</span><span>NLP</span><span>Python</span><span>TensorFlow</span></div>
             </div>
-          </div>
-
-          <div class="timeline-item">
+          </li>
+          <li class="timeline-card">
+            <div class="timeline-point" aria-hidden="true"></div>
             <div class="timeline-content">
-              <span class="timeline-date">Jul 2023 - Aug 2023</span>
-              <h3>Data Analyst (Stage)</h3>
-              <h4>Haut-Commissariat au Plan, Rabat</h4>
-              <ul>
-                <li>
-                  Migration d'1&nbsp;million de records socio-économiques vers
-                  PostgreSQL → réduction de
-                  <strong>40&nbsp;% de la latence</strong> des requêtes
-                </li>
-                <li>
-                  Construction d'indicateurs de pauvreté multidimensionnelle
-                  (ARIMA, ARDL)
-                </li>
-                <li>Automatisation des tableaux de bord Power BI</li>
+              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h3 class="card-title">Haut-Commissariat au Plan</h3>
+                <span class="date-chip">Jul–Aug 2023</span>
+              </header>
+              <p class="role">Data Analyst (Econometrics)</p>
+              <ul class="card-list">
+                <li>Migrated 1M socio‑economic records to PostgreSQL → query latency ↓ 40%.</li>
+                <li>Built poverty / welfare indicators (ARDL, ARIMA time series).</li>
+                <li>Automated Power BI dashboards for recurring reporting.</li>
               </ul>
+              <div class="stack-row"><span>PostgreSQL</span><span>ARIMA</span><span>ARDL</span><span>Power BI</span></div>
             </div>
-          </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <!-- Featured Projects -->
+    <section id="projects" class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <article class="project-card">
+            <header>
+              <h3 class="project-title">FarmVision</h3>
+              <div class="metric-badges"><span class="metric">92% accuracy</span><span class="metric">CV</span></div>
+            </header>
+            <p class="project-problem"><strong>Problem:</strong> Early disease detection in vertical farming to reduce crop loss.</p>
+            <p class="project-approach"><strong>Approach:</strong> Transfer‑learned CNN + image augmentation deployed via Streamlit.</p>
+            <p class="project-impact"><strong>Impact:</strong> 92% diagnostic accuracy adopted in pilot (SkyFarms) improving intervention timing.</p>
+            <div class="stack-row"><span>TensorFlow</span><span>Computer Vision</span><span>Streamlit</span></div>
+            <div class="project-links">
+              <a href="#" class="text-primary hover:underline" aria-label="View code FarmVision">View code</a>
+              <a href="#" class="text-primary hover:underline" aria-label="Read case study FarmVision">Read case study</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <header>
+              <h3 class="project-title">XGBoost Trading Algo</h3>
+              <div class="metric-badges"><span class="metric">+10% CAGR</span><span class="metric">Backtest 5y</span></div>
+            </header>
+            <p class="project-problem"><strong>Problem:</strong> Systematic intraday signal generation for mid‑cap equities.</p>
+            <p class="project-approach"><strong>Approach:</strong> Feature engineered microstructure factors & rolling targets → XGBoost model with walk‑forward validation.</p>
+            <p class="project-impact"><strong>Impact:</strong> +10% annualized CAGR (2018–2023 backtest) after realistic transaction cost assumptions.</p>
+            <div class="stack-row"><span>XGBoost</span><span>Python</span><span>Backtesting</span></div>
+            <div class="project-links">
+              <a href="#" class="text-primary hover:underline" aria-label="View code trading algo">View code</a>
+              <a href="#" class="text-primary hover:underline" aria-label="Read case study trading algo">Read case study</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section-padding">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">My Work</h2>
-        <div class="portfolio-grid">
-          <div class="portfolio-item" data-aos="fade-up">
-            <div class="portfolio-card">
-              <div class="portfolio-icon">
-                <i class="fas fa-seedling"></i>
-              </div>
-              <div class="portfolio-content">
-                <h3>FarmVision</h3>
-                <p>
-                  Plateforme ML de phyto-diagnostic pour vertical farming —
-                  précision <strong>92&nbsp;%</strong>, utilisée par SkyFarms.
-                </p>
-                <div class="tech-stack">
-                  <span>TensorFlow</span>
-                  <span>Computer Vision</span>
-                  <span>Streamlit</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-item" data-aos="fade-up">
-            <div class="portfolio-card">
-              <div class="portfolio-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <div class="portfolio-content">
-                <h3>Trading Algo XGBoost</h3>
-                <p>
-                  Modèle algorithmique
-                  <strong>+10&nbsp;% CAGR</strong> (back-tests 2018–2023) sur
-                  300k lignes intraday — GitHub.
-                </p>
-                <div class="tech-stack">
-                  <span>XGBoost</span>
-                  <span>Python</span>
-                  <span>Backtesting</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="section-inner">
+        <div class="section-head"><h2 class="section-title" data-i18n="skills">Skills</h2></div>
+        <div class="skill-groups grid gap-8 md:grid-cols-3">
+          <div class="skill-block"><h3>Modeling</h3><div class="chip-row"><span class="chip">EVT</span><span class="chip">XGBoost</span><span class="chip">LSTM</span><span class="chip">CNN</span><span class="chip">Time Series</span><span class="chip">NLP</span></div></div>
+          <div class="skill-block"><h3>Programming</h3><div class="chip-row"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">Bash</span><span class="chip">VBA</span></div></div>
+          <div class="skill-block"><h3>Quant Libs</h3><div class="chip-row"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">SciPy</span><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">statsmodels</span></div></div>
+          <div class="skill-block"><h3>Data Platforms</h3><div class="chip-row"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Streamlit</span><span class="chip">Docker</span><span class="chip">Grafana</span><span class="chip">GitHub Actions</span></div></div>
+            <div class="skill-block"><h3>BI / Viz</h3><div class="chip-row"><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Grafana</span></div></div>
+            <div class="skill-block"><h3>Soft Skills</h3><div class="chip-row"><span class="chip">Analytical</span><span class="chip">Communication</span><span class="chip">Stakeholder Alignment</span><span class="chip">Mentorship</span></div></div>
         </div>
       </div>
     </section>
-
-    <!-- Languages Section -->
-    <section id="languages" class="section-padding">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Languages</h2>
-        <div class="languages-list" data-aos="fade-up" data-aos-delay="200">
-          <span>Arabe</span>
-          <span>Français</span>
-          <span>Anglais</span>
-        </div>
+    <!-- Certifications -->
+    <section id="certifications" class="section">
+      <div class="section-inner">
+        <div class="section-head"><h2 class="section-title" data-i18n="certifications">Certifications</h2></div>
+        <ul class="cert-list">
+          <li class="cert-item"><span class="cert-title">Python for Everybody Specialization</span><span class="cert-org">University of Michigan</span></li>
+          <li class="cert-item"><span class="cert-title">Neural Networks & Deep Learning</span><span class="cert-org">DeepLearning.AI</span></li>
+          <li class="cert-item"><span class="cert-title">Prepare Data for Exploration</span><span class="cert-org">Google</span></li>
+          <li class="cert-item"><span class="cert-title">Python Project for Data Science</span><span class="cert-org">IBM</span></li>
+        </ul>
       </div>
     </section>
-
-    <!-- Collaborate Section -->
-    <section id="collaborate" class="section-padding">
-      <div class="container">
-        <h2 class="section-title glowing-text" data-aos="fade-up">
-          Let's Create Something Amazing
-        </h2>
-        <p class="section-subtitle" data-aos="fade-up">
-          Transform your ideas into reality with data-driven solutions
-        </p>
-
-        <div class="services-grid" data-aos="fade-up">
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-brain"></i>
+    <!-- Languages -->
+    <section id="languages" class="section">
+      <div class="section-inner">
+        <div class="section-head"><h2 class="section-title" data-i18n="languages">Languages</h2></div>
+        <ul class="flex flex-wrap gap-3" aria-label="Languages">
+          <li class="chip">Arabic (Native)</li>
+          <li class="chip">French (Fluent)</li>
+          <li class="chip">English (Fluent)</li>
+        </ul>
+      </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-inner">
+        <div class="section-head"><h2 class="section-title" data-i18n="contact">Contact</h2></div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <form id="contactForm" class="space-y-4" action="https://formspree.io/f/yourid" method="POST" novalidate>
+            <div>
+              <label for="name" class="form-label">Name</label>
+              <input id="name" name="name" required autocomplete="name" class="form-input" />
             </div>
-            <h3>Data Science Solutions</h3>
-            <p>Turn your raw data into actionable insights</p>
-            <ul class="service-features">
-              <li>Data Analysis</li>
-              <li>Predictive Modeling</li>
-              <li>Business Intelligence</li>
-            </ul>
-          </div>
-
-          <div class="service-card" onclick="selectService('Machine Learning')">
-            <div class="service-icon">
-              <i class="fas fa-robot"></i>
+            <div>
+              <label for="email" class="form-label">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" class="form-input" />
             </div>
-            <h3>AI & Machine Learning</h3>
-            <p>Automate and optimize with intelligent systems</p>
-            <ul class="service-features">
-              <li>Custom AI Solutions</li>
-              <li>Deep Learning Models</li>
-              <li>Process Automation</li>
-            </ul>
-            <div class="select-overlay">
-              <span>Start Project</span>
+            <div>
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" required class="form-textarea" rows="5"></textarea>
             </div>
-          </div>
-
-          <div class="service-card" onclick="selectService('Econometrics')">
-            <div class="service-icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3>Economic Analysis</h3>
-            <p>Make data-driven economic decisions</p>
-            <ul class="service-features">
-              <li>Statistical Analysis</li>
-              <li>Economic Modeling</li>
-              <li>Policy Research</li>
-            </ul>
-            <div class="select-overlay">
-              <span>Start Project</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Request Form -->
-        <div
-          class="project-request-form"
-          id="serviceForm"
-          style="display: none"
-          data-aos="fade-up"
-        >
-          <h3>Tell Me About Your Project</h3>
-          <form
-            action="https://formsubmit.co/halaoui@insea.ac.ma"
-            method="POST"
-          >
-            <div class="form-row">
-              <div class="form-group">
-                <label>Your Name</label>
-                <input type="text" name="name" required />
-              </div>
-              <div class="form-group">
-                <label>Your Email</label>
-                <input type="email" name="email" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Selected Service</label>
-              <input
-                type="text"
-                name="selected_service"
-                id="selectedService"
-                readonly
-              />
-            </div>
-            <div class="form-group">
-              <label>Project Description</label>
-              <textarea
-                name="project_details"
-                placeholder="Share your project goals, challenges, and expectations..."
-                required
-              ></textarea>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Timeline</label>
-                <select name="timeline" required>
-                  <option value="">When do you want to start?</option>
-                  <option value="immediately">As Soon as Possible</option>
-                  <option value="1-2-weeks">In 1-2 Weeks</option>
-                  <option value="1-month">Within a Month</option>
-                  <option value="flexible">Flexible</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Project Scale</label>
-                <select name="project_scale" required>
-                  <option value="">Select project size</option>
-                  <option value="small">Small (1-2 weeks)</option>
-                  <option value="medium">Medium (2-4 weeks)</option>
-                  <option value="large">Large (1+ months)</option>
-                </select>
-              </div>
-            </div>
-            <input type="hidden" name="_subject" value="New Project Inquiry!" />
-            <input type="hidden" name="_template" value="table" />
-            <button type="submit" class="btn btn-primary">
-              Let's Get Started
-            </button>
+            <button type="submit" class="btn-primary w-full" data-i18n="cta.send">Send</button>
+            <p id="formStatus" class="text-sm"></p>
           </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
-        <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
-          <form
-            class="contact-form"
-            action="https://formsubmit.co/halaoui@insea.ac.ma"
-            method="POST"
-          >
-            <div class="form-group">
-              <input type="text" name="name" placeholder="Your Name" required />
-            </div>
-            <div class="form-group">
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                required
-              ></textarea>
-            </div>
-            <!-- Optional: Add a honeypot to prevent spam -->
-            <input type="text" name="_honey" style="display: none" />
-            <!-- Disable captcha -->
-            <input type="hidden" name="_captcha" value="false" />
-            <!-- Specify redirect after submission -->
-            <input
-              type="hidden"
-              name="_next"
-              value="https://hicham-alaoui0.github.io/thanks.html"
-            />
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
-          <div class="contact-info">
-            <div class="info-item">
-              <i class="fas fa-envelope"></i>
-              <p>halaoui@insea.ac.ma</p>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-phone"></i>
-              <p>+212 762 389 821</p>
-            </div>
+          <div class="space-y-4" aria-label="Social links">
+            <p class="text-sm text-neutral-600 dark:text-neutral-400">Direct: <a href="mailto:halaoui@insea.ac.ma" class="underline">halaoui@insea.ac.ma</a></p>
+            <ul class="flex gap-4 text-primary">
+              <li><a href="https://www.linkedin.com/in/hicham-alaoui-08ba35206" aria-label="LinkedIn" class="hover:underline">LinkedIn</a></li>
+              <li><a href="https://github.com/hicham-alaoui0" aria-label="GitHub" class="hover:underline">GitHub</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <p>&copy; 2024 Hicham Alaoui. All Rights Reserved.</p>
-          <div class="footer-social">
-            <a
-              href="https://linkedin.com/in/hicham-alaoui-08ba35206"
-              target="_blank"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a href="https://github.com/hicham-alaoui0" target="_blank"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a href="https://wa.me/212762389821" target="_blank"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="script.js"></script>
-    <script>
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
-    </script>
-    <button class="back-to-top" aria-label="Back to Top">↑</button>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#8B4513" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5, random: false },
-          size: { value: 3, random: true },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#8B4513",
-            opacity: 0.4,
-            width: 1,
-          },
-          move: {
-            enable: true,
-            speed: 2,
-            direction: "none",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-          },
-        },
-        interactivity: {
-          detect_on: "canvas",
-          events: {
-            onhover: { enable: true, mode: "repulse" },
-            onclick: { enable: true, mode: "push" },
-            resize: true,
-          },
-        },
-        retina_detect: true,
-      });
-    </script>
-  </body>
+  </main>
+  <footer class="py-8 border-t border-neutral-200 dark:border-neutral-700 text-sm" aria-label="Footer">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between gap-4">
+      <p>&copy; <span id="year"></span> Hicham Alaoui.</p>
+      <p class="text-neutral-500">Built with accessible, performant vanilla JS + Tailwind.</p>
+    </div>
+  </footer>
+  <button id="backToTop" class="fixed bottom-5 right-5 hidden rounded-full bg-primary text-white w-11 h-11 shadow focus:outline-none focus:ring focus:ring-offset-2 focus:ring-primary" aria-label="Back to top">↑</button>
+  <script src="/script.js" defer></script>
+</body>
 </html>
