@@ -65,6 +65,15 @@ html {scroll-padding-top:72px;}
 #backToTop.show {display:flex;opacity:1;transform:translateY(0);} 
 .hero-image {filter:saturate(1.05) contrast(1.05);} 
 .dark .hero-image {filter:brightness(.85) saturate(.9);} 
+/* Parallax */
+.parallax-bg {background:radial-gradient(circle at 30% 40%,rgba(14,110,85,.35),transparent 60%),linear-gradient(135deg,#0e6e5520,#0b0f14);will-change:transform;transition:transform .2s linear;}
+/* Magnetic base transition */
+.magnetic {transition:transform .25s cubic-bezier(.4,.7,.1,1);}
+/* Reveal default handled inline (JS sets) */
+/* Skills drawer */
+.skills-drawer {display:grid;gap:2rem;margin-top:1.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+/* Dark body background refine */
+body.dark {background:#0b0f14;}
 /* About card */
 .about-card {background:#fff;border:1px solid #e2e8f0;padding:1.5rem 1.5rem 1.25rem;border-radius:1rem;box-shadow:0 2px 4px -2px rgba(0,0,0,.06);} 
 .dark .about-card {background:#1f2937;border-color:#334155;}

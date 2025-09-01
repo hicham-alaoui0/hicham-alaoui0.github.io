@@ -62,9 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
       'experience': 'Experience',
       'projects': 'Featured Projects',
       'skills': 'Skills',
+  'about': 'About',
       'certifications': 'Certifications',
       'languages': 'Languages',
       'contact': 'Contact',
+  'see.all': 'See all',
       'hero.role': 'Data Scientist & Econometrics-driven problem solver for markets and sustainability.',
       'hero.tagline': 'I build quantifiable, resilient data & ML systems: EVT pre-trade risk calibration, CO₂ emission forecasting, algorithmic trading, and applied econometrics.',
       'cta.download': 'Download CV',
@@ -77,9 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
       'experience': 'Expérience',
       'projects': 'Projets phares',
       'skills': 'Compétences',
+  'about': 'À propos',
       'certifications': 'Certifications',
       'languages': 'Langues',
       'contact': 'Contact',
+  'see.all': 'Voir tout',
       'hero.role': 'Data Scientist & résolveur de problèmes économétriques pour marchés et durabilité.',
       'hero.tagline': 'Je conçois des systèmes data & ML robustes : calibration risque pré-trade EVT, prévision émissions CO₂, trading algorithmique, économétrie appliquée.',
       'cta.download': 'Télécharger CV',
@@ -155,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Hero metrics
       const metricsWrap = qs('#heroMetrics');
       if (metricsWrap && Array.isArray(data.metrics)) {
-        metricsWrap.innerHTML = data.metrics.map(m => `<span class="badge" title="${m.desc||''}">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
+  metricsWrap.innerHTML = data.metrics.map((m,i) => `<span class="badge metric-counter" data-target="${m.value}" data-suffix="${m.suffix||''}" aria-label="${m.desc||m.label}">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
       }
       // About
       const aboutEl = qs('#aboutContent');
@@ -250,8 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Skills
       const skillsContainer = qs('#skillsContainer');
       if (skillsContainer && data.skills && typeof data.skills === 'object') {
-        skillsContainer.innerHTML = Object.entries(data.skills).map(([group, list]) => `
-          <div class="skill-block"><h3>${group}</h3><div class="chip-row">${(list||[]).map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('');
+        const entries = Object.entries(data.skills);
+        const collapsed = entries.slice(0,3);
+        const hidden = entries.slice(3);
+        skillsContainer.innerHTML = collapsed.map(([group, list]) => `
+          <div class="skill-block" data-reveal><h3>${group}</h3><div class="chip-row">${(list||[]).map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('') + (hidden.length?`<div id="skillsDrawer" class="skills-drawer hidden">${hidden.map(([group,list])=>`<div class=\"skill-block\"><h3>${group}</h3><div class=\"chip-row\">${list.map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('')}</div><button id="skillsToggle" class="btn-secondary mt-4" data-i18n="see.all">See all</button>`:'');
       }
       // Certifications
       const certList = qs('#certList');
@@ -268,8 +275,70 @@ document.addEventListener('DOMContentLoaded', () => {
       if (langList && Array.isArray(data.languages)) {
         langList.innerHTML = data.languages.map(l => `<li class="chip">${l}</li>`).join('');
       }
+
+      initCounters();
     })
     .catch(()=>{});
+
+  // Count-up metrics
+  function initCounters(){
+    const counters = qsa('.metric-counter');
+    if(!counters.length) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          const el = e.target; io.unobserve(el);
+          const target = +el.getAttribute('data-target'); const suffix = el.getAttribute('data-suffix')||'';
+          const startTs = performance.now(); const dur = 1100;
+          const start = 0;
+          const step = (ts)=>{ const p = Math.min(1,(ts-startTs)/dur); const eased = p<0.5?2*p*p: -1+(4-2*p)*p; const val = Math.round(start + (target-start)*eased); el.firstChild.textContent = val + suffix + ' '; if(p<1) requestAnimationFrame(step); };
+          requestAnimationFrame(step);
+        }
+      });
+    }, {threshold:0.4});
+    counters.forEach(c=>io.observe(c));
+  }
+
+  // Intersection reveal
+  const revealEls = qsa('[data-reveal]');
+  if(revealEls.length){
+    const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced){
+      revealEls.forEach(el=>{el.style.opacity='0'; el.style.transform='translateY(24px)';});
+      const rIO = new IntersectionObserver(entries => {
+        entries.forEach(e=>{ if(e.isIntersecting){ animateReveal(e.target); rIO.unobserve(e.target);} });
+      }, {threshold:0.15});
+      revealEls.forEach(el=>rIO.observe(el));
+    }
+  }
+  function animateReveal(el){
+    el.animate([{opacity:0,transform:'translateY(24px)'},{opacity:1,transform:'translateY(0)'}],{duration:600,easing:'cubic-bezier(.4,.7,.1,1)',fill:'forwards'});
+  }
+
+  // Magnetic buttons
+  const magneticBtns = qsa('.magnetic');
+  magneticBtns.forEach(btn=>{
+    const strength = 18;
+    btn.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect(); const x = e.clientX - r.left - r.width/2; const y = e.clientY - r.top - r.height/2; btn.style.transform = `translate(${x/strength}px,${y/strength}px)`; });
+    btn.addEventListener('pointerleave', ()=> btn.style.transform='translate(0,0)');
+  });
+
+  // Parallax hero
+  const parallax = qs('.parallax-bg');
+  if(parallax){
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY * 0.25; parallax.style.transform = `translateY(${y}px)`; }, {passive:true});
+  }
+
+  // Skills drawer toggle (after i18n application potential)
+  document.addEventListener('click', e => {
+    const t = e.target;
+    if(t && t.id==='skillsToggle'){
+      const drawer = qs('#skillsDrawer');
+      if(drawer){ const hidden = drawer.classList.toggle('hidden'); t.textContent = hidden ? (document.documentElement.lang==='fr'?'Voir tout':'See all') : (document.documentElement.lang==='fr'?'Réduire':'Collapse'); }
+    }
+  });
 
   // Sparkline helper functions
   function generateSparkData(n=40){return Array.from({length:n},(_,i)=>({x:i,y:Math.random()}));}
