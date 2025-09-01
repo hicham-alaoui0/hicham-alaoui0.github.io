@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "headline": "Hicham Alaoui — Data Scientist & Econometrics-driven problem solver.",
+    "subline": "TODO refine: Building quant risk & sustainability ML systems (EVT limits, CO₂ forecasting, trading models).",
+    "cv_url": "/CV/CV_2025_DS_AI.pdf"
+  },
+  "metrics": [
+    { "label": "+10% CAGR backtest", "value": 10, "suffix": "%", "desc": "XGBoost Trading" },
+    { "label": "92% accuracy", "value": 92, "suffix": "%", "desc": "FarmVision" },
+    { "label": "EVT pre-trade limits", "value": 12, "suffix": "M+", "desc": "Transactions analyzed" }
+  ],
+  "experience": [
+    {
+      "company": "SG ATS",
+      "role": "Data Scientist (Intern)",
+      "dates": "Mar–Aug 2025",
+      "bullets": [
+        "Real-time pre-trade limit recalibration freeing €1.8M RWA (TODO validate)",
+        "EVT POT anomaly model 1.3% FP across 12M+ trades",
+        "CI/CD (89% tests), Dockerized services, Grafana monitoring",
+        "Reg control automation ↓ manual review time 80%"
+      ],
+      "stack": ["EVT","Python","C++","Docker","Grafana","Streamlit"]
+    },
+    {
+      "company": "GAEA21",
+      "role": "Data Scientist (Intern)",
+      "dates": "Jun–Sep 2024",
+      "bullets": [
+        "CO₂ emissions predictive modeling (50k obs)",
+        "LSTM FR article generator → 20+ sustainability briefs",
+        "Lightweight NLP microservice deployment"
+      ],
+      "stack": ["LSTM","TensorFlow","NLP","Python"]
+    },
+    {
+      "company": "HCP",
+      "role": "Data Analyst (Intern)",
+      "dates": "Jul–Aug 2023",
+      "bullets": [
+        "1M record migration to PostgreSQL → latency ↓40%",
+        "Poverty/welfare indicators (ARDL, ARIMA)",
+        "Automated Power BI dashboards"
+      ],
+      "stack": ["PostgreSQL","ARIMA","ARDL","Power BI"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "FarmVision",
+      "tags": ["CV","ML","AgTech"],
+      "summary": "Phyto-diagnostic vertical farming vision tool (transfer learning CNN).",
+      "impact": ["92% accuracy"],
+      "links": { "code": "#", "case": "#" }
+    },
+    {
+      "name": "XGBoost Trading",
+      "tags": ["Quant","Time Series"],
+      "summary": "Intraday equity signal model with walk-forward CAGR >10%.",
+      "impact": ["+10% CAGR backtest"],
+      "links": { "code": "#", "case": "#" }
+    }
+  ],
+  "skills": {
+    "Modeling": ["EVT","XGBoost","LSTM","CNN","Time Series","NLP","ARIMA","ARDL"],
+    "Programming": ["Python","R","SQL","C++","Bash","VBA"],
+    "Quant Libs": ["NumPy","Pandas","SciPy","scikit-learn","TensorFlow","statsmodels"],
+    "Data Platforms": ["PostgreSQL","MySQL","Docker","Streamlit","Grafana","GitHub Actions"],
+    "BI/Viz": ["Power BI","Tableau","Grafana"],
+    "Soft Skills": ["Analytical","Communication","Stakeholder Alignment","Mentorship"]
+  },
+  "certs": [
+    "Python for Everybody (UMich)",
+    "Neural Networks & Deep Learning (DeepLearning.AI)",
+    "Prepare Data for Exploration (Google)",
+    "Python Project for Data Science (IBM)"
+  ],
+  "education": [
+    { "institution": "INSEA", "program": "Engineering – Applied Economics, Statistics & Big Data", "years": "2022–2025" }
+  ],
+  "languages": ["Arabic","French","English"],
+  "about": {
+    "narrative": "TODO: Short narrative bridging quantitative markets analytics and sustainability data science."
+  }
+}

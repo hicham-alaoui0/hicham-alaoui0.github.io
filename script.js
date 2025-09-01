@@ -147,4 +147,144 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
   }
+
+  // Dynamic data hydration from profile.json
+  fetch('/data/profile.json')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(data => {
+      // Hero metrics
+      const metricsWrap = qs('#heroMetrics');
+      if (metricsWrap && Array.isArray(data.metrics)) {
+        metricsWrap.innerHTML = data.metrics.map(m => `<span class="badge" title="${m.desc||''}">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
+      }
+      // About
+      const aboutEl = qs('#aboutContent');
+      if (aboutEl && data.about?.narrative) {
+        aboutEl.innerHTML = `<p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">${data.about.narrative}</p>`;
+      }
+      // Experience timeline
+      const expList = qs('#experienceList');
+      if (expList && Array.isArray(data.experience)) {
+        expList.innerHTML = data.experience.map(item => `
+          <li class="timeline-card">
+            <div class="timeline-point" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h3 class="card-title">${item.company}</h3>
+                <span class="date-chip">${item.dates}</span>
+              </header>
+              <p class="role">${item.role}</p>
+              <ul class="card-list">${(item.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>
+              <div class="stack-row">${(item.stack||[]).map(s=>`<span>${s}</span>`).join('')}</div>
+            </div>
+          </li>`).join('');
+      }
+      // Projects with filters & modal
+      const projGrid = qs('#projectsGrid');
+      const filterBar = qs('#projectFilters');
+      if (projGrid && Array.isArray(data.projects)) {
+        const allTags = Array.from(new Set(data.projects.flatMap(p=>p.tags||[])));
+        if (filterBar) {
+          filterBar.innerHTML = ['All', ...allTags].map(t=>`<button class="filter-chip" data-tag="${t}" aria-pressed="${t==='All'}">${t}</button>`).join('');
+        }
+        const renderProjects = (tag='All') => {
+          projGrid.innerHTML = data.projects.filter(p => tag==='All' || (p.tags||[]).includes(tag)).map(p => `
+          <article class="project-card" data-project="${p.name}">
+            <header>
+              <h3 class="project-title">${p.name}</h3>
+              <div class="metric-badges">${(p.impact||[]).map(im=>`<span class=\"metric\">${im}</span>`).join('')}${(p.tags||[]).slice(0,2).map(t=>`<span class=\"metric\">${t}</span>`).join('')}</div>
+            </header>
+            <p class="project-problem"><strong>Summary:</strong> ${p.summary||''}</p>
+            <div class="project-links">${p.links?.code?`<a href="${p.links.code}" class="text-primary hover:underline" aria-label="View code ${p.name}">Code</a>`:''}${p.links?.case?`<a href="${p.links.case}" class="text-primary hover:underline" aria-label="Read case study ${p.name}">Case</a>`:''}</div>
+          </article>`).join('');
+        };
+        renderProjects();
+        filterBar?.addEventListener('click', e => {
+          const btn = e.target.closest('button.filter-chip');
+          if (!btn) return;
+          qsa('button.filter-chip', filterBar).forEach(b=>b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed','true');
+          renderProjects(btn.dataset.tag);
+        });
+        // Modal logic
+        const modal = qs('#projectModal');
+        const modalClose = qs('#modalClose');
+        const modalTitle = qs('#modalTitle');
+        const modalSummary = qs('#modalSummary');
+        const modalBody = qs('#modalBody');
+        const modalLinks = qs('#modalLinks');
+        const modalSpark = qs('#modalSpark');
+        let lastFocus = null;
+        const openModal = (projName) => {
+          const proj = data.projects.find(p=>p.name===projName);
+          if (!proj) return;
+          lastFocus = document.activeElement;
+          modalTitle.textContent = proj.name;
+          modalSummary.textContent = proj.summary||'';
+          modalBody.innerHTML = `<p><strong>Tags:</strong> ${(proj.tags||[]).join(', ')}</p>`;
+          modalLinks.innerHTML = '';
+          if (proj.links?.code) modalLinks.innerHTML += `<a class="text-primary underline" href="${proj.links.code}" target="_blank" rel="noopener">Code ↗</a>`;
+          if (proj.links?.case) modalLinks.innerHTML += `<a class="text-primary underline" href="${proj.links.case}" target="_blank" rel="noopener">Case Study ↗</a>`;
+          modal.classList.add('active');
+          modal.classList.remove('hidden');
+          modal.setAttribute('aria-hidden','false');
+          modalClose.focus();
+          drawSpark(modalSpark, generateSparkData());
+          trapFocus(modal);
+        };
+        const closeModal = () => {
+          modal.classList.remove('active');
+          modal.setAttribute('aria-hidden','true');
+          setTimeout(()=>modal.classList.add('hidden'),250);
+          if (lastFocus) lastFocus.focus();
+          releaseFocus();
+        };
+        projGrid.addEventListener('click', e => {
+          const card = e.target.closest('.project-card');
+          if (card) openModal(card.getAttribute('data-project'));
+        });
+        modalClose?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key==='Escape' && modal.classList.contains('active')) closeModal(); });
+      }
+      // Skills
+      const skillsContainer = qs('#skillsContainer');
+      if (skillsContainer && data.skills && typeof data.skills === 'object') {
+        skillsContainer.innerHTML = Object.entries(data.skills).map(([group, list]) => `
+          <div class="skill-block"><h3>${group}</h3><div class="chip-row">${(list||[]).map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('');
+      }
+      // Certifications
+      const certList = qs('#certList');
+      if (certList && Array.isArray(data.certs)) {
+        certList.innerHTML = data.certs.map(c => `<li class="cert-item"><span class="cert-title">${c}</span></li>`).join('');
+      }
+      // Education
+      const eduList = qs('#eduList');
+      if (eduList && Array.isArray(data.education)) {
+        eduList.innerHTML = data.education.map(ed => `<li class="cert-item"><span class="cert-title">${ed.institution}</span><span class="cert-org">${ed.program} · ${ed.years}</span></li>`).join('');
+      }
+      // Languages
+      const langList = qs('#languagesList');
+      if (langList && Array.isArray(data.languages)) {
+        langList.innerHTML = data.languages.map(l => `<li class="chip">${l}</li>`).join('');
+      }
+    })
+    .catch(()=>{});
+
+  // Sparkline helper functions
+  function generateSparkData(n=40){return Array.from({length:n},(_,i)=>({x:i,y:Math.random()}));}
+  function drawSpark(canvas,data){
+    if(!canvas) return; const dpr = window.devicePixelRatio||1; const width = canvas.clientWidth; const height = canvas.height; canvas.width = width*dpr; canvas.height = height*dpr; const ctx=canvas.getContext('2d'); ctx.scale(dpr,dpr); ctx.clearRect(0,0,width,height); ctx.lineWidth=1.5; ctx.strokeStyle='#0e6e55'; ctx.beginPath(); data.forEach((p,i)=>{const x = (i/(data.length-1))* (width-4) +2; const y = (1-p.y)*(height-4)+2; i?ctx.lineTo(x,y):ctx.moveTo(x,y);}); ctx.stroke(); }
+  // Focus trap
+  let focusTrapHandler=null; let focusablesCached=[];
+  function trapFocus(root){
+    focusablesCached = qsa('button,[href],input,textarea,select,[tabindex]:not([tabindex="-1"])',root).filter(el=>!el.hasAttribute('disabled'));
+    focusTrapHandler = (e)=>{
+      if(e.key!=='Tab') return; const first=focusablesCached[0]; const last=focusablesCached[focusablesCached.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault(); last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault(); first.focus();}
+    };
+    document.addEventListener('keydown', focusTrapHandler);
+  }
+  function releaseFocus(){ if(focusTrapHandler){document.removeEventListener('keydown',focusTrapHandler); focusTrapHandler=null;}}
 });

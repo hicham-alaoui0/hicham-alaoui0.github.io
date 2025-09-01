@@ -71,13 +71,7 @@
             <span class="mt-2 block text-primary" data-i18n="hero.role">Data Scientist & Econometrics-driven problem solver for markets and sustainability.</span>
           </h1>
           <p class="text-neutral-700 dark:text-neutral-300 max-w-prose" data-i18n="hero.tagline">I build quantifiable, resilient data & ML systems: EVT pre-trade risk calibration, CO₂ emission forecasting, algorithmic trading, and applied econometrics.</p>
-          <div class="flex flex-wrap gap-3" aria-label="Key stats">
-            <span class="badge">EVT / Risk</span>
-            <span class="badge">CO₂ ML</span>
-            <span class="badge">Trading XGBoost</span>
-            <span class="badge">Time Series</span>
-            <span class="badge">MLOps</span>
-          </div>
+          <div id="heroMetrics" class="metrics-row flex flex-wrap gap-3" aria-label="Key stats"></div>
           <div class="flex flex-wrap gap-4 pt-2" aria-label="Primary actions">
             <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary" data-i18n="cta.download" download>Download CV</a>
             <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary" data-i18n="cta.email">Email me</a>
@@ -89,63 +83,20 @@
         </div>
       </div>
     </section>
+    <!-- About (dynamic) -->
+    <section id="about" class="section">
+      <div class="section-inner">
+        <div class="section-head"><h2 class="section-title">About</h2></div>
+        <div id="aboutContent" class="about-card"></div>
+      </div>
+    </section>
     <!-- Experience -->
     <section id="experience" class="section">
       <div class="section-inner">
         <div class="section-head">
           <h2 class="section-title" data-i18n="experience">Experience</h2>
         </div>
-        <ol class="timeline" aria-label="Experience timeline">
-          <li class="timeline-card">
-            <div class="timeline-point" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <h3 class="card-title">Société Générale – ATS</h3>
-                <span class="date-chip">Mar–Aug 2025</span>
-              </header>
-              <p class="role">Data Scientist (Pre-trade Risk / EVT)</p>
-              <ul class="card-list">
-                <li>Real‑time limit recalibration pipeline freeing <strong>€1.8M RWA</strong>.</li>
-                <li>EVT POT model: <strong>1.3% FP</strong>, high recall across 12M+ trades.</li>
-                <li>End‑to‑end CI/CD (tests 89% cov), Docker, Grafana monitoring dashboards.</li>
-                <li>Regulatory control automation (Streamlit) ↓ manual review time 80%.</li>
-              </ul>
-              <div class="stack-row"><span>EVT</span><span>C++</span><span>Python</span><span>Docker</span><span>Grafana</span></div>
-            </div>
-          </li>
-          <li class="timeline-card">
-            <div class="timeline-point" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <h3 class="card-title">GAEA21</h3>
-                <span class="date-chip">Jun–Sep 2024</span>
-              </header>
-              <p class="role">Data Scientist (CO₂ Emissions)</p>
-              <ul class="card-list">
-                <li>Multi‑sector CO₂ emission predictive models over 50k observations.</li>
-                <li>LSTM French article generator → 20+ sustainability briefs (92% perplexity score proxy).</li>
-                <li>Deployed lightweight NLP microservice for content automation.</li>
-              </ul>
-              <div class="stack-row"><span>LSTM</span><span>NLP</span><span>Python</span><span>TensorFlow</span></div>
-            </div>
-          </li>
-          <li class="timeline-card">
-            <div class="timeline-point" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <header class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <h3 class="card-title">Haut-Commissariat au Plan</h3>
-                <span class="date-chip">Jul–Aug 2023</span>
-              </header>
-              <p class="role">Data Analyst (Econometrics)</p>
-              <ul class="card-list">
-                <li>Migrated 1M socio‑economic records to PostgreSQL → query latency ↓ 40%.</li>
-                <li>Built poverty / welfare indicators (ARDL, ARIMA time series).</li>
-                <li>Automated Power BI dashboards for recurring reporting.</li>
-              </ul>
-              <div class="stack-row"><span>PostgreSQL</span><span>ARIMA</span><span>ARDL</span><span>Power BI</span></div>
-            </div>
-          </li>
-        </ol>
+        <ol id="experienceList" class="timeline" aria-label="Experience timeline"></ol>
       </div>
     </section>
     <!-- Featured Projects -->
@@ -154,73 +105,33 @@
         <div class="section-head">
           <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
         </div>
-        <div class="grid gap-8 md:grid-cols-2">
-          <article class="project-card">
-            <header>
-              <h3 class="project-title">FarmVision</h3>
-              <div class="metric-badges"><span class="metric">92% accuracy</span><span class="metric">CV</span></div>
-            </header>
-            <p class="project-problem"><strong>Problem:</strong> Early disease detection in vertical farming to reduce crop loss.</p>
-            <p class="project-approach"><strong>Approach:</strong> Transfer‑learned CNN + image augmentation deployed via Streamlit.</p>
-            <p class="project-impact"><strong>Impact:</strong> 92% diagnostic accuracy adopted in pilot (SkyFarms) improving intervention timing.</p>
-            <div class="stack-row"><span>TensorFlow</span><span>Computer Vision</span><span>Streamlit</span></div>
-            <div class="project-links">
-              <a href="#" class="text-primary hover:underline" aria-label="View code FarmVision">View code</a>
-              <a href="#" class="text-primary hover:underline" aria-label="Read case study FarmVision">Read case study</a>
-            </div>
-          </article>
-          <article class="project-card">
-            <header>
-              <h3 class="project-title">XGBoost Trading Algo</h3>
-              <div class="metric-badges"><span class="metric">+10% CAGR</span><span class="metric">Backtest 5y</span></div>
-            </header>
-            <p class="project-problem"><strong>Problem:</strong> Systematic intraday signal generation for mid‑cap equities.</p>
-            <p class="project-approach"><strong>Approach:</strong> Feature engineered microstructure factors & rolling targets → XGBoost model with walk‑forward validation.</p>
-            <p class="project-impact"><strong>Impact:</strong> +10% annualized CAGR (2018–2023 backtest) after realistic transaction cost assumptions.</p>
-            <div class="stack-row"><span>XGBoost</span><span>Python</span><span>Backtesting</span></div>
-            <div class="project-links">
-              <a href="#" class="text-primary hover:underline" aria-label="View code trading algo">View code</a>
-              <a href="#" class="text-primary hover:underline" aria-label="Read case study trading algo">Read case study</a>
-            </div>
-          </article>
-        </div>
+  <div id="projectFilters" class="filters-row flex flex-wrap gap-2 mb-6" aria-label="Project filters"></div>
+  <div id="projectsGrid" class="grid gap-8 md:grid-cols-2"></div>
       </div>
     </section>
     <!-- Skills -->
     <section id="skills" class="section">
       <div class="section-inner">
         <div class="section-head"><h2 class="section-title" data-i18n="skills">Skills</h2></div>
-        <div class="skill-groups grid gap-8 md:grid-cols-3">
-          <div class="skill-block"><h3>Modeling</h3><div class="chip-row"><span class="chip">EVT</span><span class="chip">XGBoost</span><span class="chip">LSTM</span><span class="chip">CNN</span><span class="chip">Time Series</span><span class="chip">NLP</span></div></div>
-          <div class="skill-block"><h3>Programming</h3><div class="chip-row"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">Bash</span><span class="chip">VBA</span></div></div>
-          <div class="skill-block"><h3>Quant Libs</h3><div class="chip-row"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">SciPy</span><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">statsmodels</span></div></div>
-          <div class="skill-block"><h3>Data Platforms</h3><div class="chip-row"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Streamlit</span><span class="chip">Docker</span><span class="chip">Grafana</span><span class="chip">GitHub Actions</span></div></div>
-            <div class="skill-block"><h3>BI / Viz</h3><div class="chip-row"><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Grafana</span></div></div>
-            <div class="skill-block"><h3>Soft Skills</h3><div class="chip-row"><span class="chip">Analytical</span><span class="chip">Communication</span><span class="chip">Stakeholder Alignment</span><span class="chip">Mentorship</span></div></div>
-        </div>
+        <div id="skillsContainer" class="skill-groups grid gap-8 md:grid-cols-3"></div>
       </div>
     </section>
     <!-- Certifications -->
     <section id="certifications" class="section">
       <div class="section-inner">
         <div class="section-head"><h2 class="section-title" data-i18n="certifications">Certifications</h2></div>
-        <ul class="cert-list">
-          <li class="cert-item"><span class="cert-title">Python for Everybody Specialization</span><span class="cert-org">University of Michigan</span></li>
-          <li class="cert-item"><span class="cert-title">Neural Networks & Deep Learning</span><span class="cert-org">DeepLearning.AI</span></li>
-          <li class="cert-item"><span class="cert-title">Prepare Data for Exploration</span><span class="cert-org">Google</span></li>
-          <li class="cert-item"><span class="cert-title">Python Project for Data Science</span><span class="cert-org">IBM</span></li>
-        </ul>
+        <ul id="certList" class="cert-list mb-8"></ul>
+        <div>
+          <h3 class="text-sm font-semibold mb-2">Education</h3>
+          <ul id="eduList" class="cert-list"></ul>
+        </div>
       </div>
     </section>
     <!-- Languages -->
     <section id="languages" class="section">
       <div class="section-inner">
         <div class="section-head"><h2 class="section-title" data-i18n="languages">Languages</h2></div>
-        <ul class="flex flex-wrap gap-3" aria-label="Languages">
-          <li class="chip">Arabic (Native)</li>
-          <li class="chip">French (Fluent)</li>
-          <li class="chip">English (Fluent)</li>
-        </ul>
+        <ul id="languagesList" class="flex flex-wrap gap-3" aria-label="Languages"></ul>
       </div>
     </section>
     <!-- Contact -->
@@ -262,6 +173,20 @@
     </div>
   </footer>
   <button id="backToTop" class="fixed bottom-5 right-5 hidden rounded-full bg-primary text-white w-11 h-11 shadow focus:outline-none focus:ring focus:ring-offset-2 focus:ring-primary" aria-label="Back to top">↑</button>
+  <!-- Project Modal -->
+  <div id="projectModal" class="hidden fixed inset-0 z-[999] items-center justify-center p-4" aria-hidden="true">
+    <div class="modal-backdrop absolute inset-0 bg-neutral-900/60 backdrop-blur-sm"></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="modal-panel relative max-w-2xl w-full bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-xl flex flex-col max-h-[85vh]">
+      <button id="modalClose" class="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 focus:outline-none focus:ring focus:ring-primary" aria-label="Close modal">✕</button>
+      <div class="overflow-y-auto p-6 space-y-4" id="modalContent">
+        <h2 id="modalTitle" class="text-xl font-semibold"></h2>
+        <p id="modalSummary" class="text-sm text-neutral-600 dark:text-neutral-300"></p>
+        <canvas id="modalSpark" height="60" class="w-full rounded bg-neutral-100 dark:bg-neutral-800"></canvas>
+        <div id="modalBody" class="prose prose-sm dark:prose-invert max-w-none"></div>
+        <div id="modalLinks" class="flex gap-4 text-sm"></div>
+      </div>
+    </div>
+  </div>
   <script src="/script.js" defer></script>
 </body>
 </html>

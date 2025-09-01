@@ -65,6 +65,21 @@ html {scroll-padding-top:72px;}
 #backToTop.show {display:flex;opacity:1;transform:translateY(0);} 
 .hero-image {filter:saturate(1.05) contrast(1.05);} 
 .dark .hero-image {filter:brightness(.85) saturate(.9);} 
+/* About card */
+.about-card {background:#fff;border:1px solid #e2e8f0;padding:1.5rem 1.5rem 1.25rem;border-radius:1rem;box-shadow:0 2px 4px -2px rgba(0,0,0,.06);} 
+.dark .about-card {background:#1f2937;border-color:#334155;}
+.metrics-row .badge {font-size:.7rem;}
+/* Filters */
+.filters-row .filter-chip {cursor:pointer;background:rgba(14,110,85,.08);color:#0e6e55;font-size:.65rem;font-weight:600;letter-spacing:.04em;padding:.45rem .7rem;border-radius:999px;transition:background .25s, color .25s;-webkit-user-select:none;user-select:none;}
+.filters-row .filter-chip:hover {background:rgba(14,110,85,.18);} 
+.filters-row .filter-chip[aria-pressed="true"] {background:#0e6e55;color:#fff;}
+/* Modal */
+#projectModal {display:flex;opacity:0;pointer-events:none;transition:opacity .3s;} 
+#projectModal.active {opacity:1;pointer-events:auto;} 
+.modal-backdrop {animation:fadeIn .35s ease forwards;} 
+.modal-panel {transform:translateY(12px);animation:slideUp .45s cubic-bezier(.4,.7,.1,1) forwards;} 
+@keyframes slideUp {to {transform:translateY(0);}} 
+@keyframes fadeIn {from {opacity:0;} to {opacity:1;}} 
 /* Reduced motion */
 @media (prefers-reduced-motion:reduce){.project-card,.timeline-content{transition:none;}}
 /* Focus styles fallback */
