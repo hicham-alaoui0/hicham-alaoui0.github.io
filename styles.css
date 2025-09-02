@@ -115,3 +115,23 @@ mix-blend-mode:normal;}
 	linear-gradient(120deg,#0b0f14,#0f172a 60%,#0b0f14);}
 @media (prefers-reduced-motion:reduce){#hero-bg{visibility:hidden;}}
 @media (max-width:640px){.hero{padding:5rem 1rem 4rem;min-height:68vh;}}
+
+/* ================= Certification Grid ================= */
+.cert-grid {list-style:none;display:grid;gap:1.5rem;padding:0;margin:0 0 2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.cert-card {position:relative;display:flex;flex-direction:column;gap:.85rem;padding:1rem 1.05rem .95rem;border:1px solid #e2e8f0;border-radius:1rem;background:#ffffff;box-shadow:0 1px 2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s,border-color .3s;}
+.dark .cert-card {background:#1f2937;border-color:#334155;}
+.cert-card:focus-within {outline:2px solid var(--pri);outline-offset:2px;}
+.cert-card:hover {transform:translateY(-2px);box-shadow:0 4px 14px -4px rgba(0,0,0,.2);} 
+@media (prefers-reduced-motion:reduce){.cert-card{transition:none;}.cert-card:hover{transform:none;}}
+.cert-top {display:flex;align-items:center;gap:.65rem;}
+.cert-logo {width:40px;height:40px;object-fit:contain;flex-shrink:0;filter:grayscale(.1) contrast(1.05);} 
+.cert-title {font-size:.9rem;font-weight:600;line-height:1.25;}
+.cert-issuer {font-size:.7rem;letter-spacing:.05em;font-weight:600;text-transform:uppercase;color:#0e6e55;}
+.dark .cert-issuer {color:#34d399;}
+.cert-date {font-size:.65rem;color:#475569;}
+.dark .cert-date {color:#94a3b8;}
+.btn-verify {align-self:flex-start;margin-top:auto;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:rgba(14,110,85,.08);color:#0e6e55;padding:.5rem .85rem;border-radius:.6rem;border:1px solid rgba(14,110,85,.22);display:inline-flex;align-items:center;gap:.4ch;transition:background .25s,border-color .25s,color .25s;}
+.btn-verify:hover {background:#0e6e55;color:#fff;border-color:#0e6e55;}
+.btn-verify:focus-visible {outline:2px solid #0e6e55;outline-offset:2px;}
+.dark .btn-verify {background:rgba(14,110,85,.22);color:#34d399;border-color:rgba(14,110,85,.35);} 
+.dark .btn-verify:hover {background:#0e6e55;color:#fff;border-color:#0e6e55;}

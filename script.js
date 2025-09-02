@@ -264,11 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
         skillsContainer.innerHTML = collapsed.map(([group, list]) => `
           <div class="skill-block" data-reveal><h3>${group}</h3><div class="chip-row">${(list||[]).map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('') + (hidden.length?`<div id="skillsDrawer" class="skills-drawer hidden">${hidden.map(([group,list])=>`<div class=\"skill-block\"><h3>${group}</h3><div class=\"chip-row\">${list.map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('')}</div><button id="skillsToggle" class="btn-secondary mt-4" data-i18n="see.all">See all</button>`:'');
       }
-      // Certifications
-  const certList = qs('#certList');
-      if (certList && Array.isArray(data.certs)) {
-        certList.innerHTML = data.certs.map(c => `<li class="cert-item"><span class="cert-title">${c}</span></li>`).join('');
-      }
       // Education
   const eduList = qs('#eduList');
       if (eduList && Array.isArray(data.education)) {
@@ -281,6 +276,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       initCounters();
+  // After profile load, load certifications list
+  hydrateCertifications();
     })
     .catch(()=>{});
 
@@ -361,6 +358,58 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function releaseFocus(){ if(focusTrapHandler){document.removeEventListener('keydown',focusTrapHandler); focusTrapHandler=null;}}
 });
+
+// Load & render certifications grid + JSON-LD
+function hydrateCertifications(){
+  fetch('/data/certifications.json')
+    .then(r=>r.ok?r.json():Promise.reject(r.status))
+    .then(list => {
+      const grid = document.getElementById('certGrid');
+      if(!grid) return;
+      grid.innerHTML = list.map(cert => certCardHTML(cert)).join('');
+      injectCredJsonLD(list);
+      window.mergeLinkedInCerts = (extra)=>mergeLinkedInCerts(extra,list);
+    }).catch(()=>{});
+}
+
+function certCardHTML(c){
+  const safeTitle = escapeHTML(c.title); const safeIssuer = escapeHTML(c.issuer);
+  const date = c.displayDate || (c.date? new Date(c.date).toLocaleDateString(document.documentElement.lang||'en',{year:'numeric',month:'short'}) : '');
+  return `<li class="cert-card" tabindex="-1">
+    <div class="cert-top">
+      <img loading="lazy" src="${c.logo}" alt="${safeIssuer} logo" class="cert-logo" width="40" height="40" />
+      <div class="flex flex-col">
+        <span class="cert-title">${safeTitle}</span>
+        <span class="cert-issuer">${safeIssuer}</span>
+      </div>
+    </div>
+    <span class="cert-date">${date}</span>
+    <a href="${c.verifyUrl}" class="btn-verify" target="_blank" rel="noopener noreferrer" aria-label="Verify ${safeTitle} credential">Verify</a>
+  </li>`;
+}
+
+function injectCredJsonLD(list){
+  if(!Array.isArray(list)) return; const payload = list.map(c=>({
+    '@context':'https://schema.org',
+    '@type':'EducationalOccupationalCredential',
+    'name': c.title,
+    'recognizedBy': { '@type':'Organization','name': c.issuer },
+    'url': c.verifyUrl
+  }));
+  const existing = document.getElementById('cred-jsonld'); if(existing) existing.remove();
+  const script = document.createElement('script'); script.type='application/ld+json'; script.id='cred-jsonld'; script.textContent = JSON.stringify(payload); document.head.appendChild(script);
+}
+
+function mergeLinkedInCerts(extra, current){
+  if(!Array.isArray(extra)) return; const grid = document.getElementById('certGrid'); if(!grid) return;
+  const map = new Map(current.map(c=>[c.title+'|'+c.issuer,c]));
+  extra.forEach(c=>{ const key = c.title+'|'+c.issuer; if(!map.has(key)) map.set(key,c); });
+  const merged = Array.from(map.values()).sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+  grid.innerHTML = merged.map(certCardHTML).join('');
+  injectCredJsonLD(merged);
+}
+
+function escapeHTML(str){return String(str).replace(/[&<>'"]/g,s=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[s]));}
 
 /* ================= Hero Background (Option A: Particle Field) ================= */
 // Toggle to true later if implementing Option B (low-poly WebGL) initLowPoly()

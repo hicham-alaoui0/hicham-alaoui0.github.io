@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Python for Everybody Specialization",
+    "issuer": "University of Michigan",
+    "date": "2023-11-01",
+    "displayDate": "Nov 2023",
+    "logo": "/assets/certs/umich.svg",
+    "verifyUrl": "https://coursera.org/verify/specialization/J9WD2EEGY4GE"
+  },
+  {
+    "title": "Neural Networks and Deep Learning",
+    "issuer": "DeepLearning.AI",
+    "date": "2023-12-01",
+    "displayDate": "Dec 2023",
+    "logo": "/assets/certs/deeplearning-ai.svg",
+    "verifyUrl": "https://coursera.org/verify/8UCZ93RNGFBG"
+  },
+  {
+    "title": "Prepare Data for Exploration",
+    "issuer": "Google",
+    "date": "2023-04-01",
+    "displayDate": "Apr 2023",
+    "logo": "/assets/certs/google.svg",
+    "verifyUrl": "https://www.coursera.org/account/accomplishments/certificate/2WPJXSWPRW5U"
+  },
+  {
+    "title": "Python Project for Data Science",
+    "issuer": "IBM",
+    "date": "2023-03-01",
+    "displayDate": "Mar 2023",
+    "logo": "/assets/certs/ibm.svg",
+    "verifyUrl": "https://www.coursera.org/account/accomplishments/certificate/ZPFFUS53YT3R"
+  }
+]
