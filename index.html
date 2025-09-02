@@ -68,26 +68,25 @@
   </header>
   <main id="main" tabindex="-1">
     <!-- Hero -->
-    <section id="hero" class="relative overflow-hidden">
-      <div class="absolute inset-0 -z-10 parallax-bg pointer-events-none"></div>
-      <div class="max-w-7xl mx-auto px-4 pt-24 pb-20 md:pt-32 md:pb-28 grid gap-12 md:grid-cols-2 items-center">
-        <div class="space-y-6" data-reveal>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight">
-            <span class="block" data-i18n="hero.name">Hicham Alaoui</span>
-            <span class="mt-2 block text-primary" data-i18n="hero.role">Data Scientist & Econometrics-driven problem solver for markets and sustainability.</span>
-          </h1>
-          <p class="text-neutral-700 dark:text-neutral-300 max-w-prose" data-i18n="hero.tagline">I build quantifiable, resilient data & ML systems: EVT pre-trade risk calibration, CO₂ emission forecasting, algorithmic trading, and applied econometrics.</p>
-          <div id="heroMetrics" class="metrics-row flex flex-wrap gap-3" aria-label="Key stats" data-reveal></div>
-          <div class="flex flex-wrap gap-4 pt-2" aria-label="Primary actions" data-reveal>
-            <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic" data-i18n="cta.download" download>Download CV</a>
-            <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic" data-i18n="cta.email">Email me</a>
-          </div>
-        </div>
-        <div class="relative" data-reveal>
-          <img src="/assets/images/hero-bg.jpg" alt="Abstract data visualization background" width="800" height="450" class="rounded-lg shadow-md w-full aspect-video object-cover hero-image" loading="lazy" />
-          <div class="absolute inset-0 rounded-lg ring-1 ring-primary/20 pointer-events-none"></div>
+    <section id="hero" class="hero">
+      <div class="hero-canvas-wrap" aria-hidden="true">
+        <canvas id="hero-bg" aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-content" data-reveal>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight">
+          <span class="block" data-i18n="hero.name">Hicham Alaoui</span>
+          <span class="mt-2 block text-primary" data-i18n="hero.role">Data Scientist & Econometrics-driven problem solver for markets and sustainability.</span>
+        </h1>
+        <p class="text-neutral-300 max-w-3xl mx-auto mt-6" data-i18n="hero.tagline">I build quantifiable, resilient data & ML systems: EVT pre-trade risk calibration, CO₂ emission forecasting, algorithmic trading, and applied econometrics.</p>
+        <div id="heroMetrics" class="metrics-row flex flex-wrap justify-center gap-3 mt-6" aria-label="Key stats" data-reveal></div>
+        <div class="flex flex-wrap justify-center gap-4 pt-8" aria-label="Primary actions" data-reveal>
+          <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic" data-i18n="cta.download" download>Download CV</a>
+          <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic" data-i18n="cta.email">Email me</a>
         </div>
       </div>
+      <noscript>
+        <div class="hero-fallback" role="img" aria-label="Decorative gradient background"></div>
+      </noscript>
     </section>
     <!-- About (dynamic) -->
   <section id="about" class="section">

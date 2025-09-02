@@ -357,3 +357,94 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function releaseFocus(){ if(focusTrapHandler){document.removeEventListener('keydown',focusTrapHandler); focusTrapHandler=null;}}
 });
+
+/* ================= Hero Background (Option A: Particle Field) ================= */
+// Toggle to true later if implementing Option B (low-poly WebGL) initLowPoly()
+const enableThreeHero = false;
+document.addEventListener('DOMContentLoaded', initHeroBackground);
+function initHeroBackground(){
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(enableThreeHero){ /* initLowPoly(); */ return; }
+  initParticles({ staticOnly: prefersReduced });
+}
+
+function initParticles({ staticOnly=false }={}){
+  const canvas = document.getElementById('hero-bg');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const DPR = Math.min(window.devicePixelRatio||1,2);
+  const COLORS = ['#0e6e55','#a16f0b','#e2e8f0'];
+  const COUNT = 80; // tune for perf
+  const LINK_DIST = 120;
+  const MAGNET_DIST = 140;
+  const MAGNET_FORCE = 0.08;
+  let w=0,h=0, particles=[], running=true;
+  const mouse = {x:-9999,y:-9999};
+
+  function resize(){
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w*DPR; canvas.height = h*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    if(!particles.length){
+      particles = Array.from({length:COUNT}, ()=>({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        vx:(Math.random()-.5)*0.55,
+        vy:(Math.random()-.5)*0.55,
+        r:1.2+Math.random()*2.2,
+        c:COLORS[(Math.random()*COLORS.length)|0]
+      }));
+    }
+    if(staticOnly){ drawFrame(); }
+  }
+
+  function update(){
+    for(const p of particles){
+      // magnet effect
+      const dx = p.x - mouse.x, dy = p.y - mouse.y; const d2 = dx*dx+dy*dy;
+      if(d2 < MAGNET_DIST*MAGNET_DIST){
+        const d = Math.sqrt(d2)||1; const f = (1-d/MAGNET_DIST)*MAGNET_FORCE;
+        p.vx += (dx/d)*f; p.vy += (dy/d)*f;
+      }
+      p.x += p.vx; p.y += p.vy;
+      p.vx += (Math.random()-.5)*0.01; p.vy += (Math.random()-.5)*0.01;
+      if(p.x < -10) p.x = w+10; else if(p.x > w+10) p.x = -10;
+      if(p.y < -10) p.y = h+10; else if(p.y > h+10) p.y = -10;
+    }
+  }
+
+  function drawFrame(){
+    ctx.clearRect(0,0,w,h);
+    // soft radial glow
+    const grd = ctx.createRadialGradient(w*0.5,h*0.35,20,w*0.5,h*0.35,Math.max(w,h)*0.6);
+    grd.addColorStop(0,'rgba(14,110,85,0.10)');
+    grd.addColorStop(1,'rgba(11,15,20,0)');
+    ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
+    // links
+    ctx.lineWidth = 1; ctx.globalAlpha = .55;
+    for(let i=0;i<particles.length;i++){
+      const a=particles[i];
+      for(let j=i+1;j<particles.length;j++){
+        const b=particles[j]; const dx=a.x-b.x, dy=a.y-b.y; const d2=dx*dx+dy*dy;
+        if(d2 < LINK_DIST*LINK_DIST){
+          const o = 1- Math.sqrt(d2)/LINK_DIST; ctx.strokeStyle = `rgba(226,232,240,${o*0.5})`;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+    for(const p of particles){ ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill(); }
+  }
+
+  function loop(){ if(!running) return; update(); drawFrame(); requestAnimationFrame(loop); }
+
+  // events
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e=>{ const r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+  document.addEventListener('visibilitychange', ()=>{ running = !staticOnly && document.visibilityState==='visible'; if(running) requestAnimationFrame(loop); });
+
+  resize();
+  if(!staticOnly){ requestAnimationFrame(loop); }
+}
+
+// Placeholder for Option B
+function initLowPoly(){ /* future: lazy-load tiny WebGL/three implementation */ }
