@@ -62,7 +62,8 @@ html {scroll-padding-top:72px;}
 .dark .form-input,.dark .form-textarea {background:#0f172a;border-color:#334155;color:#f1f5f9;}
 .dark .form-input:focus,.dark .form-textarea:focus {box-shadow:0 0 0 3px rgba(14,110,85,.5);} 
 #backToTop {transition:opacity .3s,transform .3s;} 
-#backToTop.show {display:flex;opacity:1;transform:translateY(0);} 
+#backToTop.show {display:flex;align-items: center;
+  justify-content: center;opacity:1;transform:translateY(0);} 
 .hero-image {filter:saturate(1.05) contrast(1.05);} 
 .dark .hero-image {filter:brightness(.85) saturate(.9);} 
 /* Parallax */
