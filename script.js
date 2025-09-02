@@ -93,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
       'skip.to.content': 'Aller au contenu'
     }
   };
+  // Extended i18n keys (education & form labels)
+  Object.assign(dict.en, { 'education':'Education','label.name':'Name','label.email':'Email','label.message':'Message','label.direct':'Direct:' });
+  Object.assign(dict.fr, { 'education':'Éducation','label.name':'Nom','label.email':'Email','label.message':'Message','label.direct':'Direct :' });
 
   const langToggle = qs('#langToggle');
   const applyLang = (lang) => {
@@ -159,7 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Hero metrics
       const metricsWrap = qs('#heroMetrics');
       if (metricsWrap && Array.isArray(data.metrics)) {
-  metricsWrap.innerHTML = data.metrics.map((m,i) => `<span class="badge metric-counter" data-target="${m.value}" data-suffix="${m.suffix||''}" aria-label="${m.desc||m.label}">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
+        metricsWrap.setAttribute('role','list');
+        metricsWrap.innerHTML = data.metrics.map((m,i) => `<span role="listitem" class="badge metric-counter" data-target="${m.value}" data-suffix="${m.suffix||''}" aria-label="${m.desc||m.label}" aria-live="polite">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
       }
       // About
       const aboutEl = qs('#aboutContent');
@@ -198,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <h3 class="project-title">${p.name}</h3>
               <div class="metric-badges">${(p.impact||[]).map(im=>`<span class=\"metric\">${im}</span>`).join('')}${(p.tags||[]).slice(0,2).map(t=>`<span class=\"metric\">${t}</span>`).join('')}</div>
             </header>
-            <p class="project-problem"><strong>Summary:</strong> ${p.summary||''}</p>
+            <p class="project-problem"><strong>${document.documentElement.lang==='fr'?'Résumé':'Summary'}:</strong> ${p.summary||''}</p>
             <div class="project-links">${p.links?.code?`<a href="${p.links.code}" class="text-primary hover:underline" aria-label="View code ${p.name}">Code</a>`:''}${p.links?.case?`<a href="${p.links.case}" class="text-primary hover:underline" aria-label="Read case study ${p.name}">Case</a>`:''}</div>
           </article>`).join('');
         };
@@ -261,12 +265,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="skill-block" data-reveal><h3>${group}</h3><div class="chip-row">${(list||[]).map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('') + (hidden.length?`<div id="skillsDrawer" class="skills-drawer hidden">${hidden.map(([group,list])=>`<div class=\"skill-block\"><h3>${group}</h3><div class=\"chip-row\">${list.map(s=>`<span class=\"chip\">${s}</span>`).join('')}</div></div>`).join('')}</div><button id="skillsToggle" class="btn-secondary mt-4" data-i18n="see.all">See all</button>`:'');
       }
       // Certifications
-      const certList = qs('#certList');
+  const certList = qs('#certList');
       if (certList && Array.isArray(data.certs)) {
         certList.innerHTML = data.certs.map(c => `<li class="cert-item"><span class="cert-title">${c}</span></li>`).join('');
       }
       // Education
-      const eduList = qs('#eduList');
+  const eduList = qs('#eduList');
       if (eduList && Array.isArray(data.education)) {
         eduList.innerHTML = data.education.map(ed => `<li class="cert-item"><span class="cert-title">${ed.institution}</span><span class="cert-org">${ed.program} · ${ed.years}</span></li>`).join('');
       }
