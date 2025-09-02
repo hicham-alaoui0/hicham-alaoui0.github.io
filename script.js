@@ -419,6 +419,7 @@ function initHeroBackground(){
   const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(enableThreeHero){ /* initLowPoly(); */ return; }
   initParticles({ staticOnly: prefersReduced });
+  initRoleRotator(prefersReduced);
 }
 
 function initParticles({ staticOnly=false }={}){
@@ -501,3 +502,32 @@ function initParticles({ staticOnly=false }={}){
 
 // Placeholder for Option B
 function initLowPoly(){ /* future: lazy-load tiny WebGL/three implementation */ }
+
+// ================= Hero Role Rotator =================
+function initRoleRotator(prefersReduced){
+  const el = document.getElementById('roleRotator');
+  if(!el) return;
+  const roles = [
+    {en:'Data Scientist', fr:'Data Scientist'},
+    {en:'Data Analyst', fr:'Data Analyste'},
+    {en:'Econometrician', fr:'Économètre'},
+    {en:'Trading Analyst', fr:'Analyste Trading'}
+  ];
+  let idx = 0; let currentLang = document.documentElement.lang || 'en';
+  const interval = prefersReduced ? null : setInterval(()=>{
+    currentLang = document.documentElement.lang || 'en';
+    idx = (idx+1)%roles.length;
+    swapText(roles[idx][currentLang] || roles[idx].en);
+  }, 2600);
+  function swapText(txt){
+    if(prefersReduced){ el.textContent = txt; return; }
+    const old = el;
+    const fadeOut = old.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-8px)'}],{duration:260,easing:'ease',fill:'forwards'});
+    fadeOut.onfinish = () => {
+      old.textContent = txt;
+      old.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:320,easing:'cubic-bezier(.4,.7,.1,1)',fill:'forwards'});
+    };
+  }
+  // initial
+  el.textContent = roles[0][currentLang] || roles[0].en;
+}
