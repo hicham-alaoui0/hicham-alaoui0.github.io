@@ -4,7 +4,7 @@
     "issuer": "University of Michigan",
     "date": "2023-11-01",
     "displayDate": "Nov 2023",
-    "logo": "/assets/certs/umich.svg",
+  "logo": "/assets/certificats/university-of-michigan-seeklogo.svg",
     "verifyUrl": "https://coursera.org/verify/specialization/J9WD2EEGY4GE"
   },
   {
@@ -12,7 +12,7 @@
     "issuer": "DeepLearning.AI",
     "date": "2023-12-01",
     "displayDate": "Dec 2023",
-    "logo": "/assets/certs/deeplearning-ai.svg",
+  "logo": "/assets/certificats/dlai-logo.svg",
     "verifyUrl": "https://coursera.org/verify/8UCZ93RNGFBG"
   },
   {
@@ -20,7 +20,7 @@
     "issuer": "Google",
     "date": "2023-04-01",
     "displayDate": "Apr 2023",
-    "logo": "/assets/certs/google.svg",
+  "logo": "/assets/certificats/google-icon-logo-svgrepo-com.svg",
     "verifyUrl": "https://www.coursera.org/account/accomplishments/certificate/2WPJXSWPRW5U"
   },
   {
@@ -28,7 +28,7 @@
     "issuer": "IBM",
     "date": "2023-03-01",
     "displayDate": "Mar 2023",
-    "logo": "/assets/certs/ibm.svg",
+  "logo": "/assets/certificats/ibm-svgrepo-com.svg",
     "verifyUrl": "https://www.coursera.org/account/accomplishments/certificate/ZPFFUS53YT3R"
   }
 ]

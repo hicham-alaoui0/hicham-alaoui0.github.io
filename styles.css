@@ -130,7 +130,7 @@ mix-blend-mode:normal;}
 .cert-card:hover {transform:translateY(-2px);box-shadow:0 4px 14px -4px rgba(0,0,0,.2);} 
 @media (prefers-reduced-motion:reduce){.cert-card{transition:none;}.cert-card:hover{transform:none;}}
 .cert-top {display:flex;align-items:center;gap:.65rem;}
-.cert-logo {width:40px;height:40px;object-fit:contain;flex-shrink:0;filter:grayscale(.1) contrast(1.05);} 
+.cert-logo {width:46px;height:46px;object-fit:contain;flex-shrink:0;filter:grayscale(.05) contrast(1.05);} 
 .cert-title {font-size:.9rem;font-weight:600;line-height:1.25;}
 .cert-issuer {font-size:.7rem;letter-spacing:.05em;font-weight:600;text-transform:uppercase;color:#0e6e55;}
 .dark .cert-issuer {color:#34d399;}
