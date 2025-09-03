@@ -157,12 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('/data/profile.json')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(data => {
-      // Hero metrics
-      const metricsWrap = qs('#heroMetrics');
-      if (metricsWrap && Array.isArray(data.metrics)) {
-        metricsWrap.setAttribute('role','list');
-        metricsWrap.innerHTML = data.metrics.map((m,i) => `<span role="listitem" class="badge metric-counter" data-target="${m.value}" data-suffix="${m.suffix||''}" aria-label="${m.desc||m.label}" aria-live="polite">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
-      }
+  // (Hero KPI row now static—metrics hydration removed)
       // Experience timeline
       const expList = qs('#experienceList');
       if (expList && Array.isArray(data.experience)) {
@@ -268,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         langList.innerHTML = data.languages.map(l => `<li class="chip">${l}</li>`).join('');
       }
 
-      initCounters();
+  // initCounters removed (replaced by KPI animation)
   // After profile load, load certifications list
   hydrateCertifications();
     })
@@ -524,3 +519,24 @@ function initRoleRotator(prefersReduced){
   // initial
   el.textContent = roles[0][currentLang] || roles[0].en;
 }
+
+// ================= KPI Count Up =================
+(function animateKPIs(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+  const els = document.querySelectorAll('.kpi-value[data-target]');
+  if(!els.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return; const el=e.target; io.unobserve(el);
+      const raw = el.getAttribute('data-target')||el.textContent.trim();
+      const plus = /\+$/.test(raw); const end = Number(raw.replace(/[^\d.]/g,''))||0;
+      const dur = 800; const t0 = performance.now();
+      (function tick(now){
+        const p=Math.min(1,(now-t0)/dur); el.textContent = Math.round(end*p)+(plus?'+':'');
+        if(p<1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, {threshold:.6});
+  els.forEach(el=>io.observe(el));
+})();
