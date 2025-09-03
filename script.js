@@ -61,8 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     en: {
       'experience': 'Experience',
       'projects': 'Featured Projects',
-      'skills': 'Skills',
-  'about': 'About',
+  'skills': 'Skills',
       'certifications': 'Certifications',
       'languages': 'Languages',
       'contact': 'Contact',
@@ -78,8 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fr: {
       'experience': 'Expérience',
       'projects': 'Projets phares',
-      'skills': 'Compétences',
-  'about': 'À propos',
+  'skills': 'Compétences',
       'certifications': 'Certifications',
       'languages': 'Langues',
       'contact': 'Contact',
@@ -164,11 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (metricsWrap && Array.isArray(data.metrics)) {
         metricsWrap.setAttribute('role','list');
         metricsWrap.innerHTML = data.metrics.map((m,i) => `<span role="listitem" class="badge metric-counter" data-target="${m.value}" data-suffix="${m.suffix||''}" aria-label="${m.desc||m.label}" aria-live="polite">${m.value}${m.suffix||''} ${m.label}</span>`).join('');
-      }
-      // About
-      const aboutEl = qs('#aboutContent');
-      if (aboutEl && data.about?.narrative) {
-        aboutEl.innerHTML = `<p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">${data.about.narrative}</p>`;
       }
       // Experience timeline
       const expList = qs('#experienceList');
