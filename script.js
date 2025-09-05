@@ -315,9 +315,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Parallax hero
   const parallax = qs('.parallax-bg');
-  if(parallax){
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY * 0.25; parallax.style.transform = `translateY(${y}px)`; }, {passive:true});
+  const avatar = document.querySelector('.hero-avatar img');
+  if(parallax || avatar){
+    const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced){
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY * 0.25; if(parallax) parallax.style.transform = `translateY(${y}px)`;
+        if(avatar){ avatar.style.transform = `translateY(${Math.sin(window.scrollY/300)*6}px)`; }
+      }, {passive:true});
+    }
   }
 
   // Skills drawer toggle (after i18n application potential)
