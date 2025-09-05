@@ -24,9 +24,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Preload hero portrait for better LCP -->
+  <link rel="preload" as="image" href="/assets/images/profile/Generated%20Image%20September%2005,%202025%20-%209_02PM.jpeg">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#0e6e55',accent:'#a16f0b',neutral:{50:'#f8fafc',900:'#0b0f14'}},fontFamily:{sans:['Inter','system-ui','sans-serif'],heading:['"Plus Jakarta Sans"','Inter','system-ui','sans-serif']}}}};</script>
   <link rel="stylesheet" href="/styles.css" />
+  <!-- Float keyframes for portrait animation (respects motion-reduce via utility class) -->
+  <style>
+  @keyframes float{0%{transform:translateY(0) rotate(-0.3deg)}50%{transform:translateY(-6px) rotate(0.3deg)}100%{transform:translateY(0) rotate(-0.3deg)}}
+  </style>
   <script type="application/ld+json">{
     "@context":"https://schema.org",
     "@type":"Person",
@@ -71,42 +77,56 @@
       <div class="hero-canvas-wrap" aria-hidden="true">
         <canvas id="hero-bg" aria-hidden="true"></canvas>
       </div>
-      <!-- Floating profile avatar -->
-      <div class="hero-avatar" aria-hidden="true">
-        <img
-          src="/assets/images/profile/Generated%20Image%20September%2005,%202025%20-%209_02PM.jpeg"
-          width="240" height="240"
-          loading="lazy" decoding="async"
-          alt="Portrait of Hicham Alaoui" />
-      </div>
-      <div class="hero-content" data-reveal>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight">
-          <span class="block" data-i18n="hero.name">Hicham Alaoui</span>
-          <span id="roleRotator" class="mt-2 block text-primary role-rotator" aria-live="polite">Data Scientist</span>
-        </h1>
-  <p class="text-neutral-300 max-w-3xl mx-auto mt-6" data-i18n="hero.tagline">Quant-minded Data Scientist turning complex data into trustworthy, decision-grade analytics.</p>
-        <ul class="kpi-row mt-6" role="list" aria-label="Experience highlights" data-reveal>
-          <li class="kpi">
-            <div class="kpi-value" data-target="3">3</div>
-            <div class="kpi-label">Internships</div>
-            <div class="kpi-meta">Finance • NGO • Public sector</div>
-            <div class="kpi-meta">SG ATS, gaea21, HCP</div>
-          </li>
-          <li class="kpi">
-            <div class="kpi-value" data-target="4">4+</div>
-            <div class="kpi-label">Verified certifications</div>
-            <div class="kpi-meta">UMich • DeepLearning.AI • Google • IBM</div>
-          </li>
-          <li class="kpi">
-            <div class="kpi-value" data-target="3">3</div>
-            <div class="kpi-label">Languages</div>
-            <div class="kpi-meta">Arabic • French • English</div>
-          </li>
-        </ul>
-        <div class="flex flex-wrap justify-center gap-4 pt-8" aria-label="Primary actions" data-reveal>
-          <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic" data-i18n="cta.download" download>Download CV</a>
-          <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic" data-i18n="cta.email">Email me</a>
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-10 px-4">
+        <div class="hero-content md:text-left text-center" data-reveal>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight">
+            <span class="block" data-i18n="hero.name">Hicham Alaoui</span>
+            <span id="roleRotator" class="mt-2 block text-primary role-rotator" aria-live="polite">Data Scientist</span>
+          </h1>
+          <p class="text-neutral-300 max-w-3xl md:max-w-xl mx-auto md:mx-0 mt-6" data-i18n="hero.tagline">Quant-minded Data Scientist turning complex data into trustworthy, decision-grade analytics.</p>
+          <ul class="kpi-row mt-6" role="list" aria-label="Experience highlights" data-reveal>
+            <li class="kpi">
+              <div class="kpi-value" data-target="3">3</div>
+              <div class="kpi-label">Internships</div>
+              <div class="kpi-meta">Finance • NGO • Public sector</div>
+              <div class="kpi-meta">SG ATS, gaea21, HCP</div>
+            </li>
+            <li class="kpi">
+              <div class="kpi-value" data-target="4">4+</div>
+              <div class="kpi-label">Verified certifications</div>
+              <div class="kpi-meta">UMich • DeepLearning.AI • Google • IBM</div>
+            </li>
+            <li class="kpi">
+              <div class="kpi-value" data-target="3">3</div>
+              <div class="kpi-label">Languages</div>
+              <div class="kpi-meta">Arabic • French • English</div>
+            </li>
+          </ul>
+          <div class="flex flex-wrap md:justify-start justify-center gap-4 pt-8" aria-label="Primary actions" data-reveal>
+            <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic" data-i18n="cta.download" download>Download CV</a>
+            <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic" data-i18n="cta.email">Email me</a>
+          </div>
         </div>
+
+        <!-- HERO (image column) -->
+        <figure class="relative mx-auto w-56 sm:w-64 md:w-72 aspect-[4/5]" data-reveal>
+          <!-- soft gradient glow -->
+          <div class="absolute -inset-1 rounded-[28px] bg-gradient-to-tr from-emerald-600/35 via-emerald-300/15 to-amber-400/35 blur-xl"></div>
+
+          <!-- portrait -->
+          <picture>
+            <!-- AVIF/WebP can be added when assets are available -->
+            <img
+              src="/assets/images/profile/Generated%20Image%20September%2005,%202025%20-%209_02PM.jpeg"
+              alt="Headshot of Hicham Alaoui"
+              width="576" height="720"
+              class="relative h-full w-full rounded-[24px] object-cover shadow-[0_10px_30px_rgba(0,0,0,0.35)] ring-1 ring-white/10 [animation:float_8s_ease-in-out_infinite] motion-reduce:animate-none"
+              fetchpriority="high" decoding="async"
+            />
+          </picture>
+
+          <figcaption class="sr-only">Hicham Alaoui</figcaption>
+        </figure>
       </div>
       <noscript>
         <div class="hero-fallback" role="img" aria-label="Decorative gradient background"></div>
