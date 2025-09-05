@@ -313,15 +313,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('pointerleave', ()=> btn.style.transform='translate(0,0)');
   });
 
-  // Parallax hero
+  // Parallax hero (only if a .parallax-bg exists)
   const parallax = qs('.parallax-bg');
-  const avatar = document.querySelector('.hero-avatar img');
-  if(parallax || avatar){
+  if(parallax){
     const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!prefersReduced){
       window.addEventListener('scroll', () => {
-        const y = window.scrollY * 0.25; if(parallax) parallax.style.transform = `translateY(${y}px)`;
-        if(avatar){ avatar.style.transform = `translateY(${Math.sin(window.scrollY/300)*6}px)`; }
+        const y = window.scrollY * 0.25; parallax.style.transform = `translateY(${y}px)`;
       }, {passive:true});
     }
   }
