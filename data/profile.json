@@ -5,22 +5,60 @@
     "cv_url": "/CV/CV_2025_DS_AI.pdf"
   },
   "metrics": [
-    { "label": "+10% CAGR backtest", "value": 10, "suffix": "%", "desc": "XGBoost Trading" },
-    { "label": "92% accuracy", "value": 92, "suffix": "%", "desc": "FarmVision" },
-    { "label": "EVT pre-trade limits", "value": 12, "suffix": "M+", "desc": "Transactions analyzed" }
+    {
+      "label": "+10% CAGR backtest",
+      "value": 10,
+      "suffix": "%",
+      "desc": "XGBoost Trading"
+    },
+    {
+      "label": "92% accuracy",
+      "value": 92,
+      "suffix": "%",
+      "desc": "FarmVision"
+    },
+    {
+      "label": "EVT pre-trade limits",
+      "value": 12,
+      "suffix": "M+",
+      "desc": "Transactions analyzed"
+    }
   ],
   "experience": [
     {
+      "company": "SGCIB",
+      "role": "Equity Trading Analyst",
+      "dates": "Aug 2025 – Present",
+      "bullets": [
+        "Indexation strategy analysis: managing index tracking portfolios and rebalancing events",
+        "Performance attribution and corporate action impact analysis on equity indices",
+        "Automating execution monitoring tools and pre-trade analytics"
+      ],
+      "stack": [
+        "Python",
+        "SQL",
+        "VBA",
+        "Bloomberg"
+      ]
+    },
+    {
       "company": "SG ATS",
       "role": "Data Scientist (Intern)",
-      "dates": "Mar–Aug 2025",
+      "dates": "Feb 2025 – Aug 2025",
       "bullets": [
         "Real-time pre-trade limit recalibration freeing €1.8M RWA (TODO validate)",
         "EVT POT anomaly model 1.3% FP across 12M+ trades",
         "CI/CD (89% tests), Dockerized services, Grafana monitoring",
         "Reg control automation ↓ manual review time 80%"
       ],
-      "stack": ["EVT","Python","C++","Docker","Grafana","Streamlit"]
+      "stack": [
+        "EVT",
+        "Python",
+        "C++",
+        "Docker",
+        "Grafana",
+        "Streamlit"
+      ]
     },
     {
       "company": "GAEA21",
@@ -31,7 +69,12 @@
         "LSTM FR article generator → 20+ sustainability briefs",
         "Lightweight NLP microservice deployment"
       ],
-      "stack": ["LSTM","TensorFlow","NLP","Python"]
+      "stack": [
+        "LSTM",
+        "TensorFlow",
+        "NLP",
+        "Python"
+      ]
     },
     {
       "company": "HCP",
@@ -42,32 +85,93 @@
         "Poverty/welfare indicators (ARDL, ARIMA)",
         "Automated Power BI dashboards"
       ],
-      "stack": ["PostgreSQL","ARIMA","ARDL","Power BI"]
+      "stack": [
+        "PostgreSQL",
+        "ARIMA",
+        "ARDL",
+        "Power BI"
+      ]
     }
   ],
   "projects": [
     {
       "name": "FarmVision",
-      "tags": ["CV","ML","AgTech"],
+      "tags": [
+        "CV",
+        "ML",
+        "AgTech"
+      ],
       "summary": "Phyto-diagnostic vertical farming vision tool (transfer learning CNN).",
-      "impact": ["92% accuracy"],
-      "links": { "code": "#", "case": "#" }
+      "impact": [
+        "92% accuracy"
+      ],
+      "links": {
+        "code": "#",
+        "case": "#"
+      }
     },
     {
       "name": "XGBoost Trading",
-      "tags": ["Quant","Time Series"],
+      "tags": [
+        "Quant",
+        "Time Series"
+      ],
       "summary": "Intraday equity signal model with walk-forward CAGR >10%.",
-      "impact": ["+10% CAGR backtest"],
-      "links": { "code": "#", "case": "#" }
+      "impact": [
+        "+10% CAGR backtest"
+      ],
+      "links": {
+        "code": "#",
+        "case": "#"
+      }
     }
   ],
   "skills": {
-    "Modeling": ["EVT","XGBoost","LSTM","CNN","Time Series","NLP","ARIMA","ARDL"],
-    "Programming": ["Python","R","SQL","C++","Bash","VBA"],
-    "Quant Libs": ["NumPy","Pandas","SciPy","scikit-learn","TensorFlow","statsmodels"],
-    "Data Platforms": ["PostgreSQL","MySQL","Docker","Streamlit","Grafana","GitHub Actions"],
-    "BI/Viz": ["Power BI","Tableau","Grafana"],
-    "Soft Skills": ["Analytical","Communication","Stakeholder Alignment","Mentorship"]
+    "Modeling": [
+      "EVT",
+      "XGBoost",
+      "LSTM",
+      "CNN",
+      "Time Series",
+      "NLP",
+      "ARIMA",
+      "ARDL"
+    ],
+    "Programming": [
+      "Python",
+      "R",
+      "SQL",
+      "C++",
+      "Bash",
+      "VBA"
+    ],
+    "Quant Libs": [
+      "NumPy",
+      "Pandas",
+      "SciPy",
+      "scikit-learn",
+      "TensorFlow",
+      "statsmodels"
+    ],
+    "Data Platforms": [
+      "PostgreSQL",
+      "MySQL",
+      "Docker",
+      "Streamlit",
+      "Grafana",
+      "GitHub Actions"
+    ],
+    "BI/Viz": [
+      "Power BI",
+      "Tableau",
+      "Grafana"
+    ],
+    "Soft Skills": [
+      "Analytical",
+      "Communication",
+      "Stakeholder Alignment",
+      "Mentorship"
+    ]
   },
   "certs": [
     "Python for Everybody (UMich)",
@@ -76,9 +180,17 @@
     "Python Project for Data Science (IBM)"
   ],
   "education": [
-    { "institution": "INSEA", "program": "Engineering – Applied Economics, Statistics & Big Data", "years": "2022–2025" }
+    {
+      "institution": "INSEA",
+      "program": "Engineering – Applied Economics, Statistics & Big Data",
+      "years": "2022–2025"
+    }
   ],
-  "languages": ["Arabic","French","English"],
+  "languages": [
+    "Arabic",
+    "French",
+    "English"
+  ],
   "about": {
     "narrative": "TODO: Short narrative bridging quantitative markets analytics and sustainability data science."
   }
