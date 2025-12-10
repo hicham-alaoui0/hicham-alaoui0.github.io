@@ -71,35 +71,35 @@
   <a href="#main"
     class="skip-link absolute left-2 top-2 px-3 py-1 bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 rounded focus:outline-none focus:ring focus:ring-accent"
     data-i18n="skip.to.content">Skip to content</a>
-  <header
-    class="w-full backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200 dark:border-neutral-700 sticky top-0 z-50"
-    aria-label="Primary">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 py-3">
-      <div class="flex items-center gap-2">
-        <span class="text-lg font-heading font-semibold tracking-wide text-primary">Hicham Alaoui</span>
-        <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary"
-          data-i18n="badge.role">Data Scientist</span>
+  <header class="site-header" aria-label="Primary">
+    <div class="site-header-inner">
+      <!-- left: brand -->
+      <div class="nav-brand">
+        Hicham Alaoui
       </div>
-      <nav aria-label="Main navigation">
-        <button id="navToggle"
-          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200"
-          aria-expanded="false" aria-controls="navMenu"><span class="sr-only">Menu</span>☰</button>
-        <ul id="navMenu" class="hidden sm:flex flex-col sm:flex-row gap-6 font-medium" data-i18n-scope="nav">
-          <li><a href="#experience" class="nav-link" data-i18n="experience">Experience</a></li>
-          <li><a href="#projects" class="nav-link" data-i18n="projects">Projects</a></li>
-          <li><a href="#skills" class="nav-link" data-i18n="skills">Skills</a></li>
-          <li><a href="#certifications" class="nav-link" data-i18n="certifications">Certifications</a></li>
-          <li><a href="#languages" class="nav-link" data-i18n="languages">Languages</a></li>
-          <li><a href="#contact" class="nav-link" data-i18n="contact">Contact</a></li>
-        </ul>
+
+      <!-- middle: nav links (desktop) -->
+      <nav id="navMenu" class="nav-links hidden sm:flex" data-i18n-scope="nav">
+        <!-- keep existing <a> elements, just add class -->
+        <a href="#experience" class="nav-link" data-i18n="experience">Experience</a>
+        <a href="#projects" class="nav-link" data-i18n="projects">Projects</a>
+        <a href="#skills" class="nav-link" data-i18n="skills">Skills</a>
+        <a href="#certifications" class="nav-link" data-i18n="certifications">Certifications</a>
+        <a href="#languages" class="nav-link" data-i18n="languages">Languages</a>
+        <a href="#contact" class="nav-link" data-i18n="contact">Contact</a>
       </nav>
-      <div class="flex items-center gap-2">
+
+      <!-- right: theme / language / menu button -->
+      <div class="nav-actions flex items-center gap-4">
         <button id="langToggle"
           class="px-3 py-1 text-sm rounded border border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800"
           aria-label="Toggle language">FR</button>
         <button id="themeToggle"
           class="w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 flex items-center justify-center"
           aria-label="Toggle dark mode">🌙</button>
+        <button id="navToggle"
+          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200"
+          aria-expanded="false" aria-controls="navMenu"><span class="sr-only">Menu</span>☰</button>
       </div>
     </div>
   </header>
@@ -109,76 +109,335 @@
       <div class="hero-canvas-wrap" aria-hidden="true">
         <canvas id="hero-bg" aria-hidden="true"></canvas>
       </div>
-      <div class="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 pt-20 pb-12">
-        <div class="hero-content text-center w-full max-w-4xl" data-reveal>
-          <h1
-            class="text-4xl sm:text-6xl lg:text-8xl font-heading font-bold leading-none mb-6 text-white drop-shadow-2xl">
-            <span class="block mb-2" data-i18n="hero.name">Hicham Alaoui</span>
-            <span id="roleRotator"
-              class="block text-primary role-rotator text-2xl sm:text-3xl lg:text-4xl font-normal tracking-wider opacity-90"
-              aria-live="polite">EQD Trading Analyst & Data Scientist</span>
+      <div class="hero-grid">
+        <!-- Left column: title + tag line + CTA -->
+        <div class="hero-main">
+          <p class="hero-eyebrow" data-i18n="badge.role">EQD Trading Analyst & Data Scientist</p>
+
+          <h1 class="hero-title">
+            Hicham Alaoui – EQD Trading Analyst & Data Scientist
           </h1>
-          <p class="text-neutral-200 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed mb-10 drop-shadow-md font-light"
-            data-i18n="hero.tagline">Quant-minded Data Scientist turning complex data into trustworthy, decision-grade
-            analytics.</p>
 
-          <ul class="kpi-row mt-8 mx-auto justify-center gap-6" role="list" aria-label="Experience highlights"
-            data-reveal>
-            <li class="kpi backdrop-blur-md bg-black/40 border-white/10">
-              <div class="kpi-value text-primary" data-target="3">3</div>
-              <div class="kpi-label text-neutral-300">Internships</div>
-              <div class="kpi-meta text-neutral-400">Finance • NGO • Public</div>
-            </li>
-            <li class="kpi backdrop-blur-md bg-black/40 border-white/10">
-              <div class="kpi-value text-primary" data-target="4">4+</div>
-              <div class="kpi-label text-neutral-300">Certifications</div>
-              <div class="kpi-meta text-neutral-400">Top Institutions</div>
-            </li>
-            <li class="kpi backdrop-blur-md bg-black/40 border-white/10">
-              <div class="kpi-value text-primary" data-target="3">3</div>
-              <div class="kpi-label text-neutral-300">Languages</div>
-              <div class="kpi-meta text-neutral-400">Ar • Fr • En</div>
-            </li>
-          </ul>
+          <p class="hero-subline" data-i18n="hero.tagline">
+            Building pre-trade controls, EVT-based dynamic limits, and ML analytics for equity markets.
+          </p>
 
-          <div class="flex flex-wrap justify-center gap-6 pt-12" aria-label="Primary actions" data-reveal>
-            <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic px-8 py-3 text-lg" data-i18n="cta.download"
-              download="CV_Hicham_ALAOUI.pdf">Download CV</a>
-            <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic px-8 py-3 text-lg"
-              data-i18n="cta.email">Email me</a>
+          <div class="hero-cta-row">
+            <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic" data-i18n="cta.download"
+              download="CV_Hicham_ALAOUI.pdf">
+              Download CV
+            </a>
+
+            <a href="mailto:halaoui@insea.ac.ma" class="btn-ghost magnetic" data-i18n="cta.email">
+              Email me
+            </a>
           </div>
         </div>
+
+        <!-- Right column: metrics -->
+        <div class="hero-metrics" id="heroMetrics">
+          <!-- Metric 1: internships -->
+          <article class="metric-card">
+            <div class="metric-value">
+              <span class="metric-value-number" data-target="3">3</span>
+            </div>
+            <div class="metric-label">
+              Internships
+            </div>
+            <p class="metric-desc">
+              Finance • NGO • Public
+            </p>
+          </article>
+
+          <!-- Metric 2: certifications -->
+          <article class="metric-card">
+            <div class="metric-value">
+              <span class="metric-value-number" data-target="4">4</span><span class="metric-suffix">+</span>
+            </div>
+            <div class="metric-label">
+              Certifications
+            </div>
+            <p class="metric-desc">
+              Top Institutions
+            </p>
+          </article>
+
+          <!-- Metric 3: languages -->
+          <article class="metric-card">
+            <div class="metric-value">
+              <span class="metric-value-number" data-target="3">3</span>
+            </div>
+            <div class="metric-label">
+              Languages
+            </div>
+            <p class="metric-desc">
+              Ar • Fr • En
+            </p>
+          </article>
+        </div>
+      </div>
+      </ul>
+
+      <div class="flex flex-wrap justify-center gap-6 pt-12" aria-label="Primary actions" data-reveal>
+        <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic px-8 py-3 text-lg" data-i18n="cta.download"
+          download="CV_Hicham_ALAOUI.pdf">Download CV</a>
+        <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic px-8 py-3 text-lg"
+          data-i18n="cta.email">Email me</a>
+      </div>
+      </div>
       </div>
       <noscript>
         <div class="hero-fallback" role="img" aria-label="Decorative gradient background"></div>
       </noscript>
     </section>
     <!-- Experience -->
-    <section id="experience" class="section">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="experience">Experience</h2>
-        </div>
-        <ol id="experienceList" class="timeline" aria-label="Experience timeline"></ol>
+    <section id="experience" class="section-shell">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="experience">Experience</h2>
+        <p class="section-subtitle">
+          EQD trading, risk tooling, and data science internships across banking, NGO, and public sector.
+        </p>
       </div>
+
+      <ol class="experience-timeline">
+        <!-- Item 1 -->
+        <li class="experience-item">
+          <div class="experience-meta">
+            <span class="experience-role">EQD Trading Analyst</span>
+            <span class="experience-company">Société Générale ATS</span>
+            <span class="experience-dates">Aug 2025 – Present</span>
+          </div>
+          <ul class="experience-bullets">
+            <li>Monitor equity & equity-derivatives flows and pre-trade controls for EQD desks (market access,
+              fat-finger checks, limits).</li>
+            <li>Produce daily and ad-hoc analytics on limit consumption, breaches, and trading-access incidents for
+              front-office and risk.</li>
+            <li>Maintain and extend Python/Excel tools used by desks for what-if analysis, parameterization, and
+              post-trade investigations.</li>
+          </ul>
+        </li>
+
+        <!-- Item 2 -->
+        <li class="experience-item">
+          <div class="experience-meta">
+            <span class="experience-role">Data Engineer Intern – Market Access</span>
+            <span class="experience-company">Société Générale ATS</span>
+            <span class="experience-dates">Feb 2025 – Aug 2025</span>
+          </div>
+          <ul class="experience-bullets">
+            <li>Designed a Peaks-over-Threshold EVT engine to calibrate dynamic pre-trade limits (size/price) on equity
+              markets.</li>
+            <li>Built Python + SQL pipelines to ingest trading-access logs and 'bypasser' events into clean,
+              analytics-ready tables.</li>
+            <li>Developed Streamlit dashboards for limit monitoring, fat-tail backtests, and Kupiec-style exception
+              diagnostics.</li>
+            <li>Industrialized the stack with containerization and CI/CD (Docker, GitHub Actions) to keep risk tools
+              reproducible.</li>
+          </ul>
+        </li>
+
+        <!-- Item 3 -->
+        <li class="experience-item">
+          <div class="experience-meta">
+            <span class="experience-role">Data Scientist Intern</span>
+            <span class="experience-company">gaea21 (NGO, Geneva)</span>
+            <span class="experience-dates">Jun 2024 – Sep 2024</span>
+          </div>
+          <ul class="experience-bullets">
+            <li>Built CO₂ emissions prediction models for Swiss agriculture from multi-source time series and panel
+              data.</li>
+            <li>Implemented an LSTM-based French article generator producing sustainability briefs for the gaea21
+              website.</li>
+            <li>Packaged models into a lightweight Python API used by non-technical staff for scenario exploration.</li>
+          </ul>
+        </li>
+
+        <!-- Item 4 -->
+        <li class="experience-item">
+          <div class="experience-meta">
+            <span class="experience-role">Data Analyst Intern</span>
+            <span class="experience-company">Haut-Commissariat au Plan (HCP, Morocco)</span>
+            <span class="experience-dates">Jul 2023 – Aug 2023</span>
+          </div>
+          <ul class="experience-bullets">
+            <li>Cleaned and migrated household survey microdata into PostgreSQL for poverty and welfare analysis.</li>
+            <li>Produced ARIMA/ARDL-based indicators and dashboards on poverty and labour-market dynamics.</li>
+            <li>Automated Power BI dashboards for internal stakeholders (data refresh, filters, and export).</li>
+          </ul>
+        </li>
+      </ol>
     </section>
     <!-- Featured Projects -->
-    <section id="projects" class="section">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
-        </div>
-        <div id="projectFilters" class="filters-row flex flex-wrap gap-2 mb-6" aria-label="Project filters"></div>
-        <div id="projectsGrid" class="grid gap-8 md:grid-cols-2"></div>
+    <section id="projects" class="section-shell">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
+        <p class="section-subtitle">
+          Risk dashboards, trading signals, emissions modeling, and applied ML / econometrics.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <header>
+            <h3 class="project-title">Dynamic Limits – EVT Risk Dashboard</h3>
+            <div class="metric-badges">
+              <span class="metric">POT EVT</span>
+              <span class="metric">Intraday limits</span>
+            </div>
+          </header>
+          <p class="project-problem"><strong>Problem:</strong> Static pre-trade limits failed to capture intraday
+            volatility spikes.</p>
+          <p class="project-approach"><strong>Approach:</strong> Designed a Peaks-over-Threshold Extreme Value Theory
+            engine to calibrate size/price limits.</p>
+          <p class="project-impact"><strong>Impact:</strong> Reduced false alarms by 40% while maintaining safety
+            coverage during varied market regimes.</p>
+          <div class="stack-row">
+            <span>Python</span><span>Streamlit</span><span>PostgreSQL</span><span>EVT</span>
+          </div>
+          <div class="project-links">
+            <!-- No links in profile.json so using placeholder or omitting -->
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <header>
+            <h3 class="project-title">XGBoost Trading Signals</h3>
+            <div class="metric-badges">
+              <span class="metric">62% Accuracy</span>
+              <span class="metric">Alpha</span>
+            </div>
+          </header>
+          <p class="project-problem"><strong>Problem:</strong> Capturing short-term alpha from high-frequency order book
+            data.</p>
+          <p class="project-approach"><strong>Approach:</strong> Developed an ML pipeline using XGBoost on order book
+            imbalance and flow features.</p>
+          <p class="project-impact"><strong>Impact:</strong> Achieved 62% directional accuracy out-of-sample for
+            short-term price movements.</p>
+          <div class="stack-row">
+            <span>Python</span><span>Pandas</span><span>Scikit-earn</span><span>XGBoost</span>
+          </div>
+          <div class="project-links"></div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <header>
+            <h3 class="project-title">FarmVision – Computer Vision for Agriculture</h3>
+            <div class="metric-badges">
+              <span class="metric">Edge AI</span>
+              <span class="metric">95% Recall</span>
+            </div>
+          </header>
+          <p class="project-problem"><strong>Problem:</strong> Early detection of crop diseases is manual and slow.</p>
+          <p class="project-approach"><strong>Approach:</strong> Fine-tuned ResNet50 CNNs for leaf image classification,
+            deployed on Raspberry Pi.</p>
+          <p class="project-impact"><strong>Impact:</strong> Real-time monitoring capability with 95% recall for early
+            intervention.</p>
+          <div class="stack-row">
+            <span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>Raspberry Pi</span>
+          </div>
+          <div class="project-links"></div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <header>
+            <h3 class="project-title">CO2 Emissions Prediction</h3>
+            <div class="metric-badges">
+              <span class="metric">Forecasting</span>
+              <span class="metric">Policy</span>
+            </div>
+          </header>
+          <p class="project-problem"><strong>Problem:</strong> Lack of granular forecast models for Swiss agricultural
+            emissions.</p>
+          <p class="project-approach"><strong>Approach:</strong> Built ARIMA and ARDL time-series models using
+            multi-source panel data.</p>
+          <p class="project-impact"><strong>Impact:</strong> Identified livestock and fertilizer as key drivers,
+            informing NGO policy strategy.</p>
+          <div class="stack-row">
+            <span>R</span><span>Python</span><span>Time Series</span><span>Econometrics</span>
+          </div>
+          <div class="project-links"></div>
+        </article>
       </div>
     </section>
     <!-- Skills -->
-    <section id="skills" class="section">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="skills">Skills</h2>
+    <section id="skills" class="section-shell">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="skills">Skills</h2>
+        <p class="section-subtitle">
+          Modeling, programming, data platforms, and visualization for quant & DS work.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Group 1: Modeling -->
+        <div class="skill-group">
+          <h3 class="skill-group-title">Modeling</h3>
+          <div class="skill-chips">
+            <span class="skill-chip">EVT (Peaks-over-Threshold)</span>
+            <span class="skill-chip">Time Series (ARIMA, GARCH, ARDL)</span>
+            <span class="skill-chip">Derivatives Pricing (Black-Scholes)</span>
+            <span class="skill-chip">Optimization</span>
+            <span class="skill-chip">Machine Learning</span>
+          </div>
         </div>
-        <div id="skillsContainer" class="skill-groups grid gap-8 md:grid-cols-3"></div>
+
+        <!-- Group 2: Programming -->
+        <div class="skill-group">
+          <h3 class="skill-group-title">Programming</h3>
+          <div class="skill-chips">
+            <span class="skill-chip">Python (Pandas, NumPy, Scikit-learn)</span>
+            <span class="skill-chip">R (Tidyverse, tsibble)</span>
+            <span class="skill-chip">SQL (PostgreSQL, CTEs)</span>
+            <span class="skill-chip">VBA / Excel</span>
+          </div>
+        </div>
+
+        <!-- Group 3: Technologies -->
+        <div class="skill-group">
+          <h3 class="skill-group-title">Technologies</h3>
+          <div class="skill-chips">
+            <span class="skill-chip">Git / GitHub</span>
+            <span class="skill-chip">Docker</span>
+            <span class="skill-chip">Linux / Bash</span>
+            <span class="skill-chip">Streamlit</span>
+            <span class="skill-chip">HTML / CSS</span>
+          </div>
+        </div>
+
+        <!-- Group 4: Data Platforms -->
+        <div class="skill-group">
+          <h3 class="skill-group-title">Data Platforms</h3>
+          <div class="skill-chips">
+            <span class="skill-chip">Azure Data Studio</span>
+            <span class="skill-chip">Palantir Foundry (User)</span>
+            <span class="skill-chip">PostgreSQL</span>
+          </div>
+        </div>
+
+        <!-- Group 5: BI & Visualization -->
+        <div class="skill-group">
+          <h3 class="skill-group-title">BI & Visualization</h3>
+          <div class="skill-chips">
+            <span class="skill-chip">Power BI (DAX)</span>
+            <span class="skill-chip">Tableau</span>
+            <span class="skill-chip">Matplotlib / Seaborn</span>
+          </div>
+        </div>
+
+        <!-- Group 6: Soft Skills -->
+        <div class="skill-group">
+          <h3 class="skill-group-title">Soft Skills</h3>
+          <div class="skill-chips">
+            <span class="skill-chip">Quantitative Research</span>
+            <span class="skill-chip">Stress Management</span>
+            <span class="skill-chip">Bilingual Communication (FR/EN)</span>
+            <span class="skill-chip">Problem Solving</span>
+          </div>
+        </div>
       </div>
     </section>
     <!-- Certifications -->
@@ -204,44 +463,54 @@
       </div>
     </section>
     <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="contact">Contact</h2>
-        </div>
-        <div class="grid gap-8 md:grid-cols-2">
-          <form id="contactForm" class="space-y-4" action="https://formspree.io/f/yourid" method="POST" novalidate>
-            <div>
-              <label for="name" class="form-label" data-i18n="label.name">Name</label>
-              <input id="name" name="name" required autocomplete="name" class="form-input" />
-            </div>
-            <div>
-              <label for="email" class="form-label" data-i18n="label.email">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email" class="form-input" />
-            </div>
-            <div>
-              <label for="message" class="form-label" data-i18n="label.message">Message</label>
-              <textarea id="message" name="message" required class="form-textarea" rows="5"></textarea>
-            </div>
-            <button type="submit" class="btn-primary w-full" data-i18n="cta.send">Send</button>
-            <p id="formStatus" class="text-sm" aria-live="polite"></p>
-          </form>
-          <div class="space-y-4" aria-label="Social links">
-            <p class="text-sm text-neutral-600 dark:text-neutral-400"><span data-i18n="label.direct">Direct:</span> <a
-                href="mailto:halaoui@insea.ac.ma" class="underline">halaoui@insea.ac.ma</a></p>
-            <ul class="flex gap-4 text-primary">
-              <li><a href="https://www.linkedin.com/in/hicham-alaoui-08ba35206" aria-label="LinkedIn"
-                  class="hover:underline">LinkedIn</a></li>
-              <li><a href="https://github.com/hicham-alaoui0" aria-label="GitHub" class="hover:underline">GitHub</a>
-              </li>
-            </ul>
+    <!-- Contact -->
+    <section id="contact" class="section-shell">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="contact">Contact</h2>
+        <p class="section-subtitle">
+          Best way to reach me for roles, collaborations, or questions about my work.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Left: info / direct email -->
+        <aside class="contact-card">
+          <p>
+            <strong data-i18n="label.direct">Direct:</strong>
+            <span>halaoui@insea.ac.ma</span>
+          </p>
+          <p style="margin-top: 0.6rem;">
+            I’m open to Data Science / Quant / Risk roles, internships, or research collaborations.
+          </p>
+          <div class="mt-4 flex gap-4 text-accent">
+            <a href="https://www.linkedin.com/in/hicham-alaoui-08ba35206" aria-label="LinkedIn"
+              class="hover:underline">LinkedIn</a>
+            <a href="https://github.com/hicham-alaoui0" aria-label="GitHub" class="hover:underline">GitHub</a>
           </div>
-        </div>
+        </aside>
+
+        <!-- Right: form -->
+        <form class="contact-form" action="https://formspree.io/f/yourid" method="POST">
+          <div>
+            <label for="name" data-i18n="label.name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div>
+            <label for="email" data-i18n="label.email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div>
+            <label for="message" data-i18n="label.message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" data-i18n="cta.send">Send</button>
+        </form>
       </div>
     </section>
   </main>
-  <footer class="py-8 border-t border-neutral-200 dark:border-neutral-700 text-sm" aria-label="Footer">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between gap-4">
+
+  <footer class="site-footer" aria-label="Footer">
+    <div class="site-footer-links">
       <p>&copy; <span id="year"></span> Hicham Alaoui.</p>
       <p class="text-neutral-500">Built with accessible, performant vanilla JS + Tailwind.</p>
     </div>
