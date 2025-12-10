@@ -1,91 +1,94 @@
 {
   "hero": {
-    "headline": "Hicham Alaoui — Data Scientist & Econometrics-driven problem solver.",
-    "subline": "TODO refine: Building quant risk & sustainability ML systems (EVT limits, CO₂ forecasting, trading models).",
+    "headline": "Hicham Alaoui — EQD Trading Analyst & Data Scientist",
+    "subline": "Bridging equity trading desks and data engineering: pre-trade controls, dynamic limits (EVT), and analytics for market access.",
     "cv_url": "/CV/CV_2025_DS_AI.pdf"
   },
   "metrics": [
     {
-      "label": "+10% CAGR backtest",
-      "value": 10,
-      "suffix": "%",
-      "desc": "XGBoost Trading"
+      "label": "Real-world domains",
+      "value": 4,
+      "suffix": "+",
+      "desc": "Banking, trading, NGO, and public-sector analytics."
     },
     {
-      "label": "92% accuracy",
-      "value": 92,
-      "suffix": "%",
-      "desc": "FarmVision"
+      "label": "End-to-end ML projects",
+      "value": 6,
+      "suffix": "+",
+      "desc": "From EVT risk tooling to CO₂ forecasting and trading signals."
     },
     {
-      "label": "EVT pre-trade limits",
-      "value": 12,
-      "suffix": "M+",
-      "desc": "Transactions analyzed"
+      "label": "Languages spoken",
+      "value": 3,
+      "suffix": "",
+      "desc": "Arabic, French, English."
     }
   ],
   "experience": [
     {
-      "company": "SGCIB",
-      "role": "Equity Trading Analyst",
+      "company": "Société Générale ATS",
+      "role": "EQD Trading Analyst",
       "dates": "Aug 2025 – Present",
       "bullets": [
-        "Indexation strategy analysis: managing index tracking portfolios and rebalancing events",
-        "Performance attribution and corporate action impact analysis on equity indices",
-        "Automating execution monitoring tools and pre-trade analytics"
+        "Monitor equity & equity-derivatives flows and pre-trade controls for EQD desks (market access, fat-finger checks, limits).",
+        "Produce daily and ad-hoc analytics on limit consumption, breaches, and trading-access incidents for front-office and risk.",
+        "Maintain and extend Python/Excel tools used by desks for what-if analysis, parameterization, and post-trade investigations."
       ],
       "stack": [
         "Python",
         "SQL",
         "VBA",
-        "Bloomberg"
+        "Bloomberg",
+        "FactSet"
       ]
     },
     {
-      "company": "SG ATS",
-      "role": "Data Scientist (Intern)",
+      "company": "Société Générale ATS",
+      "role": "Data Engineer Intern – Market Access",
       "dates": "Feb 2025 – Aug 2025",
       "bullets": [
-        "Real-time pre-trade limit recalibration freeing €1.8M RWA (TODO validate)",
-        "EVT POT anomaly model 1.3% FP across 12M+ trades",
-        "CI/CD (89% tests), Dockerized services, Grafana monitoring",
-        "Reg control automation ↓ manual review time 80%"
+        "Designed a Peaks-over-Threshold EVT engine to calibrate dynamic pre-trade limits (size/price) on equity markets.",
+        "Built Python + SQL pipelines to ingest trading-access logs and 'bypasser' events into clean, analytics-ready tables.",
+        "Developed Streamlit dashboards for limit monitoring, fat-tail backtests, and Kupiec-style exception diagnostics.",
+        "Industrialized the stack with containerization and CI/CD (Docker, GitHub Actions) to keep risk tools reproducible."
       ],
       "stack": [
-        "EVT",
         "Python",
-        "C++",
+        "SQL",
+        "EVT",
+        "Streamlit",
         "Docker",
-        "Grafana",
-        "Streamlit"
+        "GitHub Actions"
       ]
     },
     {
-      "company": "GAEA21",
-      "role": "Data Scientist (Intern)",
-      "dates": "Jun–Sep 2024",
+      "company": "gaea21 (NGO, Geneva)",
+      "role": "Data Scientist Intern",
+      "dates": "Jun 2024 – Sep 2024",
       "bullets": [
-        "CO₂ emissions predictive modeling (50k obs)",
-        "LSTM FR article generator → 20+ sustainability briefs",
-        "Lightweight NLP microservice deployment"
+        "Built CO₂ emissions prediction models for Swiss agriculture from multi-source time series and panel data.",
+        "Implemented an LSTM-based French article generator producing sustainability briefs for the gaea21 website.",
+        "Packaged models into a lightweight Python API used by non-technical staff for scenario exploration."
       ],
       "stack": [
-        "LSTM",
+        "Python",
+        "Pandas",
+        "scikit-learn",
         "TensorFlow",
-        "NLP",
-        "Python"
+        "NLP"
       ]
     },
     {
-      "company": "HCP",
-      "role": "Data Analyst (Intern)",
-      "dates": "Jul–Aug 2023",
+      "company": "Haut-Commissariat au Plan (HCP, Morocco)",
+      "role": "Data Analyst Intern",
+      "dates": "Jul 2023 – Aug 2023",
       "bullets": [
-        "1M record migration to PostgreSQL → latency ↓40%",
-        "Poverty/welfare indicators (ARDL, ARIMA)",
-        "Automated Power BI dashboards"
+        "Cleaned and migrated household survey microdata into PostgreSQL for poverty and welfare analysis.",
+        "Produced ARIMA/ARDL-based indicators and dashboards on poverty and labour-market dynamics.",
+        "Automated Power BI dashboards for internal stakeholders (data refresh, filters, and export)."
       ],
       "stack": [
+        "R",
         "PostgreSQL",
         "ARIMA",
         "ARDL",
@@ -95,15 +98,16 @@
   ],
   "projects": [
     {
-      "name": "FarmVision",
+      "name": "Dynamic Limits – EVT Risk Dashboard",
       "tags": [
-        "CV",
-        "ML",
-        "AgTech"
+        "Quant Risk",
+        "EVT",
+        "Streamlit"
       ],
-      "summary": "Phyto-diagnostic vertical farming vision tool (transfer learning CNN).",
+      "summary": "Internal POC for dynamic pre-trade limits calibration using Peaks-over-Threshold EVT and historical trading data.",
       "impact": [
-        "92% accuracy"
+        "Calibrates fat-tail-aware thresholds for price/size based on POT EVT on intraday returns.",
+        "Interactive Streamlit app for per-desk limit visualization, backtests, and exception drill-down."
       ],
       "links": {
         "code": "#",
@@ -111,14 +115,50 @@
       }
     },
     {
-      "name": "XGBoost Trading",
+      "name": "XGBoost Trading Signals",
       "tags": [
         "Quant",
-        "Time Series"
+        "Time Series",
+        "XGBoost"
       ],
-      "summary": "Intraday equity signal model with walk-forward CAGR >10%.",
+      "summary": "Research code for short-horizon equity signal generation using engineered features and walk-forward validation.",
       "impact": [
-        "+10% CAGR backtest"
+        "Feature pipeline mixing technical indicators, volatility regimes, and calendar effects.",
+        "Walk-forward cross-validation with realistic train/test splits and transaction-cost-aware metrics."
+      ],
+      "links": {
+        "code": "#",
+        "case": "#"
+      }
+    },
+    {
+      "name": "FarmVision – Crop Stress Detection",
+      "tags": [
+        "Computer Vision",
+        "AgTech",
+        "CNN"
+      ],
+      "summary": "Image-based detection of leaf stress and disease for controlled-environment agriculture using transfer learning.",
+      "impact": [
+        "Transfer-learning CNN fine-tuned on curated plant-image datasets.",
+        "Deployed as a small inference API that can be queried from notebooks or dashboards."
+      ],
+      "links": {
+        "code": "#",
+        "case": "#"
+      }
+    },
+    {
+      "name": "CO₂ Emissions Explorer – Swiss Agriculture",
+      "tags": [
+        "Time Series",
+        "Panel Data",
+        "Sustainability"
+      ],
+      "summary": "Econometric and ML models for agricultural emissions, with decomposition by sub-sector and scenario analysis.",
+      "impact": [
+        "Built reproducible pipeline from FAOSTAT-style data to feature store and model evaluation.",
+        "Interactive notebook-style reports for policy scenarios and feature importance."
       ],
       "links": {
         "code": "#",
@@ -128,14 +168,13 @@
   ],
   "skills": {
     "Modeling": [
-      "EVT",
-      "XGBoost",
-      "LSTM",
-      "CNN",
-      "Time Series",
-      "NLP",
-      "ARIMA",
-      "ARDL"
+      "Extreme Value Theory (POT)",
+      "Time Series (ARIMA, GARCH)",
+      "Panel Econometrics (fixed/random effects)",
+      "Tree Ensembles (XGBoost, Random Forest)",
+      "LSTM / RNNs",
+      "CNNs for vision",
+      "NLP (embeddings, sequence models)"
     ],
     "Programming": [
       "Python",
@@ -145,45 +184,45 @@
       "Bash",
       "VBA"
     ],
-    "Quant Libs": [
+    "Quant & DS Libraries": [
       "NumPy",
       "Pandas",
       "SciPy",
       "scikit-learn",
-      "TensorFlow",
+      "TensorFlow / Keras",
       "statsmodels"
     ],
-    "Data Platforms": [
+    "Data Platforms & Tooling": [
       "PostgreSQL",
       "MySQL",
       "Docker",
       "Streamlit",
-      "Grafana",
+      "Git",
       "GitHub Actions"
     ],
-    "BI/Viz": [
+    "BI & Visualization": [
       "Power BI",
       "Tableau",
-      "Grafana"
+      "Matplotlib / Seaborn"
     ],
     "Soft Skills": [
-      "Analytical",
-      "Communication",
-      "Stakeholder Alignment",
-      "Mentorship"
+      "Stakeholder communication (traders, risk, IT)",
+      "Problem framing & scoping",
+      "Storytelling with data",
+      "Mentoring & knowledge sharing"
     ]
   },
   "certs": [
-    "Python for Everybody (UMich)",
     "Neural Networks & Deep Learning (DeepLearning.AI)",
+    "Python for Everybody Specialization (University of Michigan)",
     "Prepare Data for Exploration (Google)",
     "Python Project for Data Science (IBM)"
   ],
   "education": [
     {
-      "institution": "INSEA",
-      "program": "Engineering – Applied Economics, Statistics & Big Data",
-      "years": "2022–2025"
+      "institution": "INSEA, Rabat",
+      "program": "Engineering – Applied Economics, Statistics & Big Data (EASBD)",
+      "years": "2022–2025 (expected)"
     }
   ],
   "languages": [
@@ -192,6 +231,6 @@
     "English"
   ],
   "about": {
-    "narrative": "TODO: Short narrative bridging quantitative markets analytics and sustainability data science."
+    "narrative": "EQD trading analyst and data scientist trained at INSEA, building EVT-based risk tooling, pre-trade controls, and ML projects across finance, emissions, and public policy."
   }
 }

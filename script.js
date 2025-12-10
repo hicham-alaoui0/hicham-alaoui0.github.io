@@ -62,38 +62,52 @@ document.addEventListener('DOMContentLoaded', () => {
       'experience': 'Experience',
       'projects': 'Featured Projects',
       'skills': 'Skills',
-      'certifications': 'Certifications',
+      'certifications': 'Education & Certifications',
       'languages': 'Languages',
       'contact': 'Contact',
       'see.all': 'See all',
-      'hero.role': 'Data Scientist & Econometrics-driven problem solver for markets and sustainability.',
-      'hero.tagline': 'Quant-minded Data Scientist turning complex data into trustworthy, decision-grade analytics.',
+      'hero.role': 'EQD Trading Analyst & Data Scientist',
+      'hero.tagline': 'Building pre-trade controls, EVT-based dynamic limits, and ML analytics for equity markets.',
       'cta.download': 'Download CV',
       'cta.email': 'Email me',
       'cta.send': 'Send',
-      'badge.role': 'Data Scientist',
+      'badge.role': 'EQD Trading Analyst · Data Scientist',
       'skip.to.content': 'Skip to content'
     },
     fr: {
       'experience': 'Expérience',
       'projects': 'Projets phares',
       'skills': 'Compétences',
-      'certifications': 'Certifications',
+      'certifications': 'Éducation & certifications',
       'languages': 'Langues',
       'contact': 'Contact',
       'see.all': 'Voir tout',
-      'hero.role': 'Data Scientist & résolveur de problèmes économétriques pour marchés et durabilité.',
-      'hero.tagline': 'Data Scientist orienté quant, transformant des données complexes en analyses fiables et décisionnelles.',
-      'cta.download': 'Télécharger CV',
+      'hero.role': 'Analyste EQD Trading & Data Scientist',
+      'hero.tagline': 'Conçoit des contrôles pré-trade, des limites dynamiques basées sur l’EVT et des analyses ML pour les marchés actions.',
+      'cta.download': 'Télécharger le CV',
       'cta.email': 'M’écrire',
       'cta.send': 'Envoyer',
-      'badge.role': 'Data Scientist',
+      'badge.role': 'Analyste EQD Trading · Data Scientist',
       'skip.to.content': 'Aller au contenu'
     }
   };
+
   // Extended i18n keys (education & form labels)
-  Object.assign(dict.en, { 'education': 'Education', 'label.name': 'Name', 'label.email': 'Email', 'label.message': 'Message', 'label.direct': 'Direct:' });
-  Object.assign(dict.fr, { 'education': 'Éducation', 'label.name': 'Nom', 'label.email': 'Email', 'label.message': 'Message', 'label.direct': 'Direct :' });
+  Object.assign(dict.en, {
+    'education': 'Education',
+    'label.name': 'Name',
+    'label.email': 'Email',
+    'label.message': 'Message',
+    'label.direct': 'Direct:'
+  });
+
+  Object.assign(dict.fr, {
+    'education': 'Éducation',
+    'label.name': 'Nom',
+    'label.email': 'Email',
+    'label.message': 'Message',
+    'label.direct': 'Direct :'
+  });
 
   const langToggle = qs('#langToggle');
   const applyLang = (lang) => {
