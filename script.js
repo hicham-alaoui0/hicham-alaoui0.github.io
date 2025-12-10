@@ -164,11 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Service worker registration (PWA basic)
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js').catch(() => { });
+    navigator.serviceWorker.register('./service-worker.js').catch(() => { });
   }
 
   // Dynamic data hydration from profile.json
-  fetch('/data/profile.json')
+  fetch('./data/profile.json')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(data => {
       // (Hero KPI row now static—metrics hydration removed)
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Load & render certifications grid + JSON-LD
 function hydrateCertifications() {
-  fetch('/data/certifications.json')
+  fetch('./data/certifications.json')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(list => {
       const grid = document.getElementById('certGrid');
