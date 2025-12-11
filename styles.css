@@ -13,30 +13,6 @@ html {
   left: 0;
 }
 
-.section {
-  padding: 4rem 0;
-}
-
-.section-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-
-  /* Design system additions complementing Tailwind */
-  /* Utilities & custom components */
-  html {
-    scroll-padding-top: 72px;
-  }
-
-  .skip-link {
-    position: absolute;
-    left: -999px;
-  }
-
-  .skip-link:focus {
-    left: 0;
-  }
-
   .section {
     padding: 4rem 0;
   }
