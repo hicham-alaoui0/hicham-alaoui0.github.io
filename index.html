@@ -1,544 +1,626 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="light">
+<html lang="en" class="scroll-smooth" data-theme="dark">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hicham Alaoui · Data Scientist & Econometrics-driven problem solver</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hicham Alaoui · EQD Trading Analyst & Data Scientist</title>
   <meta name="description"
-    content="Portfolio – Data Scientist & Econometrics-driven problem solver for markets and sustainability. Quant ML, EVT risk, trading algorithms, CO₂ modeling." />
+    content="Portfolio of Hicham Alaoui – EQD Trading Analyst & Data Scientist. Specializing in pre-trade controls, EVT-based risk modeling, and machine learning for finance and sustainability.">
   <meta name="keywords"
-    content="Data Scientist, Econometrics, Quant, EVT, Trading Algorithm, CO2 Emissions, Risk, Machine Learning" />
-  <link rel="canonical" href="https://hicham-alaoui0.github.io/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Hicham Alaoui · Data Scientist" />
+    content="Data Scientist, Quant, Trading Analyst, EVT, Risk Management, Machine Learning, Python, Hicham Alaoui">
+  <link rel="canonical" href="https://hicham-alaoui0.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hicham Alaoui · Quant & Data Scientist">
   <meta property="og:description"
-    content="Data Scientist & Econometrics-driven problem solver for markets and sustainability." />
-  <meta property="og:url" content="https://hicham-alaoui0.github.io/" />
-  <meta property="og:image" content="/assets/images/hero-bg.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0e6e55" />
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/icon-192x192.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Fonts: Plus Jakarta Sans (headings), Inter (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    content="Building pre-trade controls, dynamic limits, and ML analytics for equity markets.">
+  <meta property="og:url" content="https://hicham-alaoui0.github.io/">
+  <meta property="og:image" content="/assets/images/hero-bg.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Icons & Fonts -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/icon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap">
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <!-- Preload hero portrait for better LCP -->
-  <link rel="preload" as="image"
-    href="./assets/images/profile/Generated%20Image%20September%2005,%202025%20-%209_02PM.jpeg">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind (CDN for portability as requested) & Custom CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#D4AF37', accent: '#F5F5F7', neutral: { 50: '#F5F5F7', 900: '#050505' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], heading: ['"Playfair Display"', 'serif'] } } } };</script>
-  <link rel="stylesheet" href="./styles.css" />
-  <!-- Float keyframes for portrait animation (respects motion-reduce via utility class) -->
-  <style>
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(-0.3deg)
-      }
-
-      50% {
-        transform: translateY(-6px) rotate(0.3deg)
-      }
-
-      100% {
-        transform: translateY(0) rotate(-0.3deg)
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            bg: 'var(--bg)',
+            surface: 'var(--surface)',
+            muted: 'var(--text-muted)',
+            accent: 'var(--accent)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
       }
     }
-  </style>
-  <script type="application/ld+json">{
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Hicham Alaoui",
-    "jobTitle":"Data Scientist",
-    "description":"Data Scientist & Econometrics-driven problem solver for markets and sustainability.",
-    "url":"https://hicham-alaoui0.github.io/",
-    "sameAs":[
-      "https://www.linkedin.com/in/hicham-alaoui-08ba35206",
-      "https://github.com/hicham-alaoui0"
-    ]
-  }</script>
+  </script>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
-<body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 font-sans antialiased">
-  <a href="#main"
-    class="skip-link absolute left-2 top-2 px-3 py-1 bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 rounded focus:outline-none focus:ring focus:ring-accent"
-    data-i18n="skip.to.content">Skip to content</a>
-  <header class="site-header" aria-label="Primary">
-    <div class="site-header-inner">
-      <!-- left: brand -->
-      <div class="nav-brand">
-        Hicham Alaoui
-      </div>
+<body class="antialiased selection:bg-teal-500/30 selection:text-teal-200">
 
-      <!-- middle: nav links (desktop) -->
-      <nav id="navMenu" class="nav-links hidden sm:flex" data-i18n-scope="nav">
-        <!-- keep existing <a> elements, just add class -->
-        <a href="#experience" class="nav-link" data-i18n="experience">Experience</a>
-        <a href="#projects" class="nav-link" data-i18n="projects">Projects</a>
-        <a href="#skills" class="nav-link" data-i18n="skills">Skills</a>
-        <a href="#certifications" class="nav-link" data-i18n="certifications">Certifications</a>
-        <a href="#languages" class="nav-link" data-i18n="languages">Languages</a>
-        <a href="#contact" class="nav-link" data-i18n="contact">Contact</a>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-40 header-glass transition-all duration-300" id="mainHeader">
+    <div class="max-w-[1200px] mx-auto px-6 h-[4.5rem] flex items-center justify-between">
+      <!-- Brand -->
+      <a href="#" class="text-xl font-bold tracking-tight hover:text-accent transition-colors">
+        Hicham Alaoui
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+        <a href="#experience" class="nav-link hover:text-white transition-colors">Experience</a>
+        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="nav-link hover:text-white transition-colors">Skills</a>
+        <a href="#certifications" class="nav-link hover:text-white transition-colors">Credential</a>
+        <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
       </nav>
 
-      <!-- right: theme / language / menu button -->
-      <div class="nav-actions flex items-center gap-4">
-        <button id="langToggle"
-          class="px-3 py-1 text-sm rounded border border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-          aria-label="Toggle language">FR</button>
-        <button id="themeToggle"
-          class="w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 flex items-center justify-center"
-          aria-label="Toggle dark mode">🌙</button>
-        <button id="navToggle"
-          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200"
-          aria-expanded="false" aria-controls="navMenu"><span class="sr-only">Menu</span>☰</button>
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-[var(--surface-highlight)] transition-colors"
+          aria-label="Toggle theme">
+          <!-- Sun Icon (hidden in light) -->
+          <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+            </path>
+          </svg>
+          <!-- Moon Icon (hidden in dark) -->
+          <svg class="w-5 h-5 block dark:hidden text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="menuToggle" class="md:hidden p-2 text-gray-300 hover:text-white" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
-  <main id="main" tabindex="-1">
-    <!-- Hero -->
-    <section id="hero" class="hero">
-      <div class="hero-canvas-wrap" aria-hidden="true">
-        <canvas id="hero-bg" aria-hidden="true"></canvas>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobileDrawer" class="md:hidden" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel flex flex-col gap-6" id="drawerPanel">
+      <div class="flex justify-end">
+        <button id="drawerClose" class="p-2 text-gray-400 hover:text-white" aria-label="Close menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
-      <div class="hero-grid">
-        <!-- Left column: title + tag line + CTA -->
-        <div class="hero-main">
-          <p class="hero-eyebrow" data-i18n="badge.role">EQD Trading Analyst & Data Scientist</p>
-
-          <h1 class="hero-title">
-            Hicham Alaoui – EQD Trading Analyst & Data Scientist
-          </h1>
-
-          <p class="hero-subline" data-i18n="hero.tagline">
-            Building pre-trade controls, EVT-based dynamic limits, and ML analytics for equity markets.
-          </p>
-
-          <div class="hero-cta-row">
-            <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic" data-i18n="cta.download"
-              download="CV_Hicham_ALAOUI.pdf">
-              Download CV
-            </a>
-
-            <a href="mailto:halaoui@insea.ac.ma" class="btn-ghost magnetic" data-i18n="cta.email">
-              Email me
-            </a>
-          </div>
-        </div>
-
-        <!-- Right column: metrics -->
-        <div class="hero-metrics" id="heroMetrics">
-          <!-- Metric 1: internships -->
-          <article class="metric-card">
-            <div class="metric-value">
-              <span class="metric-value-number" data-target="3">3</span>
-            </div>
-            <div class="metric-label">
-              Internships
-            </div>
-            <p class="metric-desc">
-              Finance • NGO • Public
-            </p>
-          </article>
-
-          <!-- Metric 2: certifications -->
-          <article class="metric-card">
-            <div class="metric-value">
-              <span class="metric-value-number" data-target="4">4</span><span class="metric-suffix">+</span>
-            </div>
-            <div class="metric-label">
-              Certifications
-            </div>
-            <p class="metric-desc">
-              Top Institutions
-            </p>
-          </article>
-
-          <!-- Metric 3: languages -->
-          <article class="metric-card">
-            <div class="metric-value">
-              <span class="metric-value-number" data-target="3">3</span>
-            </div>
-            <div class="metric-label">
-              Languages
-            </div>
-            <p class="metric-desc">
-              Ar • Fr • En
-            </p>
-          </article>
-        </div>
-      </div>
-      </ul>
-
-      <div class="flex flex-wrap justify-center gap-6 pt-12" aria-label="Primary actions" data-reveal>
-        <a href="/CV/CV_2025_DS_AI.pdf" class="btn-primary magnetic px-8 py-3 text-lg" data-i18n="cta.download"
-          download="CV_Hicham_ALAOUI.pdf">Download CV</a>
-        <a href="mailto:halaoui@insea.ac.ma" class="btn-secondary magnetic px-8 py-3 text-lg"
-          data-i18n="cta.email">Email me</a>
-      </div>
-      </div>
-      </div>
-      <noscript>
-        <div class="hero-fallback" role="img" aria-label="Decorative gradient background"></div>
-      </noscript>
-    </section>
-    <!-- Experience -->
-    <section id="experience" class="section-shell">
-      <div class="section-header">
-        <h2 class="section-title" data-i18n="experience">Experience</h2>
-        <p class="section-subtitle">
-          EQD trading, risk tooling, and data science internships across banking, NGO, and public sector.
-        </p>
-      </div>
-
-      <ol class="experience-timeline">
-        <!-- Item 1 -->
-        <li class="experience-item">
-          <div class="experience-meta">
-            <span class="experience-role">EQD Trading Analyst</span>
-            <span class="experience-company">Société Générale ATS</span>
-            <span class="experience-dates">Aug 2025 – Present</span>
-          </div>
-          <ul class="experience-bullets">
-            <li>Monitor equity & equity-derivatives flows and pre-trade controls for EQD desks (market access,
-              fat-finger checks, limits).</li>
-            <li>Produce daily and ad-hoc analytics on limit consumption, breaches, and trading-access incidents for
-              front-office and risk.</li>
-            <li>Maintain and extend Python/Excel tools used by desks for what-if analysis, parameterization, and
-              post-trade investigations.</li>
-          </ul>
-        </li>
-
-        <!-- Item 2 -->
-        <li class="experience-item">
-          <div class="experience-meta">
-            <span class="experience-role">Data Engineer Intern – Market Access</span>
-            <span class="experience-company">Société Générale ATS</span>
-            <span class="experience-dates">Feb 2025 – Aug 2025</span>
-          </div>
-          <ul class="experience-bullets">
-            <li>Designed a Peaks-over-Threshold EVT engine to calibrate dynamic pre-trade limits (size/price) on equity
-              markets.</li>
-            <li>Built Python + SQL pipelines to ingest trading-access logs and 'bypasser' events into clean,
-              analytics-ready tables.</li>
-            <li>Developed Streamlit dashboards for limit monitoring, fat-tail backtests, and Kupiec-style exception
-              diagnostics.</li>
-            <li>Industrialized the stack with containerization and CI/CD (Docker, GitHub Actions) to keep risk tools
-              reproducible.</li>
-          </ul>
-        </li>
-
-        <!-- Item 3 -->
-        <li class="experience-item">
-          <div class="experience-meta">
-            <span class="experience-role">Data Scientist Intern</span>
-            <span class="experience-company">gaea21 (NGO, Geneva)</span>
-            <span class="experience-dates">Jun 2024 – Sep 2024</span>
-          </div>
-          <ul class="experience-bullets">
-            <li>Built CO₂ emissions prediction models for Swiss agriculture from multi-source time series and panel
-              data.</li>
-            <li>Implemented an LSTM-based French article generator producing sustainability briefs for the gaea21
-              website.</li>
-            <li>Packaged models into a lightweight Python API used by non-technical staff for scenario exploration.</li>
-          </ul>
-        </li>
-
-        <!-- Item 4 -->
-        <li class="experience-item">
-          <div class="experience-meta">
-            <span class="experience-role">Data Analyst Intern</span>
-            <span class="experience-company">Haut-Commissariat au Plan (HCP, Morocco)</span>
-            <span class="experience-dates">Jul 2023 – Aug 2023</span>
-          </div>
-          <ul class="experience-bullets">
-            <li>Cleaned and migrated household survey microdata into PostgreSQL for poverty and welfare analysis.</li>
-            <li>Produced ARIMA/ARDL-based indicators and dashboards on poverty and labour-market dynamics.</li>
-            <li>Automated Power BI dashboards for internal stakeholders (data refresh, filters, and export).</li>
-          </ul>
-        </li>
-      </ol>
-    </section>
-    <!-- Featured Projects -->
-    <section id="projects" class="section-shell">
-      <div class="section-header">
-        <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
-        <p class="section-subtitle">
-          Risk dashboards, trading signals, emissions modeling, and applied ML / econometrics.
-        </p>
-      </div>
-
-      <div class="project-grid">
-        <!-- Project 1 -->
-        <article class="project-card">
-          <header>
-            <h3 class="project-title">Dynamic Limits – EVT Risk Dashboard</h3>
-            <div class="metric-badges">
-              <span class="metric">POT EVT</span>
-              <span class="metric">Intraday limits</span>
-            </div>
-          </header>
-          <p class="project-problem"><strong>Problem:</strong> Static pre-trade limits failed to capture intraday
-            volatility spikes.</p>
-          <p class="project-approach"><strong>Approach:</strong> Designed a Peaks-over-Threshold Extreme Value Theory
-            engine to calibrate size/price limits.</p>
-          <p class="project-impact"><strong>Impact:</strong> Reduced false alarms by 40% while maintaining safety
-            coverage during varied market regimes.</p>
-          <div class="stack-row">
-            <span>Python</span><span>Streamlit</span><span>PostgreSQL</span><span>EVT</span>
-          </div>
-          <div class="project-links">
-            <!-- No links in profile.json so using placeholder or omitting -->
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card">
-          <header>
-            <h3 class="project-title">XGBoost Trading Signals</h3>
-            <div class="metric-badges">
-              <span class="metric">62% Accuracy</span>
-              <span class="metric">Alpha</span>
-            </div>
-          </header>
-          <p class="project-problem"><strong>Problem:</strong> Capturing short-term alpha from high-frequency order book
-            data.</p>
-          <p class="project-approach"><strong>Approach:</strong> Developed an ML pipeline using XGBoost on order book
-            imbalance and flow features.</p>
-          <p class="project-impact"><strong>Impact:</strong> Achieved 62% directional accuracy out-of-sample for
-            short-term price movements.</p>
-          <div class="stack-row">
-            <span>Python</span><span>Pandas</span><span>Scikit-earn</span><span>XGBoost</span>
-          </div>
-          <div class="project-links"></div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card">
-          <header>
-            <h3 class="project-title">FarmVision – Computer Vision for Agriculture</h3>
-            <div class="metric-badges">
-              <span class="metric">Edge AI</span>
-              <span class="metric">95% Recall</span>
-            </div>
-          </header>
-          <p class="project-problem"><strong>Problem:</strong> Early detection of crop diseases is manual and slow.</p>
-          <p class="project-approach"><strong>Approach:</strong> Fine-tuned ResNet50 CNNs for leaf image classification,
-            deployed on Raspberry Pi.</p>
-          <p class="project-impact"><strong>Impact:</strong> Real-time monitoring capability with 95% recall for early
-            intervention.</p>
-          <div class="stack-row">
-            <span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>Raspberry Pi</span>
-          </div>
-          <div class="project-links"></div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card">
-          <header>
-            <h3 class="project-title">CO2 Emissions Prediction</h3>
-            <div class="metric-badges">
-              <span class="metric">Forecasting</span>
-              <span class="metric">Policy</span>
-            </div>
-          </header>
-          <p class="project-problem"><strong>Problem:</strong> Lack of granular forecast models for Swiss agricultural
-            emissions.</p>
-          <p class="project-approach"><strong>Approach:</strong> Built ARIMA and ARDL time-series models using
-            multi-source panel data.</p>
-          <p class="project-impact"><strong>Impact:</strong> Identified livestock and fertilizer as key drivers,
-            informing NGO policy strategy.</p>
-          <div class="stack-row">
-            <span>R</span><span>Python</span><span>Time Series</span><span>Econometrics</span>
-          </div>
-          <div class="project-links"></div>
-        </article>
-      </div>
-    </section>
-    <!-- Skills -->
-    <section id="skills" class="section-shell">
-      <div class="section-header">
-        <h2 class="section-title" data-i18n="skills">Skills</h2>
-        <p class="section-subtitle">
-          Modeling, programming, data platforms, and visualization for quant & DS work.
-        </p>
-      </div>
-
-      <div class="skills-grid">
-        <!-- Group 1: Modeling -->
-        <div class="skill-group">
-          <h3 class="skill-group-title">Modeling</h3>
-          <div class="skill-chips">
-            <span class="skill-chip">EVT (Peaks-over-Threshold)</span>
-            <span class="skill-chip">Time Series (ARIMA, GARCH, ARDL)</span>
-            <span class="skill-chip">Derivatives Pricing (Black-Scholes)</span>
-            <span class="skill-chip">Optimization</span>
-            <span class="skill-chip">Machine Learning</span>
-          </div>
-        </div>
-
-        <!-- Group 2: Programming -->
-        <div class="skill-group">
-          <h3 class="skill-group-title">Programming</h3>
-          <div class="skill-chips">
-            <span class="skill-chip">Python (Pandas, NumPy, Scikit-learn)</span>
-            <span class="skill-chip">R (Tidyverse, tsibble)</span>
-            <span class="skill-chip">SQL (PostgreSQL, CTEs)</span>
-            <span class="skill-chip">VBA / Excel</span>
-          </div>
-        </div>
-
-        <!-- Group 3: Technologies -->
-        <div class="skill-group">
-          <h3 class="skill-group-title">Technologies</h3>
-          <div class="skill-chips">
-            <span class="skill-chip">Git / GitHub</span>
-            <span class="skill-chip">Docker</span>
-            <span class="skill-chip">Linux / Bash</span>
-            <span class="skill-chip">Streamlit</span>
-            <span class="skill-chip">HTML / CSS</span>
-          </div>
-        </div>
-
-        <!-- Group 4: Data Platforms -->
-        <div class="skill-group">
-          <h3 class="skill-group-title">Data Platforms</h3>
-          <div class="skill-chips">
-            <span class="skill-chip">Azure Data Studio</span>
-            <span class="skill-chip">Palantir Foundry (User)</span>
-            <span class="skill-chip">PostgreSQL</span>
-          </div>
-        </div>
-
-        <!-- Group 5: BI & Visualization -->
-        <div class="skill-group">
-          <h3 class="skill-group-title">BI & Visualization</h3>
-          <div class="skill-chips">
-            <span class="skill-chip">Power BI (DAX)</span>
-            <span class="skill-chip">Tableau</span>
-            <span class="skill-chip">Matplotlib / Seaborn</span>
-          </div>
-        </div>
-
-        <!-- Group 6: Soft Skills -->
-        <div class="skill-group">
-          <h3 class="skill-group-title">Soft Skills</h3>
-          <div class="skill-chips">
-            <span class="skill-chip">Quantitative Research</span>
-            <span class="skill-chip">Stress Management</span>
-            <span class="skill-chip">Bilingual Communication (FR/EN)</span>
-            <span class="skill-chip">Problem Solving</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Certifications -->
-    <section id="certifications" class="section">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="certifications">Certifications</h2>
-        </div>
-        <ul id="certGrid" class="cert-grid" aria-label="Certification credentials"></ul>
-        <div class="mt-10">
-          <h3 class="text-sm font-semibold mb-2" data-i18n="education">Education</h3>
-          <ul id="eduList" class="cert-list"></ul>
-        </div>
-      </div>
-    </section>
-    <!-- Languages -->
-    <section id="languages" class="section">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="languages">Languages</h2>
-        </div>
-        <ul id="languagesList" class="flex flex-wrap gap-3" aria-label="Languages"></ul>
-      </div>
-    </section>
-    <!-- Contact -->
-    <!-- Contact -->
-    <section id="contact" class="section-shell">
-      <div class="section-header">
-        <h2 class="section-title" data-i18n="contact">Contact</h2>
-        <p class="section-subtitle">
-          Best way to reach me for roles, collaborations, or questions about my work.
-        </p>
-      </div>
-
-      <div class="contact-layout">
-        <!-- Left: info / direct email -->
-        <aside class="contact-card">
-          <p>
-            <strong data-i18n="label.direct">Direct:</strong>
-            <span>halaoui@insea.ac.ma</span>
-          </p>
-          <p style="margin-top: 0.6rem;">
-            I’m open to Data Science / Quant / Risk roles, internships, or research collaborations.
-          </p>
-          <div class="mt-4 flex gap-4 text-accent">
-            <a href="https://www.linkedin.com/in/hicham-alaoui-08ba35206" aria-label="LinkedIn"
-              class="hover:underline">LinkedIn</a>
-            <a href="https://github.com/hicham-alaoui0" aria-label="GitHub" class="hover:underline">GitHub</a>
-          </div>
-        </aside>
-
-        <!-- Right: form -->
-        <form class="contact-form" action="https://formspree.io/f/yourid" method="POST">
-          <div>
-            <label for="name" data-i18n="label.name">Name</label>
-            <input id="name" name="name" type="text" required />
-          </div>
-          <div>
-            <label for="email" data-i18n="label.email">Email</label>
-            <input id="email" name="email" type="email" required />
-          </div>
-          <div>
-            <label for="message" data-i18n="label.message">Message</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn-primary" data-i18n="cta.send">Send</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" aria-label="Footer">
-    <div class="site-footer-links">
-      <p>&copy; <span id="year"></span> Hicham Alaoui.</p>
-      <p class="text-neutral-500">Built with accessible, performant vanilla JS + Tailwind.</p>
-    </div>
-  </footer>
-  <button id="backToTop"
-    class="fixed bottom-5 right-5 hidden w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center shadow focus:outline-none focus:ring focus:ring-offset-2 focus:ring-primary"
-    aria-label="Back to top">
-    ↑
-  </button>
-  <!-- Project Modal -->
-  <div id="projectModal" class="hidden fixed inset-0 z-[999] items-center justify-center p-4" aria-hidden="true">
-    <div class="modal-backdrop absolute inset-0 bg-neutral-900/60 backdrop-blur-sm"></div>
-    <div role="dialog" aria-modal="true" aria-labelledby="modalTitle"
-      class="modal-panel relative max-w-2xl w-full bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-xl flex flex-col max-h-[85vh]">
-      <button id="modalClose"
-        class="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 focus:outline-none focus:ring focus:ring-primary"
-        aria-label="Close modal">✕</button>
-      <div class="overflow-y-auto p-6 space-y-4" id="modalContent">
-        <h2 id="modalTitle" class="text-xl font-semibold"></h2>
-        <p id="modalSummary" class="text-sm text-neutral-600 dark:text-neutral-300"></p>
-        <canvas id="modalSpark" height="60" class="w-full rounded bg-neutral-100 dark:bg-neutral-800"></canvas>
-        <div id="modalBody" class="prose prose-sm dark:prose-invert max-w-none"></div>
-        <div id="modalLinks" class="flex gap-4 text-sm"></div>
+      <nav class="flex flex-col gap-4 text-lg font-medium">
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#certifications" class="mobile-link">Certifications</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+      </nav>
+      <div class="mt-auto pt-6 border-t border-[var(--border)]">
+        <a href="/CV/CV_2025_DS_AI.pdf" class="btn btn-primary w-full justify-center">Download CV</a>
       </div>
     </div>
   </div>
-  <script src="./script.js" defer></script>
-  <!-- Credentials JSON-LD injected dynamically -->
+
+  <main class="w-full overflow-hidden">
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6">
+      <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <!-- Content -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <div>
+            <span class="text-accent font-mono text-sm tracking-wider uppercase mb-3 block">EQD Trading Analyst & Data
+              Scientist</span>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--text)] mb-6 text-balance">
+              Building risk controls & Machine Learning solutions for markets.
+            </h1>
+            <p class="text-lg md:text-xl text-[var(--text-muted)] max-w-2xl leading-relaxed">
+              Bridging equity trading desks and data engineering. Specializing in pre-trade controls, dynamic EVT-based
+              limits, and scalable analytics infrastructure.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mt-2">
+            <a href="/CV/CV_2025_DS_AI.pdf" class="btn btn-primary" download>Download CV</a>
+            <a href="mailto:halaoui@insea.ac.ma" class="btn btn-secondary">Contact Me</a>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="flex items-center gap-6 mt-8 text-[var(--text-muted)]">
+            <a href="https://github.com/hicham-alaoui0" target="_blank" rel="noopener"
+              class="hover:text-accent transition-colors" aria-label="GitHub">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.655-3.795-1.275-3.795-1.275-.54-1.38-1.335-1.755-1.335-1.755-1.095-.75.075-.735.075-.735 1.215.09 1.845 1.245 1.845 1.245 1.08 1.86 2.805 1.32 3.495 1.005.105-.78.42-1.32.765-1.62-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57C20.565 21.795 24 17.325 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hicham-alaoui-08ba35206" target="_blank" rel="noopener"
+              class="hover:text-accent transition-colors" aria-label="LinkedIn">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Stat Cards -->
+        <div class="lg:col-span-5 flex flex-col gap-4 max-w-sm mx-auto w-full">
+          <!-- Stat 1 -->
+          <div class="card p-5 flex items-center justify-between">
+            <div>
+              <div class="text-3xl font-bold font-mono text-accent">4+</div>
+              <div class="text-sm text-[var(--text-muted)] font-medium uppercase tracking-wide">Real-world Domains</div>
+            </div>
+            <div class="text-right text-xs text-[var(--text-muted)] max-w-[120px]">Banking, NGO, Public Sector</div>
+          </div>
+          <!-- Stat 2 -->
+          <div class="card p-5 flex items-center justify-between">
+            <div>
+              <div class="text-3xl font-bold font-mono text-accent">6+</div>
+              <div class="text-sm text-[var(--text-muted)] font-medium uppercase tracking-wide">ML Projects</div>
+            </div>
+            <div class="text-right text-xs text-[var(--text-muted)] max-w-[120px]">EVT Risk, Forecasting, Signals</div>
+          </div>
+          <!-- Stat 3 -->
+          <div class="card p-5 flex items-center justify-between">
+            <div>
+              <div class="text-3xl font-bold font-mono text-accent">3</div>
+              <div class="text-sm text-[var(--text-muted)] font-medium uppercase tracking-wide">Languages</div>
+            </div>
+            <div class="text-right text-xs text-[var(--text-muted)] max-w-[120px]">English, French, Arabic</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section (Timeline) -->
+    <section id="experience" class="py-16 md:py-24 bg-[var(--surface-highlight)]/30">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12">Experience</h2>
+
+        <div class="relative space-y-12 pl-6">
+          <div class="timeline-line"></div>
+
+          <!-- Job 1 -->
+          <article class="relative pl-8 animate-reveal">
+            <div class="timeline-dot"></div>
+            <div class="card p-6 md:p-8">
+              <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-[var(--text)]">EQD Trading Analyst</h3>
+                  <a href="#" class="text-accent hover:underline font-medium">Société Générale ATS</a>
+                </div>
+                <span
+                  class="font-mono text-sm text-[var(--text-muted)] bg-[var(--surface-highlight)] px-3 py-1 rounded">Aug
+                  2025 – Present</span>
+              </div>
+
+              <ul class="space-y-3 text-[var(--text-muted)] mb-6 list-disc list-outside ml-4">
+                <li>Monitor equity & equity-derivatives flows and pre-trade controls for EQD desks (market access,
+                  fat-finger checks, limits).</li>
+                <li>Produce daily and ad-hoc analytics on limit consumption, breaches, and trading-access incidents for
+                  front-office and risk.</li>
+                <li>Maintain and extend Python/Excel tools used by desks for what-if analysis, parameterization, and
+                  post-trade investigations.</li>
+              </ul>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="chip">Python</span>
+                <span class="chip">SQL</span>
+                <span class="chip">Bloomberg</span>
+                <span class="chip">VBA</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Job 2 -->
+          <article class="relative pl-8 animate-reveal">
+            <div class="timeline-dot"></div>
+            <div class="card p-6 md:p-8">
+              <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-[var(--text)]">Data Engineer Intern – Market Access</h3>
+                  <a href="#" class="text-accent hover:underline font-medium">Société Générale ATS</a>
+                </div>
+                <span
+                  class="font-mono text-sm text-[var(--text-muted)] bg-[var(--surface-highlight)] px-3 py-1 rounded">Feb
+                  2025 – Aug 2025</span>
+              </div>
+
+              <div class="group">
+                <ul class="space-y-3 text-[var(--text-muted)] mb-4 list-disc list-outside ml-4">
+                  <li>Designed a Peaks-over-Threshold EVT engine to calibrate dynamic pre-trade limits (size/price) on
+                    equity markets.</li>
+                  <li>Built Python + SQL pipelines to ingest trading-access logs and 'bypasser' events into clean,
+                    analytics-ready tables.</li>
+                </ul>
+                <div class="hidden-content hidden">
+                  <ul
+                    class="space-y-3 text-[var(--text-muted)] mb-4 list-disc list-outside ml-4 border-t border-[var(--border)] pt-3 mt-3">
+                    <li>Developed Streamlit dashboards for limit monitoring, fat-tail backtests, and Kupiec-style
+                      exception diagnostics.</li>
+                    <li>Industrialized the stack with containerization and CI/CD (Docker, GitHub Actions) to keep risk
+                      tools reproducible.</li>
+                  </ul>
+                </div>
+                <button class="show-more-btn text-sm font-medium text-accent hover:underline flex items-center gap-1"
+                  onclick="toggleAccordion(this)">
+                  Show more <span>↓</span>
+                </button>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="chip">Python</span>
+                <span class="chip">EVT</span>
+                <span class="chip">Streamlit</span>
+                <span class="chip">Docker</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Job 3 -->
+          <article class="relative pl-8 animate-reveal">
+            <div class="timeline-dot"></div>
+            <div class="card p-6 md:p-8">
+              <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-[var(--text)]">Data Scientist Intern</h3>
+                  <a href="#" class="text-accent hover:underline font-medium">gaea21 (NGO)</a>
+                </div>
+                <span
+                  class="font-mono text-sm text-[var(--text-muted)] bg-[var(--surface-highlight)] px-3 py-1 rounded">Jun
+                  2024 – Sep 2024</span>
+              </div>
+
+              <ul class="space-y-3 text-[var(--text-muted)] mb-6 list-disc list-outside ml-4">
+                <li>Built CO₂ emissions prediction models for Swiss agriculture from multi-source time series and panel
+                  data.</li>
+                <li>Implemented an LSTM-based French article generator producing sustainability briefs for the website.
+                </li>
+                <li>Packaged models into a lightweight Python API for scenario exploration.</li>
+              </ul>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="chip">Time Series</span>
+                <span class="chip">NLP</span>
+                <span class="chip">Python</span>
+                <span class="chip">TensorFlow</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12">Featured Projects</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Project 1 -->
+          <article class="card p-8 flex flex-col h-full hover:border-[var(--accent)] group">
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-xl font-bold group-hover:text-accent transition-colors">Dynamic Limits – EVT Risk
+                Dashboard</h3>
+              <span class="text-xs font-mono font-bold text-accent bg-[var(--accent-light)] px-2 py-1 rounded">Quant
+                Risk</span>
+            </div>
+
+            <div class="space-y-4 mb-8 flex-grow">
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Problem</span>
+                <p class="text-sm text-[var(--text)] mt-1">Static pre-trade limits failed to capture intraday volatility
+                  spikes.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Approach</span>
+                <p class="text-sm text-[var(--text)] mt-1">Peaks-over-Threshold EVT engine to calibrate limits.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Impact</span>
+                <p class="text-sm text-[var(--text)] mt-1">Reduced false alarms by 40% while maintaining safety
+                  coverage.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="chip">Python</span>
+              <span class="chip">Streamlit</span>
+              <span class="chip">EVT</span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card p-8 flex flex-col h-full hover:border-[var(--accent)] group">
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-xl font-bold group-hover:text-accent transition-colors">XGBoost Trading Signals</h3>
+              <span class="text-xs font-mono font-bold text-accent bg-[var(--accent-light)] px-2 py-1 rounded">62%
+                Accuracy</span>
+            </div>
+
+            <div class="space-y-4 mb-8 flex-grow">
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Problem</span>
+                <p class="text-sm text-[var(--text)] mt-1">Capturing short-term alpha from high-frequency order book
+                  data.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Approach</span>
+                <p class="text-sm text-[var(--text)] mt-1">ML pipeline using XGBoost on order book imbalance features.
+                </p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Impact</span>
+                <p class="text-sm text-[var(--text)] mt-1">Verified 62% directional accuracy out-of-sample.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="chip">Python</span>
+              <span class="chip">XGBoost</span>
+              <span class="chip">Pandas</span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card p-8 flex flex-col h-full hover:border-[var(--accent)] group">
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-xl font-bold group-hover:text-accent transition-colors">FarmVision – Computer Vision</h3>
+              <span class="text-xs font-mono font-bold text-accent bg-[var(--accent-light)] px-2 py-1 rounded">95%
+                Recall</span>
+            </div>
+
+            <div class="space-y-4 mb-8 flex-grow">
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Problem</span>
+                <p class="text-sm text-[var(--text)] mt-1">Early detection of crop diseases is manually intensive.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Approach</span>
+                <p class="text-sm text-[var(--text)] mt-1">Fine-tuned ResNet50 CNNs for leaf image classification.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Impact</span>
+                <p class="text-sm text-[var(--text)] mt-1">Real-time monitoring capability deployed on edge devices.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="chip">TensorFlow</span>
+              <span class="chip">OpenCV</span>
+              <span class="chip">Raspberry Pi</span>
+            </div>
+          </article>
+
+          <!-- Project 4: CO2 -->
+          <article class="card p-8 flex flex-col h-full hover:border-[var(--accent)] group">
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-xl font-bold group-hover:text-accent transition-colors">CO₂ Emissions Prediction</h3>
+              <span
+                class="text-xs font-mono font-bold text-accent bg-[var(--accent-light)] px-2 py-1 rounded">Policy</span>
+            </div>
+
+            <div class="space-y-4 mb-8 flex-grow">
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Problem</span>
+                <p class="text-sm text-[var(--text)] mt-1">Lack of granular forecast models for Swiss agricultural
+                  emissions.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Approach</span>
+                <p class="text-sm text-[var(--text)] mt-1">ARIMA and ARDL time-series models on panel data.</p>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">Impact</span>
+                <p class="text-sm text-[var(--text)] mt-1">Identified key drivers informing NGO policy strategy.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="chip">R</span>
+              <span class="chip">Time Series</span>
+              <span class="chip">Econometrics</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-24 bg-[var(--surface-highlight)]/30">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12">Skills</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Modeling -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold text-[var(--accent)] uppercase tracking-wider">Modeling</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Extreme Value Theory (POT)</span>
+              <span class="chip">Time Series (ARIMA/GARCH)</span>
+              <span class="chip">Tree Ensembles</span>
+              <span class="chip">Optimization</span>
+              <span class="chip">Neural Networks</span>
+            </div>
+          </div>
+
+          <!-- Programming -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold text-[var(--accent)] uppercase tracking-wider">Programming</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Python</span>
+              <span class="chip">R</span>
+              <span class="chip">SQL</span>
+              <span class="chip">VBA</span>
+            </div>
+          </div>
+
+          <!-- Technologies -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold text-[var(--accent)] uppercase tracking-wider">Technologies</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Docker</span>
+              <span class="chip">Git / GitHub Actions</span>
+              <span class="chip">Streamlit</span>
+              <span class="chip">Linux/Bash</span>
+            </div>
+          </div>
+
+          <!-- BI & Soft -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold text-[var(--accent)] uppercase tracking-wider">BI & Professional</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Power BI</span>
+              <span class="chip">Tableau</span>
+              <span class="chip">Communication</span>
+              <span class="chip">Problem Scoping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certs & Education -->
+    <section id="certifications" class="py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12">Credentials</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Education Card (Highlighted) -->
+          <div
+            class="card p-8 md:col-span-3 lg:col-span-1 bg-[var(--surface-highlight)] border-l-4 border-l-[var(--accent)]">
+            <div class="h-full flex flex-col justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-[var(--accent)] mb-1">Education</h3>
+                <div class="text-xl font-bold text-[var(--text)] mb-2">INSEA, Rabat</div>
+                <p class="text-sm text-[var(--text-muted)]">Engineering in Applied Economics, Statistics & Big Data</p>
+              </div>
+              <div class="mt-4 font-mono text-xs text-[var(--text-muted)]">2022–2025 (Expected)</div>
+            </div>
+          </div>
+
+          <!-- Cert 1 -->
+          <div class="card p-6 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-[var(--text)] text-sm mb-1">Deep Learning Specialization</h4>
+              <p class="text-xs text-[var(--text-muted)]">DeepLearning.AI</p>
+            </div>
+            <div class="mt-4 text-xs font-mono text-[var(--text-muted)]">2024</div>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="card p-6 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-[var(--text)] text-sm mb-1">Python for Data Science</h4>
+              <p class="text-xs text-[var(--text-muted)]">IBM</p>
+            </div>
+            <div class="mt-4 text-xs font-mono text-[var(--text-muted)]">2023</div>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="card p-6 flex flex-col justify-between lg:col-span-2">
+            <div>
+              <h4 class="font-bold text-[var(--text)] text-sm mb-1">Prepare Data for Exploration</h4>
+              <p class="text-xs text-[var(--text-muted)]">Google</p>
+            </div>
+            <div class="mt-4 text-xs font-mono text-[var(--text-muted)]">2023</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-[var(--surface-highlight)]/30">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12">Get In Touch</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Info -->
+          <div class="flex flex-col gap-6">
+            <p class="text-lg text-[var(--text-muted)]">
+              I’m currently open to Data Science and Quantitative Risk roles (internship or full-time).
+              Available for immediate start.
+            </p>
+
+            <div class="mt-4">
+              <h3 class="text-sm font-bold text-[var(--text)] uppercase tracking-wide mb-2">Email</h3>
+              <a href="mailto:halaoui@insea.ac.ma"
+                class="text-xl text-accent hover:underline font-mono">halaoui@insea.ac.ma</a>
+            </div>
+
+            <div class="mt-4">
+              <h3 class="text-sm font-bold text-[var(--text)] uppercase tracking-wide mb-2">Connect</h3>
+              <div class="flex gap-4">
+                <a href="https://www.linkedin.com/in/hicham-alaoui-08ba35206"
+                  class="btn btn-secondary text-sm">LinkedIn</a>
+                <a href="https://github.com/hicham-alaoui0" class="btn btn-secondary text-sm">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form id="contactForm" class="flex flex-col gap-4" onsubmit="handleForm(event)">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-xs font-bold uppercase text-[var(--text-muted)] mb-2">Name</label>
+                <input type="text" id="name" required class="input-field" placeholder="Jane Doe">
+              </div>
+              <div>
+                <label for="email" class="block text-xs font-bold uppercase text-[var(--text-muted)] mb-2">Email</label>
+                <input type="email" id="email" required class="input-field" placeholder="jane@example.com">
+              </div>
+            </div>
+            <div>
+              <label for="message"
+                class="block text-xs font-bold uppercase text-[var(--text-muted)] mb-2">Message</label>
+              <textarea id="message" required rows="5" class="input-field" placeholder="How can I help you?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary self-start">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-8 border-t border-[var(--border)] mt-12 bg-[var(--bg)] text-center text-sm text-[var(--text-muted)]">
+      <p>&copy; 2025 Hicham Alaoui. Built with Tailwind + Vanilla JS.</p>
+    </footer>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <div id="toastIcon"></div>
+    <div id="toastMessage" class="text-sm font-medium"></div>
+  </div>
+
+  <script src="./script.js"></script>
 </body>
 
 </html>
