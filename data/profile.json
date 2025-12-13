@@ -1,7 +1,7 @@
 {
   "hero": {
     "headline": "Hicham Alaoui — EQD Trading Analyst & Data Scientist",
-    "subline": "Bridging equity trading desks and data engineering: pre-trade controls, dynamic limits (EVT), and analytics for market access.",
+    "subline": "Data Scientist passionate about AI and applied machine learning. I build end-to-end solutions—from data pipelines to model deployment—turning complex data into reliable, measurable outcomes.",
     "cv_url": "/CV/CV_2025_DS_AI.pdf"
   },
   "metrics": [
@@ -30,9 +30,11 @@
       "role": "EQD Trading Analyst",
       "dates": "Aug 2025 – Present",
       "bullets": [
-        "Monitor equity & equity-derivatives flows and pre-trade controls for EQD desks (market access, fat-finger checks, limits).",
-        "Produce daily and ad-hoc analytics on limit consumption, breaches, and trading-access incidents for front-office and risk.",
-        "Maintain and extend Python/Excel tools used by desks for what-if analysis, parameterization, and post-trade investigations."
+        "Partner with Structuring to design, build, and maintain equity/derivatives index methodologies; translate product specs into robust operational processes.",
+        "Own monthly/quarterly index rebalancing workflows and delivery, coordinating with external calculation agents (e.g., S&P, Solactive) to meet production deadlines.",
+        "Lead daily pricing/parameter validation (Call/Put prices, key Greeks) and investigate mismatches; align fixes with trading/structuring stakeholders to protect pricing integrity.",
+        "Industrialize index production: automate controls and reporting (cross-check emails, workflow steps), standardize multi-index output formats, and streamline Bloomberg data retrieval + ESG mapping.",
+        "Maintain high traceability and documentation (Obsidian/internal artifacts) to ensure audit-ready processes and smooth handovers."
       ],
       "stack": [
         "Python",
