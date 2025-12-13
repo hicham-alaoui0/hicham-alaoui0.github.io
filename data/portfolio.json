@@ -1,0 +1,264 @@
+{
+    "profile": {
+        "name": "Hicham Alaoui",
+        "role": "EQD Trading Analyst & Data Scientist",
+        "headline": "Building risk controls & Machine Learning solutions for markets.",
+        "subline": "Bridging equity trading desks and data engineering. Specializing in pre-trade controls, dynamic EVT-based limits, and scalable analytics infrastructure.",
+        "location": "Rabat, Morocco",
+        "email": "halaoui@insea.ac.ma",
+        "github": "https://github.com/hicham-alaoui0",
+        "linkedin": "https://www.linkedin.com/in/hicham-alaoui-08ba35206",
+        "cv": "/CV/CV_2025_DS_AI.pdf",
+        "stats": [
+            {
+                "label": "Real-world Domains",
+                "value": 4,
+                "suffix": "+"
+            },
+            {
+                "label": "ML Projects",
+                "value": 6,
+                "suffix": "+"
+            },
+            {
+                "label": "Certifications",
+                "value": 7,
+                "suffix": ""
+            }
+        ]
+    },
+    "experience": [
+        {
+            "id": "exp-sg-2025",
+            "role": "EQD Trading Analyst",
+            "company": "Société Générale ATS",
+            "dates": "Aug 2025 – Present",
+            "bullets": [
+                "Monitor equity & equity-derivatives flows and pre-trade controls for EQD desks (market access, fat-finger checks, limits).",
+                "Produce daily and ad-hoc analytics on limit consumption, breaches, and trading-access incidents for front-office and risk.",
+                "Maintain and extend Python/Excel tools used by desks for what-if analysis, parameterization, and post-trade investigations."
+            ],
+            "tags": [
+                "Python",
+                "SQL",
+                "Bloomberg",
+                "VBA"
+            ]
+        },
+        {
+            "id": "exp-sg-intern",
+            "role": "Data Engineer Intern – Market Access",
+            "company": "Société Générale ATS",
+            "dates": "Feb 2025 – Aug 2025",
+            "bullets": [
+                "Designed a Peaks-over-Threshold EVT engine to calibrate dynamic pre-trade limits (size/price) on equity markets.",
+                "Built Python + SQL pipelines to ingest trading-access logs and 'bypasser' events into clean, analytics-ready tables.",
+                "Developed Streamlit dashboards for limit monitoring, fat-tail backtests, and Kupiec-style exception diagnostics.",
+                "Industrialized the stack with containerization and CI/CD (Docker, GitHub Actions) to keep risk tools reproducible."
+            ],
+            "tags": [
+                "Python",
+                "EVT",
+                "Streamlit",
+                "Docker"
+            ]
+        },
+        {
+            "id": "exp-gaea",
+            "role": "Data Scientist Intern",
+            "company": "gaea21 (NGO)",
+            "dates": "Jun 2024 – Sep 2024",
+            "bullets": [
+                "Built CO₂ emissions prediction models for Swiss agriculture from multi-source time series and panel data.",
+                "Implemented an LSTM-based French article generator producing sustainability briefs for the website.",
+                "Packaged models into a lightweight Python API for scenario exploration."
+            ],
+            "tags": [
+                "Time Series",
+                "NLP",
+                "Python",
+                "TensorFlow"
+            ]
+        },
+        {
+            "id": "exp-hcp",
+            "role": "Data Analyst Intern",
+            "company": "Haut-Commissariat au Plan",
+            "dates": "Jul 2023 – Aug 2023",
+            "bullets": [
+                "Cleaned and migrated household survey microdata into PostgreSQL for poverty and welfare analysis.",
+                "Produced ARIMA/ARDL-based indicators and dashboards on poverty and labour-market dynamics."
+            ],
+            "tags": [
+                "R",
+                "PostgreSQL",
+                "Econometrics"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "id": "proj-evt",
+            "title": "Dynamic Limits – EVT Risk Dashboard",
+            "category": "Quant Risk",
+            "tags": [
+                "Quant Risk",
+                "EVT",
+                "Streamlit",
+                "Python"
+            ],
+            "metrics": [
+                "↓40% false alarms",
+                "Dynamic calibration"
+            ],
+            "summary": "Internal POC for dynamic pre-trade limits calibration using Peaks-over-Threshold EVT and historical trading data.",
+            "problem": "Static pre-trade limits failed to capture intraday volatility spikes.",
+            "approach": "Designed a Peaks-over-Threshold Extreme Value Theory engine to calibrate size/price limits dynamically.",
+            "results": "Reduced false alarms by 40% while maintaining safety coverage during varied market regimes.",
+            "links": {
+                "code": "#"
+            }
+        },
+        {
+            "id": "proj-trading",
+            "title": "XGBoost Trading Signals",
+            "category": "Trading",
+            "tags": [
+                "Trading",
+                "XGBoost",
+                "Time Series",
+                "Pandas"
+            ],
+            "metrics": [
+                "62% OOS accuracy",
+                "Alpha generation"
+            ],
+            "summary": "Research code for short-horizon equity signal generation using engineered features and walk-forward validation.",
+            "problem": "Capturing short-term alpha from high-frequency order book data is noisy and prone to overfitting.",
+            "approach": "Developed an ML pipeline using XGBoost on order book imbalance features, volatility regimes, and calendar effects.",
+            "results": "Achieved 62% directional accuracy out-of-sample for short-term price movements.",
+            "links": {
+                "code": "#"
+            }
+        },
+        {
+            "id": "proj-farm",
+            "title": "FarmVision – Crop Stress Detection",
+            "category": "CV",
+            "tags": [
+                "CV",
+                "AgTech",
+                "TensorFlow",
+                "Raspberry Pi"
+            ],
+            "metrics": [
+                "95% recall",
+                "Edge deployment"
+            ],
+            "summary": "Image-based detection of leaf stress and disease for controlled-environment agriculture using transfer learning.",
+            "problem": "Early detection of crop diseases is manual, slow, and prone to human error.",
+            "approach": "Fine-tuned ResNet50 CNNs for leaf image classification, optimized for edge deployment.",
+            "results": "Real-time monitoring capability with 95% recall, enabling early intervention.",
+            "links": {
+                "code": "#"
+            }
+        },
+        {
+            "id": "proj-co2",
+            "title": "CO₂ Emissions Explorer",
+            "category": "Time Series",
+            "tags": [
+                "Time Series",
+                "Econometrics",
+                "R",
+                "Panel Data"
+            ],
+            "metrics": [
+                "Policy Impact",
+                "Forecasting"
+            ],
+            "summary": "Econometric and ML models for agricultural emissions, with decomposition by sub-sector and scenario analysis.",
+            "problem": "Lack of granular forecast models for Swiss agricultural emissions limited policy effectiveness.",
+            "approach": "Built ARIMA and ARDL time-series models on panel data to isolate key drivers.",
+            "results": "Identified livestock and fertilizer as key drivers, directly informing NGO policy strategy.",
+            "links": {
+                "code": "#"
+            }
+        }
+    ],
+    "skills": {
+        "Modeling": [
+            "Extreme Value Theory",
+            "Time Series (ARIMA/GARCH)",
+            "XGBoost/RF",
+            "Neural Networks (LSTM/CNN)"
+        ],
+        "Programming": [
+            "Python",
+            "R",
+            "SQL",
+            "C++",
+            "Bash",
+            "VBA"
+        ],
+        "Technologies": [
+            "Docker",
+            "Git/GitHub Actions",
+            "Streamlit",
+            "Linux"
+        ],
+        "Soft Skills": [
+            "Problem Scoping",
+            "Stakeholder Comm.",
+            "Storytelling"
+        ]
+    },
+    "certifications": [
+        {
+            "name": "Neural Networks and Deep Learning",
+            "issuer": "DeepLearning.AI",
+            "date": "Dec 2023"
+        },
+        {
+            "name": "Python for Everybody Specialization",
+            "issuer": "University of Michigan",
+            "date": "Nov 2023"
+        },
+        {
+            "name": "Prepare Data for Exploration",
+            "issuer": "Google",
+            "date": "Apr 2023",
+            "id": "2WPJXSWPRW5U"
+        },
+        {
+            "name": "Python Project for Data Science",
+            "issuer": "IBM",
+            "date": "Mar 2023",
+            "id": "ZPFFUS53YT3R"
+        },
+        {
+            "name": "Ask Questions to Make Data-Driven Decisions",
+            "issuer": "Google",
+            "date": "Mar 2023",
+            "id": "Y85VG359FYD5"
+        },
+        {
+            "name": "Foundations: Data, Data, Everywhere",
+            "issuer": "Google",
+            "date": "Jan 2023",
+            "id": "8HY96S9T9TJH"
+        },
+        {
+            "name": "Learn C++ Course",
+            "issuer": "Codecademy",
+            "date": "Dec 2022"
+        }
+    ],
+    "education": [
+        {
+            "school": "INSEA, Rabat",
+            "degree": "Engineering – Applied Economics, Statistics & Big Data",
+            "years": "2022–2025 (Expected)"
+        }
+    ]
+}
