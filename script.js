@@ -59,10 +59,40 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /* ================= Data Loading ================= */
+
+// SW Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('SW registered:', registration);
+
+        // Check for updates
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                console.log('New content available; please refresh.');
+                // Optional: show a toast to user to reload
+              } else {
+                console.log('Content is cached for offline use.');
+              }
+            }
+          };
+        };
+      })
+      .catch(error => {
+        console.log('SW registration failed:', error);
+      });
+  });
+}
+
 /* ================= Data Loading ================= */
 async function loadData() {
   try {
-    const response = await fetch('./data/portfolio.json');
+    // Cache busting to ensure fresh data
+    const response = await fetch(`./data/portfolio.json?t=${Date.now()}`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     portfolioData = await response.json();
 
