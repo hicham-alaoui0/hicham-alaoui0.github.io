@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderAll();
     initAnimations();
     initScrollSpy();
+    initInteractions(); // New Interactions
     initSearchAndFilter();
     initModal();
   }
@@ -463,59 +464,164 @@ function initMobileMenu() {
 }
 
 /* ================= Logic: ScrollSpy & animations ================= */
-function initScrollSpy() {
-  const sects = document.querySelectorAll('section[id]');
-  const navs = document.querySelectorAll('.nav-link');
+/* ================= Logic: Interactions (RAF) ================= */
+// Throttling with requestAnimationFrame
+let ticking = false;
+let lastScrollY = 0;
+let mouseX = 0;
+let mouseY = 0;
+let isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+
+function initInteractions() {
   const progress = document.getElementById('scrollProgress');
+  const backToTop = document.getElementById('backToTop');
+  const heroImageContainer = document.querySelector('.hero-image-container'); // For Parallax
 
+  // 1. Create Global Spotlight
+  const spot = document.createElement('div');
+  spot.classList.add('global-spotlight', 'fixed', 'inset-0', 'pointer-events-none', 'z-0');
+  document.body.appendChild(spot);
+
+  // Scroll Listener
   window.addEventListener('scroll', () => {
-    // Progress
-    const limit = document.body.offsetHeight - window.innerHeight;
-    const per = (window.scrollY / limit) * 100;
-    progress.style.width = `${per}%`;
+    lastScrollY = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateScroll(progress, backToTop);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 
-    // Active Spy
-    let current = '';
-    sects.forEach(s => {
-      const top = s.offsetTop - 100;
-      if (window.scrollY >= top) current = s.getAttribute('id');
-    });
+  // Mouse Listener (Global)
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    navs.forEach(n => {
-      n.classList.remove('active');
-      if (n.getAttribute('href') === `#${current}`) n.classList.add('active');
-    });
+  if (!isTouch && !reduceMotion) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateMouse(heroImageContainer);
+        });
+      }
+    }, { passive: true });
+  }
+
+  // Back To Top Click
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 }
 
-// Re-usable observer
-let observer;
+function updateScroll(progressEl, backToTopEl) {
+  // 1. Progress Bar
+  const limit = document.body.offsetHeight - window.innerHeight;
+  const per = Math.min((lastScrollY / limit) * 100, 100);
+
+  // Hide progress bar at very top (0-2%)
+  if (per < 2) {
+    progressEl.style.transform = 'scaleX(0)';
+    progressEl.style.opacity = '0';
+  } else {
+    progressEl.style.transform = `scaleX(${per / 100})`;
+    progressEl.style.transformOrigin = 'left';
+    progressEl.style.width = '100%';
+    progressEl.style.opacity = '1';
+  }
+
+  // 2. Back To Top
+  if (lastScrollY > window.innerHeight * 0.25) {
+    backToTopEl.classList.remove('translate-y-20', 'opacity-0');
+  } else {
+    backToTopEl.classList.add('translate-y-20', 'opacity-0');
+  }
+}
+
+function updateMouse(heroImageContainer) {
+  // Global Spotlight Update
+  // We update CSS vars on body to be accessible everywhere
+  document.body.style.setProperty('--mx', `${mouseX}px`);
+  document.body.style.setProperty('--my', `${mouseY}px`);
+
+  // Parallax (Hero Image only)
+  if (heroImageContainer) {
+    // Calculate position relative to window center for parallax effect
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const dx = (mouseX - cx) / cx; // -1 to 1
+    const dy = (mouseY - cy) / cy; // -1 to 1
+
+    // Dampen the effect
+    const img = heroImageContainer.querySelector('img');
+    if (img) {
+      img.style.transform = `translate3d(${dx * -10}px, ${dy * -10}px, 0)`;
+    }
+  }
+}
+
+/* ================= Logic: ScrollSpy & animations ================= */
+function initScrollSpy() {
+  const sects = document.querySelectorAll('section[id]');
+  const navs = document.querySelectorAll('.nav-link');
+
+  // Use IntersectionObserver for current section
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // Update Active Nav
+        const id = e.target.getAttribute('id');
+        navs.forEach(n => {
+          n.classList.remove('is-active', 'text-primary'); // Remove text-primary legacy class if exists
+          n.classList.remove('active'); // fallback
+          if (n.getAttribute('href') === `#${id}`) {
+            n.classList.add('is-active');
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: '-40% 0px -55% 0px', // Center band detection
+    threshold: 0
+  });
+
+  sects.forEach(s => observer.observe(s));
+}
+
 function initAnimations() {
-  observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.replace('reveal-hidden', 'reveal-visible');
         // Trigger count up if it's a stat
         if (e.target.querySelector('.count-up')) runCountUp(e.target);
+
+        // Unobserve after reveal
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px' // Trigger slightly before bottom
+  });
 
   const els = document.querySelectorAll('.reveal-hidden');
-  observeElements(els);
+  observeElements(els, observer);
 }
 
-function observeElements(els) {
-  els.forEach(el => observer.observe(el));
+function observeElements(els, observerInstance) {
+  // If no instance provided, ignore (handled in init)
+  if (observerInstance) {
+    els.forEach(el => observerInstance.observe(el));
+  }
 }
 
 function initCountUp() {
   const stats = document.querySelectorAll('.count-up');
   stats.forEach(el => {
-    // Find parent container to pass to runCountUp
-    // The structure is <div> <div class="count-up">...</div> </div>
-    // So parent is el.parentElement
     runCountUp(el.parentElement);
   });
 }
@@ -523,13 +629,23 @@ function initCountUp() {
 function runCountUp(container) {
   const el = container.querySelector('.count-up');
   if (!el) return;
+  // If already ran, skip (check if text != 0 unless 0 is final)
+  // Better: add a 'done' flag
+  if (container.dataset.counted) return;
+
   const end = parseInt(el.dataset.val);
-  const suffix = container.querySelector('.hidden')?.textContent || ''; // get suffix
+  const suffix = container.querySelector('.hidden')?.textContent || '';
+
+  // Make sure we don't animate if end is NaN (fallback)
+  if (isNaN(end)) return;
+
+  container.dataset.counted = "true";
 
   let start = 0;
   const dur = 2000;
-  const step = 60;
-  const incr = end / (dur / step);
+  const step = 20; // faster FPS
+  const iterations = dur / step;
+  const incr = end / iterations;
 
   const t = setInterval(() => {
     start += incr;
@@ -537,7 +653,7 @@ function runCountUp(container) {
       el.textContent = end + suffix;
       clearInterval(t);
     } else {
-      el.textContent = Math.floor(start) + suffix;
+      el.textContent = Math.ceil(start) + suffix;
     }
   }, step);
 }
@@ -553,12 +669,11 @@ function updateTextContent() {
   const els = document.querySelectorAll('[data-i18n]');
   els.forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (I18N[currentLang][key]) {
+    if (I18N[currentLang] && I18N[currentLang][key]) {
       el.textContent = I18N[currentLang][key];
-    } else {
-      // fallback to inner text if missing
     }
   });
+
   // Placeholder update
   const search = document.getElementById('projectSearch');
   if (search) search.placeholder = I18N[currentLang]['search.placeholder'];

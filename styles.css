@@ -155,19 +155,49 @@ dialog::backdrop {
 }
 
 /* Reveal Animation Utility */
+/* Reveal Animation Utility */
 .reveal-hidden {
-  opacity: 1;
-  /* Fallback: ensure visibility */
-  transform: translateY(0);
-  /* Animation disabled to ensure rendering stability */
-  /* transform: translateY(24px); */
-  /* opacity: 0; */
-  /* transition: opacity 0.6s ease-out, transform 0.6s ease-out; */
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
 }
 
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Global Spotlight Effect */
+.global-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Allow clicks to pass through */
+  background: radial-gradient(800px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(var(--primary-rgb), 0.06),
+      transparent 80%);
+  z-index: -1;
+  /* Behind content */
+}
+
+/* Active Nav State */
+.nav-link.is-active {
+  color: var(--primary);
+}
+
+.nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2px;
 }
 
 /* Animations */
