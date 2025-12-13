@@ -511,7 +511,13 @@ function observeElements(els) {
 }
 
 function initCountUp() {
-  // Logic handled within intersection observer trigger
+  const stats = document.querySelectorAll('.count-up');
+  stats.forEach(el => {
+    // Find parent container to pass to runCountUp
+    // The structure is <div> <div class="count-up">...</div> </div>
+    // So parent is el.parentElement
+    runCountUp(el.parentElement);
+  });
 }
 
 function runCountUp(container) {

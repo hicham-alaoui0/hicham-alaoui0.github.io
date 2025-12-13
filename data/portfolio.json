@@ -1,9 +1,9 @@
 {
     "profile": {
         "name": "Hicham Alaoui",
-        "role": "EQD Trading Analyst & Data Scientist",
-        "headline": "Building risk controls & Machine Learning solutions for markets.",
-        "subline": "Bridging equity trading desks and data engineering. Specializing in pre-trade controls, dynamic EVT-based limits, and scalable analytics infrastructure.",
+        "role": "Data Scientist & EQD Trading Analyst",
+        "headline": "Transforming Market Data into Alpha with Machine Learning.",
+        "subline": "Bridging the gap between equity trading desks and advanced data engineering. Specialized in building predictive risk models, dynamic EVT limits, and scalable analytics for global markets.",
         "location": "Rabat, Morocco",
         "email": "halaoui@insea.ac.ma",
         "github": "https://github.com/hicham-alaoui0",
@@ -11,18 +11,18 @@
         "cv": "/CV/CV_2025_DS_AI.pdf",
         "stats": [
             {
-                "label": "Real-world Domains",
+                "label": "DS & ML Projects",
+                "value": 15,
+                "suffix": "+"
+            },
+            {
+                "label": "Live Risk Models",
+                "value": 8,
+                "suffix": ""
+            },
+            {
+                "label": "Quant Certifications",
                 "value": 4,
-                "suffix": "+"
-            },
-            {
-                "label": "ML Projects",
-                "value": 6,
-                "suffix": "+"
-            },
-            {
-                "label": "Certifications",
-                "value": 7,
                 "suffix": ""
             }
         ]
