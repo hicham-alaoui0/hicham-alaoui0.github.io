@@ -4,7 +4,7 @@ const CORE_ASSETS = [
   '/styles.css',
   '/script.js',
   '/manifest.json',
-  '/CV/CV_2025_DS_AI.pdf',
+  '/CV/CV',
   '/assets/images/hero-bg.jpg',
   '/assets/icons/icon-192x192.png',
   '/assets/icons/icon-512x512.png'
