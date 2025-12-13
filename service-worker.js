@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-v4';
+const CACHE_NAME = 'portfolio-v5';
 const CORE_ASSETS = [
   '/index.html',
   '/styles.css',
@@ -22,10 +22,31 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Stale-while-revalidate for navigation + static fallback
+// Network First for data, Stale-while-revalidate for others
 self.addEventListener('fetch', event => {
   const { request } = event;
   if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+
+  // Network First for data files
+  if (url.pathname.includes('/data/')) {
+    event.respondWith(
+      fetch(request)
+        .then(networkRes => {
+          if (networkRes.ok) {
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then(c => c.put(request, clone));
+            return networkRes;
+          }
+          throw new Error('Network response not ok');
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // Stale-while-revalidate for everything else
   event.respondWith(
     caches.match(request).then(cacheRes => {
       const fetchPromise = fetch(request).then(networkRes => {

@@ -12,6 +12,7 @@
   --primary: #0f766e;
   /* Teal 700 */
   --primary-hover: #115e59;
+  --primary-rgb: 15, 118, 110;
 }
 
 [data-theme="dark"] {
@@ -29,6 +30,7 @@
   --primary: #2dd4bf;
   /* Teal 400 */
   --primary-hover: #14b8a6;
+  --primary-rgb: 45, 212, 191;
 }
 
 html {
@@ -80,16 +82,8 @@ html {
 
 /* Timeline Logic */
 .timeline-dot {
-  position: absolute;
-  left: -29px;
-  /* Adjust based on parent padding */
-  top: 6px;
-  width: 12px;
-  height: 12px;
-  background-color: var(--bg);
-  border: 2px solid var(--primary);
-  border-radius: 50%;
-  z-index: 10;
+  /* Legacy class kept for safety, but JS now handles dots manually for custom positioning */
+  display: none;
 }
 
 /* Card Effects */
@@ -112,19 +106,20 @@ html {
 
 .filter-chip.active {
   background-color: var(--primary);
-  color: #000;
-  /* Contrast check: Teal 400 is light, so black text. Teal 700 is dark, so white. */
+  color: #fff;
   border-color: var(--primary);
+  box-shadow: 0 4px 6px -1px rgba(var(--primary-rgb), 0.3);
 }
 
-/* Fix text color for dark scheme active chip */
-[data-theme="dark"] .filter-chip.active {
-  color: #000;
-}
-
+/* Fix text color for light scheme active chip if needed */
 [data-theme="light"] .filter-chip.active {
   color: #fff;
 }
+
+[data-theme="dark"] .filter-chip.active {
+  color: #0d0d0d;
+}
+
 
 /* Modal Animation */
 dialog[open] {
@@ -132,32 +127,62 @@ dialog[open] {
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  animation: backdrop-in 0.3s ease-out;
 }
 
 @keyframes modal-in {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(10px);
+    transform: scale(0.95);
   }
 
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
 /* Reveal Animation Utility */
 .reveal-hidden {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Animations */
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite ease-in-out;
 }
 
 /* Reduced Motion */
