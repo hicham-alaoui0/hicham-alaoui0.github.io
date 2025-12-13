@@ -121,33 +121,37 @@ async function loadData() {
 /* ================= Rendering ================= */
 /* ================= Rendering ================= */
 function renderAll() {
-  renderHero();
-  renderExperience();
-  renderSkills();
-  renderCerts();
-  renderProjects(portfolioData.projects); // Initial render
-  renderFilters();
-  updateTextContent(); // Translate UI labels
+  const safeRender = (fn, name) => {
+    try {
+      fn();
+    } catch (err) {
+      console.warn(`Rendering failed for ${name}:`, err);
+    }
+  };
+
+  safeRender(renderHero, 'Hero');
+  safeRender(renderExperience, 'Experience');
+  safeRender(renderSkills, 'Skills');
+  safeRender(renderCerts, 'Certifications');
+
+  // Safe Project Logic
+  try {
+    if (portfolioData.projects) {
+      activeProjects = portfolioData.projects;
+      renderProjects(activeProjects);
+      renderFilters();
+    }
+  } catch (err) {
+    console.warn('Rendering failed for Projects:', err);
+  }
+
+  safeRender(updateTextContent, 'I18n');
 }
 
 function renderHero() {
   const t = document.getElementById('hero-target');
+  if (!t) return;
   const p = portfolioData.profile || {};
-
-  // Stats HTML - Floating Cards
-  // We'll arrange them: one top-left of image, one bottom-right, one bottom-left or similar?
-  // Let's make them a vertical stack on the far right, or a grid below text.
-  // "Creative" Idea: Image is central/right. Stats act as orbiting satellites or a glass stack overlapping the image.
-
-  // Let's try: Image on right. Stats are "floating cards" positioned absolute relative to image container.
-  // Actually, absolute positioning is risky for responsiveness. 
-  // Let's do: Left Column = Text + CTAs. Right Column = Image centered. 
-  // Stats = A row of glass cards *below* the text on the left, or interacting with the image?
-  // User wants "Creative".
-
-  // Design Choice:
-  // Left: Text -> CTAs -> Stats (Grid).
-  // Right: Large Profile Image with abstract shapes/blob background.
 
   const statsHtml = (p.stats || []).map((s, i) => `
         <div class="p-4 bg-surface/50 border border-border/50 rounded-xl backdrop-blur-sm reveal-hidden hover:border-primary/50 transition-colors flex flex-col justify-center min-w-[120px]" style="transition-delay: ${700 + (i * 100)}ms">
@@ -158,25 +162,25 @@ function renderHero() {
     `).join('');
 
   t.innerHTML = `
-        <div class="order-2 lg:order-1 flex flex-col justify-center space-y-8 reveal-hidden z-10">
+        <div class="order-2 lg:order-1 flex flex-col justify-center space-y-8 reveal-hidden z-10 w-full lg:w-1/2">
             <div>
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-wide rounded-full mb-4">
                     <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                     ${p.role || 'Data Scientist'}
                 </div>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-[1.1] mb-6">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-balance leading-[1.1] mb-6">
                     ${p.name || 'Hicham Alaoui'}
                 </h1>
-                <p class="text-xl text-[var(--text-muted)] max-w-xl leading-relaxed">
+                <p class="text-lg md:text-xl text-[var(--text-muted)] max-w-xl leading-relaxed">
                     ${p.subline || 'Building precision risk controls and machine learning solutions for equity markets.'}
                 </p>
             </div>
             
             <div class="flex flex-wrap gap-4">
-                <a href="${p.cv || '#'}" download class="btn bg-primary text-white hover:bg-primary-hover px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1" data-i18n="hero.cv">
+                <a href="${p.cv || '#'}" download class="btn bg-primary text-white hover:bg-primary-hover px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1" data-i18n="hero.cv">
                     Download CV
                 </a>
-                <a href="#contact" class="btn border border-border bg-surface text-[var(--text)] hover:border-primary px-8 py-4 rounded-xl font-bold transition-all" data-i18n="hero.contact">
+                <a href="#contact" class="btn border border-border bg-surface text-[var(--text)] hover:border-primary px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold transition-all" data-i18n="hero.contact">
                     Contact Me
                 </a>
             </div>
@@ -193,12 +197,9 @@ function renderHero() {
             </div>
         </div>
         
-        <div class="order-1 lg:order-2 relative flex justify-center items-center">
-             <!-- Background Blob -->
-             <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 to-blue-500/30 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
-             
-             <!-- Image Container -->
-             <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border border-white/20 bg-white/5 backdrop-blur-sm shadow-2xl reveal-hidden" style="transition-delay: 200ms">
+        <div class="order-1 lg:order-2 w-full lg:w-1/2 relative flex justify-center items-center">
+             <div class="hero-image-container relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-2 border border-white/20 bg-white/5 backdrop-blur-sm shadow-2xl reveal-hidden" style="transition-delay: 200ms">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 to-blue-500/30 rounded-full blur-[80px] -z-10 animate-pulse-slow"></div>
                 <img 
                     src="./assets/images/profile/profile-gen.jpg" 
                     alt="${p.name}" 
@@ -207,14 +208,13 @@ function renderHero() {
                     onerror="this.src='./assets/images/hero-bg.jpg'"
                 >
                 
-                <!-- Floating Badge -->
-                 <div class="absolute -bottom-6 -right-6 bg-surface border border-border p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s">
+                 <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-surface border border-border p-3 md:p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s">
                     <div class="bg-primary/10 p-2 rounded-full text-primary">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <div>
                         <div class="text-[10px] font-bold text-[var(--text-muted)] uppercase">Focus</div>
-                        <div class="text-sm font-bold text-[var(--text)]">EQD & Data Science</div>
+                        <div class="text-xs md:text-sm font-bold text-[var(--text)]">EQD & Data Science</div>
                     </div>
                  </div>
              </div>
@@ -226,6 +226,7 @@ function renderHero() {
 
 function renderExperience() {
   const t = document.getElementById('experience-target');
+  if (!t) return;
   t.innerHTML = portfolioData.experience.map((e, index) => `
         <article class="relative pl-8 md:pl-12 reveal-hidden pb-12 last:pb-0" style="transition-delay: ${index * 100}ms">
             <!-- Timeline Line/Dot handled by CSS on parent and pseudo-elements here -->
@@ -262,6 +263,11 @@ function renderExperience() {
 function renderProjects(projects) {
   const t = document.getElementById('projects-target');
   const empty = document.getElementById('projectsEmpty');
+
+  if (!t || !empty) {
+    console.warn('Projects target ID not found!');
+    return;
+  }
 
   if (!projects || projects.length === 0) {
     t.innerHTML = '';
