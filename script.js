@@ -131,30 +131,46 @@ function renderAll() {
 function renderHero() {
   const t = document.getElementById('hero-target');
   const p = portfolioData.profile || {};
-  // Fallback if data structure slightly different, but assuming standard format based on validation
 
-  // Stats HTML
+  // Stats HTML - Floating Cards
+  // We'll arrange them: one top-left of image, one bottom-right, one bottom-left or similar?
+  // Let's make them a vertical stack on the far right, or a grid below text.
+  // "Creative" Idea: Image is central/right. Stats act as orbiting satellites or a glass stack overlapping the image.
+
+  // Let's try: Image on right. Stats are "floating cards" positioned absolute relative to image container.
+  // Actually, absolute positioning is risky for responsiveness. 
+  // Let's do: Left Column = Text + CTAs. Right Column = Image centered. 
+  // Stats = A row of glass cards *below* the text on the left, or interacting with the image?
+  // User wants "Creative".
+
+  // Design Choice:
+  // Left: Text -> CTAs -> Stats (Grid).
+  // Right: Large Profile Image with abstract shapes/blob background.
+
   const statsHtml = (p.stats || []).map((s, i) => `
-        <div class="p-6 bg-surface/80 border border-border/60 rounded-2xl backdrop-blur-md reveal-hidden hover:border-primary/50 transition-colors" style="transition-delay: ${i * 100}ms">
-            <div class="text-4xl font-extrabold font-mono text-primary count-up mb-1" data-val="${s.value}">${0}</div>
-            <div class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">${s.label}</div>
+        <div class="p-4 bg-surface/50 border border-border/50 rounded-xl backdrop-blur-sm reveal-hidden hover:border-primary/50 transition-colors flex flex-col justify-center min-w-[120px]" style="transition-delay: ${700 + (i * 100)}ms">
+            <div class="text-3xl font-extrabold font-mono text-primary count-up mb-1" data-val="${s.value}">${0}</div>
+            <div class="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)] leading-tight">${s.label}</div>
             ${s.suffix ? `<div class="hidden">${s.suffix}</div>` : ''}
         </div>
     `).join('');
 
   t.innerHTML = `
-        <div class="order-2 lg:order-1 space-y-8 reveal-hidden self-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-wide rounded-full mb-2">
-                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                ${p.role || 'Data Scientist'}
+        <div class="order-2 lg:order-1 flex flex-col justify-center space-y-8 reveal-hidden z-10">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-wide rounded-full mb-4">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    ${p.role || 'Data Scientist'}
+                </div>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-[1.1] mb-6">
+                    ${p.name || 'Hicham Alaoui'}
+                </h1>
+                <p class="text-xl text-[var(--text-muted)] max-w-xl leading-relaxed">
+                    ${p.subline || 'Building precision risk controls and machine learning solutions for equity markets.'}
+                </p>
             </div>
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-balance leading-[1.1]">
-                ${p.headline || 'Building Data Solutions'}
-            </h1>
-            <p class="text-xl text-[var(--text-muted)] max-w-xl leading-relaxed">
-                ${p.subline || ''}
-            </p>
-            <div class="flex flex-wrap gap-4 pt-2">
+            
+            <div class="flex flex-wrap gap-4">
                 <a href="${p.cv || '#'}" download class="btn bg-primary text-white hover:bg-primary-hover px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1" data-i18n="hero.cv">
                     Download CV
                 </a>
@@ -162,16 +178,44 @@ function renderHero() {
                     Contact Me
                 </a>
             </div>
-            
-            <div class="pt-8 flex items-center gap-6 text-[var(--text-muted)]">
-                ${p.github ? `<a href="${p.github}" target="_blank" class="hover:text-primary transition-colors hover:scale-110 transform duration-200"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.655-3.795-1.275-3.795-1.275-.54-1.38-1.335-1.755-1.335-1.755-1.095-.75.075-.735.075-.735 1.215.09 1.845 1.245 1.845 1.245 1.08 1.86 2.805 1.32 3.495 1.005.105-.78.42-1.32.765-1.62-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57C20.565 21.795 24 17.325 24 12c0-6.63-5.37-12-12-12z"/></svg></a>` : ''}
-                ${p.linkedin ? `<a href="${p.linkedin}" target="_blank" class="hover:text-primary transition-colors hover:scale-110 transform duration-200"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>` : ''}
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 w-fit">
+                ${statsHtml}
+            </div>
+
+            <!-- Socials -->
+             <div class="flex items-center gap-6 text-[var(--text-muted)] pt-2">
+                ${p.github ? `<a href="${p.github}" target="_blank" class="hover:text-primary transition-colors hover:scale-110 transform duration-200"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.655-3.795-1.275-3.795-1.275-.54-1.38-1.335-1.755-1.335-1.755-1.095-.75.075-.735.075-.735 1.215.09 1.845 1.245 1.845 1.245 1.08 1.86 2.805 1.32 3.495 1.005.105-.78.42-1.32.765-1.62-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57C20.565 21.795 24 17.325 24 12c0-6.63-5.37-12-12-12z"/></svg></a>` : ''}
+                ${p.linkedin ? `<a href="${p.linkedin}" target="_blank" class="hover:text-primary transition-colors hover:scale-110 transform duration-200"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>` : ''}
             </div>
         </div>
         
-        <div class="order-1 lg:order-2 grid grid-cols-2 gap-4 relative">
-             <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-[80px] -z-10"></div>
-            ${statsHtml}
+        <div class="order-1 lg:order-2 relative flex justify-center items-center">
+             <!-- Background Blob -->
+             <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 to-blue-500/30 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
+             
+             <!-- Image Container -->
+             <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border border-white/20 bg-white/5 backdrop-blur-sm shadow-2xl reveal-hidden" style="transition-delay: 200ms">
+                <img 
+                    src="./assets/images/profile/profile-gen.jpg" 
+                    alt="${p.name}" 
+                    class="w-full h-full object-cover rounded-full shadow-inner"
+                    loading="eager"
+                    onerror="this.src='./assets/images/hero-bg.jpg'"
+                >
+                
+                <!-- Floating Badge -->
+                 <div class="absolute -bottom-6 -right-6 bg-surface border border-border p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s">
+                    <div class="bg-primary/10 p-2 rounded-full text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold text-[var(--text-muted)] uppercase">Focus</div>
+                        <div class="text-sm font-bold text-[var(--text)]">EQD & Data Science</div>
+                    </div>
+                 </div>
+             </div>
         </div>
     `;
 
