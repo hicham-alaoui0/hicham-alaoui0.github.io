@@ -48,8 +48,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (portfolioData) {
     renderAll();
     initAnimations();
-    initScrollSpy();
-    initInteractions(); // New Interactions
+    // initScrollSpy(); // Replaced by Command Bar
+    initCommandBar(); // New Command Bar
+    initInteractions();
     initSearchAndFilter();
     initModal();
   }
@@ -563,34 +564,182 @@ function updateMouse(heroImageContainer) {
   }
 }
 
-/* ================= Logic: ScrollSpy & animations ================= */
-function initScrollSpy() {
-  const sects = document.querySelectorAll('section[id]');
-  const navs = document.querySelectorAll('.nav-link');
+/* ================= Logic: Command Bar & Guided Mode ================= */
+const SECTIONS = [
+  { id: 'hero', title: 'Introduction', hint: 'Welcome to my portfolio' },
+  { id: 'experience', title: 'Experience', hint: 'Scroll to see impact & responsibilities' },
+  { id: 'projects', title: 'Projects', hint: 'Search or filter below' },
+  { id: 'skills', title: 'Skills', hint: 'Grouped by domain expertise' },
+  { id: 'certifications', title: 'Credentials', hint: 'Sorted by date' },
+  { id: 'contact', title: 'Contact', hint: "Let's build something together" }
+];
 
-  // Use IntersectionObserver for current section
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        // Update Active Nav
-        const id = e.target.getAttribute('id');
-        navs.forEach(n => {
-          n.classList.remove('is-active', 'text-primary'); // Remove text-primary legacy class if exists
-          n.classList.remove('active'); // fallback
-          if (n.getAttribute('href') === `#${id}`) {
-            n.classList.add('is-active');
-          }
-        });
-      }
+let appState = {
+  currentIdx: 0,
+  visited: new Set(['hero']), // Hero is visited by default
+  guidedMode: true
+};
+
+function initCommandBar() {
+  const bar = document.getElementById('commandBar');
+  const titleEl = document.getElementById('cmdSectionTitle');
+  const hintEl = document.getElementById('cmdBarHint');
+  const progressEl = document.getElementById('cmdProgressCurrent');
+  const barProgress = document.getElementById('cmdProgressBar');
+  const backBtn = document.getElementById('cmdBackBtn');
+  const nextBtn = document.getElementById('cmdNextBtn');
+  const guideToggle = document.getElementById('cmdGuideToggle');
+  const searchInput = document.getElementById('cmdProjectSearch');
+
+  // 1. Theme Fixed Toggle
+  const themeFixed = document.getElementById('themeToggleFixed');
+  if (themeFixed) {
+    themeFixed.addEventListener('click', () => {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
     });
-  }, {
-    rootMargin: '-40% 0px -55% 0px', // Center band detection
-    threshold: 0
+  }
+
+  // 2. Guided Mode Toggle
+  guideToggle.addEventListener('click', () => {
+    appState.guidedMode = !appState.guidedMode;
+    guideToggle.classList.toggle('active', appState.guidedMode);
+
+    // Update UI (Unlock next if disabled)
+    const nextBtnDiv = guideToggle.querySelector('div div');
+    if (appState.guidedMode) {
+      nextBtnDiv.classList.remove('translate-x-full', 'bg-text-muted');
+    } else {
+      nextBtnDiv.classList.add('translate-x-full');
+    }
+    updateControls();
+  });
+  // Initial UI state for toggle
+  guideToggle.classList.add('active');
+
+  // 3. Navigation Controls
+  backBtn.addEventListener('click', () => scrollToIndex(appState.currentIdx - 1));
+  nextBtn.addEventListener('click', () => {
+    if (!nextBtn.disabled) scrollToIndex(appState.currentIdx + 1);
   });
 
-  sects.forEach(s => observer.observe(s));
+  // 4. Observers
+  // Active Section Observer (Center View)
+  const activeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = SECTIONS.findIndex(s => s.id === e.target.id);
+        if (idx !== -1 && idx !== appState.currentIdx) {
+          appState.currentIdx = idx;
+          updateCommandBarUI();
+        }
+      }
+    });
+  }, { threshold: 0.5 }); // 50% visibility implies active
+
+  // Visited Observer (60% Progress)
+  const visitedObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        if (!appState.visited.has(id)) {
+          appState.visited.add(id);
+          updateControls(); // Unlock next button
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+
+  SECTIONS.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) {
+      activeObserver.observe(el);
+      visitedObserver.observe(el);
+    }
+  });
+
+  // Helper: Scroll
+  function scrollToIndex(idx) {
+    if (idx < 0 || idx >= SECTIONS.length) return;
+    const el = document.getElementById(SECTIONS[idx].id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Helper: Update UI
+  function updateCommandBarUI() {
+    const s = SECTIONS[appState.currentIdx];
+
+    // Text Updates
+    titleEl.textContent = s.title;
+    progressEl.textContent = appState.currentIdx + 1;
+
+    // Hint Animation (Fade out -> Change -> Fade in)
+    if (s.id === 'projects') {
+      hintEl.classList.add('hidden');
+      searchInput.classList.remove('hidden');
+      searchInput.focus(); // Optional
+    } else {
+      searchInput.classList.add('hidden');
+      hintEl.classList.remove('hidden');
+
+      hintEl.classList.add('opacity-0', 'translate-y-2');
+      setTimeout(() => {
+        hintEl.textContent = s.hint;
+        hintEl.classList.remove('opacity-0', 'translate-y-2');
+      }, 300);
+    }
+
+    // Bar Progress (Global)
+    // Already handled by window scroll listener, but can sync local
+    const pct = ((appState.currentIdx + 1) / SECTIONS.length) * 100;
+    // barProgress is actually redundant if we have the top scroll bar, 
+    // but let's use it as section indicator or remove it. 
+    // Request said "Progress indicator (e.g., “3 / 6” + a small progress bar)"
+    barProgress.style.width = `${pct}%`;
+
+    updateControls();
+  }
+
+  function updateControls() {
+    // Back Button
+    backBtn.disabled = appState.currentIdx === 0;
+
+    // Next Button Lock Logic
+    if (!appState.guidedMode) {
+      nextBtn.disabled = appState.currentIdx >= SECTIONS.length - 1;
+      return; // Always unlocked (except last)
+    }
+
+    // Is current section visited?
+    const currentId = SECTIONS[appState.currentIdx].id;
+    // We unlock if CURRENT is fully visited, allowing move to NEXT.
+    // Or maybe check if NEXT is allowed? 
+    // Requirement: "Disable the 'Next' button unless the current section is visited"
+    const canProceed = appState.visited.has(currentId);
+
+    nextBtn.disabled = (appState.currentIdx >= SECTIONS.length - 1) || !canProceed;
+  }
+
+  // Connect Search Input to existing Filter Logic
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    // Reuse existing function if accessible, or replicate
+    // Calls filterProjects from global scope
+    if (typeof filterProjects === 'function') {
+      // Need to find active filter from DOM or default 'all'
+      const activeChip = document.querySelector('.filter-chip.active');
+      const activeFilter = activeChip ? activeChip.dataset.filter : 'all';
+      filterProjects(query, activeFilter);
+    }
+  });
+
+  // Initial call
+  updateCommandBarUI();
 }
 
+/* ================= Logic: ScrollSpy & animations ================= */
 function initAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
