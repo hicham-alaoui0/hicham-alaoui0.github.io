@@ -452,17 +452,22 @@ function initTheme() {
   const current = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   html.setAttribute('data-theme', current);
 
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
+  const themeToggle = document.getElementById('themeToggleFixed');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
 }
 
 function initMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('mobileMenuBtn');
   const close = document.getElementById('closeMenuBtn');
+
+  if (!menu || !btn || !close) return;
 
   const toggle = () => menu.classList.toggle('translate-x-full');
   btn.addEventListener('click', toggle);
