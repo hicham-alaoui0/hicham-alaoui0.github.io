@@ -1,115 +1,88 @@
 {
   "hero": {
-    "headline": "Hicham Alaoui — EQD Trading Analyst & Data Scientist",
-    "subline": "Data Scientist passionate about AI and applied machine learning. I build end-to-end solutions—from data pipelines to model deployment—turning complex data into reliable, measurable outcomes.",
-    "cv_url": "/CV/CV"
+    "headline": "Hicham Alaoui - EQD Trading Analyst & Data Scientist",
+    "subline": "Data Scientist focused on applied machine learning, quantitative risk, and production-grade analytics systems.",
+    "cv_url": "CV/CV_2025_DS_AI.pdf"
   },
   "metrics": [
     {
       "label": "Real-world domains",
       "value": 4,
       "suffix": "+",
-      "desc": "Banking, trading, NGO, and public-sector analytics."
+      "desc": "Banking, trading, NGO, and public-sector analytics"
     },
     {
       "label": "End-to-end ML projects",
       "value": 6,
       "suffix": "+",
-      "desc": "From EVT risk tooling to CO₂ forecasting and trading signals."
+      "desc": "From EVT risk tooling to CO2 forecasting and trading signals"
     },
     {
-      "label": "Languages spoken",
+      "label": "Languages",
       "value": 3,
       "suffix": "",
-      "desc": "Arabic, French, English."
+      "desc": "Arabic, French, English"
     }
   ],
   "experience": [
     {
-      "company": "Société Générale ATS",
+      "company": "Societe Generale ATS",
       "role": "EQD Trading Analyst",
-      "dates": "Aug 2025 – Present",
+      "dates": "Aug 2025 - Present",
       "bullets": [
-        "Partner with Structuring to design, build, and maintain equity/derivatives index methodologies; translate product specs into robust operational processes.",
-        "Own monthly/quarterly index rebalancing workflows and delivery, coordinating with external calculation agents (e.g., S&P, Solactive) to meet production deadlines.",
-        "Lead daily pricing/parameter validation (Call/Put prices, key Greeks) and investigate mismatches; align fixes with trading/structuring stakeholders to protect pricing integrity.",
-        "Industrialize index production: automate controls and reporting (cross-check emails, workflow steps), standardize multi-index output formats, and streamline Bloomberg data retrieval + ESG mapping.",
-        "Maintain high traceability and documentation (Obsidian/internal artifacts) to ensure audit-ready processes and smooth handovers."
+        "Partner with Structuring to design, build, and maintain equity and derivatives index methodologies.",
+        "Own monthly and quarterly index rebalancing workflows with external calculation agents.",
+        "Lead daily pricing and parameter validation and coordinate fixes with trading and structuring stakeholders.",
+        "Automate controls and reporting to improve reliability and operational speed.",
+        "Maintain high traceability and documentation for audit readiness and handovers."
       ],
-      "stack": [
-        "Python",
-        "SQL",
-        "VBA",
-        "Bloomberg",
-        "FactSet"
-      ]
+      "stack": ["Python", "SQL", "VBA", "Bloomberg", "FactSet"]
     },
     {
-      "company": "Société Générale ATS",
-      "role": "Data Engineer Intern – Market Access",
-      "dates": "Feb 2025 – Aug 2025",
+      "company": "Societe Generale ATS",
+      "role": "Data Engineer Intern - Market Access",
+      "dates": "Feb 2025 - Aug 2025",
       "bullets": [
-        "Designed a Peaks-over-Threshold EVT engine to calibrate dynamic pre-trade limits (size/price) on equity markets.",
-        "Built Python + SQL pipelines to ingest trading-access logs and 'bypasser' events into clean, analytics-ready tables.",
-        "Developed Streamlit dashboards for limit monitoring, fat-tail backtests, and Kupiec-style exception diagnostics.",
-        "Industrialized the stack with containerization and CI/CD (Docker, GitHub Actions) to keep risk tools reproducible."
+        "Designed a Peaks-over-Threshold EVT engine for dynamic pre-trade limits.",
+        "Built Python and SQL pipelines for trading-access logs and bypass events.",
+        "Developed Streamlit dashboards for monitoring, backtests, and diagnostics.",
+        "Industrialized the stack with Docker and GitHub Actions CI/CD."
       ],
-      "stack": [
-        "Python",
-        "SQL",
-        "EVT",
-        "Streamlit",
-        "Docker",
-        "GitHub Actions"
-      ]
+      "stack": ["Python", "SQL", "EVT", "Streamlit", "Docker", "GitHub Actions"]
     },
     {
       "company": "gaea21 (NGO, Geneva)",
       "role": "Data Scientist Intern",
-      "dates": "Jun 2024 – Sep 2024",
+      "dates": "Jun 2024 - Sep 2024",
       "bullets": [
-        "Built CO₂ emissions prediction models for Swiss agriculture from multi-source time series and panel data.",
-        "Implemented an LSTM-based French article generator producing sustainability briefs for the gaea21 website.",
-        "Packaged models into a lightweight Python API used by non-technical staff for scenario exploration."
+        "Built CO2 emissions prediction models for Swiss agriculture.",
+        "Implemented an LSTM-based French article generator for sustainability briefs.",
+        "Packaged models into a lightweight Python API for non-technical users."
       ],
-      "stack": [
-        "Python",
-        "Pandas",
-        "scikit-learn",
-        "TensorFlow",
-        "NLP"
-      ]
+      "stack": ["Python", "Pandas", "scikit-learn", "TensorFlow", "NLP"]
     },
     {
       "company": "Haut-Commissariat au Plan (HCP, Morocco)",
       "role": "Data Analyst Intern",
-      "dates": "Jul 2023 – Aug 2023",
+      "dates": "Jul 2023 - Aug 2023",
       "bullets": [
-        "Cleaned and migrated household survey microdata into PostgreSQL for poverty and welfare analysis.",
-        "Produced ARIMA/ARDL-based indicators and dashboards on poverty and labour-market dynamics.",
-        "Automated Power BI dashboards for internal stakeholders (data refresh, filters, and export)."
+        "Cleaned and migrated household survey microdata into PostgreSQL.",
+        "Produced ARIMA and ARDL indicators for poverty and labor market analysis.",
+        "Automated Power BI dashboards for internal stakeholders."
       ],
-      "stack": [
-        "R",
-        "PostgreSQL",
-        "ARIMA",
-        "ARDL",
-        "Power BI"
-      ]
+      "stack": ["R", "PostgreSQL", "ARIMA", "ARDL", "Power BI"]
     }
   ],
   "projects": [
     {
-      "name": "Dynamic Limits – EVT Risk Dashboard",
-      "tags": [
-        "Quant Risk",
-        "EVT",
-        "Streamlit"
-      ],
+      "name": "Dynamic Limits - EVT Risk Dashboard",
+      "tags": ["Quant Risk", "EVT", "Streamlit"],
       "summary": "Internal POC for dynamic pre-trade limits calibration using Peaks-over-Threshold EVT and historical trading data.",
+      "problem": "Static limits failed to adapt to changing volatility and fat-tail risk.",
+      "approach": "Built POT EVT calibration pipeline with monitoring dashboards and diagnostics.",
       "impact": [
-        "Calibrates fat-tail-aware thresholds for price/size based on POT EVT on intraday returns.",
-        "Interactive Streamlit app for per-desk limit visualization, backtests, and exception drill-down."
+        "Fat-tail-aware thresholds for price and size",
+        "Interactive limit visualization and exception drill-down"
       ],
       "links": {
         "code": "#",
@@ -118,15 +91,13 @@
     },
     {
       "name": "XGBoost Trading Signals",
-      "tags": [
-        "Quant",
-        "Time Series",
-        "XGBoost"
-      ],
-      "summary": "Research code for short-horizon equity signal generation using engineered features and walk-forward validation.",
+      "tags": ["Quant", "Time Series", "XGBoost"],
+      "summary": "Research pipeline for short-horizon equity signal generation with walk-forward validation.",
+      "problem": "Signals were unstable across regimes and transaction costs reduced net performance.",
+      "approach": "Engineered features by volatility regime and evaluated with cost-aware walk-forward validation.",
       "impact": [
-        "Feature pipeline mixing technical indicators, volatility regimes, and calendar effects.",
-        "Walk-forward cross-validation with realistic train/test splits and transaction-cost-aware metrics."
+        "Improved signal consistency across periods",
+        "Reproducible research pipeline for strategy iteration"
       ],
       "links": {
         "code": "#",
@@ -134,16 +105,14 @@
       }
     },
     {
-      "name": "FarmVision – Crop Stress Detection",
-      "tags": [
-        "Computer Vision",
-        "AgTech",
-        "CNN"
-      ],
-      "summary": "Image-based detection of leaf stress and disease for controlled-environment agriculture using transfer learning.",
+      "name": "FarmVision - Crop Stress Detection",
+      "tags": ["Computer Vision", "AgTech", "CNN"],
+      "summary": "Image-based detection of leaf stress and disease for controlled-environment agriculture.",
+      "problem": "Agriculture teams needed faster and more consistent disease detection.",
+      "approach": "Fine-tuned transfer learning CNN models on curated plant image data.",
       "impact": [
-        "Transfer-learning CNN fine-tuned on curated plant-image datasets.",
-        "Deployed as a small inference API that can be queried from notebooks or dashboards."
+        "High-accuracy stress and disease classification",
+        "API-ready inference for dashboard integration"
       ],
       "links": {
         "code": "#",
@@ -151,16 +120,14 @@
       }
     },
     {
-      "name": "CO₂ Emissions Explorer – Swiss Agriculture",
-      "tags": [
-        "Time Series",
-        "Panel Data",
-        "Sustainability"
-      ],
-      "summary": "Econometric and ML models for agricultural emissions, with decomposition by sub-sector and scenario analysis.",
+      "name": "CO2 Emissions Explorer - Swiss Agriculture",
+      "tags": ["Time Series", "Panel Data", "Sustainability"],
+      "summary": "Econometric and ML modeling for agricultural emissions with scenario analysis.",
+      "problem": "Policy teams needed transparent emissions projections by subsector.",
+      "approach": "Built reproducible data pipeline and combined econometric + ML forecasting.",
       "impact": [
-        "Built reproducible pipeline from FAOSTAT-style data to feature store and model evaluation.",
-        "Interactive notebook-style reports for policy scenarios and feature importance."
+        "Scenario-ready emissions reporting",
+        "Feature-level insights for policy analysis"
       ],
       "links": {
         "code": "#",
@@ -172,67 +139,27 @@
     "Modeling": [
       "Extreme Value Theory (POT)",
       "Time Series (ARIMA, GARCH)",
-      "Panel Econometrics (fixed/random effects)",
-      "Tree Ensembles (XGBoost, Random Forest)",
-      "LSTM / RNNs",
-      "CNNs for vision",
-      "NLP (embeddings, sequence models)"
+      "Panel Econometrics",
+      "XGBoost and tree ensembles",
+      "LSTM / RNN",
+      "CNN",
+      "NLP"
     ],
-    "Programming": [
-      "Python",
-      "R",
-      "SQL",
-      "C++",
-      "Bash",
-      "VBA"
-    ],
-    "Quant & DS Libraries": [
-      "NumPy",
-      "Pandas",
-      "SciPy",
-      "scikit-learn",
-      "TensorFlow / Keras",
-      "statsmodels"
-    ],
-    "Data Platforms & Tooling": [
-      "PostgreSQL",
-      "MySQL",
-      "Docker",
-      "Streamlit",
-      "Git",
-      "GitHub Actions"
-    ],
-    "BI & Visualization": [
-      "Power BI",
-      "Tableau",
-      "Matplotlib / Seaborn"
-    ],
-    "Soft Skills": [
-      "Stakeholder communication (traders, risk, IT)",
-      "Problem framing & scoping",
-      "Storytelling with data",
-      "Mentoring & knowledge sharing"
-    ]
+    "Programming": ["Python", "R", "SQL", "C++", "Bash", "VBA"],
+    "Quant & DS Libraries": ["NumPy", "Pandas", "SciPy", "scikit-learn", "TensorFlow", "statsmodels"],
+    "Data Platforms & Tooling": ["PostgreSQL", "MySQL", "Docker", "Streamlit", "Git", "GitHub Actions"],
+    "BI & Visualization": ["Power BI", "Tableau", "Matplotlib", "Seaborn"],
+    "Soft Skills": ["Stakeholder communication", "Problem framing", "Data storytelling", "Mentoring"]
   },
-  "certs": [
-    "Neural Networks & Deep Learning (DeepLearning.AI)",
-    "Python for Everybody Specialization (University of Michigan)",
-    "Prepare Data for Exploration (Google)",
-    "Python Project for Data Science (IBM)"
-  ],
   "education": [
     {
       "institution": "INSEA, Rabat",
-      "program": "Engineering – Applied Economics, Statistics & Big Data (EASBD)",
-      "years": "2022–2025 (expected)"
+      "program": "Engineering - Applied Economics, Statistics and Big Data",
+      "years": "2022-2025"
     }
   ],
-  "languages": [
-    "Arabic",
-    "French",
-    "English"
-  ],
+  "languages": ["Arabic", "French", "English"],
   "about": {
-    "narrative": "EQD trading analyst and data scientist trained at INSEA, building EVT-based risk tooling, pre-trade controls, and ML projects across finance, emissions, and public policy."
+    "narrative": "EQD trading analyst and data scientist trained at INSEA, building EVT-based risk tooling and production analytics systems."
   }
 }
