@@ -159,7 +159,7 @@ function renderHero() {
 
     <div class="order-1 lg:order-2 reveal-hidden flex justify-center">
       <div class="relative h-72 w-72 rounded-[2rem] border border-border/70 bg-gradient-to-br from-surface to-bg p-2 shadow-2xl sm:h-80 sm:w-80 lg:h-96 lg:w-96">
-        <img src="assets/images/profile/Generated Image September 05, 2025 - 9_02PM.jpeg" alt="${name}" class="h-full w-full rounded-[1.6rem] object-cover" onerror="this.src='assets/images/hero-bg.jpg'" />
+        <img src="assets/images/profile/profile-gen.jpg" alt="${name}" class="h-full w-full rounded-[1.6rem] object-cover" onerror="this.src='assets/images/hero-bg.jpg'" />
         <div class="absolute -bottom-5 -right-5 rounded-xl border border-border bg-surface px-4 py-3 shadow-xl">
           <p class="text-xs uppercase tracking-wider text-[var(--text-muted)]">Focus</p>
           <p class="text-sm font-bold text-primary">Quant Risk + ML</p>
@@ -581,5 +581,6 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
