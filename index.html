@@ -67,7 +67,7 @@
         <div class="hidden sm:flex items-center gap-1 text-xs font-mono font-bold text-[var(--text-muted)]">
           <span id="cmdProgressCurrent">1</span>
           <span class="opacity-50">/</span>
-          <span class="opacity-50">6</span>
+          <span id="cmdProgressTotal" class="opacity-50">8</span>
         </div>
         <div class="h-8 w-px bg-border hidden sm:block"></div>
 
@@ -160,6 +160,15 @@
       <!-- JS Injects Hero Content -->
     </div>
   </section>
+  <!-- Selected Impact -->
+  <section id="impact" class="py-14 md:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 tracking-tight text-center" data-i18n="section.impact">Selected Impact</h2>
+      <div id="impact-target" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- JS Injects impact items -->
+      </div>
+    </div>
+  </section>
 
   <!-- Experience -->
   <section id="experience" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 relative">
@@ -198,6 +207,9 @@
           </div>
         </div>
       </div>
+      <p class="mb-8 text-sm leading-relaxed text-[var(--text-muted)] max-w-4xl" data-i18n="projects.note">
+        Some projects were delivered in regulated or internal environments, so selected case studies are presented in anonymized form with emphasis on system design, controls, and measurable business value.
+      </p>
 
       <!-- Grid -->
       <div id="projects-target" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -213,8 +225,18 @@
               d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-2">No projects found</h3>
-        <p class="text-[var(--text-muted)]">Try adjusting your filters or search query.</p>
+        <h3 class="text-xl font-bold mb-2" data-i18n="projects.emptyTitle">No projects found</h3>
+        <p class="text-[var(--text-muted)]" data-i18n="projects.emptyBody">Try adjusting your filters or search query.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Building Now -->
+  <section id="building" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center tracking-tight" data-i18n="section.building">What I'm Building Now</h2>
+      <div id="building-target" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- JS injects building cards -->
       </div>
     </div>
   </section>
@@ -361,3 +383,8 @@
 </body>
 
 </html>
+
+
+
+
+

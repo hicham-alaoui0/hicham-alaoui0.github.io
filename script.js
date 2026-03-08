@@ -1,6 +1,8 @@
 /**
- * Professional Portfolio Runtime
- * Stable data loading + rendering for profile.json and certifications.json
+ * Portfolio runtime (static, no build)
+ * - Loads profile/certification JSON
+ * - Normalizes project schema to avoid empty-project regressions
+ * - Renders EN/FR UI copy
  */
 
 const I18N = {
@@ -10,9 +12,38 @@ const I18N = {
     sectionSkills: 'Technical Skills',
     sectionCerts: 'Licenses & Certifications',
     sectionContact: 'Let\'s Connect',
+    sectionImpact: 'Selected Impact',
+    sectionBuilding: "What I'm Building Now",
     heroCv: 'Download CV',
     heroContact: 'Contact Me',
+    heroHeadline: 'EQD Trading Analyst, Data Scientist, and AI Systems Builder',
+    heroSubline: 'I design data products and decision systems for trading operations, quantitative finance, and applied AI.',
+    heroIntro:
+      'Final-year engineering student at INSEA and EQD Trading Analyst at Societe Generale ATS, with experience spanning quantitative finance, machine learning, and data engineering. I build production-oriented systems for trading workflows and risk visibility, while also developing AI-driven products in investing, sustainability, and agritech.',
     projectSearch: 'Search projects...',
+    projectFilterAll: 'All',
+    projectViewDetails: 'View Details',
+    projectProblem: 'Problem',
+    projectApproach: 'Approach',
+    projectImpact: 'Impact',
+    projectStack: 'Stack',
+    projectsEmptyTitle: 'No projects found',
+    projectsEmptyBody: 'Try adjusting your filters or search query.',
+    projectsNote:
+      'Some projects were delivered in regulated or internal environments, so selected case studies are presented in anonymized form with emphasis on system design, controls, and measurable business value.',
+    verifyCredential: 'Verify credential',
+    impactRoleTitle: 'Current Role',
+    impactRoleBody: 'EQD Trading Analyst - Societe Generale ATS',
+    impactPrevTitle: 'Previous Experience',
+    impactPrevBody: 'Data science internships in finance and sustainability',
+    impactFounderTitle: 'Founder',
+    impactFounderBody: 'SkyFarms',
+    impactDomainTitle: 'Core Domains',
+    impactDomainBody: 'Quant Finance, AI Systems, Data Engineering',
+    buildingOne: 'Production-control workflows for index rebalancing',
+    buildingTwo: 'AI investment decision systems',
+    buildingThree: 'Startup experimentation in agritech and automation',
+    modalCode: 'View Code',
   },
   fr: {
     sectionExperience: 'Experience',
@@ -20,16 +51,47 @@ const I18N = {
     sectionSkills: 'Competences techniques',
     sectionCerts: 'Certifications',
     sectionContact: 'Contact',
+    sectionImpact: 'Impact selectionne',
+    sectionBuilding: 'Ce que je construis actuellement',
     heroCv: 'Telecharger CV',
     heroContact: 'Me contacter',
+    heroHeadline: 'Analyste Trading EQD, Data Scientist et builder de systemes IA',
+    heroSubline: "Je conÃ§ois des produits data et des systemes d'aide a la decision pour les operations de trading, la finance quantitative et l'IA appliquee.",
+    heroIntro:
+      "Etudiant ingenieur en derniere annee a l'INSEA et analyste Trading EQD chez Societe Generale ATS, avec une experience couvrant la finance quantitative, le machine learning et la data engineering. Je construis des systemes orientes production pour les workflows de trading et la visibilite risque, tout en developpant des produits IA en investissement, durabilite et agritech.",
     projectSearch: 'Rechercher des projets...',
+    projectFilterAll: 'Tous',
+    projectViewDetails: 'Voir les details',
+    projectProblem: 'Probleme',
+    projectApproach: 'Approche',
+    projectImpact: 'Impact',
+    projectStack: 'Stack',
+    projectsEmptyTitle: 'Aucun projet trouve',
+    projectsEmptyBody: 'Ajustez les filtres ou la recherche.',
+    projectsNote:
+      "Certains projets ont ete realises dans des environnements internes ou reglementes ; les etudes de cas sont presentees de maniere anonymisee, en mettant l'accent sur l'architecture systeme, les controles et la valeur metier mesurable.",
+    verifyCredential: 'Verifier le certificat',
+    impactRoleTitle: 'Role actuel',
+    impactRoleBody: 'Analyste Trading EQD - Societe Generale ATS',
+    impactPrevTitle: 'Experience precedente',
+    impactPrevBody: 'Stages data science en finance et durabilite',
+    impactFounderTitle: 'Fondateur',
+    impactFounderBody: 'SkyFarms',
+    impactDomainTitle: 'Domaines cles',
+    impactDomainBody: 'Finance quantitative, systemes IA, data engineering',
+    buildingOne: "Workflows de controle de production pour les rebalancements d'indices",
+    buildingTwo: "Systemes IA d'aide a la decision d'investissement",
+    buildingThree: 'Experimentations startup en agritech et automatisation',
+    modalCode: 'Voir le code',
   },
 };
 
 const SECTIONS = [
   { id: 'hero', title: 'Introduction', hint: 'Overview and positioning' },
+  { id: 'impact', title: 'Impact', hint: 'Current positioning and domains' },
   { id: 'experience', title: 'Experience', hint: 'Career impact highlights' },
   { id: 'projects', title: 'Projects', hint: 'Search and filter case studies' },
+  { id: 'building', title: 'Building', hint: 'Current initiatives' },
   { id: 'skills', title: 'Skills', hint: 'Technical capabilities' },
   { id: 'certifications', title: 'Credentials', hint: 'Verified certifications' },
   { id: 'contact', title: 'Contact', hint: 'Reach out directly' },
@@ -76,13 +138,36 @@ async function loadJson(path, fallback) {
   }
 }
 
-function getProfileName(profile) {
-  const headline = profile?.hero?.headline || 'Hicham Alaoui - Data Scientist';
-  return headline.split('-')[0].trim() || 'Hicham Alaoui';
-}
+function normalizeProfile(profile) {
+  const source = profile || {};
+  const projects = (source.projects || []).map((project, index) => {
+    const name = project.name || project.title || `Project ${index + 1}`;
+    const summary = project.summary || project.problem || '';
+    const impact = Array.isArray(project.impact)
+      ? project.impact
+      : Array.isArray(project.metrics)
+      ? project.metrics
+      : project.impact
+      ? [project.impact]
+      : [];
 
-function getCategory(project) {
-  return project.tags?.[0] || 'Project';
+    return {
+      id: project.id || slugify(name),
+      name,
+      summary,
+      problem: project.problem || summary,
+      approach: project.approach || '',
+      impact,
+      tags: project.tags || [],
+      stack: project.stack || [],
+      links: project.links || {},
+    };
+  });
+
+  return {
+    ...source,
+    projects,
+  };
 }
 
 function getProjects() {
@@ -90,28 +175,35 @@ function getProjects() {
 }
 
 function applyI18n() {
-  const dict = I18N[state.lang];
+  const t = I18N[state.lang];
 
-  const map = [
-    ['section.experience', dict.sectionExperience],
-    ['section.projects', dict.sectionProjects],
-    ['section.skills', dict.sectionSkills],
-    ['section.certifications', dict.sectionCerts],
-    ['section.contact', dict.sectionContact],
-    ['hero.cv', dict.heroCv],
-    ['hero.contact', dict.heroContact],
+  const mapping = [
+    ['section.experience', t.sectionExperience],
+    ['section.projects', t.sectionProjects],
+    ['section.skills', t.sectionSkills],
+    ['section.certifications', t.sectionCerts],
+    ['section.contact', t.sectionContact],
+    ['section.impact', t.sectionImpact],
+    ['section.building', t.sectionBuilding],
+    ['hero.cv', t.heroCv],
+    ['hero.contact', t.heroContact],
+    ['projects.note', t.projectsNote],
+    ['projects.emptyTitle', t.projectsEmptyTitle],
+    ['projects.emptyBody', t.projectsEmptyBody],
   ];
 
-  map.forEach(([key, value]) => {
+  mapping.forEach(([key, value]) => {
     document.querySelectorAll(`[data-i18n="${key}"]`).forEach((el) => {
       el.textContent = value;
     });
   });
 
-  const search = qs('projectSearch');
-  if (search) search.placeholder = dict.projectSearch;
+  const projectSearch = qs('projectSearch');
+  if (projectSearch) projectSearch.placeholder = t.projectSearch;
+
   const cmdSearch = qs('cmdProjectSearch');
-  if (cmdSearch) cmdSearch.placeholder = dict.projectSearch;
+  if (cmdSearch) cmdSearch.placeholder = t.projectSearch;
+
   const langBtn = qs('langToggle');
   if (langBtn) langBtn.textContent = state.lang.toUpperCase();
 }
@@ -120,11 +212,10 @@ function renderHero() {
   const root = qs('hero-target');
   if (!root || !state.profile) return;
 
+  const t = I18N[state.lang];
   const profile = state.profile;
   const hero = profile.hero || {};
-  const name = sanitize(getProfileName(profile));
-  const role = sanitize(hero.headline?.split('-')[1]?.trim() || 'Data Scientist');
-  const subline = sanitize(hero.subline || profile.about?.narrative || 'Building data products with measurable impact.');
+  const name = sanitize((hero.headline || 'Hicham Alaoui').split('-')[0].trim() || 'Hicham Alaoui');
   const cv = sanitize(hero.cv_url || 'CV/CV_2025_DS_AI.pdf');
 
   const stats = (profile.metrics || []).slice(0, 3).map((metric) => {
@@ -139,15 +230,15 @@ function renderHero() {
   }).join('');
 
   root.innerHTML = `
-    <div class="order-2 lg:order-1 reveal-hidden space-y-8">
-      <div>
-        <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-          <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-          ${role}
-        </span>
-        <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">${name}</h1>
-        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--text-muted)]">${subline}</p>
-      </div>
+    <div class="order-2 lg:order-1 reveal-hidden space-y-6">
+      <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+        <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+        EQD + Data + AI
+      </span>
+
+      <h1 class="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">${sanitize(t.heroHeadline)}</h1>
+      <p class="max-w-2xl text-xl leading-relaxed text-[var(--text-muted)]">${sanitize(t.heroSubline)}</p>
+      <p class="max-w-3xl text-base leading-relaxed text-[var(--text-muted)]">${sanitize(t.heroIntro)}</p>
 
       <div class="flex flex-wrap gap-4">
         <a href="${cv}" target="_blank" class="btn px-7 py-3.5 rounded-xl bg-primary text-white font-bold shadow-lg hover:bg-primary-hover transition-all" data-i18n="hero.cv">Download CV</a>
@@ -162,11 +253,31 @@ function renderHero() {
         <img src="assets/images/profile/profile-gen.jpg" alt="${name}" class="h-full w-full rounded-[1.6rem] object-cover" onerror="this.src='assets/images/hero-bg.jpg'" />
         <div class="absolute -bottom-5 -right-5 rounded-xl border border-border bg-surface px-4 py-3 shadow-xl">
           <p class="text-xs uppercase tracking-wider text-[var(--text-muted)]">Focus</p>
-          <p class="text-sm font-bold text-primary">Quant Risk + ML</p>
+          <p class="text-sm font-bold text-primary">Quant Risk + AI Systems</p>
         </div>
       </div>
     </div>
   `;
+}
+
+function renderImpact() {
+  const root = qs('impact-target');
+  if (!root) return;
+
+  const t = I18N[state.lang];
+  const items = [
+    { title: t.impactRoleTitle, body: t.impactRoleBody },
+    { title: t.impactPrevTitle, body: t.impactPrevBody },
+    { title: t.impactFounderTitle, body: t.impactFounderBody },
+    { title: t.impactDomainTitle, body: t.impactDomainBody },
+  ];
+
+  root.innerHTML = items.map((item, index) => `
+    <article class="reveal-hidden rounded-xl border border-border bg-surface p-5 shadow-sm" style="transition-delay:${index * 70}ms">
+      <p class="text-xs uppercase tracking-wider text-[var(--text-muted)]">${sanitize(item.title)}</p>
+      <h3 class="mt-2 text-base font-bold leading-snug">${sanitize(item.body)}</h3>
+    </article>
+  `).join('');
 }
 
 function renderExperience() {
@@ -204,13 +315,14 @@ function renderFilters() {
   const root = qs('projectFilters');
   if (!root) return;
 
+  const t = I18N[state.lang];
   const tags = new Set();
   getProjects().forEach((project) => (project.tags || []).forEach((tag) => tags.add(tag)));
   const all = ['all', ...Array.from(tags).sort((a, b) => a.localeCompare(b))];
 
   root.innerHTML = all.map((tag) => {
     const active = state.activeFilter === tag ? 'active' : '';
-    const label = tag === 'all' ? 'All' : sanitize(tag);
+    const label = tag === 'all' ? t.projectFilterAll : sanitize(tag);
     return `<button class="filter-chip ${active} px-4 py-1.5 rounded-full border border-border bg-surface text-sm font-medium" data-filter="${sanitize(tag)}">${label}</button>`;
   }).join('');
 }
@@ -219,7 +331,7 @@ function getFilteredProjects() {
   const query = state.query.trim().toLowerCase();
   return getProjects().filter((project) => {
     const inFilter = state.activeFilter === 'all' || (project.tags || []).includes(state.activeFilter);
-    const blob = `${project.name || ''} ${project.summary || ''} ${(project.tags || []).join(' ')} ${(project.impact || []).join(' ')}`.toLowerCase();
+    const blob = `${project.name || ''} ${project.summary || ''} ${project.problem || ''} ${project.approach || ''} ${(project.tags || []).join(' ')} ${(project.impact || []).join(' ')} ${(project.stack || []).join(' ')}`.toLowerCase();
     const inSearch = !query || blob.includes(query);
     return inFilter && inSearch;
   });
@@ -230,7 +342,9 @@ function renderProjects() {
   const empty = qs('projectsEmpty');
   if (!root || !empty) return;
 
+  const t = I18N[state.lang];
   const projects = getFilteredProjects();
+
   if (!projects.length) {
     root.innerHTML = '';
     empty.classList.remove('hidden');
@@ -239,23 +353,35 @@ function renderProjects() {
 
   empty.classList.add('hidden');
   root.innerHTML = projects.map((project, index) => {
-    const id = slugify(project.name || `project-${index}`);
+    const id = project.id || slugify(project.name || `project-${index}`);
+    const badges = (project.impact || []).slice(0, 4);
+
     return `
-      <article class="group reveal-hidden flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl" style="transition-delay:${index * 60}ms">
-        <div class="flex-1 p-6 md:p-7">
-          <div class="mb-3 flex items-start justify-between gap-3">
-            <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">${sanitize(getCategory(project))}</span>
-            <span class="text-xs text-[var(--text-muted)]">${sanitize(project.impact?.[0] || '')}</span>
+      <article class="project-card group reveal-hidden flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl" style="transition-delay:${index * 60}ms">
+        <div class="flex-1 p-6 md:p-7 space-y-4">
+          <div class="flex items-center justify-between gap-3">
+            <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">${sanitize(project.tags?.[0] || 'Project')}</span>
+            <span class="text-xs text-[var(--text-muted)]">${sanitize(project.name)}</span>
           </div>
+
           <h3 class="text-xl font-bold group-hover:text-primary transition-colors">${sanitize(project.name)}</h3>
-          <p class="mt-3 line-clamp-3 text-sm text-[var(--text-muted)]">${sanitize(project.summary || '')}</p>
-          <div class="mt-5 flex flex-wrap gap-2">
-            ${(project.tags || []).slice(0, 4).map((tag) => `<span class="rounded-md border border-border px-2.5 py-1 text-xs text-[var(--text-muted)]">${sanitize(tag)}</span>`).join('')}
+
+          <div class="space-y-3 text-sm text-[var(--text-muted)]">
+            <p><strong class="text-[var(--text)]">${t.projectProblem}:</strong> ${sanitize(project.problem || project.summary || '')}</p>
+            <p><strong class="text-[var(--text)]">${t.projectApproach}:</strong> ${sanitize(project.approach || '')}</p>
+            <p><strong class="text-[var(--text)]">${t.projectImpact}:</strong> ${sanitize((project.impact || []).join(' | '))}</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            ${(badges).map((badge) => `<span class="rounded-md border border-border px-2.5 py-1 text-xs text-[var(--text-muted)]">${sanitize(badge)}</span>`).join('')}
+          </div>
+
+          <div class="pt-1 flex flex-wrap gap-2">
+            ${(project.stack || []).map((tool) => `<span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">${sanitize(tool)}</span>`).join('')}
           </div>
         </div>
-        <button class="project-open-btn w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" data-project-id="${id}">
-          View Details
-        </button>
+
+        <button class="project-open-btn w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" data-project-id="${sanitize(id)}">${t.projectViewDetails}</button>
       </article>
     `;
   }).join('');
@@ -265,12 +391,28 @@ function renderProjects() {
   });
 }
 
+function renderBuildingNow() {
+  const root = qs('building-target');
+  if (!root) return;
+
+  const t = I18N[state.lang];
+  const items = [t.buildingOne, t.buildingTwo, t.buildingThree];
+
+  root.innerHTML = items.map((item, index) => `
+    <article class="reveal-hidden rounded-xl border border-border bg-surface p-6 shadow-sm" style="transition-delay:${index * 80}ms">
+      <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Now</p>
+      <h3 class="mt-3 text-lg font-semibold leading-snug">${sanitize(item)}</h3>
+    </article>
+  `).join('');
+}
+
 function renderSkills() {
   const root = qs('skills-target');
   if (!root || !state.profile) return;
 
   const skills = state.profile.skills || {};
   const groups = Object.entries(skills);
+
   root.innerHTML = groups.map(([group, values], index) => `
     <article class="reveal-hidden rounded-2xl border border-border bg-surface p-6 shadow-sm" style="transition-delay:${index * 70}ms">
       <h3 class="text-lg font-bold">${sanitize(group)}</h3>
@@ -285,6 +427,7 @@ function renderCertifications() {
   const root = qs('certs-target');
   if (!root) return;
 
+  const t = I18N[state.lang];
   root.innerHTML = state.certifications.map((cert, index) => `
     <article class="reveal-hidden flex h-full flex-col rounded-xl border border-border bg-surface p-5 shadow-sm" style="transition-delay:${index * 60}ms">
       <div class="mb-4 flex items-start justify-between gap-3">
@@ -293,7 +436,7 @@ function renderCertifications() {
       </div>
       <h3 class="text-base font-bold">${sanitize(cert.title)}</h3>
       <p class="mt-1 text-sm text-[var(--text-muted)]">${sanitize(cert.issuer)}</p>
-      <a href="${sanitize(cert.verifyUrl)}" target="_blank" rel="noreferrer" class="mt-4 inline-flex text-sm font-semibold text-primary hover:underline">Verify credential</a>
+      <a href="${sanitize(cert.verifyUrl)}" target="_blank" rel="noreferrer" class="mt-4 inline-flex text-sm font-semibold text-primary hover:underline">${t.verifyCredential}</a>
     </article>
   `).join('');
 }
@@ -314,7 +457,7 @@ function bindFilterAndSearch() {
     });
   }
 
-  const onSearchInput = (value) => {
+  const onSearch = (value) => {
     state.query = value;
     if (search && search.value !== value) search.value = value;
     if (cmdSearch && cmdSearch.value !== value) cmdSearch.value = value;
@@ -322,25 +465,27 @@ function bindFilterAndSearch() {
     refreshRevealObserver();
   };
 
-  if (search) search.addEventListener('input', (event) => onSearchInput(event.target.value || ''));
-  if (cmdSearch) cmdSearch.addEventListener('input', (event) => onSearchInput(event.target.value || ''));
+  if (search) search.addEventListener('input', (event) => onSearch(event.target.value || ''));
+  if (cmdSearch) cmdSearch.addEventListener('input', (event) => onSearch(event.target.value || ''));
 }
 
 function openModal(projectId) {
   const modal = qs('projectModal');
   if (!modal) return;
 
-  const project = getProjects().find((item) => slugify(item.name) === projectId);
+  const project = getProjects().find((item) => (item.id || slugify(item.name)) === projectId);
   if (!project) return;
 
+  const t = I18N[state.lang];
   qs('modalTitle').textContent = project.name || 'Project';
-  qs('modalProblem').textContent = project.problem || project.summary || 'Problem statement available on request.';
-  qs('modalApproach').textContent = project.approach || 'Approach details available on request.';
-  qs('modalResults').textContent = (project.impact || []).join(' | ') || 'Impact details available on request.';
+  qs('modalProblem').textContent = project.problem || project.summary || '';
+  qs('modalApproach').textContent = project.approach || '';
+  qs('modalResults').textContent = (project.impact || []).join(' | ');
   qs('modalTags').innerHTML = (project.tags || []).map((tag) => `<span class="text-xs px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20">${sanitize(tag)}</span>`).join('');
   qs('modalMetrics').innerHTML = (project.impact || []).map((metric) => `<li class="flex items-start gap-2 text-sm"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>${sanitize(metric)}</span></li>`).join('');
 
   const codeLink = qs('modalCodeLink');
+  codeLink.textContent = t.modalCode;
   if (project.links?.code && project.links.code !== '#') {
     codeLink.href = project.links.code;
     codeLink.parentElement.classList.remove('hidden');
@@ -362,7 +507,6 @@ function bindModal() {
   });
 }
 
-
 function bindContactLinks() {
   const email = qs('contactEmail');
   const linkedin = qs('contactLinkedin');
@@ -373,6 +517,7 @@ function bindContactLinks() {
   if (email) email.href = `mailto:${mail}`;
   if (linkedin) linkedin.href = linked;
 }
+
 function initTheme() {
   const html = document.documentElement;
   const stored = localStorage.getItem('theme');
@@ -422,24 +567,6 @@ function initScrollUX() {
 
 let revealObserver = null;
 
-function refreshRevealObserver() {
-  if (revealObserver) revealObserver.disconnect();
-
-  revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.replace('reveal-hidden', 'reveal-visible');
-
-      const counter = entry.target.querySelector('.count-up');
-      if (counter && !counter.dataset.animated) animateCounter(counter);
-
-      revealObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-
-  document.querySelectorAll('.reveal-hidden').forEach((element) => revealObserver.observe(element));
-}
-
 function animateCounter(el) {
   const end = Number(el.dataset.val || 0);
   const suffix = el.dataset.suffix || '';
@@ -457,11 +584,28 @@ function animateCounter(el) {
   requestAnimationFrame(frame);
 }
 
+function refreshRevealObserver() {
+  if (revealObserver) revealObserver.disconnect();
+
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.replace('reveal-hidden', 'reveal-visible');
+      const counter = entry.target.querySelector('.count-up');
+      if (counter && !counter.dataset.animated) animateCounter(counter);
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal-hidden').forEach((el) => revealObserver.observe(el));
+}
+
 function initCommandBar() {
   const title = qs('cmdSectionTitle');
   const hint = qs('cmdBarHint');
   const current = qs('cmdProgressCurrent');
   const progress = qs('cmdProgressBar');
+  const total = qs('cmdProgressTotal');
   const nextBtn = qs('cmdNextBtn');
   const backBtn = qs('cmdBackBtn');
   const guideBtn = qs('cmdGuideToggle');
@@ -473,6 +617,7 @@ function initCommandBar() {
 
     if (title) title.textContent = item.title;
     if (current) current.textContent = String(index + 1);
+    if (total) total.textContent = String(SECTIONS.length);
     if (progress) progress.style.width = `${((index + 1) / SECTIONS.length) * 100}%`;
 
     if (hint && search) {
@@ -487,7 +632,6 @@ function initCommandBar() {
     }
 
     if (backBtn) backBtn.disabled = index === 0;
-
     if (nextBtn) {
       const locked = state.guidedMode && !state.visited.has(item.id);
       nextBtn.disabled = index >= SECTIONS.length - 1 || locked;
@@ -517,7 +661,7 @@ function initCommandBar() {
     });
   }
 
-  const activeObserver = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       const index = SECTIONS.findIndex((section) => section.id === entry.target.id);
@@ -529,11 +673,24 @@ function initCommandBar() {
   }, { threshold: 0.45 });
 
   SECTIONS.forEach((section) => {
-    const element = qs(section.id);
-    if (element) activeObserver.observe(element);
+    const el = qs(section.id);
+    if (el) observer.observe(el);
   });
 
   setSection(0);
+}
+
+function renderAll() {
+  renderHero();
+  renderImpact();
+  renderExperience();
+  renderFilters();
+  renderProjects();
+  renderBuildingNow();
+  renderSkills();
+  renderCertifications();
+  applyI18n();
+  refreshRevealObserver();
 }
 
 async function init() {
@@ -544,23 +701,15 @@ async function init() {
     loadJson('data/certifications.json', []),
   ]);
 
-  state.profile = profile;
+  state.profile = normalizeProfile(profile);
   state.certifications = certifications;
 
-  renderHero();
-  renderExperience();
-  renderFilters();
-  renderProjects();
-  renderSkills();
-  renderCertifications();
-
-  applyI18n();
+  renderAll();
   bindFilterAndSearch();
   bindModal();
   bindContactLinks();
   initScrollUX();
   initCommandBar();
-  refreshRevealObserver();
 
   const year = qs('year');
   if (year) year.textContent = String(new Date().getFullYear());
@@ -569,7 +718,7 @@ async function init() {
   if (langToggle) {
     langToggle.addEventListener('click', () => {
       state.lang = state.lang === 'en' ? 'fr' : 'en';
-      applyI18n();
+      renderAll();
     });
   }
 
@@ -581,6 +730,4 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-
 
