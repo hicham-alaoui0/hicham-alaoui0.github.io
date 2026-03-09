@@ -56,7 +56,7 @@ const I18N = {
     heroCv: 'Telecharger CV',
     heroContact: 'Me contacter',
     heroHeadline: 'Analyste Trading EQD, Data Scientist et builder de systemes IA',
-    heroSubline: "Je conÃƒÆ’Ã‚Â§ois des produits data et des systemes d'aide a la decision pour les operations de trading, la finance quantitative et l'IA appliquee.",
+    heroSubline: "Je conçois des produits data et des systèmes d'aide à la décision pour les opérations de trading, la finance quantitative et l'IA appliquée.",
     heroIntro:
       "Analyste Trading EQD et Data Scientist avec une experience en finance quantitative, produits analytiques et conception de systemes IA. Je construis des workflows orientes production pour les operations de trading, la visibilite risque et l'aide a la decision.",
     projectSearch: 'Rechercher des projets...',
@@ -730,5 +730,6 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
