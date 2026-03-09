@@ -19,7 +19,7 @@ const I18N = {
     heroHeadline: 'EQD Trading Analyst, Data Scientist, and AI Systems Builder',
     heroSubline: 'I design data products and decision systems for trading operations, quantitative finance, and applied AI.',
     heroIntro:
-      'Final-year engineering student at INSEA and EQD Trading Analyst at Societe Generale ATS, with experience spanning quantitative finance, machine learning, and data engineering. I build production-oriented systems for trading workflows and risk visibility, while also developing AI-driven products in investing, sustainability, and agritech.',
+      'EQD Trading Analyst and Data Scientist with experience in quantitative finance, analytics products, and AI systems design. I build production-oriented workflows for trading operations, risk visibility, and decision support.',
     projectSearch: 'Search projects...',
     projectFilterAll: 'All',
     projectViewDetails: 'View Details',
@@ -56,9 +56,9 @@ const I18N = {
     heroCv: 'Telecharger CV',
     heroContact: 'Me contacter',
     heroHeadline: 'Analyste Trading EQD, Data Scientist et builder de systemes IA',
-    heroSubline: "Je conÃ§ois des produits data et des systemes d'aide a la decision pour les operations de trading, la finance quantitative et l'IA appliquee.",
+    heroSubline: "Je conÃƒÆ’Ã‚Â§ois des produits data et des systemes d'aide a la decision pour les operations de trading, la finance quantitative et l'IA appliquee.",
     heroIntro:
-      "Etudiant ingenieur en derniere annee a l'INSEA et analyste Trading EQD chez Societe Generale ATS, avec une experience couvrant la finance quantitative, le machine learning et la data engineering. Je construis des systemes orientes production pour les workflows de trading et la visibilite risque, tout en developpant des produits IA en investissement, durabilite et agritech.",
+      "Analyste Trading EQD et Data Scientist avec une experience en finance quantitative, produits analytiques et conception de systemes IA. Je construis des workflows orientes production pour les operations de trading, la visibilite risque et l'aide a la decision.",
     projectSearch: 'Rechercher des projets...',
     projectFilterAll: 'Tous',
     projectViewDetails: 'Voir les details',
@@ -730,4 +730,5 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
