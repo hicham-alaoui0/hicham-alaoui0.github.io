@@ -1,14 +1,14 @@
-const CACHE_NAME = 'portfolio-v6';
+const CACHE_NAME = 'portfolio-v7';
 const CORE_ASSETS = [
   './',
   './index.html',
   './styles.css',
   './script.js',
   './manifest.json',
-  './data/portfolio.json',
   './data/profile.json',
-  './CV/CV',
+  './data/certifications.json',
   './assets/images/hero-bg.jpg',
+  './assets/images/profile/profile-gen.jpg',
   './assets/icons/icon-192x192.png',
   './assets/icons/icon-512x512.png'
 ];
