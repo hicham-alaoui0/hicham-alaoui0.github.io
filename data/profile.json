@@ -1,17 +1,18 @@
 {
   "hero": {
-    "headline": "Hicham Alaoui - EQD Trading Analyst, Data Scientist, and AI Systems Builder",
-    "subline": "I design data products and decision systems for trading operations, quantitative finance, and applied AI.",
-    "cv_url": "CV_Hicham_Alaoui.pdf"
+    "headline": "Hicham Alaoui",
+    "subline": "Applied Data Scientist building AI, analytics, and decision systems.",
+    "cv_url": "CV/CV_Hicham_Alaoui.pdf"
   },
   "contact": {
     "email": "halaoui@insea.ac.ma",
-    "linkedin": "https://linkedin.com/in/hicham-alaoui-08ba35206"
+    "linkedin": "https://linkedin.com/in/hicham-alaoui-08ba35206",
+    "github": "https://github.com/hicham-alaoui0"
   },
   "metrics": [
-    { "label": "Production systems", "value": 6, "suffix": "+" },
-    { "label": "Domains", "value": 4, "suffix": "" },
-    { "label": "Languages", "value": 3, "suffix": "" }
+    { "label": "Case studies", "value": 8, "suffix": "" },
+    { "label": "Application domains", "value": 4, "suffix": "" },
+    { "label": "Core tracks", "value": 3, "suffix": "" }
   ],
   "experience": [
     {
@@ -19,9 +20,9 @@
       "role": "EQD Trading Analyst",
       "dates": "Aug 2025 - Present",
       "bullets": [
-        "Design and maintain index workflow operations across Inputs, Run, and Outputs.",
-        "Drive production controls, monitoring logic, and escalation visibility for trading operations.",
-        "Standardize traceability and output quality checks for recurring rebalancing cycles."
+        "Designed and operationalized control workflows for index rebalancing production cycles.",
+        "Built decision-support views for control exceptions, recurring data issues, and escalations.",
+        "Standardized run traceability and output checks to improve operational reliability."
       ],
       "stack": ["Python", "SQL", "Excel", "VBA", "Bloomberg", "FactSet"]
     },
@@ -30,9 +31,9 @@
       "role": "Data Engineer Intern - Market Access",
       "dates": "Feb 2025 - Aug 2025",
       "bullets": [
-        "Built risk analytics tooling for trading controls and dynamic monitoring.",
-        "Developed reproducible data pipelines and dashboard layers for exception analysis.",
-        "Packaged workflows for operational continuity using containerized deployment."
+        "Developed risk and monitoring analytics for control-heavy trading environments.",
+        "Built reproducible data pipelines and reporting layers for exception analysis.",
+        "Packaged automation workflows for continuity using containerized deployment."
       ],
       "stack": ["Python", "SQL", "Streamlit", "Docker", "GitHub Actions"]
     },
@@ -41,8 +42,8 @@
       "role": "Data Scientist Intern",
       "dates": "Jun 2024 - Sep 2024",
       "bullets": [
-        "Modeled agricultural emissions and scenario behavior using ML and econometric methods.",
-        "Developed applied AI components for sustainability content and analytics workflows."
+        "Modeled agricultural emissions with machine learning and econometric methods.",
+        "Shaped applied AI components for sustainability analytics workflows."
       ],
       "stack": ["Python", "scikit-learn", "TensorFlow", "Econometrics", "NLP"]
     }
@@ -50,85 +51,172 @@
   "projects": [
     {
       "name": "Production-Control Platform for Index Rebalancing Workflows",
-      "tags": ["Finance Ops", "Operational Risk", "Standardization"],
-      "problem": "Index rebalancing workflows rely on sensitive inputs, rule-driven runs, and output checks; manual controls create operational risk and weak traceability.",
-      "approach": "Designed an internal platform structured as Inputs -> Run -> Outputs, with input validation, run logging, standardized dumps, mismatch detection, and KPI/KPA monitoring.",
-      "impact": ["Operational Risk down", "Traceability up", "Recurring data issues prioritized"],
+      "cardTitle": "Index Rebalancing Control Platform",
+      "tags": ["Decision Systems", "Operations Analytics", "Finance Domain"],
+      "problem": "A business-critical rebalancing process depended on manual checks, creating control gaps and weak traceability.",
+      "approach": "Designed and implemented an Inputs -> Run -> Outputs platform with input validation, run logging, standardized dumps, mismatch detection, and KPI/KPA monitoring.",
+      "impact": [
+        "Reduced manual control dependency",
+        "Improved run traceability and audit readiness",
+        "Created a repeatable framework to prioritize recurring upstream issues"
+      ],
+      "highlights": [
+        "Standardized workflow states from input intake to output validation",
+        "Implemented exception detection for mismatches and missing controls",
+        "Structured KPI/KPA monitoring for operational decision making"
+      ],
       "stack": ["Python", "SQL", "Excel/VBA", "Workflow design", "KPI dashboards"],
+      "detailUrl": "projects/index-rebalancing-control-platform.html",
+      "links": { "code": "#", "case": "projects/index-rebalancing-control-platform.html" }
+    },
+    {
+      "name": "Tick-Movement Prediction with Machine Learning",
+      "cardTitle": "Tick Movement Prediction",
+      "tags": ["Machine Learning", "Time Series", "Experimentation"],
+      "problem": "Short-term directional prediction on derivatives signals is noisy and difficult to validate reliably.",
+      "approach": "Built an XGBoost time-series workflow with disciplined train, validation, and test splits plus regression-based evaluation.",
+      "impact": [
+        "Delivered a reproducible signal-to-prediction pipeline",
+        "Improved experiment rigor through robust split methodology",
+        "Demonstrated practical modeling on market-style data"
+      ],
+      "highlights": [
+        "Engineered predictive features from raw market signals",
+        "Separated training and evaluation windows to reduce leakage risk",
+        "Compared model behavior under consistent validation criteria"
+      ],
+      "stack": ["Python", "XGBoost", "pandas", "scikit-learn"],
+      "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
     {
       "name": "AI Investment System for Equity Selection and Portfolio Allocation",
-      "tags": ["Quant Finance", "Portfolio Design", "Research to Allocation"],
-      "problem": "Turning large volumes of market and issuer data into consistent portfolio decisions is slow and noisy.",
-      "approach": "Designed an AI-driven workflow combining research signals, issuer scoring, ranking, and portfolio-weighting logic into an execution-ready decision pipeline.",
-      "impact": ["Research-to-allocation workflow", "Execution-ready scoring pipeline", "Practical portfolio construction logic"],
+      "cardTitle": "AI Portfolio Selection Engine",
+      "tags": ["Applied AI", "Decision Science", "Portfolio Analytics"],
+      "problem": "Converting large issuer and market datasets into coherent allocation decisions is slow and inconsistent.",
+      "approach": "Designed an AI-driven workflow that links research signals, issuer scoring, ranking logic, and portfolio weighting into one decision pipeline.",
+      "impact": [
+        "Connected research outputs to allocation-ready decisions",
+        "Standardized scoring logic for portfolio design workflows",
+        "Framed model outputs in execution-oriented terms"
+      ],
+      "highlights": [
+        "Structured signal ingestion across issuer and market inputs",
+        "Implemented ranking-to-weighting logic for portfolio construction",
+        "Aligned model scoring with practical decision constraints"
+      ],
       "stack": ["Python", "Financial modeling", "Factor scoring", "Portfolio allocation", "Data pipelines"],
+      "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
     {
       "name": "Risk Analytics for Trading Controls and Limit Monitoring",
-      "tags": ["Control Analytics", "Monitoring", "Decision Support"],
-      "problem": "Trading-control environments need fast visibility on threshold breaches, exceptions, and recurring issues.",
-      "approach": "Built analytics logic and monitoring views to structure control signals, exception tracking, and escalation-oriented reporting.",
-      "impact": ["Structured control signals", "Faster exception visibility", "Systematic decision support layer"],
+      "cardTitle": "Trading Controls Risk Analytics",
+      "tags": ["Analytics Systems", "Monitoring", "Decision Support"],
+      "problem": "Control teams needed faster visibility on threshold breaches, recurring exceptions, and escalation priorities.",
+      "approach": "Built monitoring analytics and reporting views to structure control signals, exception tracking, and escalation-ready analysis.",
+      "impact": [
+        "Improved detection of critical control exceptions",
+        "Standardized monitoring views for recurring issues",
+        "Strengthened decision support for operational controls"
+      ],
+      "highlights": [
+        "Modeled control signals into a consistent analytics layer",
+        "Implemented exception tracking patterns for repeated issues",
+        "Designed reporting outputs oriented to escalation decisions"
+      ],
       "stack": ["Python", "SQL", "Dashboards", "Control analytics", "Market operations"],
-      "links": { "code": "#", "case": "#" }
-    },
-    {
-      "name": "Tick-Movement Prediction with Machine Learning",
-      "tags": ["Time Series", "XGBoost", "Market Signals"],
-      "problem": "Predict short-term market movement from trade-signal features on continuous derivatives contracts.",
-      "approach": "Built an XGBoost-based time-series workflow with train/validation/test structure and regression-based evaluation.",
-      "impact": ["Signal-to-prediction pipeline", "Robust split methodology", "Quant modeling demonstration"],
-      "stack": ["Python", "XGBoost", "pandas", "scikit-learn"],
+      "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
     {
       "name": "Credit Card Fraud Detection with Imbalanced Learning",
-      "tags": ["Classification", "Imbalanced Data", "Risk Modeling"],
-      "problem": "Fraud datasets are highly imbalanced, making naive classification unreliable.",
-      "approach": "Compared multiple classifiers and handled class imbalance with oversampling to improve fraud detection performance.",
-      "impact": ["Improved fraud recall", "Reliable benchmark framework", "Risk-aware metric tracking"],
+      "cardTitle": "Fraud Detection under Class Imbalance",
+      "tags": ["Classification", "Risk Modeling", "Model Evaluation"],
+      "problem": "Severely imbalanced fraud data made baseline classifiers unreliable for risk-sensitive detection.",
+      "approach": "Benchmarked multiple classification models and applied oversampling to improve minority-class detection performance.",
+      "impact": [
+        "Improved fraud recall versus naive baselines",
+        "Established a reusable model comparison framework",
+        "Strengthened metric discipline for imbalanced risk problems"
+      ],
+      "highlights": [
+        "Compared classifier performance under class imbalance constraints",
+        "Applied oversampling workflows to improve minority signal capture",
+        "Tracked precision and recall tradeoffs for operational relevance"
+      ],
       "stack": ["Python", "scikit-learn", "imbalanced-learn", "Classification metrics"],
-      "links": { "code": "#", "case": "#" }
-    },
-    {
-      "name": "Modeling Agricultural CO2 Emissions in Switzerland",
-      "tags": ["Sustainability", "Econometrics", "ML Modeling"],
-      "problem": "Agricultural emissions are driven by multiple structural and environmental factors that are difficult to model jointly.",
-      "approach": "Built predictive models using agricultural, demographic, and climate-related features to analyze emission dynamics.",
-      "impact": ["Joint structural and climate modeling", "Explainable feature dynamics", "Cross-domain quantitative credibility"],
-      "stack": ["Python", "Econometrics", "Machine learning", "Feature engineering"],
-      "links": { "code": "#", "case": "#" }
-    },
-    {
-      "name": "SkyFarms / FarmVision",
-      "tags": ["AgriTech", "Computer Vision", "Startup"],
-      "problem": "Early crop stress detection is difficult in high-variability growth environments.",
-      "approach": "Prototyped practical diagnostics workflows combining data capture and model inference for operations.",
-      "impact": ["Startup experimentation", "AI-assisted diagnostics", "Faster intervention cycles"],
-      "stack": ["Python", "Computer vision", "Workflow automation"],
+      "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
     {
       "name": "Prompt-to-Pipeline ETL Generator",
-      "tags": ["Automation", "Data Engineering", "AI Tools"],
-      "problem": "Building repetitive ETL scaffolding slows experimentation and delivery.",
-      "approach": "Designed a prompt-driven generator that creates standardized ETL skeletons and validation steps.",
-      "impact": ["Faster prototype creation", "More consistent pipeline structure", "Reduced setup overhead"],
+      "cardTitle": "Prompt-to-Pipeline ETL Generator",
+      "tags": ["Automation", "Data Engineering", "Applied AI"],
+      "problem": "Repeated ETL scaffolding slowed experimentation and delayed analytics delivery.",
+      "approach": "Designed a prompt-driven utility that generates standardized ETL skeletons with validation checkpoints.",
+      "impact": [
+        "Accelerated early-stage pipeline prototyping",
+        "Improved consistency across ETL project structure",
+        "Reduced repetitive setup overhead for new workflows"
+      ],
+      "highlights": [
+        "Converted natural-language prompts into ETL starter components",
+        "Embedded validation hooks to improve data reliability from day one",
+        "Standardized handoff structure for faster iteration"
+      ],
       "stack": ["Python", "ETL", "Prompt engineering", "Automation"],
+      "detailUrl": "",
+      "links": { "code": "#", "case": "#" }
+    },
+    {
+      "name": "Modeling Agricultural CO2 Emissions in Switzerland",
+      "cardTitle": "Agricultural CO2 Modeling",
+      "tags": ["Sustainability Analytics", "Econometrics", "Machine Learning"],
+      "problem": "Agricultural emissions are driven by interdependent structural and environmental factors that are hard to model jointly.",
+      "approach": "Built predictive models combining agricultural, demographic, and climate features to analyze emission dynamics.",
+      "impact": [
+        "Produced a structured cross-factor emissions modeling workflow",
+        "Improved interpretation of key feature drivers",
+        "Demonstrated cross-domain quantitative depth beyond finance"
+      ],
+      "highlights": [
+        "Integrated heterogeneous climate and structural datasets",
+        "Compared econometric and ML approaches for robustness",
+        "Framed model outputs for policy-oriented interpretation"
+      ],
+      "stack": ["Python", "Econometrics", "Machine learning", "Feature engineering"],
+      "detailUrl": "",
+      "links": { "code": "#", "case": "#" }
+    },
+    {
+      "name": "SkyFarms / FarmVision",
+      "cardTitle": "SkyFarms / FarmVision",
+      "tags": ["Startup Build", "Applied AI", "AgriTech"],
+      "problem": "Detecting crop stress early is difficult in variable field conditions with limited monitoring infrastructure.",
+      "approach": "Prototyped practical diagnostic workflows combining data capture, model inference, and operator-facing intervention logic.",
+      "impact": [
+        "Validated startup experimentation in AI-assisted operations",
+        "Structured diagnostics for faster field interventions",
+        "Extended applied AI practice into agritech workflows"
+      ],
+      "highlights": [
+        "Mapped real operational pain points to lightweight ML workflows",
+        "Designed data-to-inference loops for actionable diagnostics",
+        "Prioritized implementation simplicity for iterative deployment"
+      ],
+      "stack": ["Python", "Computer vision", "Workflow automation"],
+      "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     }
   ],
   "skills": {
-    "Quant Finance & Modeling": ["Time Series", "XGBoost", "Factor scoring", "Portfolio allocation", "Risk analytics"],
-    "Data Engineering": ["Python", "SQL", "Workflow design", "Data pipelines", "Monitoring"],
-    "AI Systems": ["Machine learning", "Classification", "NLP", "Applied AI workflows"],
-    "Tools": ["Power BI", "Streamlit", "GitHub Actions", "Docker", "Excel/VBA"]
+    "Applied Modeling": ["Time series modeling", "Classification", "Feature engineering", "Model evaluation", "Experiment design"],
+    "Analytics Systems": ["Decision workflows", "Control analytics", "Monitoring design", "Exception handling", "KPI/KPA tracking"],
+    "Data Engineering": ["Python", "SQL", "Data pipelines", "Workflow automation", "ETL structuring"],
+    "Tooling": ["Power BI", "Streamlit", "GitHub Actions", "Docker", "Excel/VBA"]
   },
   "about": {
-    "narrative": "EQD Trading Analyst and Data Scientist with experience in quantitative finance, analytics products, and AI systems design. I build production-oriented workflows for trading operations, risk visibility, and decision support."
+    "narrative": "Data Scientist with experience in quantitative finance, analytics products, and AI systems design. I build production-oriented workflows for trading operations, risk visibility, and decision support, and apply the same rigor across sustainability and startup domains."
   }
 }
-

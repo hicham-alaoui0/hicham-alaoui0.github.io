@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index Rebalancing Control Platform | Hicham Alaoui</title>
+  <meta name="description"
+    content="Case study: how a business-critical rebalancing process was transformed into a structured decision and control platform with traceability, validation, and exception monitoring.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            bg: 'var(--bg)',
+            surface: 'var(--surface)',
+            border: 'var(--border)',
+            primary: 'var(--primary)',
+            'primary-hover': 'var(--primary-hover)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-bg text-[var(--text)] antialiased transition-colors duration-300">
+  <main class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <a href="../index.html#projects"
+        class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-[var(--text-muted)] hover:border-primary hover:text-primary transition-colors">
+        <span aria-hidden="true">&larr;</span>
+        <span>Back to Projects</span>
+      </a>
+
+      <header class="rounded-2xl border border-border bg-surface p-8 md:p-10 shadow-sm">
+        <p class="text-xs uppercase tracking-widest text-primary font-bold">Signature Case Study</p>
+        <h1 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight">Production-Control Platform for Index
+          Rebalancing Workflows</h1>
+        <p class="mt-5 text-lg leading-relaxed text-[var(--text-muted)]">
+          Business-critical workflow redesign in a regulated environment: from manual controls to a structured system
+          with validation, traceability, and decision-ready monitoring.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Python</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">SQL</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Excel/VBA</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Workflow Design</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">KPI Dashboards</span>
+        </div>
+      </header>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Overview</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Index rebalancing operations relied on sensitive inputs, rule-driven runs, and downstream output checks.
+          Controls were fragmented across manual tasks, which increased operational risk and reduced confidence in
+          traceability. The objective was to transform that process into a repeatable, production-oriented analytics
+          system.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Business Problem</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          The existing workflow had no consistent structure for validating inputs, logging runs, and tracking output
+          exceptions. Teams spent significant effort on repetitive checks, while recurring upstream data issues were
+          hard to isolate and prioritize.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">My Role</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          I designed and implemented the workflow architecture, control logic, and monitoring structure. That included
+          defining the system state model (Inputs -> Run -> Outputs), codifying validation rules, building traceable
+          run logs, and shaping KPI/KPA views for operations and escalation decisions.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">System Design / Architecture</h2>
+        <div class="grid gap-4 md:grid-cols-3">
+          <article class="rounded-xl border border-border bg-bg/40 p-4">
+            <h3 class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Inputs</h3>
+            <p class="mt-2 text-sm text-[var(--text-muted)]">Input ingestion with pre-run controls, schema checks, and
+              rule validation gates.</p>
+          </article>
+          <article class="rounded-xl border border-border bg-bg/40 p-4">
+            <h3 class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Run</h3>
+            <p class="mt-2 text-sm text-[var(--text-muted)]">Execution layer with run identifiers, parameter snapshots,
+              and structured event logging.</p>
+          </article>
+          <article class="rounded-xl border border-border bg-bg/40 p-4">
+            <h3 class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Outputs</h3>
+            <p class="mt-2 text-sm text-[var(--text-muted)]">Standardized output dumps, mismatch checks, and exception
+              queues feeding monitoring dashboards.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Workflow Logic and Controls</h2>
+        <ul class="space-y-3 text-[var(--text-muted)]">
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Input
+              quality controls to block invalid run conditions before execution.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Run
+              logging model to preserve traceability across processing steps.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Mismatch
+              detection to surface breakpoints and route exceptions for escalation.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>KPI/KPA
+              monitoring views to track operational health and recurring issue patterns.</span></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Results / Value Delivered</h2>
+        <ul class="space-y-3 text-[var(--text-muted)]">
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Reduced
+              dependence on manual controls in high-sensitivity rebalancing cycles.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Improved
+              traceability and audit-readiness through standardized run and output records.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Created a
+              structured basis to prioritize recurring upstream data issues and improve process reliability over
+              time.</span></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Tech Stack</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Python, SQL, Excel/VBA, workflow design patterns, validation logic, run logging architecture, and KPI/KPA
+          monitoring dashboards.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Constraints / Operating Environment</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          The project was delivered in an internal and regulated context. Details are intentionally anonymized, with
+          focus kept on system architecture, control design, and measurable operational value rather than proprietary
+          business specifics.
+        </p>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
