@@ -10,7 +10,7 @@
     "github": "https://github.com/hicham-alaoui0"
   },
   "metrics": [
-    { "label": "Case studies", "value": 8, "suffix": "" },
+    { "label": "Case studies", "value": 9, "suffix": "" },
     { "label": "Application domains", "value": 4, "suffix": "" },
     { "label": "Core tracks", "value": 3, "suffix": "" }
   ],
@@ -68,6 +68,29 @@
       "stack": ["Python", "SQL", "Excel/VBA", "Workflow design", "KPI dashboards"],
       "detailUrl": "projects/index-rebalancing-control-platform.html",
       "links": { "code": "#", "case": "projects/index-rebalancing-control-platform.html" }
+    },
+    {
+      "name": "AI Pricing & Promotion Decision Engine",
+      "cardTitle": "Pricing & Promotion Decision Engine",
+      "tags": ["Applied AI / Decision Science", "Retail Analytics", "Decision Support"],
+      "problem": "Commercial teams must decide what to promote, how deeply to discount, and how to balance unit sales, revenue, and margin under uncertain demand behavior.",
+      "approach": "Built an applied AI decision workflow: synthetic retail data generation, time-aware model benchmarking, demand-response prediction, counterfactual simulation, and constrained action ranking through a weighted objective.",
+      "impact": [
+        "Converted pricing questions into a structured decision-support system",
+        "Connected ML forecasts to practical promotion action recommendations",
+        "Produced business-facing outputs through an interactive dashboard"
+      ],
+      "highlights": [
+        "Generated a realistic synthetic environment covering seasonality, promotion effects, and price sensitivity",
+        "Benchmarked and tuned regression families using time-aware validation",
+        "Designed a constraint-aware decision engine with scenario simulation and ranking logic"
+      ],
+      "stack": ["Python", "pandas", "scikit-learn", "Streamlit", "forecasting", "simulation", "decision engine"],
+      "detailUrl": "projects/ai-pricing-promotion-decision-engine.html",
+      "links": {
+        "code": "https://github.com/hicham-alaoui0/ai-pricing-promotion-decision-engine-public",
+        "case": "projects/ai-pricing-promotion-decision-engine.html"
+      }
     },
     {
       "name": "Tick-Movement Prediction with Machine Learning",
