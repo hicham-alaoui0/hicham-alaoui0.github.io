@@ -29,6 +29,7 @@ const I18N = {
     projectImpact: 'Impact',
     projectHighlights: 'Highlights',
     projectStack: 'Stack',
+    projectRepo: 'GitHub Repo',
     projectsLead: 'Selected systems and modeling work across applied AI, analytics, and decision science.',
     projectsEmptyTitle: 'No projects found',
     projectsEmptyBody: 'Try adjusting your filters or search query.',
@@ -79,6 +80,7 @@ const I18N = {
     projectImpact: 'Impact',
     projectHighlights: 'Points cles',
     projectStack: 'Stack',
+    projectRepo: 'Depot GitHub',
     projectsLead:
       "Selection de systemes et de travaux de modelisation en IA appliquee, analytics et science de la decision.",
     projectsEmptyTitle: 'Aucun projet trouve',
@@ -418,6 +420,11 @@ function renderProjects() {
             ${(project.stack || []).map((tool) => `<span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">${sanitize(tool)}</span>`).join('')}
             </div>
           </div>
+
+          ${(project.links?.code && project.links.code !== '#')
+            ? `<div class="pt-1"><a class="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:underline" href="${sanitize(project.links.code)}" target="_blank" rel="noreferrer">${t.projectRepo}</a></div>`
+            : ''
+          }
         </div>
 
         ${project.detailUrl
