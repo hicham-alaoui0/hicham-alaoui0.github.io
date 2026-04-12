@@ -1,7 +1,8 @@
-const CACHE_NAME = 'portfolio-v7';
+const CACHE_NAME = 'portfolio-v8';
 const CORE_ASSETS = [
   './',
   './index.html',
+  './projects/index-rebalancing-control-platform.html',
   './styles.css',
   './script.js',
   './manifest.json',

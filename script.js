@@ -11,22 +11,25 @@ const I18N = {
     sectionProjects: 'Featured Projects',
     sectionSkills: 'Technical Skills',
     sectionCerts: 'Licenses & Certifications',
-    sectionContact: 'Let\'s Connect',
+    sectionContact: "Let's Connect",
     sectionImpact: 'Selected Impact',
     sectionBuilding: "What I'm Building Now",
     heroCv: 'Download CV',
     heroContact: 'Contact Me',
-    heroHeadline: 'EQD Trading Analyst, Data Scientist, and AI Systems Builder',
-    heroSubline: 'I design data products and decision systems for trading operations, quantitative finance, and applied AI.',
+    heroHeadline: 'Applied Data Scientist building AI, analytics, and decision systems',
+    heroSubline: 'Data Scientist focused on machine learning, analytics systems, and business impact.',
     heroIntro:
-      'EQD Trading Analyst and Data Scientist with experience in quantitative finance, analytics products, and AI systems design. I build production-oriented workflows for trading operations, risk visibility, and decision support.',
+      'I turn ambiguous business problems into structured analytics, modeling, and decision workflows. My work spans finance, risk, sustainability, and applied AI systems, with a strong production mindset.',
     projectSearch: 'Search projects...',
     projectFilterAll: 'All',
     projectViewDetails: 'View Details',
+    projectReadCase: 'Read Case Study',
     projectProblem: 'Problem',
     projectApproach: 'Approach',
     projectImpact: 'Impact',
+    projectHighlights: 'Highlights',
     projectStack: 'Stack',
+    projectsLead: 'Selected systems and modeling work across applied AI, analytics, and decision science.',
     projectsEmptyTitle: 'No projects found',
     projectsEmptyBody: 'Try adjusting your filters or search query.',
     projectsNote:
@@ -39,11 +42,19 @@ const I18N = {
     impactFounderTitle: 'Founder',
     impactFounderBody: 'SkyFarms',
     impactDomainTitle: 'Core Domains',
-    impactDomainBody: 'Quant Finance, AI Systems, Data Engineering',
+    impactDomainBody: 'Applied ML, Decision Systems, Data Engineering',
     buildingOne: 'Production-control workflows for index rebalancing',
     buildingTwo: 'AI investment decision systems',
     buildingThree: 'Startup experimentation in agritech and automation',
+    buildingLabel: 'Now',
     modalCode: 'View Code',
+    ctaBody:
+      'Open to opportunities in Data Science, Applied AI, Machine Learning, and Analytics/Decision Science.',
+    ctaEmail: 'Email',
+    ctaLinkedIn: 'LinkedIn',
+    ctaGithub: 'GitHub',
+    ctaCv: 'Download CV',
+    footerTagline: 'Applied Data Science and AI Portfolio'
   },
   fr: {
     sectionExperience: 'Experience',
@@ -55,17 +66,21 @@ const I18N = {
     sectionBuilding: 'Ce que je construis actuellement',
     heroCv: 'Telecharger CV',
     heroContact: 'Me contacter',
-    heroHeadline: 'Analyste Trading EQD, Data Scientist et builder de systemes IA',
-    heroSubline: "Je conçois des produits data et des systèmes d'aide à la décision pour les opérations de trading, la finance quantitative et l'IA appliquée.",
+    heroHeadline: 'Data Scientist applique construisant des systemes IA, analytics et aide a la decision',
+    heroSubline: "Data Scientist centre sur le machine learning, les systemes analytiques et l'impact metier.",
     heroIntro:
-      "Analyste Trading EQD et Data Scientist avec une experience en finance quantitative, produits analytiques et conception de systemes IA. Je construis des workflows orientes production pour les operations de trading, la visibilite risque et l'aide a la decision.",
+      "Je transforme des problemes metier ambigus en workflows structures d'analyse, de modelisation et de decision. Mon experience couvre la finance, le risque, la durabilite et les systemes IA appliques, avec une forte logique production.",
     projectSearch: 'Rechercher des projets...',
     projectFilterAll: 'Tous',
     projectViewDetails: 'Voir les details',
+    projectReadCase: "Lire l'etude de cas",
     projectProblem: 'Probleme',
     projectApproach: 'Approche',
     projectImpact: 'Impact',
+    projectHighlights: 'Points cles',
     projectStack: 'Stack',
+    projectsLead:
+      "Selection de systemes et de travaux de modelisation en IA appliquee, analytics et science de la decision.",
     projectsEmptyTitle: 'Aucun projet trouve',
     projectsEmptyBody: 'Ajustez les filtres ou la recherche.',
     projectsNote:
@@ -78,12 +93,20 @@ const I18N = {
     impactFounderTitle: 'Fondateur',
     impactFounderBody: 'SkyFarms',
     impactDomainTitle: 'Domaines cles',
-    impactDomainBody: 'Finance quantitative, systemes IA, data engineering',
+    impactDomainBody: 'ML applique, systemes de decision, data engineering',
     buildingOne: "Workflows de controle de production pour les rebalancements d'indices",
     buildingTwo: "Systemes IA d'aide a la decision d'investissement",
     buildingThree: 'Experimentations startup en agritech et automatisation',
+    buildingLabel: 'Actuel',
     modalCode: 'Voir le code',
-  },
+    ctaBody:
+      'Ouvert aux opportunites en Data Science, IA appliquee, Machine Learning et Analytics/Decision Science.',
+    ctaEmail: 'Email',
+    ctaLinkedIn: 'LinkedIn',
+    ctaGithub: 'GitHub',
+    ctaCv: 'Telecharger CV',
+    footerTagline: 'Portfolio Data Science et IA appliquee'
+  }
 };
 
 const SECTIONS = [
@@ -154,12 +177,15 @@ function normalizeProfile(profile) {
     return {
       id: project.id || slugify(name),
       name,
+      cardTitle: project.cardTitle || name,
       summary,
       problem: project.problem || summary,
       approach: project.approach || '',
       impact,
+      highlights: project.highlights || [],
       tags: project.tags || [],
       stack: project.stack || [],
+      detailUrl: project.detailUrl || '',
       links: project.links || {},
     };
   });
@@ -188,8 +214,15 @@ function applyI18n() {
     ['hero.cv', t.heroCv],
     ['hero.contact', t.heroContact],
     ['projects.note', t.projectsNote],
+    ['projects.lead', t.projectsLead],
     ['projects.emptyTitle', t.projectsEmptyTitle],
     ['projects.emptyBody', t.projectsEmptyBody],
+    ['cta.body', t.ctaBody],
+    ['cta.email', t.ctaEmail],
+    ['cta.linkedin', t.ctaLinkedIn],
+    ['cta.github', t.ctaGithub],
+    ['cta.cv', t.ctaCv],
+    ['footer.tagline', t.footerTagline],
   ];
 
   mapping.forEach(([key, value]) => {
@@ -216,7 +249,7 @@ function renderHero() {
   const profile = state.profile;
   const hero = profile.hero || {};
   const name = sanitize((hero.headline || 'Hicham Alaoui').split('-')[0].trim() || 'Hicham Alaoui');
-  const cv = sanitize(hero.cv_url || 'CV/CV_2025_DS_AI.pdf');
+  const cv = sanitize(hero.cv_url || 'CV/CV_Hicham_Alaoui.pdf');
 
   const stats = (profile.metrics || []).slice(0, 3).map((metric) => {
     const value = Number(metric.value) || 0;
@@ -233,7 +266,7 @@ function renderHero() {
     <div class="order-2 lg:order-1 reveal-hidden space-y-6">
       <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
         <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-        EQD + Data + AI
+        Applied Data Science
       </span>
 
       <h1 class="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">${sanitize(t.heroHeadline)}</h1>
@@ -253,7 +286,7 @@ function renderHero() {
         <img src="assets/images/profile/profile-gen.jpg" alt="${name}" class="h-full w-full rounded-[1.6rem] object-cover" onerror="this.src='assets/images/hero-bg.jpg'" />
         <div class="absolute -bottom-5 -right-5 rounded-xl border border-border bg-surface px-4 py-3 shadow-xl">
           <p class="text-xs uppercase tracking-wider text-[var(--text-muted)]">Focus</p>
-          <p class="text-sm font-bold text-primary">Quant Risk + AI Systems</p>
+          <p class="text-sm font-bold text-primary">ML + Decision Systems</p>
         </div>
       </div>
     </div>
@@ -331,7 +364,7 @@ function getFilteredProjects() {
   const query = state.query.trim().toLowerCase();
   return getProjects().filter((project) => {
     const inFilter = state.activeFilter === 'all' || (project.tags || []).includes(state.activeFilter);
-    const blob = `${project.name || ''} ${project.summary || ''} ${project.problem || ''} ${project.approach || ''} ${(project.tags || []).join(' ')} ${(project.impact || []).join(' ')} ${(project.stack || []).join(' ')}`.toLowerCase();
+    const blob = `${project.name || ''} ${project.cardTitle || ''} ${project.summary || ''} ${project.problem || ''} ${project.approach || ''} ${(project.tags || []).join(' ')} ${(project.impact || []).join(' ')} ${(project.highlights || []).join(' ')} ${(project.stack || []).join(' ')}`.toLowerCase();
     const inSearch = !query || blob.includes(query);
     return inFilter && inSearch;
   });
@@ -361,10 +394,10 @@ function renderProjects() {
         <div class="flex-1 p-6 md:p-7 space-y-4">
           <div class="flex items-center justify-between gap-3">
             <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">${sanitize(project.tags?.[0] || 'Project')}</span>
-            <span class="text-xs text-[var(--text-muted)]">${sanitize(project.name)}</span>
+            <span class="text-xs text-[var(--text-muted)]">${sanitize((project.stack || [])[0] || '')}</span>
           </div>
 
-          <h3 class="text-xl font-bold group-hover:text-primary transition-colors">${sanitize(project.name)}</h3>
+          <h3 class="text-xl font-bold group-hover:text-primary transition-colors">${sanitize(project.cardTitle || project.name)}</h3>
 
           <div class="space-y-3 text-sm text-[var(--text-muted)]">
             <p><strong class="text-[var(--text)]">${t.projectProblem}:</strong> ${sanitize(project.problem || project.summary || '')}</p>
@@ -372,16 +405,25 @@ function renderProjects() {
             <p><strong class="text-[var(--text)]">${t.projectImpact}:</strong> ${sanitize((project.impact || []).join(' | '))}</p>
           </div>
 
-          <div class="flex flex-wrap gap-2">
-            ${(badges).map((badge) => `<span class="rounded-md border border-border px-2.5 py-1 text-xs text-[var(--text-muted)]">${sanitize(badge)}</span>`).join('')}
+          <div>
+            <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">${t.projectHighlights}</p>
+            <ul class="mt-2 space-y-1.5 text-sm text-[var(--text-muted)]">
+              ${(project.highlights || []).slice(0, 3).map((line) => `<li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>${sanitize(line)}</span></li>`).join('')}
+            </ul>
           </div>
 
-          <div class="pt-1 flex flex-wrap gap-2">
+          <div class="pt-1">
+            <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">${t.projectStack}</p>
+            <div class="mt-2 flex flex-wrap gap-2">
             ${(project.stack || []).map((tool) => `<span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">${sanitize(tool)}</span>`).join('')}
+            </div>
           </div>
         </div>
 
-        <button class="project-open-btn w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" data-project-id="${sanitize(id)}">${t.projectViewDetails}</button>
+        ${project.detailUrl
+          ? `<a class="w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" href="${sanitize(project.detailUrl)}">${t.projectReadCase}</a>`
+          : `<button class="project-open-btn w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" data-project-id="${sanitize(id)}">${t.projectViewDetails}</button>`
+        }
       </article>
     `;
   }).join('');
@@ -400,7 +442,7 @@ function renderBuildingNow() {
 
   root.innerHTML = items.map((item, index) => `
     <article class="reveal-hidden rounded-xl border border-border bg-surface p-6 shadow-sm" style="transition-delay:${index * 80}ms">
-      <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]">Now</p>
+      <p class="text-sm uppercase tracking-wider text-[var(--text-muted)]">${t.buildingLabel}</p>
       <h3 class="mt-3 text-lg font-semibold leading-snug">${sanitize(item)}</h3>
     </article>
   `).join('');
@@ -510,12 +552,18 @@ function bindModal() {
 function bindContactLinks() {
   const email = qs('contactEmail');
   const linkedin = qs('contactLinkedin');
+  const github = qs('contactGithub');
+  const cv = qs('contactCv');
   const profile = state.profile || {};
   const mail = profile.contact?.email || 'halaoui@insea.ac.ma';
   const linked = profile.contact?.linkedin || 'https://linkedin.com/in/hicham-alaoui-08ba35206';
+  const git = profile.contact?.github || 'https://github.com/hicham-alaoui0';
+  const cvUrl = profile.hero?.cv_url || 'CV/CV_Hicham_Alaoui.pdf';
 
   if (email) email.href = `mailto:${mail}`;
   if (linkedin) linkedin.href = linked;
+  if (github) github.href = git;
+  if (cv) cv.href = cvUrl;
 }
 
 function initTheme() {
@@ -730,6 +778,7 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
 
