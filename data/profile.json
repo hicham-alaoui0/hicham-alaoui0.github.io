@@ -20,11 +20,12 @@
       "role": "EQD Trading Analyst",
       "dates": "Aug 2025 - Present",
       "bullets": [
-        "Designed and operationalized control workflows for index rebalancing production cycles.",
-        "Built decision-support views for control exceptions, recurring data issues, and escalations.",
-        "Standardized run traceability and output checks to improve operational reliability."
+        "Built Python/SQL pipelines ingesting and reconciling market + reference data with feature engineering (returns, volatility, liquidity, factor signals) for reproducible rebalancing datasets.",
+        "Developed ML-based scoring/ranking frameworks combining constraint logic with predictive modeling; ran backtests and sensitivity analyses to assess performance, risk, and turnover trade-offs.",
+        "Delivered a production-control + observability layer (KPI tracking, automated reconciliation, governance) around rebalancing runs — reducing rework and strengthening operational reliability.",
+        "PFE: real-time pre-trade limits recalibration (12M+ trades) via EVT-POT model — 94% precision at 1.3% false-positive rate + MLOps deployment, enabling EUR 1.8M RWA release and 80% faster processing."
       ],
-      "stack": ["Python", "SQL", "Excel", "VBA", "Bloomberg", "FactSet"]
+      "stack": ["Python", "SQL", "ML/Statistical Modeling", "Bloomberg", "Excel/VBA", "MLOps"]
     },
     {
       "company": "Societe Generale ATS",
@@ -42,10 +43,12 @@
       "role": "Data Scientist Intern",
       "dates": "Jun 2024 - Sep 2024",
       "bullets": [
-        "Modeled agricultural emissions with machine learning and econometric methods.",
-        "Shaped applied AI components for sustainability analytics workflows."
+        "Built CO₂ emissions forecasting models (XGBoost, LSTM) on multi-source agricultural time series, with feature engineering and stakeholder-ready visualizations.",
+        "Developed an end-to-end NLP pipeline for French sustainability content — data prep, generation, and automated quality gating.",
+        "Benchmarked and evaluated ML models to validate key emission drivers across sub-sectors, framed for policy interpretation.",
+        "Packaged forecasting outputs into a lightweight Python API for scenario exploration and NGO decision support."
       ],
-      "stack": ["Python", "scikit-learn", "TensorFlow", "Econometrics", "NLP"]
+      "stack": ["Python", "XGBoost", "LSTM", "TensorFlow", "NLP", "scikit-learn", "Econometrics"]
     }
   ],
   "projects": [
