@@ -1,540 +1,601 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="dark">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hicham Alaoui | Applied Data Scientist and AI Systems Builder</title>
-  <meta name="description"
-    content="Applied Data Scientist building machine learning, analytics systems, and decision workflows with measurable business impact across finance, risk, sustainability, and AI products.">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hicham Alaoui — Applied Data Scientist & AI Systems Builder</title>
+<meta name="description" content="Applied Data Scientist building AI, analytics, and decision systems across trading operations, risk modeling, and commercial decision-making." />
+<meta property="og:title" content="Hicham Alaoui — Applied Data Scientist" />
+<meta property="og:description" content="AI Systems Builder & Decision Scientist. Building production-oriented workflows for trading operations, risk visibility, and decision support." />
+<meta property="og:type" content="website" />
+<link rel="manifest" href="manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #0a0a0f; color: #e8e6e0; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
 
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Hicham Alaoui | Applied Data Scientist and AI Systems Builder">
-  <meta property="og:description"
-    content="Applied Data Scientist building machine learning, analytics systems, and decision workflows with measurable business impact across finance, risk, sustainability, and AI products.">
-  <meta property="og:url" content="https://hicham-alaoui0.github.io/">
-  <meta property="og:image" content="/assets/images/hero-bg.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  [data-theme="operator"] {
+    --bg: #0a0a0f; --bg2: #111118; --bg3: #16161f;
+    --fg: #e8e6e0; --fg2: #9b9890; --fg3: #5a5855;
+    --accent: #00e87a; --accent-dim: rgba(0,232,122,0.08);
+    --border: rgba(255,255,255,0.07); --border-hover: rgba(0,232,122,0.3);
+    --tag-bg: rgba(0,232,122,0.1);
+  }
+  [data-theme="refined"] {
+    --bg: #f5f3ee; --bg2: #eceae4; --bg3: #e3e0d8;
+    --fg: #1a1916; --fg2: #6b6860; --fg3: #b0ada5;
+    --accent: #1a1916; --accent-dim: rgba(26,25,22,0.06);
+    --border: rgba(26,25,22,0.1); --border-hover: rgba(26,25,22,0.4);
+    --tag-bg: rgba(26,25,22,0.08);
+  }
+  [data-theme="navy"] {
+    --bg: #05101f; --bg2: #091828; --bg3: #0e2035;
+    --fg: #e8eef5; --fg2: #8da4bc; --fg3: #4a6480;
+    --accent: #d4a853; --accent-dim: rgba(212,168,83,0.08);
+    --border: rgba(255,255,255,0.07); --border-hover: rgba(212,168,83,0.35);
+    --tag-bg: rgba(212,168,83,0.1);
+  }
 
-  <!-- Tailwind & CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['class', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: {
-            bg: 'var(--bg)',
-            surface: 'var(--surface)',
-            border: 'var(--border)',
-            primary: 'var(--primary)',
-            'primary-hover': 'var(--primary-hover)',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="./styles.css">
+  .app { background: var(--bg); color: var(--fg); min-height: 100vh; transition: background 0.4s, color 0.4s; }
 
-  <!-- SEO Canon -->
-  <link rel="canonical" href="https://hicham-alaoui0.github.io/">
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 64px; background: transparent;
+    transition: background 0.3s, border-bottom 0.3s;
+  }
+  .nav.scrolled { background: var(--bg); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--fg); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-link { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--fg2); text-decoration: none; text-transform: uppercase; transition: color 0.2s; cursor: pointer; background: none; border: none; }
+  .nav-link:hover { color: var(--accent); }
+  .nav-cta { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; padding: 8px 20px; border: 1px solid var(--border-hover); color: var(--accent); background: var(--accent-dim); border-radius: 3px; text-decoration: none; transition: all 0.2s; }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 0 56px; position: relative; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; padding-top: 64px; }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
+  .hero-name { font-family: 'Syne', sans-serif; font-size: clamp(44px, 5vw, 76px); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; color: var(--fg); margin-bottom: 20px; }
+  .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(18px, 2.2vw, 28px); font-weight: 400; color: var(--fg2); line-height: 1.3; margin-bottom: 32px; }
+  .hero-desc { font-size: 15px; line-height: 1.7; color: var(--fg2); max-width: 480px; margin-bottom: 48px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 28px; background: var(--accent); color: var(--bg); border: none; border-radius: 3px; cursor: pointer; text-decoration: none; transition: all 0.2s; font-weight: 500; display: inline-block; }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-ghost { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 28px; background: transparent; color: var(--fg2); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--border-hover); color: var(--fg); }
+  .hero-right { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .hero-photo-wrap { position: relative; width: 320px; height: 380px; }
+  .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; display: block; }
+  .hero-photo-frame { position: absolute; top: -12px; right: -12px; width: calc(100% + 12px); height: calc(100% + 12px); border: 1px solid var(--border-hover); border-radius: 8px; pointer-events: none; opacity: 0.4; }
+  .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
+  .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  /* SECTION */
+  .section { padding: 100px 56px; max-width: 1200px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 64px; }
+  .section-num { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 3vw, 42px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg); }
+  .section-line { flex: 1; height: 1px; background: var(--border); margin-left: 24px; }
+  .section-desc { max-width: 640px; color: var(--fg2); font-size: 15px; line-height: 1.7; margin-top: -40px; margin-bottom: 40px; }
+
+  /* EXPERIENCE */
+  .exp-timeline { position: relative; padding-left: 32px; }
+  .exp-timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+  .exp-item { position: relative; margin-bottom: 80px; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-item::before { content: ''; position: absolute; left: -36px; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .exp-period { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; }
+  .exp-role { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 600; color: var(--fg); margin-bottom: 4px; }
+  .exp-company { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--fg2); margin-bottom: 16px; }
+  .exp-points { display: flex; flex-direction: column; gap: 8px; }
+  .exp-point { font-size: 14px; color: var(--fg2); line-height: 1.6; padding-left: 18px; position: relative; }
+  .exp-point::before { content: '→'; position: absolute; left: 0; color: var(--fg3); font-size: 12px; }
+  .exp-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-bottom: 4px; }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 2px; }
+  .project-row { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--bg); transition: border-color 0.2s; cursor: pointer; }
+  .project-row:hover { border-color: var(--border-hover); }
+  .project-row-header { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 28px 32px; gap: 24px; }
+  .project-meta { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .project-category { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--tag-bg); padding: 4px 10px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+  .project-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 600; color: var(--fg); }
+  .project-stack { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .stack-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--fg3); padding: 3px 8px; border: 1px solid var(--border); border-radius: 3px; }
+  .project-expand-icon { color: var(--fg3); font-size: 18px; transition: transform 0.3s, color 0.2s; flex-shrink: 0; }
+  .project-row.open .project-expand-icon { transform: rotate(45deg); color: var(--accent); }
+  .project-body { overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; max-height: 0; opacity: 0; }
+  .project-body.open { max-height: 900px; opacity: 1; }
+  .project-body-inner { padding: 28px 32px 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; border-top: 1px solid var(--border); }
+  .project-block-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .project-block-text { font-size: 14px; line-height: 1.6; color: var(--fg2); }
+  .project-highlights { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .project-highlight { font-size: 13px; color: var(--fg2); padding-left: 14px; position: relative; line-height: 1.5; }
+  .project-highlight::before { content: '—'; position: absolute; left: 0; color: var(--fg3); }
+  .project-links { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .project-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--accent); text-decoration: none; padding: 6px 14px; border: 1px solid var(--border-hover); border-radius: 3px; transition: all 0.2s; }
+  .project-link:hover { background: var(--accent-dim); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .skill-group-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-pill { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--fg2); padding: 6px 14px; border: 1px solid var(--border); border-radius: 3px; transition: border-color 0.2s, color 0.2s; }
+  .skill-pill:hover { border-color: var(--border-hover); color: var(--fg); }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cert-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg3); text-decoration: none; color: var(--fg); transition: border-color 0.2s, transform 0.2s; }
+  .cert-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+  .cert-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 12px; }
+  .cert-issuer { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding-top: 2px; }
+  .cert-logo-wrap { width: 36px; height: 36px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cert-logo { width: 100%; height: 100%; object-fit: contain; }
+  .cert-logo-initial { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #555; line-height: 1; }
+  .cert-title { font-size: 14px; font-weight: 500; color: var(--fg); flex: 1; line-height: 1.4; margin-bottom: 16px; }
+  .cert-footer { display: flex; justify-content: space-between; align-items: center; }
+  .cert-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--fg3); }
+  .cert-verify { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); }
+
+  /* CONTACT */
+  .contact-section { border-top: 1px solid var(--border); padding: 100px 56px; background: var(--bg); }
+  .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .contact-headline { font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 54px); font-weight: 800; letter-spacing: -0.02em; color: var(--fg); line-height: 1.1; margin-bottom: 24px; }
+  .contact-sub { font-size: 15px; color: var(--fg2); line-height: 1.7; margin-bottom: 40px; }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-link { display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--fg); padding: 18px 24px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; background: var(--bg2); }
+  .contact-link:hover { border-color: var(--border-hover); transform: translateX(4px); }
+  .contact-link-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); }
+  .contact-link-val { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: var(--fg); margin-top: 2px; }
+  .contact-link-arrow { margin-left: auto; color: var(--fg3); transition: color 0.2s; }
+  .contact-link:hover .contact-link-arrow { color: var(--accent); }
+
+  footer { text-align: center; padding: 40px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--fg3); border-top: 1px solid var(--border); background: var(--bg); }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg2); color: var(--fg2);
+    cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .theme-toggle:hover { border-color: var(--border-hover); color: var(--accent); }
+
+  /* LOADING */
+  .loading { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .loading-text { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--fg3); }
+
+  @media (max-width: 1024px) {
+    .certs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 0 24px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-right { display: none; }
+    .section { padding: 72px 24px; }
+    .project-row-header { grid-template-columns: 1fr; gap: 12px; }
+    .project-stack { display: none; }
+    .project-body-inner { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; gap: 32px; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .contact-section { padding: 72px 24px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>
 </head>
+<body>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
 
-<body class="bg-bg text-[var(--text)] antialiased transition-colors duration-300">
+function useScrolled() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 30);
+    window.addEventListener('scroll', handler);
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
+  return scrolled;
+}
 
-  <!-- Scroll Progress -->
-  <div class="fixed top-0 left-0 h-1 bg-primary z-50 transition-all duration-100 ease-out" id="scrollProgress"
-    style="width: 0%"></div>
+function useFadeIn() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect(); }
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return ref;
+}
 
-  <!-- Command Bar (Sticky Top) -->
-  <header id="commandBar"
-    class="fixed top-0 inset-x-0 z-40 bg-surface/90 backdrop-blur-md border-b border-border h-16 transition-transform duration-300 translate-y-0">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4">
+function FadeIn({ children, delay = 0, style = {} }) {
+  const ref = useFadeIn();
+  return <div ref={ref} className="fade-in" style={{ transitionDelay: `${delay}ms`, ...style }}>{children}</div>;
+}
 
-      <!-- Left: Progress & Info -->
-      <div class="flex items-center gap-4 min-w-0 flex-1">
-        <div class="hidden sm:flex items-center gap-1 text-xs font-mono font-bold text-[var(--text-muted)]">
-          <span id="cmdProgressCurrent">1</span>
-          <span class="opacity-50">/</span>
-          <span id="cmdProgressTotal" class="opacity-50">8</span>
+function ProjectRow({ project }) {
+  const [open, setOpen] = useState(false);
+
+  const links = [];
+  if (project.links?.code && project.links.code !== '#') {
+    links.push({ label: 'GitHub →', href: project.links.code });
+  }
+  if (project.links?.case && project.links.case !== '#') {
+    links.push({ label: 'Case Study →', href: project.links.case });
+  }
+
+  const impactText = Array.isArray(project.impact)
+    ? project.impact[0]
+    : (project.impact || project.results || '');
+
+  const category = project.tags?.[0] || project.category || '';
+  const displayName = project.cardTitle || project.name || '';
+  const stack = (project.stack || []).slice(0, 4);
+
+  return (
+    <div className={`project-row${open ? ' open' : ''}`}>
+      <div className="project-row-header" onClick={() => setOpen(o => !o)}>
+        <div className="project-meta">
+          <span className="project-category">{category}</span>
+          <span className="project-name">{displayName}</span>
         </div>
-        <div class="h-8 w-px bg-border hidden sm:block"></div>
-
-        <div class="flex flex-col justify-center min-w-0">
-          <h2 id="cmdSectionTitle"
-            class="text-sm font-bold text-[var(--text)] uppercase tracking-wider truncate leading-tight">
-            Introduction
-          </h2>
-          <div id="cmdBarHint"
-            class="text-xs text-[var(--text-muted)] truncate hidden sm:block opacity-0 translate-y-2 transition-all duration-300">
-            <!-- Dynamic Hint -->
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div className="project-stack">
+            {stack.map(s => <span key={s} className="stack-tag">{s}</span>)}
           </div>
-          <!-- Project Search Input (Hidden by default) -->
-          <input id="cmdProjectSearch" type="text" placeholder="Search projects..."
-            class="hidden text-xs bg-bg border border-border rounded px-2 py-0.5 focus:outline-none focus:border-primary w-48 transition-all">
-        </div>
-      </div>
-
-      <!-- Right: Controls -->
-      <div class="flex items-center gap-3 shrink-0">
-        <!-- Language Toggle -->
-        <button id="langToggle"
-          class="p-2 text-[var(--text-muted)] hover:text-primary transition-colors text-xs font-mono font-bold uppercase"
-          title="Toggle Language">
-          EN
-        </button>
-
-        <div class="h-6 w-px bg-border mx-1"></div>
-
-        <!-- Guided Mode Toggle -->
-        <button id="cmdGuideToggle"
-          class="p-2 text-[var(--text-muted)] hover:text-primary transition-colors text-xs font-mono flex items-center gap-2"
-          title="Toggle Guided Mode">
-          <span class="hidden md:inline">Guided</span>
-          <div class="w-8 h-4 bg-primary/20 rounded-full relative transition-colors">
-            <div class="w-4 h-4 bg-primary rounded-full absolute left-0 top-0 transition-transform shadow-sm"></div>
-          </div>
-        </button>
-
-        <div class="h-6 w-px bg-border mx-1"></div>
-
-        <button id="cmdBackBtn"
-          class="p-2 rounded-lg border border-border bg-surface text-[var(--text-muted)] hover:border-primary hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-          aria-label="Previous Section">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-
-        <button id="cmdNextBtn"
-          class="group relative p-2 rounded-lg border border-border bg-surface text-[var(--text-muted)] hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all overflow-hidden"
-          aria-label="Next Section">
-          <span class="relative z-10 flex items-center justify-center">
-            <svg id="cmdNextIcon" class="w-5 h-5 transition-transform group-hover:translate-x-0.5" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-            <svg id="cmdLockIcon" class="w-4 h-4 absolute opacity-0 scale-75 transition-all text-[var(--text-muted)]"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-              </path>
-            </svg>
-          </span>
-          <!-- Progress Fill for Next Button (Optional visual flair) -->
-          <div id="cmdNextProgress" class="absolute inset-0 bg-primary/10 w-0 transition-all duration-300"></div>
-        </button>
-      </div>
-
-    </div>
-    <!-- Bottom Progress Line -->
-    <div class="absolute bottom-0 left-0 h-[2px] bg-primary z-50 transition-all duration-300" id="cmdProgressBar"
-      style="width: 0%"></div>
-  </header>
-
-  <!-- Hero (Rendered by JS) -->
-  <section id="hero" class="min-h-screen flex items-center relative overflow-hidden pt-20">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 z-0">
-      <div
-        class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-pulse-slow">
-      </div>
-      <div
-        class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse-slow"
-        style="animation-delay: 2s"></div>
-    </div>
-
-    <div id="hero-target"
-      class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-      <!-- JS Injects Hero Content -->
-    </div>
-  </section>
-  <!-- Selected Impact -->
-  <section id="impact" class="py-14 md:py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold mb-8 tracking-tight text-center" data-i18n="section.impact">Selected Impact</h2>
-      <div id="impact-target" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- JS Injects impact items -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 relative">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center tracking-tight" data-i18n="section.experience">
-        Experience</h2>
-      <div id="experience-target" class="space-y-0 relative border-l-2 border-border/50 ml-4 md:ml-0 pl-8 md:pl-0">
-        <!-- JS Injects Timeline Items -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-surface/50">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div>
-          <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight" data-i18n="section.projects">Projects</h2>
-          <p class="text-[var(--text-muted)] max-w-xl" data-i18n="projects.lead">Selected systems and modeling work across applied AI, analytics, and decision science.</p>
-        </div>
-
-        <!-- Filter & Search -->
-        <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto items-center">
-          <div id="projectFilters" class="flex flex-wrap gap-2">
-            <!-- JS Injects Chips -->
-          </div>
-          <div class="relative w-full sm:w-64">
-            <input type="text" id="projectSearch" placeholder="Search..."
-              class="w-full pl-10 pr-4 py-2 rounded-full bg-surface border border-border focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm shadow-sm">
-            <svg class="w-4 h-4 text-[var(--text-muted)] absolute left-3.5 top-1/2 -translate-y-1/2" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </div>
+          <span className="project-expand-icon">+</span>
         </div>
       </div>
-      <p class="mb-8 text-sm leading-relaxed text-[var(--text-muted)] max-w-4xl" data-i18n="projects.note">
-        Some projects were delivered in regulated or internal environments, so selected case studies are presented in anonymized form with emphasis on system design, controls, and measurable business value.
-      </p>
-
-      <!-- Grid -->
-      <div id="projects-target" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Static fallback cards for non-JS contexts -->
-        <article class="project-card group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-          <div class="flex-1 p-6 md:p-7 space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">Decision Systems</span>
-              <span class="text-xs text-[var(--text-muted)]">Python</span>
-            </div>
-            <h3 class="text-xl font-bold">Index Rebalancing Control Platform</h3>
-            <div class="space-y-3 text-sm text-[var(--text-muted)]">
-              <p><strong class="text-[var(--text)]">Problem:</strong> Manual rebalancing controls created operational risk and low traceability.</p>
-              <p><strong class="text-[var(--text)]">Approach:</strong> Built an Inputs -> Run -> Outputs control workflow with validation, logging, and mismatch checks.</p>
-              <p><strong class="text-[var(--text)]">Impact:</strong> Improved process reliability, traceability, and issue prioritization.</p>
-            </div>
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Highlights</p>
-              <ul class="mt-2 space-y-1.5 text-sm text-[var(--text-muted)]">
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Input validation and standardized workflow runs</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Run logging, traceability, and exception handling</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>KPI/KPA monitoring for operational decisions</span></li>
-              </ul>
-            </div>
-            <div class="pt-1">
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Stack</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Python</span>
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">SQL</span>
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Excel/VBA</span>
+      <div className={`project-body${open ? ' open' : ''}`}>
+        <div className="project-body-inner">
+          <div>
+            <div className="project-block-label">Problem</div>
+            <div className="project-block-text">{project.problem}</div>
+          </div>
+          <div>
+            <div className="project-block-label">Approach</div>
+            <div className="project-block-text">{project.approach}</div>
+            {project.highlights && project.highlights.length > 0 && (
+              <div className="project-highlights">
+                {project.highlights.map((h, i) => (
+                  <div key={i} className="project-highlight">{h}</div>
+                ))}
               </div>
-            </div>
+            )}
           </div>
-          <a class="w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" href="./projects/index-rebalancing-control-platform.html">Read Case Study</a>
-        </article>
-
-        <article class="project-card group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-          <div class="flex-1 p-6 md:p-7 space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">Applied AI / Decision Science</span>
-              <span class="text-xs text-[var(--text-muted)]">Streamlit</span>
-            </div>
-            <h3 class="text-xl font-bold">Pricing & Promotion Decision Engine</h3>
-            <div class="space-y-3 text-sm text-[var(--text-muted)]">
-              <p><strong class="text-[var(--text)]">Problem:</strong> Commercial teams struggle to optimize discount and promotion choices across volume, revenue, and margin tradeoffs.</p>
-              <p><strong class="text-[var(--text)]">Approach:</strong> Built a forecasting and simulation workflow with constraint-aware decision ranking in a realistic synthetic retail environment.</p>
-              <p><strong class="text-[var(--text)]">Impact:</strong> Turned pricing questions into a structured decision-support system with business-facing recommendations.</p>
-            </div>
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Highlights</p>
-              <ul class="mt-2 space-y-1.5 text-sm text-[var(--text-muted)]">
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Time-aware model benchmarking for demand-response prediction</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Counterfactual scenario simulation with business constraints</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Streamlit interface designed for action-oriented commercial decisions</span></li>
-              </ul>
-            </div>
-            <div class="pt-1">
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Stack</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Python</span>
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">pandas</span>
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">scikit-learn</span>
-                <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">simulation</span>
+          <div>
+            <div className="project-block-label">Impact</div>
+            <div className="project-block-text">{impactText}</div>
+            {links.length > 0 && (
+              <div className="project-links">
+                {links.map(l => (
+                  <a key={l.label} className="project-link" href={l.href} target="_blank" rel="noreferrer">
+                    {l.label}
+                  </a>
+                ))}
               </div>
-            </div>
-            <div class="pt-1">
-              <a class="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:underline" href="https://github.com/hicham-alaoui0/ai-pricing-promotion-decision-engine-public" target="_blank" rel="noreferrer">GitHub Repo</a>
-            </div>
-          </div>
-          <a class="w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold hover:bg-primary hover:text-white transition-colors" href="./projects/ai-pricing-promotion-decision-engine.html">Read Case Study</a>
-        </article>
-
-        <article class="project-card group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-          <div class="flex-1 p-6 md:p-7 space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">Machine Learning</span>
-              <span class="text-xs text-[var(--text-muted)]">XGBoost</span>
-            </div>
-            <h3 class="text-xl font-bold">Tick Movement Prediction</h3>
-            <div class="space-y-3 text-sm text-[var(--text-muted)]">
-              <p><strong class="text-[var(--text)]">Problem:</strong> Short-horizon movement prediction is noisy and difficult to validate robustly.</p>
-              <p><strong class="text-[var(--text)]">Approach:</strong> Implemented an XGBoost time-series pipeline with train/validation/test structure.</p>
-              <p><strong class="text-[var(--text)]">Impact:</strong> Produced a reproducible modeling workflow for market-signal experimentation.</p>
-            </div>
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Highlights</p>
-              <ul class="mt-2 space-y-1.5 text-sm text-[var(--text-muted)]">
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Structured data splits for realistic evaluation</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Feature-driven signal engineering workflow</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Reusable experimentation framework</span></li>
-              </ul>
-            </div>
-          </div>
-          <button class="w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold">View Details</button>
-        </article>
-
-        <article class="project-card group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-          <div class="flex-1 p-6 md:p-7 space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">Applied AI</span>
-              <span class="text-xs text-[var(--text-muted)]">Portfolio Logic</span>
-            </div>
-            <h3 class="text-xl font-bold">AI Portfolio Selection Engine</h3>
-            <div class="space-y-3 text-sm text-[var(--text-muted)]">
-              <p><strong class="text-[var(--text)]">Problem:</strong> Converting large issuer and market signals into consistent portfolio decisions is difficult.</p>
-              <p><strong class="text-[var(--text)]">Approach:</strong> Built an AI-assisted scoring and ranking workflow linked to allocation logic.</p>
-              <p><strong class="text-[var(--text)]">Impact:</strong> Connected research signals to decision-ready portfolio construction.</p>
-            </div>
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Highlights</p>
-              <ul class="mt-2 space-y-1.5 text-sm text-[var(--text-muted)]">
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Signal aggregation and issuer scoring</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Ranking-to-allocation decision pipeline</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Practical bridge from model to decision</span></li>
-              </ul>
-            </div>
-          </div>
-          <button class="w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold">View Details</button>
-        </article>
-
-        <article class="project-card group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-          <div class="flex-1 p-6 md:p-7 space-y-4">
-            <div class="flex items-center justify-between gap-3">
-              <span class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary">Analytics Systems</span>
-              <span class="text-xs text-[var(--text-muted)]">Decision Support</span>
-            </div>
-            <h3 class="text-xl font-bold">Trading Controls Risk Analytics</h3>
-            <div class="space-y-3 text-sm text-[var(--text-muted)]">
-              <p><strong class="text-[var(--text)]">Problem:</strong> Control environments need fast visibility on breaches and recurring exceptions.</p>
-              <p><strong class="text-[var(--text)]">Approach:</strong> Designed monitoring logic and analytics views for escalation-ready reporting.</p>
-              <p><strong class="text-[var(--text)]">Impact:</strong> Standardized control signals into a reliable decision-support layer.</p>
-            </div>
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-[var(--text-muted)]">Highlights</p>
-              <ul class="mt-2 space-y-1.5 text-sm text-[var(--text-muted)]">
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Exception tracking and prioritization</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Escalation-oriented dashboard views</span></li>
-                <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span><span>Operational decision-support structure</span></li>
-              </ul>
-            </div>
-          </div>
-          <button class="w-full border-t border-border bg-surface px-6 py-4 text-left text-sm font-bold">View Details</button>
-        </article>
-      </div>
-
-      <!-- Empty State -->
-      <div id="projectsEmpty" class="hidden text-center py-20">
-        <div
-          class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface border border-border mb-4">
-          <svg class="w-8 h-8 text-[var(--text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-2" data-i18n="projects.emptyTitle">No projects found</h3>
-        <p class="text-[var(--text-muted)]" data-i18n="projects.emptyBody">Try adjusting your filters or search query.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Building Now -->
-  <section id="building" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center tracking-tight" data-i18n="section.building">What I'm Building Now</h2>
-      <div id="building-target" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- JS injects building cards -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center tracking-tight" data-i18n="section.skills">Skills</h2>
-      <div id="skills-target" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- JS Injects Skill Groups -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-surface/50">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center tracking-tight" data-i18n="section.certifications">
-        Credentials</h2>
-      <div id="certs-target" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- JS Injects Cert Cards -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto text-center relative">
-      <div class="absolute inset-0 bg-primary/5 rounded-3xl -rotate-1 transform scale-95 z-0"></div>
-      <div class="bg-surface border border-border rounded-3xl p-12 relative z-10 shadow-2xl">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight" data-i18n="section.contact">Let's Connect</h2>
-        <p class="text-lg text-[var(--text-muted)] mb-10 max-w-3xl mx-auto leading-relaxed" data-i18n="cta.body">
-          Open to opportunities in Data Science, Applied AI, Machine Learning, and Analytics/Decision Science.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a id="contactEmail" href="#"
-            class="btn bg-primary text-white hover:bg-primary-hover px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-              </path>
-            </svg>
-            <span data-i18n="cta.email">Email</span>
-          </a>
-          <a id="contactLinkedin" href="https://linkedin.com/in/hicham-alaoui-08ba35206" target="_blank"
-            class="btn bg-surface border border-border hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-            <span data-i18n="cta.linkedin">LinkedIn</span>
-          </a>
-          <a id="contactGithub" href="https://github.com/hicham-alaoui0" target="_blank"
-            class="btn bg-surface border border-border hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.2 11.38c.6.1.82-.25.82-.57v-2.2c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.74.08-.74 1.22.08 1.86 1.25 1.86 1.25 1.07 1.86 2.81 1.32 3.5 1 .1-.78.42-1.32.76-1.63-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1-.32 3.3 1.23A11.5 11.5 0 0112 6.85c1.02 0 2.04.14 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.67 1.65.25 2.88.13 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.38.82 1.1.82 2.22v3.29c0 .32.22.69.83.57A12 12 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            <span data-i18n="cta.github">GitHub</span>
-          </a>
-          <a id="contactCv" href="./CV/CV_Hicham_Alaoui.pdf" target="_blank"
-            class="btn bg-surface border border-border hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v10m0 0l-4-4m4 4l4-4M5 20h14" />
-            </svg>
-            <span data-i18n="cta.cv">Download CV</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 border-t border-border text-center text-[var(--text-muted)] text-sm">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p>&copy; <span id="year"></span> Hicham Alaoui. All rights reserved.</p>
-      <p class="opacity-70" data-i18n="footer.tagline">Applied Data Science and AI Portfolio</p>
-    </div>
-  </footer>
-
-  <!-- Project Modal -->
-  <dialog id="projectModal"
-    class="bg-transparent p-0 w-full max-w-3xl backdrop:bg-black/80 backdrop:backdrop-blur-sm m-auto rounded-2xl shadow-2xl open:animate-fade-in focus:outline-none">
-    <div class="bg-surface border border-border rounded-2xl overflow-hidden flex flex-col max-h-[90vh]">
-      <div class="p-6 border-b border-border flex justify-between items-center bg-bg/50">
-        <h3 id="modalTitle" class="text-xl font-bold text-primary"></h3>
-        <button id="closeModalBtn" class="p-2 hover:bg-border rounded-full transition-colors">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-      <div class="p-8 overflow-y-auto space-y-6">
-        <div class="flex flex-wrap gap-2" id="modalTags"></div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="md:col-span-2 space-y-6">
-            <div>
-              <h4 class="text-sm font-bold uppercase text-[var(--text-muted)] mb-2">Problem</h4>
-              <p id="modalProblem" class="text-[var(--text)]"></p>
-            </div>
-            <div>
-              <h4 class="text-sm font-bold uppercase text-[var(--text-muted)] mb-2">Approach</h4>
-              <p id="modalApproach" class="text-[var(--text)]"></p>
-            </div>
-            <div>
-              <h4 class="text-sm font-bold uppercase text-[var(--text-muted)] mb-2">Results</h4>
-              <p id="modalResults" class="text-[var(--text)]"></p>
-            </div>
-          </div>
-
-          <div class="bg-bg/50 p-4 rounded-xl border border-border h-fit">
-            <h4 class="text-sm font-bold uppercase text-[var(--text-muted)] mb-3">Key Metrics</h4>
-            <ul id="modalMetrics" class="space-y-3"></ul>
-
-            <div class="mt-8 pt-6 border-t border-border">
-              <a id="modalCodeLink" href="#" target="_blank"
-                class="flex items-center gap-2 text-primary hover:underline font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                </svg>
-                View Code
-              </a>
-            </div>
+            )}
           </div>
         </div>
       </div>
     </div>
-  </dialog>
+  );
+}
 
-  <!-- Fixed Theme Toggle -->
-  <button id="themeToggleFixed"
-    class="fixed bottom-6 right-6 p-3 rounded-full bg-surface border border-border shadow-2xl hover:border-primary transition-all z-50 text-yellow-400 dark:text-slate-400"
-    aria-label="Toggle Theme">
-    <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
-    <svg class="w-6 h-6 block dark:hidden text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-    </svg>
-  </button>
+function App() {
+  const scrolled = useScrolled();
+  const [data, setData] = useState(null);
+  const [certs, setCerts] = useState([]);
+  const [theme, setTheme] = useState(() => {
+    try { return localStorage.getItem('ha-theme') || 'refined'; } catch { return 'refined'; }
+  });
 
-  <!-- Back to Top (Moved up to avoid overlap) -->
-  <button id="backToTop"
-    class="fixed bottom-20 right-6 p-3 bg-primary text-white rounded-full shadow-lg translate-y-20 opacity-0 transition-all duration-300 hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary z-40"
-    aria-label="Back to top">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-    </svg>
-  </button>
+  useEffect(() => {
+    Promise.all([
+      fetch('data/profile.json').then(r => r.json()),
+      fetch('data/certifications.json').then(r => r.json()).catch(() => [])
+    ]).then(([profile, certifications]) => {
+      setData(profile);
+      setCerts(certifications);
+    });
+  }, []);
 
-  <script src="./script.js?v=20260413"></script>
+  useEffect(() => {
+    try { localStorage.setItem('ha-theme', theme); } catch {}
+  }, [theme]);
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+  };
+
+  const cycleTheme = () => {
+    const themes = ['operator', 'refined', 'navy'];
+    setTheme(t => themes[(themes.indexOf(t) + 1) % themes.length]);
+  };
+
+  if (!data) return (
+    <div className="app loading" data-theme={theme}>
+      <div className="loading-text">Loading...</div>
+    </div>
+  );
+
+  const { hero, contact, experience, projects, skills, about } = data;
+
+  return (
+    <div className="app" data-theme={theme}>
+
+      {/* NAV */}
+      <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+        <a className="nav-logo" href="#">HA</a>
+        <div className="nav-links">
+          <button className="nav-link" onClick={() => scrollTo('experience')}>Experience</button>
+          <button className="nav-link" onClick={() => scrollTo('projects')}>Projects</button>
+          <button className="nav-link" onClick={() => scrollTo('skills')}>Skills</button>
+          <button className="nav-link" onClick={() => scrollTo('contact')}>Contact</button>
+        </div>
+        <a className="nav-cta" href={hero.cv_url} target="_blank" rel="noreferrer">Download CV</a>
+      </nav>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-grid">
+          <div>
+            <FadeIn delay={0}><div className="hero-eyebrow">Applied Data Science & AI</div></FadeIn>
+            <FadeIn delay={100}><h1 className="hero-name">Hicham<br />Alaoui</h1></FadeIn>
+            <FadeIn delay={200}><div className="hero-title">AI Systems Builder &<br />Decision Scientist</div></FadeIn>
+            <FadeIn delay={300}>
+              <p className="hero-desc">{about?.narrative || hero.subline}</p>
+            </FadeIn>
+            <FadeIn delay={400}>
+              <div className="hero-actions">
+                <button className="btn-primary" onClick={() => scrollTo('projects')}>View Projects</button>
+                <a className="btn-ghost" href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+                <a className="btn-ghost" href={contact.github} target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </FadeIn>
+          </div>
+          <div className="hero-right">
+            <FadeIn delay={200}>
+              <div className="hero-photo-wrap">
+                <div className="hero-photo-frame" />
+                <img
+                  className="hero-photo"
+                  src="assets/images/profile/profile-gen.jpg"
+                  alt="Hicham Alaoui"
+                />
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+        <div className="hero-scroll"><div className="hero-scroll-line" /></div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <div style={{ background: 'var(--bg2)' }}>
+        <div id="experience" className="section">
+          <FadeIn>
+            <div className="section-header">
+              <span className="section-num">01</span>
+              <h2 className="section-title">Experience</h2>
+              <div className="section-line" />
+            </div>
+          </FadeIn>
+          <div className="exp-timeline">
+            {experience.map((e, i) => (
+              <FadeIn key={i} delay={i * 120}>
+                <div className="exp-item">
+                  <div className="exp-period">{e.dates}</div>
+                  <div className="exp-role">{e.role}</div>
+                  <div className="exp-company">{e.company}</div>
+                  <div className="exp-points">
+                    {(e.bullets || []).map((p, j) => (
+                      <div key={j} className="exp-point">{p}</div>
+                    ))}
+                  </div>
+                  {e.stack && e.stack.length > 0 && (
+                    <div className="exp-stack">
+                      {e.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* EDUCATION */}
+      <div style={{ background: 'var(--bg)' }}>
+        <div className="section" style={{ paddingBottom: 48 }}>
+          <FadeIn>
+            <div className="section-header">
+              <span className="section-num">02</span>
+              <h2 className="section-title">Education</h2>
+              <div className="section-line" />
+            </div>
+          </FadeIn>
+          <div className="exp-timeline">
+            <FadeIn>
+              <div className="exp-item">
+                <div className="exp-period">2022 — 2025</div>
+                <div className="exp-role">State Engineer — Applied Economics, Statistics & Big Data</div>
+                <div className="exp-company">INSEA · Rabat</div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+
+      {/* PROJECTS */}
+      <div style={{ background: 'var(--bg2)' }}>
+        <div id="projects" className="section">
+          <FadeIn>
+            <div className="section-header">
+              <span className="section-num">03</span>
+              <h2 className="section-title">Projects</h2>
+              <div className="section-line" />
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <p className="section-desc">
+              Systems and modeling work across applied AI, analytics, and decision science.
+              Click any row to expand.
+            </p>
+          </FadeIn>
+          <div className="projects-list">
+            {projects.map((p, i) => (
+              <FadeIn key={i} delay={i * 60}>
+                <ProjectRow project={p} />
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* SKILLS */}
+      <div style={{ background: 'var(--bg)' }}>
+        <div id="skills" className="section">
+          <FadeIn>
+            <div className="section-header">
+              <span className="section-num">04</span>
+              <h2 className="section-title">Skills</h2>
+              <div className="section-line" />
+            </div>
+          </FadeIn>
+          <div className="skills-grid">
+            {Object.entries(skills).map(([category, items], i) => (
+              <FadeIn key={category} delay={i * 80}>
+                <div>
+                  <div className="skill-group-label">{category}</div>
+                  <div className="skill-pills">
+                    {items.map(s => <span key={s} className="skill-pill">{s}</span>)}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CERTIFICATIONS */}
+      {certs.length > 0 && (
+        <div style={{ background: 'var(--bg2)' }}>
+          <div id="certifications" className="section">
+            <FadeIn>
+              <div className="section-header">
+                <span className="section-num">05</span>
+                <h2 className="section-title">Certifications</h2>
+                <div className="section-line" />
+              </div>
+            </FadeIn>
+            <div className="certs-grid">
+              {certs.map((c, i) => (
+                <FadeIn key={i} delay={i * 60}>
+                  <a className="cert-card" href={c.verifyUrl} target="_blank" rel="noreferrer">
+                    <div className="cert-header">
+                      <div className="cert-issuer">{c.issuer}</div>
+                      <div className="cert-logo-wrap">
+                        {c.logo
+                          ? <img
+                              className="cert-logo"
+                              src={c.logo}
+                              alt={c.issuer}
+                              onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
+                            />
+                          : null
+                        }
+                        <span className="cert-logo-initial" style={{ display: c.logo ? 'none' : 'block' }}>
+                          {c.issuer.charAt(0)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="cert-title">{c.title}</div>
+                    <div className="cert-footer">
+                      <span className="cert-date">{c.displayDate}</span>
+                      <span className="cert-verify">Verify →</span>
+                    </div>
+                  </a>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONTACT */}
+      <div id="contact" className="contact-section">
+        <div className="contact-inner">
+          <FadeIn>
+            <div>
+              <h2 className="contact-headline">Let's work<br />together.</h2>
+              <p className="contact-sub">
+                Open to opportunities in Data Science, Applied AI, Machine Learning, and Analytics.
+                Particularly interested in roles where technical depth translates directly to business impact.
+              </p>
+              <a className="btn-primary" href={hero.cv_url} target="_blank" rel="noreferrer">Download CV</a>
+            </div>
+          </FadeIn>
+          <FadeIn delay={150}>
+            <div className="contact-links">
+              {[
+                { label: 'Email', val: contact.email, href: `mailto:${contact.email}`, external: false },
+                { label: 'LinkedIn', val: 'hicham-alaoui-08ba35206', href: contact.linkedin, external: true },
+                { label: 'GitHub', val: 'hicham-alaoui0', href: contact.github, external: true },
+              ].map(l => (
+                <a
+                  key={l.label}
+                  className="contact-link"
+                  href={l.href}
+                  {...(l.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                >
+                  <div>
+                    <div className="contact-link-label">{l.label}</div>
+                    <div className="contact-link-val">{l.val}</div>
+                  </div>
+                  <span className="contact-link-arrow">→</span>
+                </a>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+
+      <footer>© 2026 Hicham Alaoui · Applied Data Science & AI</footer>
+
+      <button
+        className="theme-toggle"
+        onClick={cycleTheme}
+        title="Switch theme"
+        aria-label="Switch color theme"
+      >◑</button>
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<div id="root"></div>
 </body>
-
 </html>
-
-
-
-
-
-
