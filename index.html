@@ -244,9 +244,9 @@ function ProjectRow({ project }) {
     links.push({ label: 'Case Study →', href: project.links.case });
   }
 
-  const impactText = Array.isArray(project.impact)
-    ? project.impact[0]
-    : (project.impact || project.results || '');
+  const impactItems = Array.isArray(project.impact)
+    ? project.impact
+    : [(project.impact || project.results || '')].filter(Boolean);
 
   const category = project.tags?.[0] || project.category || '';
   const displayName = project.cardTitle || project.name || '';
@@ -285,7 +285,14 @@ function ProjectRow({ project }) {
           </div>
           <div>
             <div className="project-block-label">Impact</div>
-            <div className="project-block-text">{impactText}</div>
+            {impactItems.length === 1
+              ? <div className="project-block-text">{impactItems[0]}</div>
+              : <div className="project-highlights">
+                  {impactItems.map((item, idx) => (
+                    <div key={idx} className="project-highlight">{item}</div>
+                  ))}
+                </div>
+            }
             {links.length > 0 && (
               <div className="project-links">
                 {links.map(l => (
@@ -340,7 +347,9 @@ function App() {
     </div>
   );
 
-  const { hero, contact, experience, projects, skills, about } = data;
+  const { hero, contact, experience, projects, skills, about, metrics } = data;
+  const featured = projects.filter(p => p.featured !== false);
+  const explorations = projects.filter(p => p.featured === false);
 
   return (
     <div className="app" data-theme={theme}>
@@ -363,7 +372,7 @@ function App() {
           <div>
             <FadeIn delay={0}><div className="hero-eyebrow">Applied Data Science & AI</div></FadeIn>
             <FadeIn delay={100}><h1 className="hero-name">Hicham<br />Alaoui</h1></FadeIn>
-            <FadeIn delay={200}><div className="hero-title">AI Systems Builder &<br />Decision Scientist</div></FadeIn>
+            <FadeIn delay={200}><div className="hero-title">Applied Data Scientist building production AI systems for finance, risk, and decision workflows.</div></FadeIn>
             <FadeIn delay={300}>
               <p className="hero-desc">{about?.narrative || hero.subline}</p>
             </FadeIn>
@@ -374,6 +383,18 @@ function App() {
                 <a className="btn-ghost" href={contact.github} target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </FadeIn>
+            {metrics && metrics.length > 0 && (
+              <FadeIn delay={500}>
+                <div style={{ display: 'flex', gap: 40, marginTop: 48, paddingTop: 28, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+                  {metrics.map((m, i) => (
+                    <div key={i}>
+                      <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 26, fontWeight: 800, color: 'var(--accent)', lineHeight: 1 }}>{m.value}</div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--fg3)', marginTop: 6, lineHeight: 1.5 }}>{m.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            )}
           </div>
           <div className="hero-right">
             <FadeIn delay={200}>
@@ -464,12 +485,35 @@ function App() {
             </p>
           </FadeIn>
           <div className="projects-list">
-            {projects.map((p, i) => (
+            {featured.map((p, i) => (
               <FadeIn key={i} delay={i * 60}>
                 <ProjectRow project={p} />
               </FadeIn>
             ))}
           </div>
+          {explorations.length > 0 && (
+            <>
+              <FadeIn>
+                <div style={{ marginTop: 72 }}>
+                  <div className="section-header" style={{ marginBottom: 16 }}>
+                    <span className="section-num">—</span>
+                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(18px, 2vw, 24px)', fontWeight: 600, letterSpacing: '-0.01em', color: 'var(--fg2)' }}>Other Explorations</h3>
+                    <div className="section-line" />
+                  </div>
+                  <p style={{ maxWidth: 600, color: 'var(--fg3)', fontSize: 13, lineHeight: 1.7, marginBottom: 24 }}>
+                    Earlier experiments and in-progress work — less polished, but part of the journey.
+                  </p>
+                </div>
+              </FadeIn>
+              <div className="projects-list">
+                {explorations.map((p, i) => (
+                  <FadeIn key={i} delay={i * 60}>
+                    <ProjectRow project={p} />
+                  </FadeIn>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
 
@@ -550,8 +594,7 @@ function App() {
             <div>
               <h2 className="contact-headline">Let's work<br />together.</h2>
               <p className="contact-sub">
-                Open to opportunities in Data Science, Applied AI, Machine Learning, and Analytics.
-                Particularly interested in roles where technical depth translates directly to business impact.
+                Open to Data Scientist, Applied AI Engineer, Machine Learning Engineer, and Analytics Engineer roles — especially where modeling, data pipelines, and business impact meet.
               </p>
               <a className="btn-primary" href={hero.cv_url} target="_blank" rel="noreferrer">Download CV</a>
             </div>

@@ -1,18 +1,18 @@
 {
   "hero": {
     "headline": "Hicham Alaoui",
-    "subline": "Applied Data Scientist building AI, analytics, and decision systems.",
+    "subline": "Applied Data Scientist building production AI systems for finance, risk, and decision workflows.",
     "cv_url": "CV/CV_Hicham_Alaoui.pdf"
   },
   "contact": {
-    "email": "halaoui@insea.ac.ma",
+    "email": "hicham.alaoui.data@gmail.com",
     "linkedin": "https://linkedin.com/in/hicham-alaoui-08ba35206",
     "github": "https://github.com/hicham-alaoui0"
   },
   "metrics": [
-    { "label": "Case studies", "value": 9, "suffix": "" },
-    { "label": "Application domains", "value": 4, "suffix": "" },
-    { "label": "Core tracks", "value": 3, "suffix": "" }
+    { "label": "Years in applied data science", "value": "3+", "suffix": "" },
+    { "label": "Business domains covered", "value": "4", "suffix": "" },
+    { "label": "ML, risk & decision projects", "value": "10+", "suffix": "" }
   ],
   "experience": [
     {
@@ -53,47 +53,115 @@
   ],
   "projects": [
     {
-      "name": "Production-Control Platform for Index Rebalancing Workflows",
+      "name": "Real-Time Pre-Trade Limits Recalibration using EVT",
+      "cardTitle": "EVT Pre-Trade Limits Recalibration",
+      "tags": ["Machine Learning", "Risk Analytics", "MLOps", "Quant Finance"],
+      "problem": "Pre-trade control thresholds were difficult to calibrate manually, creating a trade-off between excessive false alerts and insufficient risk sensitivity.",
+      "approach": "Built an EVT-POT based recalibration framework on 12M+ trades to estimate extreme behavior, propose dynamic thresholds, and package the workflow with testing, monitoring, and deployment logic.",
+      "impact": [
+        "Analyzed 12M+ trades across the full limit-monitoring perimeter",
+        "94% precision at 1.3% false-positive rate on extreme-event detection",
+        "Enabled EUR 1.8M RWA release through improved threshold accuracy",
+        "Reduced processing time by 80% versus the prior heuristic approach",
+        "Improved robustness and auditability of pre-trade monitoring controls"
+      ],
+      "highlights": [
+        "Peak-Over-Threshold (POT/GPD) modeling for tail-risk behavior estimation",
+        "Backtesting and threshold comparison against heuristic benchmark rules",
+        "MLOps packaging with unit tests, Docker, GitHub Actions, and monitoring hooks",
+        "Business-oriented validation around false positives, risk sensitivity, and operational usability"
+      ],
+      "stack": ["Python", "EVT/POT", "GPD", "SQL", "scikit-learn", "Docker", "MLOps"],
+      "featured": true,
+      "detailUrl": "projects/evt-pre-trade-limits-recalibration.html",
+      "links": { "code": "#", "case": "projects/evt-pre-trade-limits-recalibration.html" }
+    },
+    {
+      "name": "Index Rebalancing Control Platform",
       "cardTitle": "Index Rebalancing Control Platform",
       "tags": ["Decision Systems", "Operations Analytics", "Finance Domain"],
       "problem": "A business-critical rebalancing process depended on manual checks, creating control gaps and weak traceability.",
-      "approach": "Designed and implemented an Inputs -> Run -> Outputs platform with input validation, run logging, standardized dumps, mismatch detection, and KPI/KPA monitoring.",
+      "approach": "Designed and implemented an Inputs → Run → Outputs platform with input validation, run logging, standardized dumps, mismatch detection, and KPI/KPA monitoring.",
       "impact": [
-        "Reduced manual control dependency",
+        "Reduced manual control dependency across rebalancing runs",
         "Improved run traceability and audit readiness",
-        "Created a repeatable framework to prioritize recurring upstream issues"
+        "Created a repeatable framework to surface and prioritize recurring upstream issues"
       ],
       "highlights": [
         "Standardized workflow states from input intake to output validation",
         "Implemented exception detection for mismatches and missing controls",
-        "Structured KPI/KPA monitoring for operational decision making"
+        "Structured KPI/KPA monitoring for operational decision-making"
       ],
       "stack": ["Python", "SQL", "Excel/VBA", "Workflow design", "KPI dashboards"],
+      "featured": true,
       "detailUrl": "projects/index-rebalancing-control-platform.html",
       "links": { "code": "#", "case": "projects/index-rebalancing-control-platform.html" }
     },
     {
       "name": "AI Pricing & Promotion Decision Engine",
-      "cardTitle": "Pricing & Promotion Decision Engine",
+      "cardTitle": "AI Pricing & Promotion Decision Engine",
       "tags": ["Applied AI / Decision Science", "Retail Analytics", "Decision Support"],
       "problem": "Commercial teams must decide what to promote, how deeply to discount, and how to balance unit sales, revenue, and margin under uncertain demand behavior.",
       "approach": "Built an applied AI decision workflow: synthetic retail data generation, time-aware model benchmarking, demand-response prediction, counterfactual simulation, and constrained action ranking through a weighted objective.",
       "impact": [
         "Converted pricing questions into a structured decision-support system",
         "Connected ML forecasts to practical promotion action recommendations",
-        "Produced business-facing outputs through an interactive dashboard"
+        "Produced business-facing outputs through an interactive Streamlit dashboard"
       ],
       "highlights": [
         "Generated a realistic synthetic environment covering seasonality, promotion effects, and price sensitivity",
-        "Benchmarked and tuned regression families using time-aware validation",
+        "Benchmarked and tuned regression families using time-aware cross-validation",
         "Designed a constraint-aware decision engine with scenario simulation and ranking logic"
       ],
       "stack": ["Python", "pandas", "scikit-learn", "Streamlit", "forecasting", "simulation", "decision engine"],
+      "featured": true,
       "detailUrl": "projects/ai-pricing-promotion-decision-engine.html",
       "links": {
         "code": "https://github.com/hicham-alaoui0/ai-pricing-promotion-decision-engine-public",
         "case": "projects/ai-pricing-promotion-decision-engine.html"
       }
+    },
+    {
+      "name": "Modeling Agricultural CO2 Emissions in Switzerland",
+      "cardTitle": "Agricultural CO2 Emissions Modeling",
+      "tags": ["Sustainability Analytics", "Econometrics", "Machine Learning"],
+      "problem": "Agricultural emissions are driven by interdependent structural and environmental factors that are hard to model jointly.",
+      "approach": "Built predictive models combining agricultural, demographic, and climate features to analyze emission dynamics, benchmarking econometric and ML approaches for robustness.",
+      "impact": [
+        "Produced a structured cross-factor emissions modeling workflow",
+        "Identified key emission drivers interpretable for policy audiences",
+        "Demonstrated cross-domain quantitative depth beyond finance"
+      ],
+      "highlights": [
+        "Integrated heterogeneous climate and structural datasets from multiple sources",
+        "Compared econometric and ML approaches for robustness and interpretability",
+        "Framed model outputs for policy-oriented interpretation (gaea21 NGO use case)"
+      ],
+      "stack": ["Python", "XGBoost", "LSTM", "Econometrics", "scikit-learn", "Feature engineering"],
+      "featured": true,
+      "detailUrl": "",
+      "links": { "code": "#", "case": "#" }
+    },
+    {
+      "name": "Credit Card Fraud Detection with Imbalanced Learning",
+      "cardTitle": "Fraud Detection under Class Imbalance",
+      "tags": ["Classification", "Risk Modeling", "Model Evaluation"],
+      "problem": "Severely imbalanced fraud data made baseline classifiers unreliable for risk-sensitive detection.",
+      "approach": "Benchmarked multiple classification models and applied oversampling to improve minority-class detection performance, with rigorous precision-recall evaluation.",
+      "impact": [
+        "Improved fraud recall significantly versus naive baselines",
+        "Established a reusable model comparison framework for imbalanced problems",
+        "Strengthened metric discipline around precision/recall trade-offs for risk use cases"
+      ],
+      "highlights": [
+        "Compared classifier performance under class imbalance constraints",
+        "Applied SMOTE and oversampling workflows to improve minority signal capture",
+        "Tracked precision and recall trade-offs with operational relevance framing"
+      ],
+      "stack": ["Python", "scikit-learn", "imbalanced-learn", "Classification metrics"],
+      "featured": true,
+      "detailUrl": "",
+      "links": { "code": "#", "case": "#" }
     },
     {
       "name": "Tick-Movement Prediction with Machine Learning",
@@ -103,35 +171,33 @@
       "approach": "Built an XGBoost time-series workflow with disciplined train, validation, and test splits plus regression-based evaluation.",
       "impact": [
         "Delivered a reproducible signal-to-prediction pipeline",
-        "Improved experiment rigor through robust split methodology",
-        "Demonstrated practical modeling on market-style data"
+        "Improved experiment rigor through robust split methodology"
       ],
       "highlights": [
         "Engineered predictive features from raw market signals",
-        "Separated training and evaluation windows to reduce leakage risk",
-        "Compared model behavior under consistent validation criteria"
+        "Separated training and evaluation windows to reduce leakage risk"
       ],
       "stack": ["Python", "XGBoost", "pandas", "scikit-learn"],
+      "featured": false,
       "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
     {
-      "name": "AI Investment System for Equity Selection and Portfolio Allocation",
-      "cardTitle": "AI Portfolio Selection Engine",
+      "name": "AI Equity Selection & Portfolio Allocation Engine",
+      "cardTitle": "AI Equity Selection & Portfolio Allocation Engine",
       "tags": ["Applied AI", "Decision Science", "Portfolio Analytics"],
       "problem": "Converting large issuer and market datasets into coherent allocation decisions is slow and inconsistent.",
-      "approach": "Designed an AI-driven workflow that links research signals, issuer scoring, ranking logic, and portfolio weighting into one decision pipeline.",
+      "approach": "Designed an AI-driven workflow linking research signals, issuer scoring, ranking logic, and portfolio weighting into one decision pipeline.",
       "impact": [
         "Connected research outputs to allocation-ready decisions",
-        "Standardized scoring logic for portfolio design workflows",
-        "Framed model outputs in execution-oriented terms"
+        "Standardized scoring logic for portfolio design workflows"
       ],
       "highlights": [
         "Structured signal ingestion across issuer and market inputs",
-        "Implemented ranking-to-weighting logic for portfolio construction",
-        "Aligned model scoring with practical decision constraints"
+        "Implemented ranking-to-weighting logic for portfolio construction"
       ],
       "stack": ["Python", "Financial modeling", "Factor scoring", "Portfolio allocation", "Data pipelines"],
+      "featured": false,
       "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
@@ -142,36 +208,15 @@
       "problem": "Control teams needed faster visibility on threshold breaches, recurring exceptions, and escalation priorities.",
       "approach": "Built monitoring analytics and reporting views to structure control signals, exception tracking, and escalation-ready analysis.",
       "impact": [
-        "Improved detection of critical control exceptions",
-        "Standardized monitoring views for recurring issues",
-        "Strengthened decision support for operational controls"
+        "Improved detection speed for critical control exceptions",
+        "Standardized monitoring views for recurring issues"
       ],
       "highlights": [
         "Modeled control signals into a consistent analytics layer",
-        "Implemented exception tracking patterns for repeated issues",
         "Designed reporting outputs oriented to escalation decisions"
       ],
       "stack": ["Python", "SQL", "Dashboards", "Control analytics", "Market operations"],
-      "detailUrl": "",
-      "links": { "code": "#", "case": "#" }
-    },
-    {
-      "name": "Credit Card Fraud Detection with Imbalanced Learning",
-      "cardTitle": "Fraud Detection under Class Imbalance",
-      "tags": ["Classification", "Risk Modeling", "Model Evaluation"],
-      "problem": "Severely imbalanced fraud data made baseline classifiers unreliable for risk-sensitive detection.",
-      "approach": "Benchmarked multiple classification models and applied oversampling to improve minority-class detection performance.",
-      "impact": [
-        "Improved fraud recall versus naive baselines",
-        "Established a reusable model comparison framework",
-        "Strengthened metric discipline for imbalanced risk problems"
-      ],
-      "highlights": [
-        "Compared classifier performance under class imbalance constraints",
-        "Applied oversampling workflows to improve minority signal capture",
-        "Tracked precision and recall tradeoffs for operational relevance"
-      ],
-      "stack": ["Python", "scikit-learn", "imbalanced-learn", "Classification metrics"],
+      "featured": false,
       "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
@@ -183,35 +228,14 @@
       "approach": "Designed a prompt-driven utility that generates standardized ETL skeletons with validation checkpoints.",
       "impact": [
         "Accelerated early-stage pipeline prototyping",
-        "Improved consistency across ETL project structure",
         "Reduced repetitive setup overhead for new workflows"
       ],
       "highlights": [
         "Converted natural-language prompts into ETL starter components",
-        "Embedded validation hooks to improve data reliability from day one",
-        "Standardized handoff structure for faster iteration"
+        "Embedded validation hooks for data reliability from day one"
       ],
       "stack": ["Python", "ETL", "Prompt engineering", "Automation"],
-      "detailUrl": "",
-      "links": { "code": "#", "case": "#" }
-    },
-    {
-      "name": "Modeling Agricultural CO2 Emissions in Switzerland",
-      "cardTitle": "Agricultural CO2 Modeling",
-      "tags": ["Sustainability Analytics", "Econometrics", "Machine Learning"],
-      "problem": "Agricultural emissions are driven by interdependent structural and environmental factors that are hard to model jointly.",
-      "approach": "Built predictive models combining agricultural, demographic, and climate features to analyze emission dynamics.",
-      "impact": [
-        "Produced a structured cross-factor emissions modeling workflow",
-        "Improved interpretation of key feature drivers",
-        "Demonstrated cross-domain quantitative depth beyond finance"
-      ],
-      "highlights": [
-        "Integrated heterogeneous climate and structural datasets",
-        "Compared econometric and ML approaches for robustness",
-        "Framed model outputs for policy-oriented interpretation"
-      ],
-      "stack": ["Python", "Econometrics", "Machine learning", "Feature engineering"],
+      "featured": false,
       "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     },
@@ -223,26 +247,25 @@
       "approach": "Prototyped practical diagnostic workflows combining data capture, model inference, and operator-facing intervention logic.",
       "impact": [
         "Validated startup experimentation in AI-assisted operations",
-        "Structured diagnostics for faster field interventions",
-        "Extended applied AI practice into agritech workflows"
+        "Mapped real operational pain points to lightweight ML workflows"
       ],
       "highlights": [
-        "Mapped real operational pain points to lightweight ML workflows",
         "Designed data-to-inference loops for actionable diagnostics",
         "Prioritized implementation simplicity for iterative deployment"
       ],
       "stack": ["Python", "Computer vision", "Workflow automation"],
+      "featured": false,
       "detailUrl": "",
       "links": { "code": "#", "case": "#" }
     }
   ],
   "skills": {
-    "Applied Modeling": ["Time series modeling", "Classification", "Feature engineering", "Model evaluation", "Experiment design"],
+    "Applied Modeling": ["Time series modeling", "Classification", "Extreme Value Theory", "Feature engineering", "Model evaluation", "Experiment design"],
     "Analytics Systems": ["Decision workflows", "Control analytics", "Monitoring design", "Exception handling", "KPI/KPA tracking"],
-    "Data Engineering": ["Python", "SQL", "Data pipelines", "Workflow automation", "ETL structuring"],
-    "Tooling": ["Power BI", "Streamlit", "GitHub Actions", "Docker", "Excel/VBA"]
+    "Data Engineering": ["Python", "SQL", "Data pipelines", "Workflow automation", "Docker", "ETL structuring"],
+    "Tooling": ["Power BI", "Streamlit", "GitHub Actions", "scikit-learn", "Excel/VBA", "Bloomberg"]
   },
   "about": {
-    "narrative": "Data Scientist with experience in quantitative finance, analytics products, and AI systems design. I build production-oriented workflows for trading operations, risk visibility, and decision support, and apply the same rigor across sustainability and startup domains."
+    "narrative": "I design machine learning and analytics systems that connect business problems, data pipelines, statistical modeling, and measurable operational impact. My work spans trading controls, index rebalancing, risk monitoring, sustainability, and AI decision systems."
   }
 }
