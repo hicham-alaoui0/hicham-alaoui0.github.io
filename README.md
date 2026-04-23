@@ -1,40 +1,35 @@
-## Portfolio Redesign (2025)
+# Hicham Alaoui — Applied Data Scientist Portfolio
 
-Static, accessible, performance‑first portfolio for Data Science / Quant profile.
+Static portfolio focused on applied machine learning, AI systems, quantitative finance, risk analytics, and decision workflows.
 
-### Key Features
-- Hero positioning line, experience timeline (SG ATS, GAEA21, HCP)
-- Featured projects with metric badges (FarmVision 92% accuracy, Trading +10% CAGR)
-- Skills grouped chips, certifications, languages
-- EN/FR minimal i18n (no build step) + theme (dark/light) persistence via localStorage
-- PWA manifest + offline caching (service worker)
-- SEO: meta, OpenGraph, JSON‑LD Person, sitemap, robots
+The portfolio presents selected professional and personal case studies, including:
+- EVT-based pre-trade limits recalibration on 12M+ trades
+- Index rebalancing production-control platform
+- AI pricing and promotion decision engine
+- Agricultural CO2 emissions modeling
+- Fraud detection under class imbalance
 
-### Update i18n Text
-Edit `script.js` dictionaries (dict.en / dict.fr). Only keys used with `data-i18n` need entries. Add a new key in both objects and place `data-i18n="your.key"` on the HTML element.
+## Stack
 
-### Add a New Project Card
-Duplicate a `<article class="project-card">` block in `index.html` within `#projects` grid. Keep structure:
+Pure static site — HTML, React (CDN), Babel standalone, CSS custom properties. No build step. Deploys directly to GitHub Pages.
+
+## Structure
+
 ```
-<article class="project-card">
-	<header>
-		<h3 class="project-title">Name</h3>
-		<div class="metric-badges"><span class="metric">Metric</span></div>
-	</header>
-	<p class="project-problem"><strong>Problem:</strong> ...</p>
-	<p class="project-approach"><strong>Approach:</strong> ...</p>
-	<p class="project-impact"><strong>Impact:</strong> ...</p>
-	<div class="stack-row"><span>Tech1</span></div>
-	<div class="project-links">...</div>
- </article>
+index.html              — Main single-page app (React)
+data/profile.json       — All content: hero, experience, projects, skills
+data/certifications.json
+projects/               — Case study detail pages
+assets/                 — Images, icons, CV
+styles.css              — Theme variables and animations
 ```
 
-### Change Theme Defaults
-Modify `themeToggle` logic in `script.js` or Tailwind extension in `<head>`.
+## Updating Content
 
-### Performance Tips
-- Replace large images in `assets/images` with optimized (≤150KB) versions.
-- Add `fetchpriority="high"` to critical hero image if needed.
+All content lives in `data/profile.json`. Edit the JSON to update experience, projects, skills, or hero copy. No rebuild required.
 
-### Deploy
-Push to `main` on GitHub Pages repository (`username.github.io`). All assets are static.
+To add a new case study: create `projects/your-project.html` (use existing pages as template), then set `detailUrl` and `links.case` in the project entry in `profile.json`.
+
+## Deploy
+
+Push to `main` on the GitHub Pages repository. All assets are static — no CI step needed.

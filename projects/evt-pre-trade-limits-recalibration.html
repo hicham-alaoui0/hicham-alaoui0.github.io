@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EVT Pre-Trade Limits Recalibration | Hicham Alaoui</title>
+  <meta name="description"
+    content="Case study: real-time pre-trade limits recalibration using Extreme Value Theory (EVT/POT) on 12M+ trades — 94% precision, 1.3% false-positive rate, EUR 1.8M RWA release, MLOps deployment.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            bg: 'var(--bg)',
+            surface: 'var(--surface)',
+            border: 'var(--border)',
+            primary: 'var(--primary)',
+            'primary-hover': 'var(--primary-hover)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .arch-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .arch-box {
+      background: var(--surface, #1e2030);
+      border: 1px solid var(--border, rgba(255,255,255,0.1));
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text, #e2e8f0);
+      white-space: nowrap;
+      text-align: center;
+      min-width: 120px;
+    }
+    .arch-box.accent {
+      border-color: var(--primary, #00e87a);
+      color: var(--primary, #00e87a);
+    }
+    .arch-arrow {
+      color: var(--text-muted, #64748b);
+      font-size: 18px;
+      padding: 0 6px;
+      flex-shrink: 0;
+    }
+    .metric-highlight {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 24px;
+      border: 1px solid var(--border, rgba(255,255,255,0.1));
+      border-radius: 12px;
+      background: var(--surface, #1e2030);
+      min-width: 130px;
+    }
+    .metric-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary, #00e87a);
+      line-height: 1;
+    }
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted, #64748b);
+      margin-top: 6px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+
+<body class="bg-bg text-[var(--text)] antialiased transition-colors duration-300">
+  <main class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+
+      <!-- Back link -->
+      <a href="../index.html#projects"
+        class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-[var(--text-muted)] hover:border-primary hover:text-primary transition-colors">
+        <span aria-hidden="true">&larr;</span>
+        <span>Back to Projects</span>
+      </a>
+
+      <!-- Header -->
+      <header class="rounded-2xl border border-border bg-surface p-8 md:p-10 shadow-sm">
+        <p class="text-xs uppercase tracking-widest text-primary font-bold font-mono">Quantitative Finance · Risk Analytics · MLOps</p>
+        <h1 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
+          Real-Time Pre-Trade Limits Recalibration using EVT
+        </h1>
+        <p class="mt-5 text-base leading-relaxed text-[var(--text-muted)]">
+          Built during my thesis at Societe Generale ATS, this project replaces manually tuned pre-trade thresholds
+          with a statistically grounded Extreme Value Theory (POT/GPD) framework — calibrated on 12M+ trades,
+          packaged with full MLOps infrastructure, and validated against real business constraints around false positives
+          and regulatory capital.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">Python</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">EVT / POT</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">GPD</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">SQL</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">scikit-learn</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">Docker</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">GitHub Actions</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary font-mono">MLOps</span>
+        </div>
+      </header>
+
+      <!-- Business Problem -->
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-4 shadow-sm">
+        <h2 class="text-2xl font-bold">Business Problem</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Pre-trade limit controls are a core component of trading risk management. They block or flag orders that
+          breach predefined thresholds before they reach the market. The challenge: these thresholds were historically
+          calibrated by hand, using heuristic rules based on averages and static percentiles.
+        </p>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          This manual approach created a fundamental tension. Thresholds set too conservatively generated excessive
+          false alerts — operational noise that desensitized teams and added friction. Thresholds set too loosely
+          missed genuine risk events. Neither outcome was acceptable in a high-volume, regulatory-sensitive trading
+          environment processing millions of trades.
+        </p>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          The business needed a data-driven recalibration methodology: one that could estimate the true
+          statistical behavior of extreme trade events, propose calibrated thresholds with quantified confidence,
+          and produce outputs usable by both risk teams and regulators.
+        </p>
+      </section>
+
+      <!-- Technical Approach -->
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Technical Approach</h2>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-primary font-mono mb-2">1. Data Engineering & Feature Pipeline</h3>
+            <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+              Ingested and reconciled 12M+ trade records via SQL pipelines. Built feature engineering logic
+              for trade-level signals: notional size, time-of-day patterns, instrument volatility, and
+              historical breach rates. Applied outlier handling and reproducible preprocessing to ensure
+              consistent inputs to the EVT modeling layer.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-primary font-mono mb-2">2. Extreme Value Theory — Peak-Over-Threshold</h3>
+            <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+              Used the Peak-Over-Threshold (POT) method from Extreme Value Theory to model the tail distribution
+              of trade notionals. Fitted Generalized Pareto Distributions (GPD) to exceedances above a calibrated
+              threshold, providing statistically justified estimates of extreme quantiles — the foundation for
+              proposed limit values. Selected POT over block maxima for better sample efficiency on the full
+              trade population.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-primary font-mono mb-2">3. Threshold Proposal & Backtesting</h3>
+            <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+              The EVT model outputs proposed threshold candidates at configurable confidence levels. These were
+              backtested against historical data and compared to the current heuristic rules across multiple
+              periods and instrument segments. Evaluation metrics were framed around operational outcomes:
+              false-positive rate, missed breach rate, and sensitivity across volatility regimes.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-primary font-mono mb-2">4. MLOps Packaging & Deployment</h3>
+            <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+              Packaged the full pipeline with unit tests, Docker containerization, GitHub Actions for CI,
+              and monitoring hooks for threshold drift detection. The deployment layer produced versioned
+              threshold proposals with metadata — making outputs auditable, reproducible, and ready for
+              operational review by risk and compliance teams.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- System Architecture -->
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">System Architecture</h2>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-6">
+          The pipeline moves from raw trade data through statistical modeling to validated, deployment-ready threshold proposals.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-box">Trade Data<br><span style="font-size:10px;opacity:0.6">12M+ records · SQL</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">Feature Pipeline<br><span style="font-size:10px;opacity:0.6">signals · cleaning</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box accent">EVT / POT Model<br><span style="font-size:10px;opacity:0.7">GPD fitting · tail est.</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">Threshold Proposal<br><span style="font-size:10px;opacity:0.6">quantiles · config CI</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">Backtesting<br><span style="font-size:10px;opacity:0.6">vs. heuristic baseline</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box accent">Monitoring Layer<br><span style="font-size:10px;opacity:0.7">drift · alerts · audit</span></div>
+        </div>
+
+        <div class="mt-6 p-4 rounded-lg border border-border" style="background: var(--bg, #0a0a0f);">
+          <p class="text-xs font-mono text-[var(--text-muted)]">
+            <span class="text-primary">Deployment stack:</span>
+            Python · Docker · GitHub Actions CI · Unit test suite · Versioned threshold outputs · Monitoring hooks
+          </p>
+        </div>
+      </section>
+
+      <!-- Impact -->
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Impact</h2>
+
+        <div class="flex flex-wrap gap-4">
+          <div class="metric-highlight">
+            <div class="metric-value">12M+</div>
+            <div class="metric-label">Trades analyzed</div>
+          </div>
+          <div class="metric-highlight">
+            <div class="metric-value">94%</div>
+            <div class="metric-label">Precision</div>
+          </div>
+          <div class="metric-highlight">
+            <div class="metric-value">1.3%</div>
+            <div class="metric-label">False-positive rate</div>
+          </div>
+          <div class="metric-highlight">
+            <div class="metric-value">EUR 1.8M</div>
+            <div class="metric-label">RWA release enabled</div>
+          </div>
+          <div class="metric-highlight">
+            <div class="metric-value">80%</div>
+            <div class="metric-label">Faster processing</div>
+          </div>
+        </div>
+
+        <div class="space-y-3 mt-2">
+          <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+            The recalibrated thresholds significantly outperformed heuristic baselines across all evaluation
+            windows, reducing false alert volume while maintaining or improving breach detection sensitivity.
+          </p>
+          <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+            The EUR 1.8M RWA release reflects improved threshold accuracy directly translating into regulatory
+            capital efficiency — a concrete financial outcome from a statistical modeling decision.
+          </p>
+          <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+            The 80% processing time reduction came from replacing manual calibration reviews with an automated,
+            reproducible pipeline — freeing control team capacity for exception analysis.
+          </p>
+        </div>
+      </section>
+
+      <!-- What I learned -->
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-4 shadow-sm">
+        <h2 class="text-2xl font-bold">What I Learned & What I'd Improve</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-sm font-semibold text-primary font-mono uppercase tracking-wider mb-3">Key Learnings</h3>
+            <ul class="space-y-2 text-sm text-[var(--text-muted)]">
+              <li class="flex gap-2"><span class="text-primary flex-shrink-0">—</span> EVT's POT method is well-suited for financial control problems but requires careful threshold selection (the exceedance threshold, not the proposed limit) — stability plots and mean excess plots are essential diagnostics.</li>
+              <li class="flex gap-2"><span class="text-primary flex-shrink-0">—</span> Business validation mattered as much as statistical validation: a 94% precise model is only useful if risk teams trust and understand the proposed thresholds.</li>
+              <li class="flex gap-2"><span class="text-primary flex-shrink-0">—</span> MLOps packaging from day one (tests, Docker, CI) made the difference between a research prototype and an operationally usable tool.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-primary font-mono uppercase tracking-wider mb-3">What I'd Improve Next</h3>
+            <ul class="space-y-2 text-sm text-[var(--text-muted)]">
+              <li class="flex gap-2"><span class="text-primary flex-shrink-0">—</span> Segment the EVT model by instrument type and market regime — a single global model likely smooths over meaningful tail differences across equity, rate, and credit products.</li>
+              <li class="flex gap-2"><span class="text-primary flex-shrink-0">—</span> Add an online recalibration loop to detect threshold drift in real time, rather than relying on scheduled refit cycles.</li>
+              <li class="flex gap-2"><span class="text-primary flex-shrink-0">—</span> Build an explainability layer for business stakeholders — showing which trades drove threshold shifts and why, not just the proposed value.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer nav -->
+      <div class="flex items-center justify-between pt-4">
+        <a href="../index.html#projects"
+          class="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-primary transition-colors">
+          <span>&larr;</span>
+          <span>Back to all projects</span>
+        </a>
+        <a href="../index.html#contact"
+          class="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-primary transition-colors">
+          <span>Get in touch</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
