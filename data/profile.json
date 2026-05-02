@@ -122,6 +122,32 @@
       }
     },
     {
+      "name": "Investment Copilot",
+      "cardTitle": "Investment Copilot",
+      "tags": ["Applied AI / LLM Agents", "Quantitative Finance", "Paper Trading"],
+      "problem": "Investment research is fragmented across data sources, scoring models, and execution platforms — making it slow to move from a signal to a tested position.",
+      "approach": "Built an end-to-end AI research platform combining Bloomberg/FactSet data ingestion, a LangChain agent for research automation, multi-factor stock scoring, and IBKR paper trading — all served through a Streamlit UI with local LLMs.",
+      "impact": [
+        "Integrated Bloomberg and FactSet data into a unified research and scoring pipeline",
+        "Built a LangChain agent that automates equity research tasks with local LLM inference",
+        "Implemented multi-factor stock scoring combining fundamental, momentum, and risk signals",
+        "Connected the pipeline to Interactive Brokers paper trading for end-to-end signal testing"
+      ],
+      "highlights": [
+        "LangChain agent orchestration with tool use over live market data",
+        "Multi-factor scoring with configurable factor weights and ranking",
+        "IBKR paper trading integration for execution simulation",
+        "Local LLM inference — no external API dependency for research generation"
+      ],
+      "stack": ["Python", "LangChain", "LLMs", "Bloomberg", "FactSet", "IBKR", "Streamlit", "Quantitative Finance"],
+      "featured": true,
+      "detailUrl": "projects/investment-copilot.html",
+      "links": {
+        "code": "https://github.com/hicham-alaoui0/investment-copilot",
+        "case": "projects/investment-copilot.html"
+      }
+    },
+    {
       "name": "Modeling Agricultural CO2 Emissions in Switzerland",
       "cardTitle": "Agricultural CO2 Emissions Modeling",
       "tags": ["Sustainability Analytics", "Econometrics", "Machine Learning"],

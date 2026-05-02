@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investment Copilot | Hicham Alaoui</title>
+  <meta name="description"
+    content="Case study: an AI-powered investment research platform combining Bloomberg/FactSet data, LangChain agent orchestration, multi-factor stock scoring, and IBKR paper trading.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            bg: 'var(--bg)',
+            surface: 'var(--surface)',
+            border: 'var(--border)',
+            primary: 'var(--primary)',
+            'primary-hover': 'var(--primary-hover)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-bg text-[var(--text)] antialiased transition-colors duration-300">
+  <main class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <a href="../index.html#projects"
+        class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-[var(--text-muted)] hover:border-primary hover:text-primary transition-colors">
+        <span aria-hidden="true">&larr;</span>
+        <span>Back to Projects</span>
+      </a>
+
+      <header class="rounded-2xl border border-border bg-surface p-8 md:p-10 shadow-sm">
+        <p class="text-xs uppercase tracking-widest text-primary font-bold">Applied AI · Quantitative Finance</p>
+        <h1 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight">Investment Copilot</h1>
+        <p class="mt-5 text-lg leading-relaxed text-[var(--text-muted)]">
+          An end-to-end AI investment research platform that connects market data ingestion, LLM agent orchestration,
+          multi-factor stock scoring, and Interactive Brokers paper trading into one coherent decision workflow.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Python</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">LangChain</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">LLMs</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Bloomberg</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">FactSet</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">IBKR</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Streamlit</span>
+          <span class="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Quantitative Finance</span>
+        </div>
+      </header>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Overview</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Investment research involves pulling data from multiple sources, scoring it against a thesis, and eventually
+          testing execution. In practice, these steps are fragmented across tools with no shared state. This project
+          builds a unified platform — from Bloomberg and FactSet data ingestion through LLM-assisted research,
+          multi-factor scoring, and IBKR paper trading — in a single Streamlit-based interface running on local LLMs.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Problem</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          A typical research-to-position workflow requires fetching data from Bloomberg or FactSet, applying a scoring
+          model across a universe of stocks, interpreting signals with analyst judgment, and finally routing a trade to
+          execution. Each step happens in isolation, making the process slow, inconsistent, and hard to backtest or
+          iterate on systematically.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Architecture</h2>
+        <ul class="space-y-3 text-[var(--text-muted)]">
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span><strong class="text-[var(--text)]">Data layer:</strong> Bloomberg and FactSet connectors normalize price, fundamental, and factor data into a clean research-ready format.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span><strong class="text-[var(--text)]">LangChain agent:</strong> An LLM agent with tool access to market data endpoints automates repetitive research tasks — screening, summarization, signal interpretation — using local LLM inference.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span><strong class="text-[var(--text)]">Scoring engine:</strong> A multi-factor model combines fundamental, momentum, and risk signals into a ranked stock score with configurable factor weights.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span><strong class="text-[var(--text)]">Execution layer:</strong> IBKR paper trading integration enables end-to-end signal testing without real capital at risk.</span></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Key Design Choices</h2>
+        <ul class="space-y-3 text-[var(--text-muted)]">
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Local LLM inference keeps sensitive financial data off external APIs while still enabling natural-language research interactions.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>LangChain tool use lets the agent call live data endpoints rather than operating on stale context — critical for time-sensitive investment decisions.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>The scoring model is factor-agnostic: weights are configurable so the same infrastructure can express different investment theses.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary"></span><span>Paper trading integration closes the loop from signal to simulated execution, enabling realistic performance attribution without live risk.</span></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Why This Project Matters</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          This project demonstrates that LLM agents can be integrated into quantitative workflows as genuine research
+          tools — not just chatbots. By combining Bloomberg-grade data, structured scoring, and execution simulation,
+          it shows how AI can compress the research-to-position cycle while preserving the structured quantitative
+          logic that institutional investing requires.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Tech Stack</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Python, LangChain, local LLMs, Bloomberg, FactSet, Interactive Brokers (IBKR), Streamlit, multi-factor scoring, paper trading simulation.
+        </p>
+      </section>
+
+      <section class="rounded-2xl border border-border bg-surface p-8 md:p-10 space-y-6 shadow-sm">
+        <h2 class="text-2xl font-bold">Links</h2>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/hicham-alaoui0/investment-copilot" target="_blank" rel="noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-hover transition-colors">
+            GitHub Repo
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
