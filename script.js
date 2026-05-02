@@ -16,10 +16,10 @@ const I18N = {
     sectionBuilding: "What I'm Building Now",
     heroCv: 'Download CV',
     heroContact: 'Contact Me',
-    heroHeadline: 'Applied Data Scientist building AI, analytics, and decision systems',
-    heroSubline: 'Data Scientist focused on machine learning, analytics systems, and business impact.',
+    heroHeadline: 'Applied Data Scientist building production ML and decision systems for finance, risk, and analytics',
+    heroSubline: 'I build end-to-end systems — from data pipelines to model deployment — turning ambiguous business problems into measurable operational outcomes.',
     heroIntro:
-      'I turn ambiguous business problems into structured analytics, modeling, and decision workflows. My work spans finance, risk, sustainability, and applied AI systems, with a strong production mindset.',
+      'I build ML and analytics systems that deliver measurable operational impact — across trading risk, index operations, commercial analytics, and sustainability. Each domain sharpened a different constraint; together they shaped a production-first approach: rigorous problem scoping, disciplined validation, and systems built to hold up in regulated environments.',
     projectSearch: 'Search projects...',
     projectFilterAll: 'All',
     projectViewDetails: 'View Details',
@@ -562,7 +562,7 @@ function bindContactLinks() {
   const github = qs('contactGithub');
   const cv = qs('contactCv');
   const profile = state.profile || {};
-  const mail = profile.contact?.email || 'halaoui@insea.ac.ma';
+  const mail = profile.contact?.email || 'hichamalaoui975@gmail.com';
   const linked = profile.contact?.linkedin || 'https://linkedin.com/in/hicham-alaoui-08ba35206';
   const git = profile.contact?.github || 'https://github.com/hicham-alaoui0';
   const cvUrl = profile.hero?.cv_url || 'CV/CV_Hicham_Alaoui.pdf';

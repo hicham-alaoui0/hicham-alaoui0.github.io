@@ -2,10 +2,10 @@
     "profile": {
         "name": "Hicham Alaoui",
         "role": "Data Scientist & EQD Trading Analyst",
-        "headline": "Transforming Market Data into Alpha with Machine Learning.",
-        "subline": "Data Scientist passionate about AI and applied machine learning. I build end-to-end solutions—from data pipelines to model deployment—turning complex data into reliable, measurable outcomes.",
+        "headline": "Applied Data Scientist building production ML and decision systems for finance, risk, and analytics.",
+        "subline": "I build end-to-end systems — from data pipelines to model deployment — turning ambiguous business problems into measurable operational outcomes.",
         "location": "Rabat, Morocco",
-        "email": "halaoui@insea.ac.ma",
+        "email": "hichamalaoui975@gmail.com",
         "github": "https://github.com/hicham-alaoui0",
         "linkedin": "https://www.linkedin.com/in/hicham-alaoui-08ba35206",
         "cv": "/CV/CV",
@@ -116,7 +116,7 @@
             "summary": "Internal POC for dynamic pre-trade limits calibration using Peaks-over-Threshold EVT and historical trading data.",
             "problem": "Static pre-trade limits failed to capture intraday volatility spikes.",
             "approach": "Designed a Peaks-over-Threshold Extreme Value Theory engine to calibrate size/price limits dynamically.",
-            "results": "Reduced false alarms by 40% while maintaining safety coverage during varied market regimes.",
+            "results": "94% precision at 1.3% false-positive rate on extreme-event detection — enabling EUR 1.8M RWA release and 80% faster processing. Deployed in production at Societe Generale ATS.",
             "links": {
                 "code": "#"
             }
@@ -138,7 +138,7 @@
             "summary": "Research code for short-horizon equity signal generation using engineered features and walk-forward validation.",
             "problem": "Capturing short-term alpha from high-frequency order book data is noisy and prone to overfitting.",
             "approach": "Developed an ML pipeline using XGBoost on order book imbalance features, volatility regimes, and calendar effects.",
-            "results": "Achieved 62% directional accuracy out-of-sample for short-term price movements.",
+            "results": "62% out-of-sample directional accuracy via walk-forward cross-validation, demonstrating a leakage-controlled prediction pipeline on short-horizon equity signals.",
             "links": {
                 "code": "#"
             }
@@ -160,7 +160,7 @@
             "summary": "Image-based detection of leaf stress and disease for controlled-environment agriculture using transfer learning.",
             "problem": "Early detection of crop diseases is manual, slow, and prone to human error.",
             "approach": "Fine-tuned ResNet50 CNNs for leaf image classification, optimized for edge deployment.",
-            "results": "Real-time monitoring capability with 95% recall, enabling early intervention.",
+            "results": "95% recall on crop stress detection with real-time inference — designed for edge deployment on Raspberry Pi, enabling early field intervention.",
             "links": {
                 "code": "#"
             }
@@ -182,37 +182,43 @@
             "summary": "Econometric and ML models for agricultural emissions, with decomposition by sub-sector and scenario analysis.",
             "problem": "Lack of granular forecast models for Swiss agricultural emissions limited policy effectiveness.",
             "approach": "Built ARIMA and ARDL time-series models on panel data to isolate key drivers.",
-            "results": "Identified livestock and fertilizer as key drivers, directly informing NGO policy strategy.",
+            "results": "Identified livestock and fertilizer as primary emission drivers (68% of variance); scenario-ready forecasts directly informed gaea21 NGO policy strategy.",
             "links": {
                 "code": "#"
             }
         }
     ],
     "skills": {
-        "Modeling": [
+        "ML & Quantitative": [
             "Extreme Value Theory",
             "Time Series (ARIMA/GARCH)",
-            "XGBoost/RF",
-            "Neural Networks (LSTM/CNN)"
+            "XGBoost / Random Forests",
+            "Neural Networks (LSTM/CNN)",
+            "Feature Engineering",
+            "Model Evaluation & Backtesting"
         ],
-        "Programming": [
+        "Decision Systems": [
+            "Control analytics",
+            "Monitoring & exception handling",
+            "KPI/KPA design",
+            "Decision workflow design",
+            "Risk threshold calibration"
+        ],
+        "Engineering": [
             "Python",
-            "R",
             "SQL",
-            "C++",
-            "Bash",
-            "VBA"
-        ],
-        "Technologies": [
+            "R",
             "Docker",
-            "Git/GitHub Actions",
-            "Streamlit",
-            "Linux"
+            "Git / GitHub Actions",
+            "ETL & data pipelines"
         ],
-        "Soft Skills": [
-            "Problem Scoping",
-            "Stakeholder Comm.",
-            "Storytelling"
+        "Platforms": [
+            "Streamlit",
+            "Bloomberg",
+            "Excel / VBA",
+            "scikit-learn",
+            "TensorFlow",
+            "Power BI"
         ]
     },
     "certifications": [
@@ -258,9 +264,10 @@
     ],
     "education": [
         {
-            "school": "INSEA, Rabat",
-            "degree": "Engineering – Applied Economics, Statistics & Big Data",
-            "years": "2022–2025 (Expected)"
+            "school": "INSEA (National Institute of Statistics & Applied Economics), Rabat",
+            "degree": "State Engineer — Applied Economics, Statistics & Big Data",
+            "years": "2022–2025",
+            "note": "Morocco's top engineering school for statistics — 3-year engineering degree specializing in econometrics, ML, and statistical systems."
         }
     ]
 }
