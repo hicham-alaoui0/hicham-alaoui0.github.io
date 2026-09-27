@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://hicham-alaoui0.github.io/</loc>
-    <priority>1.0</priority>
-  </url>
+<url>
+<loc>https://hicham-alaoui0.github.io/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/ai-agents-toolkit/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/rag-methodology-assistant/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/evt-pre-trade-limits/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/llm-eval-harness/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/investment-copilot/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/gpt-from-scratch/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/index-rebalancing-platform/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/ai-pricing-engine/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/co2-emissions-modeling/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://hicham-alaoui0.github.io/projects/fraud-detection/</loc>
+<lastmod>2026-09-27T17:37:25.841Z</lastmod>
+<priority>0.8</priority>
+</url>
 </urlset>

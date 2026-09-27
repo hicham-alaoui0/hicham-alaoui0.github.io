@@ -1,1 +1,0 @@
-Add issuer SVG logo files here: umich.svg, deeplearning-ai.svg, google.svg, ibm.svg
