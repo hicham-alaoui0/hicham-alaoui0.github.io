@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 948 118" role="img" aria-label="Index rebalancing monitoring platform: inputs, validation, run, cross-check, monitoring">
+<style>
+.h{font:500 9px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.14em;fill:#5f5f6a}
+.t{font:600 11px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.04em;fill:#26262d;text-anchor:middle}
+.s{font:400 8.5px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.03em;fill:#5f5f6a;text-anchor:middle}
+.b{fill:#fff;stroke:#55555f;stroke-width:1}
+.a{fill:none;stroke:#55555f;stroke-width:1}
+</style>
+<text class="h" x="16" y="18">INDEX REBALANCING MONITORING — INPUTS → RUN → OUTPUTS</text>
+<rect class="b" x="16" y="36" width="156" height="64" rx="3"/><text class="t" x="94" y="56">INPUTS</text><text class="s" x="94" y="70">index rules + market data</text><text class="s" x="94" y="82">Bloomberg · agent files</text>
+<line class="a" x1="172" y1="68" x2="199" y2="68"/><path class="a" d="M199 64.5 L206 68 L199 71.5"/>
+<rect class="b" x="206" y="36" width="156" height="64" rx="3"/><text class="t" x="284" y="56">VALIDATION</text><text class="s" x="284" y="70">input checks</text><text class="s" x="284" y="82">missing · stale · outliers</text>
+<line class="a" x1="362" y1="68" x2="389" y2="68"/><path class="a" d="M389 64.5 L396 68 L389 71.5"/>
+<rect class="b" x="396" y="36" width="156" height="64" rx="3"/><text class="t" x="474" y="56">RUN</text><text class="s" x="474" y="70">rebalancing calculation</text><text class="s" x="474" y="82">logged · standardized dumps</text>
+<line class="a" x1="552" y1="68" x2="579" y2="68"/><path class="a" d="M579 64.5 L586 68 L579 71.5"/>
+<rect class="b" x="586" y="36" width="156" height="64" rx="3"/><text class="t" x="664" y="56">CROSS-CHECK</text><text class="s" x="664" y="70">vs calculation agent</text><text class="s" x="664" y="82">mismatch detection</text>
+<line class="a" x1="742" y1="68" x2="769" y2="68"/><path class="a" d="M769 64.5 L776 68 L769 71.5"/>
+<rect x="776" y="36" width="156" height="64" rx="3" fill="#003c33"/><text class="t" x="854" y="56" style="fill:#fff">MONITORING</text><text class="s" x="854" y="70" style="fill:#ffad9b">7 Streamlit views</text><text class="s" x="854" y="82" style="fill:#d6e9e4">KPIs · audit trail</text>
+</svg>

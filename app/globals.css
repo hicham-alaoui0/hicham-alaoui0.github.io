@@ -1,0 +1,430 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Design system — editorial, finance-grade
+   White canvas · deep-green product bands · big display type
+   Coral = the one accent (live status, tails, highlights)
+   ───────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Brand & accent */
+  --color-black: #000000;
+  --color-near: #17171c;
+  --color-green: #003c33;
+  --color-green-2: #0a4d42;
+  --color-navy: #071829;
+  --color-blue: #1554c0;
+  --color-coral: #ff7759;
+  --color-coral-soft: #ffad9b;
+
+  /* Surfaces */
+  --color-canvas: #ffffff;
+  --color-stone: #eeece7;
+  --color-green-wash: #edfce9;
+  --color-blue-wash: #f1f5ff;
+  --color-card: #f6f5f2;
+
+  /* Text & rules — slate/muted darkened to pass WCAG AA on white */
+  --color-ink: #212121;
+  --color-slate: #5f5f70;
+  --color-muted: #6e6e7a;
+  --color-line: #d9d9dd;
+  --color-line-2: #e5e7eb;
+
+  /* Semantic */
+  --color-focus: #4c6ee6;
+  --color-danger: #b30000;
+
+  /* Type — only fonts that are actually loaded in layout.tsx */
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Radius scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-pill: 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--color-near);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ── Type scale ─────────────────────────────────────────────── */
+
+.t-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6.6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.t-section {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.t-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 2.8vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.t-card {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.t-feature {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.t-lead {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+/* Big headline number on project cards */
+.t-metric {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.4vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Uppercase technical label */
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Components ─────────────────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-near);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.71;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #000000;
+  transform: translateY(-1px);
+}
+
+.btn-primary-invert {
+  background: #ffffff;
+  color: var(--color-near);
+}
+
+.btn-primary-invert:hover {
+  background: var(--color-stone);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  transform: none;
+}
+
+/* Text-only companion action */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.71;
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  color: var(--color-blue);
+}
+
+/* Filter pills */
+.pill-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.pill-outline:hover {
+  border-color: var(--color-near);
+}
+
+.pill-outline[data-active="true"] {
+  border-color: var(--color-near);
+  background: var(--color-near);
+  color: #ffffff;
+}
+
+.pill-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  opacity: 0.6;
+}
+
+/* Tech tag */
+.tag {
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-line);
+  padding: 0.25rem 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-slate);
+}
+
+.tag-dark {
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.25rem 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Warm stone surface card */
+.card-stone {
+  background: var(--color-stone);
+  border-radius: var(--radius-md);
+}
+
+/* Bordered light card */
+.card-line {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+
+/* Project card — lifts on hover */
+.card-project {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-project:hover {
+  border-color: rgba(33, 33, 33, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -24px rgba(23, 23, 28, 0.35);
+}
+
+/* Translucent card on a dark band */
+.card-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-sm);
+}
+
+/* Form inputs */
+.field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xs);
+  background: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease;
+}
+
+.field::placeholder {
+  color: var(--color-muted);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--color-near);
+}
+
+/* Subtle dotted grid used behind the hero */
+.bg-grid {
+  background-image: radial-gradient(rgba(23, 23, 28, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Live status dot */
+.dot-live {
+  position: relative;
+  display: inline-block;
+  height: 0.4rem;
+  width: 0.4rem;
+  border-radius: 9999px;
+  background: var(--color-coral);
+}
+
+.dot-live::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-coral);
+  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* ── Motion ─────────────────────────────────────────────────── */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-1 { animation-delay: 0.08s; }
+.rise-2 { animation-delay: 0.16s; }
+.rise-3 { animation-delay: 0.24s; }
+.rise-4 { animation-delay: 0.32s; }
+
+/* Tail-chart bars grow in */
+@keyframes grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.bar-grow {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise,
+  .bar-grow,
+  .dot-live::after { animation: none; }
+  .card-project:hover,
+  .btn-primary:hover { transform: none; }
+}
+
+/* typed caret */
+.caret::after {
+  content: "▌";
+  color: var(--color-coral);
+  animation: blink 1.05s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ── Project visuals (components/viz.tsx) ───────────────────── */
+
+@keyframes dash { to { stroke-dashoffset: -20; } }
+.flow {
+  stroke-dasharray: 3 7;
+  animation: dash 1.4s linear infinite;
+}
+
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.fade-in { animation: fade 0.6s ease both; }
+
+@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.glow { animation: glow 2.2s ease-in-out infinite; }
+
+@keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.bar-grow-x {
+  transform-box: fill-box;
+  transform-origin: left;
+  animation: growx 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Hold every animation until the card scrolls into view */
+.viz[data-inview="false"] * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow, .glow, .fade-in, .bar-grow-x { animation: none; }
+  .draw { animation: none; stroke-dashoffset: 0; }
+}
