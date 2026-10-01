@@ -173,7 +173,7 @@ export const projects: Project[] = [
       "Skills as small, composable units — one workflow each, testable in isolation",
       "Agents orchestrate skills; outputs are structured (Markdown specs, tables), never free text",
       "Human-in-the-loop by design: agents draft, analysts validate before anything reaches production",
-      "Every skill ships with 3–5 golden examples used as regression tests (see LLM Evaluation Harness)",
+      "Every skill ships with 3–5 golden examples used as regression tests",
     ],
   },
 
@@ -262,41 +262,42 @@ export const projects: Project[] = [
 
   // ── 4 · Evals ──────────────────────────────────────────────────────────
   {
-    title: "LLM Evaluation Harness",
+    title: "LLM Evaluation Toolkit",
     category: "AI Engineering · Evals",
     tags: ["AI Engineering", "Data Platforms"],
-    status: "building",
-    verified: false, // DRAFT: whole project to build — numbers are targets
-    metric: { value: "61→92%", label: "pass rate across 6 prompt/model iterations" },
+    status: "shipped",
+    verified: true, // case study in the llm-evalkit repo (case_study/RESULTS.md)
+    metric: { value: "1 of 9", label: "design changes in a real RAG project proven significant" },
     kpis: [
-      { value: "300", label: "golden test cases from real tasks" },
-      { value: "61→92%", label: "pass rate over 6 iterations" },
-      { value: "14", label: "regressions caught before release" },
-      { value: "4 min", label: "CI run on every prompt change" },
+      { value: "1 of 9", label: "changes distinguishable from noise (p < 0.05)" },
+      { value: "+11.9", label: "points from the model swap, p = 0.003" },
+      { value: "0", label: "dependencies: Python standard library only" },
+      { value: "3", label: "Python versions passing CI (3.10, 3.12, 3.13)" },
     ],
     problem:
-      "Prompt and model changes to the agents shipped on vibes — a tweak that fixed one task silently broke three others.",
+      "One accuracy number hides what matters: are the labels right, how precise is the number, and is version B actually better than version A or just luckier on this test set?",
     approach:
-      "A golden set of 300 cases built from real tasks, scored with deterministic checks (schema, numbers match the source) plus an LLM judge with a written rubric — run in CI as a release gate on every prompt change.",
+      "Deterministic fact-based scoring (accepted wordings, forbidden facts, refusals, page-level citations), Wilson confidence intervals, exact McNemar tests for A/B comparisons, label checks against the source pages, and a held-out ledger that flags a test set once it has been reused.",
     impact: [
-      "Pass rate 61% → 92% over 6 iterations",
-      "14 regressions blocked before release",
-      "Release gate at 85% in GitHub Actions",
+      "Re-analysed every design decision behind methodology-rag",
+      "Only the model swap was a significant gain (p = 0.003)",
+      "Reproduces the RAG held-out result exactly: 81.9% (73–88%)",
     ],
-    stack: ["Python", "pytest", "LLM-as-judge", "GitHub Actions", "DuckDB", "Streamlit"],
-    role: "Solo build — test-set design, scoring, CI integration, dashboard.",
-    timeframe: "2026 · in progress",
+    stack: ["Python (standard library)", "Wilson intervals", "Exact McNemar test", "pytest", "GitHub Actions"],
+    role: "Solo project, extracted and generalised from the methodology-rag evaluation harness.",
+    timeframe: "2026",
+    code: "https://github.com/hicham-alaoui0/llm-evalkit",
     featured: true,
     slug: "llm-eval-harness",
     viz: "evals",
-    vizLabel: "release gate",
+    vizLabel: "which changes were real?",
     results:
-      "Every prompt or model change now runs against 300 golden cases in about 4 minutes. The pass rate went from 61% to 92% over six iterations, and the 85% release gate blocked 14 changes that would have caused regressions. The LLM judge agrees with human labels on 91% of a 100-case calibration sample.",
+      "Re-analysing the saved runs of methodology-rag showed that only 1 of 9 design decisions was a statistically significant improvement: swapping the answer model (+11.9 points, 19 questions gained vs 4 lost, p = 0.003). Two “better” prompts lost 8–9 points, but even that was borderline (p ≈ 0.05–0.06), and retrieval changes of 3–7 points were not distinguishable from chance on about 118 questions. Proving a 5-point gain would take a few hundred questions.",
     highlights: [
-      "Deterministic checks first (schema, numeric fidelity), LLM judge only where needed",
-      "Judge calibrated against human labels before it was trusted",
-      "Per-skill breakdown so a regression points to the exact skill that broke",
-      "Results stored in DuckDB and tracked per version in a small dashboard",
+      "Scoring with accepted wordings and forbidden facts, no LLM judge",
+      "Wilson intervals on every rate, exact McNemar test for A/B comparisons",
+      "Label check: every expected fact must appear on its gold page",
+      "Held-out ledger warns when a test set has already influenced a decision",
     ],
   },
 

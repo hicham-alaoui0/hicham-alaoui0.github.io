@@ -1,6 +1,7 @@
 /**
  * Animated SVG visuals for the dark project cards.
- * All illustrative — they explain each system at a glance; they are not live data.
+ * Mostly illustrative — they explain each system at a glance; they are not live data.
+ * Exception: EvalsViz plots real results (llm-evalkit case study on methodology-rag).
  * Animations are pure CSS (see globals.css: .flow .draw .fade-in .glow .bar-grow .bar-grow-x)
  * and pause until the card scrolls into view (VizPanel sets data-inview).
  */
@@ -157,36 +158,52 @@ function RagViz() {
   );
 }
 
-/* ── Evals: pass rate vs release gate ────────────────────────────── */
+/* ── Evals: which changes were real? (actual llm-evalkit result) ──── */
 function EvalsViz() {
-  const vals = [61, 68, 74, 83, 88, 92];
-  const x0 = 50;
-  const x1 = 530;
-  const yTop = 34;
-  const yBot = 160;
-  const y = (v: number) => yBot - ((v - 50) / 50) * (yBot - yTop);
-  const x = (i: number) => x0 + (i * (x1 - x0)) / (vals.length - 1);
-  const pts: [number, number][] = vals.map((v, i) => [x(i), y(v)]);
+  // methodology-rag decisions re-analysed with llm-evalkit: change in points, exact McNemar p
+  const rows = [
+    { name: "answer model", d: 11.9, p: "0.003" },
+    { name: "bge reranker", d: 6.8, p: "0.13" },
+    { name: "MiniLM reranker", d: 5.1, p: "0.21" },
+    { name: "bge-m3 embeddings", d: 3.4, p: "0.45" },
+    { name: "query rewrite", d: -0.8, p: "1.0" },
+    { name: "prompt v2", d: -7.9, p: "0.053" },
+    { name: "prompt v3", d: -8.7, p: "0.061" },
+  ];
+  const zero = 320;
+  const scale = 9; // px per point
   return (
-    <Frame label="Illustration: evaluation pass rate rising from 61% to 92% across six versions, crossing an 85% release gate.">
-      {[60, 70, 80, 90, 100].map((v) => (
-        <g key={v}>
-          <line x1={x0} x2={x1} y1={y(v)} y2={y(v)} stroke="rgba(255,255,255,0.07)" />
-          <Label x={x0 - 8} y={y(v) + 3} anchor="end" fill="rgba(255,255,255,0.35)">{v}</Label>
-        </g>
-      ))}
-      <line x1={x0} x2={x1} y1={y(85)} y2={y(85)} stroke={CORAL_SOFT} strokeDasharray="5 4" />
-      <Label x={x0 + 4} y={y(85) - 6} fill={CORAL_SOFT}>RELEASE GATE 85%</Label>
+    <Frame label="Seven design changes in a RAG project, as points gained or lost with their p-values; only the answer-model change is statistically significant.">
+      <Label x={10} y={22}>CHANGE</Label>
+      <Label x={zero} y={22} anchor="middle">Δ POINTS</Label>
+      <Label x={550} y={22} anchor="end">P</Label>
+      <line x1={zero} x2={zero} y1={32} y2={186} stroke="rgba(255,255,255,0.25)" />
 
-      <path className="draw" pathLength={1} d={toPath(pts)} fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={2} />
-      {pts.map(([px, py], i) => (
-        <g key={i} className="fade-in" style={{ animationDelay: `${0.4 + i * 0.25}s` }}>
-          <circle cx={px} cy={py} r={5} fill={vals[i] >= 85 ? CORAL : "#17171c"} stroke={vals[i] >= 85 ? CORAL : "rgba(255,255,255,0.8)"} strokeWidth={1.5} />
-          <Label x={px} y={yBot + 22} anchor="middle" fill="rgba(255,255,255,0.45)">{`v${i + 1}`}</Label>
-        </g>
-      ))}
-      <Label x={x1} y={y(92) - 12} anchor="end" fill={CORAL}>92% PASS</Label>
-      <Label x={x(0) + 8} y={y(61) + 16} fill={TXT}>61%</Label>
+      {rows.map((r, i) => {
+        const y = 38 + i * 21;
+        const sig = r.d > 0 && r.p === "0.003";
+        const w = Math.abs(r.d) * scale;
+        return (
+          <g key={r.name}>
+            <Label x={10} y={y + 10} fill={sig ? "rgba(255,255,255,0.9)" : TXT}>{r.name}</Label>
+            <rect
+              className="bar-grow-x"
+              style={{ animationDelay: `${0.2 + i * 0.1}s`, transformOrigin: r.d < 0 ? "right" : "left" }}
+              x={r.d < 0 ? zero - w : zero}
+              y={y}
+              width={w}
+              height={13}
+              rx={2}
+              fill={sig ? CORAL : DIM}
+            />
+            <Label x={r.d < 0 ? zero - w - 6 : zero + w + 6} y={y + 10} anchor={r.d < 0 ? "end" : "start"} fill={sig ? CORAL_SOFT : TXT}>
+              {`${r.d > 0 ? "+" : ""}${r.d}`}
+            </Label>
+            <Label x={550} y={y + 10} anchor="end" fill={sig ? CORAL : TXT}>{r.p}</Label>
+          </g>
+        );
+      })}
+      <Label x={10} y={196} fill="rgba(255,255,255,0.4)">only p &lt; 0.05 counts as a real gain</Label>
     </Frame>
   );
 }
