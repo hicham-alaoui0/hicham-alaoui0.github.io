@@ -100,7 +100,7 @@ function AgentsViz() {
   );
 }
 
-/* ── RAG: retrieve → rerank → cite ───────────────────────────────── */
+/* ── RAG: hybrid retrieve → answer → cite ────────────────────────── */
 function RagViz() {
   const chunks = [
     { p: "p.14 §3.2", s: 0.91 },
@@ -110,9 +110,9 @@ function RagViz() {
     { p: "p.63 §9.0", s: 0.37 },
   ];
   return (
-    <Frame label="Illustration: a question retrieves five document chunks; the top three are reranked and cited in the answer.">
+    <Frame label="Illustration: a question retrieves five document chunks by hybrid search; the top three are cited in the answer.">
       <Label x={10} y={24}>QUERY</Label>
-      <Label x={180} y={24}>RETRIEVE + RERANK</Label>
+      <Label x={180} y={24}>HYBRID RETRIEVAL</Label>
       <Label x={410} y={24}>ANSWER</Label>
 
       <rect x={10} y={62} width={140} height={76} rx={6} fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" />
