@@ -8,7 +8,7 @@ import ProjectsGrid from "@/components/ProjectsGrid";
 import ContactForm from "@/components/ContactForm";
 import CommandPalette from "@/components/CommandPalette";
 import BackToTop from "@/components/BackToTop";
-import TailChart from "@/components/TailChart";
+import HeroShowcase from "@/components/HeroShowcase";
 import EmployerLogo from "@/components/EmployerLogo";
 import {
   profile,
@@ -49,6 +49,10 @@ function SectionHeader({
   );
 }
 
+// the rotating hero card, in this order; each project needs a `hook` in lib/data.ts
+const HERO = ["evt-pre-trade-limits", "aloi", "rag-methodology-assistant", "llm-eval-harness", "ai-agents-toolkit"];
+const heroProjects = HERO.flatMap((slug) => projects.filter((p) => p.slug === slug && p.hook && p.viz));
+
 export default function Home() {
   return (
     <div id="top" className="min-h-screen overflow-x-clip bg-white">
@@ -88,42 +92,8 @@ export default function Home() {
 
       {/* hero media composition */}
       <section className="mx-auto mt-14 grid max-w-[1200px] gap-4 px-6 md:grid-cols-[1.45fr_0.55fr] md:px-10">
-        {/* flagship card — shows the idea, not just the numbers */}
-        <a
-          href="/projects/evt-pre-trade-limits/"
-          className="rise rise-3 group block overflow-hidden rounded-lg bg-near p-6 text-white md:p-8"
-        >
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-pill bg-white/10 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-white/70">
-              Flagship · pre-trade limits engine
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-pill border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-white/70">
-              <span className="dot-live" />
-              in production
-            </span>
-          </div>
-
-          <p className="mt-7 max-w-xl font-display text-2xl leading-snug tracking-tight text-white md:text-3xl">
-            Static limits fire on normal trades. I fit the tail instead — and let the limit follow it.
-          </p>
-
-          <div className="mt-6">
-            <TailChart />
-          </div>
-
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
-            <div className="flex flex-wrap gap-2">
-              {["Python", "EVT / POT", "Streamlit", "Docker", "GitHub Actions"].map((t) => (
-                <span key={t} className="tag-dark">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <span className="text-sm text-white/80 underline-offset-4 group-hover:underline">
-              Read the case study →
-            </span>
-          </div>
-        </a>
+        {/* flagship card: rotates through the projects listed in HERO */}
+        <HeroShowcase projects={heroProjects} />
 
         {/* profile card */}
         <div className="rise rise-4 card-stone flex flex-col justify-between p-6 md:p-8">

@@ -26,7 +26,8 @@ export default function TailChart() {
     const h = (v / max) * (base - top);
     const x = padX + i * slot;
     const inTail = (i + 0.5) / n >= threshold;
-    return { x, y: base - h, h, inTail, i };
+    // rounded: Node and the browser disagree on the last float digit, which breaks hydration
+    return { x: +x.toFixed(2), y: +(base - h).toFixed(2), h: +h.toFixed(2), inTail, i };
   });
 
   const tail = bars.filter((b) => b.inTail);

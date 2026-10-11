@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Viz from "@/components/viz";
 import type { Project } from "@/lib/data";
 
-const STATUS: Record<Project["status"], string> = {
+export const STATUS: Record<Project["status"], string> = {
   production: "in production",
   shipped: "shipped",
   building: "building now",

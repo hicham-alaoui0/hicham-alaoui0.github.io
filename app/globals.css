@@ -426,6 +426,32 @@ body {
 @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 .wipe { animation: wipe 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+/* Rotating hero card (components/HeroShowcase.tsx) */
+.hero-slide {
+  grid-area: 1 / 1;
+  transition: opacity 0.5s ease 0.15s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+/* the outgoing slide fades quickly where it stands; the incoming one rises in after it */
+.hero-slide[data-active="false"] {
+  opacity: 0;
+  transform: translateY(10px);
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0s 0.25s, visibility 0s 0.25s;
+}
+.hero-progress {
+  transform-origin: left;
+  animation: growx linear both;
+}
+.hero-showcase[data-paused="true"] .hero-progress {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide[data-active="false"] { transition: none; transform: none; }
+  .hero-progress { animation: none; }
+  .hero-pause { display: none; }
+}
+
 /* Hold every animation until the card scrolls into view */
 .viz[data-inview="false"] * {
   animation-play-state: paused !important;

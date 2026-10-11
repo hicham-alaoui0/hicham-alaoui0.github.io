@@ -130,6 +130,8 @@ export type Project = {
   slug?: string;
   viz?: VizKey;
   vizLabel?: string;
+  /** One-sentence pitch for the rotating hero card. No draft numbers here. */
+  hook?: string;
   diagram?: string;
   highlights?: string[];
   results?: string;
@@ -167,6 +169,7 @@ export const projects: Project[] = [
     slug: "ai-agents-toolkit",
     viz: "agents",
     vizLabel: "agents → skills",
+    hook: "Small skills an analyst can check, orchestrated by agents. The agents draft; people validate.",
     diagram: "/diagrams/copilot-agents.svg",
     results:
       "The toolkit now handles the most repetitive parts of index operations. Rule extraction from a methodology PDF dropped from about 40 minutes to about 6, reconciliation reports come with a first-pass root-cause analysis, and internal estimates put the overall gain at roughly 30% of development time. The pattern was presented to a second trading team, which now uses it.",
@@ -208,6 +211,7 @@ export const projects: Project[] = [
     slug: "aloi",
     viz: "aloi",
     vizLabel: "answer → figure check",
+    hook: "A chat assistant will write numbers it never looked up. Aloi traces every figure back to the data it fetched.",
     // no `diagram`: this page draws its own two under "Under the hood" (components/AloiNotes.tsx)
     results:
       "Claude Haiku passed 27 of 28 questions in my tool-use eval (95% CI 82–99%, one run): a fitting tool called, every call valid, and no figure in the answer missing from the fetched data. The one miss was a sum the model did in its head, which the check flagged as intended. The limits are real. I wrote the 28 questions myself, nobody outside has used the tool yet, and the check proves that a number was fetched, not that the sentence around it is right. The recorded run above contains one such sentence.",
@@ -251,6 +255,7 @@ export const projects: Project[] = [
     slug: "rag-methodology-assistant",
     viz: "rag",
     vizLabel: "retrieve → answer → cite",
+    hook: "Ask 1,082 pages of index rulebooks a question. Get the answer with the page it came from, or an honest “not found”.",
     results:
       "Run once on a frozen system, the assistant answers 81.9% of 94 held-out questions correctly (95% CI 73–88%) and refuses all 14 questions the documents don't answer. Held-out accuracy matches the 126-question dev set it was tuned on (81.7%), so tuning didn't overfit. Testing paraphrased questions showed that keyword search only looked good on questions worded like the documents (98% vs 42% retrieval), and swapping the answer model added 12 points.",
     highlights: [
@@ -292,6 +297,7 @@ export const projects: Project[] = [
     slug: "evt-pre-trade-limits",
     viz: "tail",
     vizLabel: "pre-trade limits engine",
+    hook: "Static limits fire on normal trades. I fit the tail instead — and let the limit follow it.",
     diagram: "/diagrams/evt-limits.svg",
     results:
       "94% precision at a 1.3% false-positive rate on extreme-event detection across the pre-trade limit perimeter. False alerts fell by 87% versus the static limits, better-calibrated thresholds enabled a EUR 1.8M RWA release, and processing time dropped 80%. Deployed to production with a full MLOps stack.",
@@ -334,6 +340,7 @@ export const projects: Project[] = [
     slug: "llm-eval-harness",
     viz: "evals",
     vizLabel: "which changes were real?",
+    hook: "Nine changes looked like improvements. Tested properly, one was real.",
     results:
       "Re-analysing the saved runs of methodology-rag showed that only 1 of 9 design decisions was a statistically significant improvement: swapping the answer model (+11.9 points, 19 questions gained vs 4 lost, p = 0.003). Two “better” prompts lost 8–9 points, but even that was borderline (p ≈ 0.05–0.06), and retrieval changes of 3–7 points were not distinguishable from chance on about 118 questions. Proving a 5-point gain would take a few hundred questions.",
     highlights: [
