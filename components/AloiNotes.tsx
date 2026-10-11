@@ -51,13 +51,15 @@ export function AloiUnderTheHood() {
     <section className="mt-16">
       <h2 className="t-mono text-slate">Under the hood</h2>
 
+      {/* On a wide screen the diagrams run 100px past the text column on each side, to the width
+          of the replay card at the top, so their labels stay readable. */}
       <figure className="mt-5">
-        <div className="overflow-x-auto rounded-lg bg-stone p-5 md:p-8">
+        <div className="overflow-x-auto rounded-lg bg-stone p-4 md:p-6 xl:-mx-[100px] xl:p-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/diagrams/aloi-architecture.svg"
             alt="Aloi architecture: the terminal UI drives the agent loop, which talks to models through one protocol and to tools through one type; tools reach market data through a second protocol and public sources over HTTP; a figure check compares each answer with the tool results."
-            className="w-full min-w-[640px] rounded-sm"
+            className="w-full min-w-[700px] rounded-sm"
           />
         </div>
         <figcaption className="mt-4 text-sm leading-relaxed text-slate">
@@ -67,12 +69,12 @@ export function AloiUnderTheHood() {
       </figure>
 
       <figure className="mt-10">
-        <div className="overflow-x-auto rounded-lg bg-stone p-5 md:p-8">
+        <div className="overflow-x-auto rounded-lg bg-stone p-4 md:p-6 xl:-mx-[100px] xl:p-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/diagrams/aloi-loop.svg"
             alt="One turn of the loop: build the context, stream the model, run any tool calls and repeat. A reply without tool calls passes two guards, each of which can send one correction. Then the held text is shown, the final figure check runs and the turn is saved."
-            className="w-full min-w-[640px] rounded-sm"
+            className="mx-auto w-full min-w-[700px] max-w-[940px] rounded-sm"
           />
         </div>
         <figcaption className="mt-4 text-sm leading-relaxed text-slate">

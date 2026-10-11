@@ -1,44 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 948 400" role="img" aria-label="Aloi architecture: the terminal UI drives the agent loop, which talks to models through the ModelClient protocol and to tools through the Tool type; tools reach market data through the DataProvider protocol and public sources over HTTP; the figure check compares answers with tool results">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 512" role="img" aria-label="Aloi architecture: the terminal UI drives the agent loop, which talks to models through the ModelClient protocol and to tools through the Tool type; tools reach market data through the DataProvider protocol and public sources over HTTP; the figure check compares answers with tool results">
 <style>
-.h{font:500 9px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.14em;fill:#5f5f6a}
-.t{font:600 11px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.04em;fill:#26262d;text-anchor:middle}
-.s{font:400 8.5px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.03em;fill:#5f5f6a;text-anchor:middle}
-.b{fill:#fff;stroke:#55555f;stroke-width:1}
-.a{fill:none;stroke:#55555f;stroke-width:1}
-.z{fill:none;stroke:#55555f;stroke-width:.8;stroke-dasharray:3 3}
+.h{font:500 10px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.12em;fill:#5f5f6a}
+.t{font:600 13px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.04em;fill:#1d1d23;text-anchor:middle}
+.s{font:400 10.5px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.03em;fill:#4f4f5c;text-anchor:middle}
+.b{fill:#fff;stroke:#44444e;stroke-width:1.2}
+.a{fill:none;stroke:#44444e;stroke-width:1.2}
+.z{fill:none;stroke:#44444e;stroke-width:1;stroke-dasharray:4 4}
 </style>
-<text class="h" x="16" y="18">ALOI — TWO PROTOCOLS ARE THE SEAMS: A NEW MODEL OR DATA SOURCE IS ONE ADAPTER</text>
+<text class="h" x="16" y="20">ALOI — TWO PROTOCOLS ARE THE SEAMS: ONE ADAPTER PER MODEL OR DATA SOURCE</text>
 
-<rect class="b" x="16" y="36" width="916" height="44" rx="3"/><text class="t" x="474" y="55">CLI · TERMINAL UI</text><text class="s" x="474" y="69">prompt, slash commands, renders the event stream</text>
-<line class="a" x1="440" y1="80" x2="440" y2="105"/><path class="a" d="M436.5 105 L440 112 L443.5 105"/><text class="s" x="432" y="100" style="text-anchor:end">question</text>
-<line class="a" x1="508" y1="112" x2="508" y2="87"/><path class="a" d="M504.5 87 L508 80 L511.5 87"/><text class="s" x="516" y="100" style="text-anchor:start">typed events</text>
+<rect class="b" x="16" y="40" width="768" height="54" rx="4"/><text class="t" x="400" y="63">CLI · TERMINAL UI</text><text class="s" x="400" y="81">prompt, slash commands, renders the event stream</text>
+<line class="a" x1="360" y1="94" x2="360" y2="130"/><path class="a" d="M356 130 L360 138 L364 130"/><text class="s" x="350" y="120" style="text-anchor:end">question</text>
+<line class="a" x1="440" y1="138" x2="440" y2="102"/><path class="a" d="M436 102 L440 94 L444 102"/><text class="s" x="450" y="120" style="text-anchor:start">typed events</text>
 
-<rect class="b" x="16" y="112" width="220" height="56" rx="3"/><text class="t" x="126" y="136">PROMPTS</text><text class="s" x="126" y="150">system prompt built from the tool set</text>
-<line class="a" x1="236" y1="140" x2="339" y2="140"/><path class="a" d="M339 136.5 L346 140 L339 143.5"/><text class="s" x="291" y="132">prompt</text>
-<rect x="346" y="112" width="256" height="56" rx="3" fill="#003c33"/><text class="t" x="474" y="136" style="fill:#fff">AGENT LOOP</text><text class="s" x="474" y="150" style="fill:#ffad9b">history budget · corrections · usage</text>
-<line class="a" x1="602" y1="140" x2="705" y2="140"/><path class="a" d="M705 136.5 L712 140 L705 143.5"/><text class="s" x="657" y="132">answer, sources</text>
-<rect class="b" x="712" y="112" width="220" height="56" rx="3" stroke-width="1.6"/><rect x="715" y="115" width="214" height="50" rx="2" fill="none" stroke="#55555f" stroke-width=".5" stroke-dasharray="2 3"/><text class="t" x="822" y="136">FIGURE CHECK</text><text class="s" x="822" y="150">answer vs fetched numbers</text>
+<rect class="b" x="16" y="138" width="200" height="64" rx="4"/><text class="t" x="116" y="165">PROMPTS</text><text class="s" x="116" y="183">built from the tool set</text>
+<line class="a" x1="216" y1="170" x2="272" y2="170"/><path class="a" d="M272 166 L280 170 L272 174"/><text class="s" x="246" y="161">prompt</text>
+<rect x="280" y="138" width="240" height="64" rx="4" fill="#003c33"/><text class="t" x="400" y="165" style="fill:#fff">AGENT LOOP</text><text class="s" x="400" y="183" style="fill:#ffad9b">history · corrections · usage</text>
+<line class="a" x1="520" y1="170" x2="576" y2="170"/><path class="a" d="M576 166 L584 170 L576 174"/><text class="s" x="550" y="161">answer</text>
+<rect class="b" x="584" y="138" width="200" height="64" rx="4" stroke-width="2"/><rect x="588" y="142" width="192" height="56" rx="2" fill="none" stroke="#44444e" stroke-width=".6" stroke-dasharray="2 3"/><text class="t" x="684" y="165">FIGURE CHECK</text><text class="s" x="684" y="183">answer vs fetched numbers</text>
 
-<line class="a" x1="400" y1="175" x2="400" y2="207"/><path class="a" d="M396.5 175 L400 168 L403.5 175"/><path class="a" d="M396.5 207 L400 214 L403.5 207"/>
-<text class="s" x="390" y="188" style="text-anchor:end">messages, tool specs ↓</text><text class="s" x="390" y="200" style="text-anchor:end">↑ text, tool calls</text>
-<line class="a" x1="548" y1="175" x2="548" y2="207"/><path class="a" d="M544.5 175 L548 168 L551.5 175"/><path class="a" d="M544.5 207 L548 214 L551.5 207"/>
-<text class="s" x="558" y="188" style="text-anchor:start">↓ validated call</text><text class="s" x="558" y="200" style="text-anchor:start">JSON result, chart ↑</text>
+<line class="a" x1="334" y1="210" x2="334" y2="242"/><path class="a" d="M330 210 L334 202 L338 210"/><path class="a" d="M330 242 L334 250 L338 242"/>
+<text class="s" x="322" y="224" style="text-anchor:end">messages, tool specs ↓</text><text class="s" x="322" y="240" style="text-anchor:end">↑ text, tool calls</text>
+<line class="a" x1="466" y1="210" x2="466" y2="242"/><path class="a" d="M462 210 L466 202 L470 210"/><path class="a" d="M462 242 L466 250 L470 242"/>
+<text class="s" x="478" y="224" style="text-anchor:start">↓ validated call</text><text class="s" x="478" y="240" style="text-anchor:start">JSON result, chart ↑</text>
 
-<rect class="z" x="16" y="214" width="436" height="92" rx="3"/><text class="h" x="28" y="233">MODELCLIENT PROTOCOL · STREAM(MESSAGES, TOOLS)</text>
-<rect class="b" x="28" y="246" width="128" height="46" rx="3"/><text class="t" x="92" y="266">ANTHROPIC</text><text class="s" x="92" y="280">Claude API</text>
-<rect class="b" x="170" y="246" width="128" height="46" rx="3"/><text class="t" x="234" y="266">OLLAMA</text><text class="s" x="234" y="280">local models</text>
-<rect class="b" x="312" y="246" width="128" height="46" rx="3"/><text class="t" x="376" y="266">ENDPOINT</text><text class="s" x="376" y="280">OpenAI-compatible</text>
+<rect class="z" x="16" y="250" width="372" height="122" rx="4"/><text class="h" x="28" y="270">MODELCLIENT PROTOCOL</text><text class="s" x="28" y="286" style="text-anchor:start">stream(messages, tools)</text>
+<rect class="b" x="28" y="298" width="110" height="60" rx="4"/><text class="t" x="83" y="323">ANTHROPIC</text><text class="s" x="83" y="341">Claude API</text>
+<rect class="b" x="147" y="298" width="110" height="60" rx="4"/><text class="t" x="202" y="323">OLLAMA</text><text class="s" x="202" y="341">local models</text>
+<rect class="b" x="266" y="298" width="110" height="60" rx="4"/><text class="t" x="321" y="323">ENDPOINT</text><text class="s" x="321" y="341">OpenAI-style</text>
 
-<rect class="z" x="496" y="214" width="436" height="92" rx="3"/><text class="h" x="508" y="233">TOOL · TYPED ARGS · RUN() → DATA, SUMMARY, CHART</text>
-<rect class="b" x="508" y="246" width="128" height="46" rx="3"/><text class="t" x="572" y="266">48 TOOLS</text><text class="s" x="572" y="280">fetch · compute</text>
-<rect class="b" x="650" y="246" width="128" height="46" rx="3"/><text class="t" x="714" y="266">17 SKILLS</text><text class="s" x="714" y="280">playbooks</text>
-<rect class="b" x="792" y="246" width="128" height="46" rx="3"/><text class="t" x="856" y="266">CHARTS</text><text class="s" x="856" y="280">drawn in code</text>
+<rect class="z" x="412" y="250" width="372" height="122" rx="4"/><text class="h" x="424" y="270">TOOL</text><text class="s" x="424" y="286" style="text-anchor:start">typed args · run() → data, summary, chart</text>
+<rect class="b" x="424" y="298" width="110" height="60" rx="4"/><text class="t" x="479" y="323">48 TOOLS</text><text class="s" x="479" y="341">fetch · compute</text>
+<rect class="b" x="543" y="298" width="110" height="60" rx="4"/><text class="t" x="598" y="323">17 SKILLS</text><text class="s" x="598" y="341">playbooks</text>
+<rect class="b" x="662" y="298" width="110" height="60" rx="4"/><text class="t" x="717" y="323">CHARTS</text><text class="s" x="717" y="341">drawn in code</text>
 
-<line class="a" x1="601" y1="306" x2="601" y2="333"/><path class="a" d="M597.5 333 L601 340 L604.5 333"/><text class="s" x="609" y="326" style="text-anchor:start">quotes, history, fields</text>
-<line class="a" x1="827" y1="306" x2="827" y2="333"/><path class="a" d="M823.5 333 L827 340 L830.5 333"/><text class="s" x="835" y="326" style="text-anchor:start">HTTP</text>
-<rect class="b" x="496" y="340" width="210" height="44" rx="3"/><text class="t" x="601" y="359">DATAPROVIDER PROTOCOL</text><text class="s" x="601" y="373">Yahoo · Bloomberg Terminal</text>
-<rect class="b" x="722" y="340" width="210" height="44" rx="3"/><text class="t" x="827" y="359">PUBLIC SOURCES</text><text class="s" x="827" y="373">FRED · SEC · crypto · news, cached</text>
+<line class="a" x1="502" y1="372" x2="502" y2="412"/><path class="a" d="M498 412 L502 420 L506 412"/><text class="s" x="512" y="400" style="text-anchor:start">quotes, history</text>
+<line class="a" x1="694" y1="372" x2="694" y2="412"/><path class="a" d="M690 412 L694 420 L698 412"/><text class="s" x="704" y="400" style="text-anchor:start">HTTP</text>
+<rect class="b" x="412" y="420" width="180" height="72" rx="4"/><text class="t" x="502" y="444">DATAPROVIDER</text><text class="s" x="502" y="461">the second protocol</text><text class="s" x="502" y="477">Yahoo · Bloomberg Terminal</text>
+<rect class="b" x="604" y="420" width="180" height="72" rx="4"/><text class="t" x="694" y="444">PUBLIC SOURCES</text><text class="s" x="694" y="461">FRED · SEC · crypto · news</text><text class="s" x="694" y="477">cached, rate-limited</text>
 
-<text class="s" x="16" y="359" style="text-anchor:start">Adapters translate every backend to the same few types,</text>
-<text class="s" x="16" y="371" style="text-anchor:start">so the loop, the tools and the checks are written once.</text>
+<text class="s" x="16" y="446" style="text-anchor:start">Adapters translate every backend to the</text>
+<text class="s" x="16" y="462" style="text-anchor:start">same few types, so the loop, the tools</text>
+<text class="s" x="16" y="478" style="text-anchor:start">and the checks are written once.</text>
 </svg>
