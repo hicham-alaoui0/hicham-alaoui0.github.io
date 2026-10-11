@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 948 590" role="img" aria-label="One turn of the Aloi agent loop: build the context, stream the model, run any tool calls and loop; a reply without tool calls passes two guards that can each send one correction; then the held text is shown, the final figure check runs and the turn is saved">
+<style>
+.h{font:500 9px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.14em;fill:#5f5f6a}
+.t{font:600 11px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.04em;fill:#26262d;text-anchor:middle}
+.s{font:400 8.5px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.03em;fill:#5f5f6a;text-anchor:middle}
+.b{fill:#fff;stroke:#55555f;stroke-width:1}
+.a{fill:none;stroke:#55555f;stroke-width:1}
+.c{fill:none;stroke:#e0502f;stroke-width:1}
+</style>
+<text class="h" x="16" y="18">ONE TURN OF THE LOOP — CODE DECIDES WHAT RUNS, WHAT GOES BACK AND WHAT IS SHOWN</text>
+
+<rect class="b" x="346" y="36" width="256" height="44" rx="3"/><text class="t" x="474" y="55">BUILD THE CONTEXT</text><text class="s" x="474" y="69">system · budgeted history · this turn</text>
+<line class="a" x1="474" y1="80" x2="474" y2="97"/><path class="a" d="M470.5 97 L474 104 L477.5 97"/>
+
+<rect class="b" x="346" y="104" width="256" height="44" rx="3"/><text class="t" x="474" y="123">THE MODEL STREAMS</text><text class="s" x="474" y="137">last step: no tools, so it must answer</text>
+<text class="s" x="616" y="122" style="text-anchor:start">text written before the first tool call is held</text>
+<text class="s" x="616" y="134" style="text-anchor:start">back until the two guards below have passed</text>
+<line class="a" x1="474" y1="148" x2="474" y2="165"/><path class="a" d="M470.5 165 L474 172 L477.5 165"/>
+
+<rect class="b" x="346" y="172" width="256" height="36" rx="18"/><text class="t" x="474" y="194">TOOL CALLS IN THE REPLY?</text>
+<polyline class="a" points="346,190 200,190 200,225"/><path class="a" d="M196.5 225 L200 232 L203.5 225"/><text class="s" x="300" y="184">yes</text>
+<line class="a" x1="474" y1="208" x2="474" y2="233"/><path class="a" d="M470.5 233 L474 240 L477.5 233"/><text class="s" x="482" y="226" style="text-anchor:start">no</text>
+
+<rect x="16" y="232" width="260" height="96" rx="3" fill="#003c33"/><text class="t" x="146" y="252" style="fill:#fff">FOR EACH TOOL CALL</text>
+<text class="s" x="30" y="270" style="text-anchor:start;fill:#d6e9e4">1  validate the arguments (pydantic)</text>
+<text class="s" x="30" y="284" style="text-anchor:start;fill:#ffad9b">2  numbers passed in must be fetched</text>
+<text class="s" x="30" y="298" style="text-anchor:start;fill:#d6e9e4">3  run it · any error returns as text</text>
+<text class="s" x="30" y="312" style="text-anchor:start;fill:#d6e9e4">4  JSON result, cut at 16K or 4K chars</text>
+<polyline class="a" points="90,232 90,58 339,58"/><path class="a" d="M339 54.5 L346 58 L339 61.5"/>
+<text class="s" x="98" y="140" style="text-anchor:start">results appended,</text><text class="s" x="98" y="152" style="text-anchor:start">next step</text>
+
+<rect class="b" x="346" y="240" width="256" height="48" rx="24"/><text class="t" x="474" y="261">ANSWERED WITHOUT A FETCH?</text><text class="s" x="474" y="275">and 2+ figures with no source</text>
+<line class="c" x1="602" y1="264" x2="665" y2="264"/><path class="c" d="M665 260.5 L672 264 L665 267.5"/><text class="s" x="637" y="258" style="fill:#c2391b">yes</text>
+<rect x="672" y="240" width="220" height="48" rx="3" fill="#fff" stroke="#e0502f"/><text class="t" x="782" y="261">CORRECTION: FETCH FIRST</text><text class="s" x="782" y="275">the draft is discarded, never shown</text>
+<line class="a" x1="474" y1="288" x2="474" y2="313"/><path class="a" d="M470.5 313 L474 320 L477.5 313"/><text class="s" x="482" y="306" style="text-anchor:start">no</text>
+
+<rect class="b" x="346" y="320" width="256" height="48" rx="24"/><text class="t" x="474" y="341">CHART ASKED FOR, NONE DRAWN?</text><text class="s" x="474" y="355">matched on the user's words</text>
+<line class="c" x1="602" y1="344" x2="665" y2="344"/><path class="c" d="M665 340.5 L672 344 L665 347.5"/><text class="s" x="637" y="338" style="fill:#c2391b">yes</text>
+<rect x="672" y="320" width="220" height="48" rx="3" fill="#fff" stroke="#e0502f"/><text class="t" x="782" y="341">CORRECTION: DRAW IT</text><text class="s" x="782" y="355">each correction is sent once per turn</text>
+<line class="c" x1="892" y1="264" x2="920" y2="264"/>
+<polyline class="c" points="892,344 920,344 920,58 609,58"/><path class="c" d="M609 54.5 L602 58 L609 61.5"/>
+<text class="s" x="912" y="50" style="text-anchor:end;fill:#c2391b">appended as a user message, next step</text>
+<line class="a" x1="474" y1="368" x2="474" y2="393"/><path class="a" d="M470.5 393 L474 400 L477.5 393"/><text class="s" x="482" y="386" style="text-anchor:start">no</text>
+
+<rect class="b" x="346" y="400" width="256" height="36" rx="3"/><text class="t" x="474" y="422">THE HELD TEXT IS SHOWN</text>
+<line class="a" x1="474" y1="436" x2="474" y2="457"/><path class="a" d="M470.5 457 L474 464 L477.5 457"/>
+
+<rect class="b" x="346" y="464" width="256" height="48" rx="3" stroke-width="1.6"/><rect x="349" y="467" width="250" height="42" rx="2" fill="none" stroke="#55555f" stroke-width=".5" stroke-dasharray="2 3"/><text class="t" x="474" y="485">FINAL FIGURE CHECK</text><text class="s" x="474" y="499">a flag for the reader, no retry</text>
+<text class="s" x="616" y="485" style="text-anchor:start">after a fetch, a figure with no source is reported</text>
+<text class="s" x="616" y="497" style="text-anchor:start">and the answer stands; whether to retry is undecided</text>
+<line class="a" x1="474" y1="512" x2="474" y2="529"/><path class="a" d="M470.5 529 L474 536 L477.5 529"/>
+
+<rect class="b" x="346" y="536" width="256" height="36" rx="3"/><text class="t" x="474" y="558">TURN SAVED · USAGE AND COST LINE</text>
+</svg>

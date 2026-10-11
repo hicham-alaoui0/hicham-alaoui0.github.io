@@ -94,6 +94,7 @@ export type Tag = (typeof TAGS)[number];
 export type VizKey =
   | "tail"
   | "agents"
+  | "aloi"
   | "rag"
   | "evals"
   | "equity"
@@ -177,7 +178,49 @@ export const projects: Project[] = [
     ],
   },
 
-  // ── 2 · RAG ────────────────────────────────────────────────────────────
+  // ── 2 · Aloi (personal agent; the case-study page replays a recorded run) ──
+  {
+    title: "Aloi, a Market Research Agent that Checks its Figures",
+    category: "AI Engineering · Agents",
+    tags: ["AI Engineering"],
+    status: "building",
+    verified: true, // every number comes from the test suite, the eval run or lib/aloi-recording.ts
+    metric: { value: "27/28", label: "eval questions passed with no figure missing from the fetched data (one run)" },
+    kpis: [
+      { value: "27/28", label: "tool-use eval questions passed, one run (95% CI 82–99%)" },
+      { value: "48 · 17", label: "tools · playbooks" },
+      { value: "$0.002", label: "cost of the recorded answer on Claude Haiku" },
+      { value: "3", label: "systems with a compiled build: Windows, macOS, Linux" },
+    ],
+    problem:
+      "Ask a chat assistant about a market and it will write numbers it never looked up. In finance, one invented figure makes the whole answer worthless.",
+    approach:
+      "A terminal agent with a hand-written tool loop. The model only chooses and explains: fetching, arithmetic and charts are plain Python, and every amount and percentage in an answer is looked up in what the tools returned. Models and data sources are swappable.",
+    impact: [
+      "Amounts and percentages traced to tool results, or flagged",
+      "48 tools and 17 playbooks, with charts drawn in the terminal",
+      "Compiled builds for Windows, macOS and Linux from one CI workflow",
+    ],
+    stack: ["Python", "Anthropic API", "Ollama", "Bloomberg Desktop API", "pydantic", "rich", "Nuitka + PyInstaller", "GitHub Actions"],
+    role: "Solo project, built with Claude Code as the coding agent. I set the direction: terminal-first, swappable models and data sources, each user on their own Bloomberg licence.",
+    timeframe: "2026 · in progress",
+    featured: true,
+    slug: "aloi",
+    viz: "aloi",
+    vizLabel: "answer → figure check",
+    // no `diagram`: this page draws its own two under "Under the hood" (components/AloiNotes.tsx)
+    results:
+      "Claude Haiku passed 27 of 28 questions in my tool-use eval (95% CI 82–99%, one run): a fitting tool called, every call valid, and no figure in the answer missing from the fetched data. The one miss was a sum the model did in its head, which the check flagged as intended. The limits are real. I wrote the 28 questions myself, nobody outside has used the tool yet, and the check proves that a number was fetched, not that the sentence around it is right. The recorded run above contains one such sentence.",
+    highlights: [
+      "Hand-written agent loop, no framework: errors go back to the model as tool results, and the last step offers no tools so it has to answer",
+      "A figure check with no model in it: English and continental number formats, scale words, rounding at the precision the answer used",
+      "Charts are rendered by code from Braille characters; a value handed to a drawing tool must exist in the fetched data",
+      "Two protocols as seams: three model adapters (Anthropic, Ollama, any OpenAI-compatible endpoint) and two market-data providers",
+      "Shipped as machine code with Nuitka and PyInstaller, built and smoke-tested on three systems in GitHub Actions",
+    ],
+  },
+
+  // ── 3 · RAG ────────────────────────────────────────────────────────────
   {
     title: "Index Methodology RAG Assistant",
     category: "AI Engineering · RAG",

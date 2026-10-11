@@ -6,7 +6,18 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CommandPalette from "@/components/CommandPalette";
 import VizPanel from "@/components/VizPanel";
+import AloiReplay from "@/components/AloiReplay";
+import AloiNotes, { AloiUnderTheHood } from "@/components/AloiNotes";
 import { projects, profile } from "@/lib/data";
+
+/**
+ * Case studies that go beyond the template: `hero` replaces the animated card at the top,
+ * `notes` is added after the results, and `depth` (diagrams for engineers) after the highlights.
+ */
+type Part = React.ComponentType;
+const CUSTOM: Record<string, { hero?: Part; notes?: Part; depth?: Part }> = {
+  aloi: { hero: AloiReplay, notes: AloiNotes, depth: AloiUnderTheHood },
+};
 
 export function generateStaticParams() {
   return projects.filter((p) => p.slug).map((p) => ({ slug: p.slug as string }));
@@ -34,6 +45,8 @@ export default async function ProjectPage({
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
   if (!p) notFound();
+
+  const { hero: Hero, notes: Notes, depth: Depth } = CUSTOM[slug] ?? {};
 
   const others = projects
     .filter((x) => x.slug && x.slug !== slug && x.featured && x.tags.some((t) => p.tags.includes(t)))
@@ -74,10 +87,16 @@ export default async function ProjectPage({
         </header>
 
         {/* animated visual */}
-        {p.viz && (
+        {Hero ? (
           <div className="mx-auto max-w-[1100px] px-6 md:px-10">
-            <VizPanel project={p} size="page" />
+            <Hero />
           </div>
+        ) : (
+          p.viz && (
+            <div className="mx-auto max-w-[1100px] px-6 md:px-10">
+              <VizPanel project={p} size="page" />
+            </div>
+          )
         )}
 
         {/* KPI strip */}
@@ -112,6 +131,8 @@ export default async function ProjectPage({
             </section>
           )}
 
+          {Notes && <Notes />}
+
           {p.diagram && (
             <section className="mt-16">
               <h2 className="t-mono text-slate">Architecture</h2>
@@ -142,6 +163,8 @@ export default async function ProjectPage({
               </ul>
             </section>
           )}
+
+          {Depth && <Depth />}
 
           <section className="mt-16">
             <h2 className="t-mono text-slate">Stack</h2>

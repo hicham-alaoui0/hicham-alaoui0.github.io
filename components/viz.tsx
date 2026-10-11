@@ -101,6 +101,78 @@ function AgentsViz() {
   );
 }
 
+/* ── Aloi: figures in the answer are looked up in the tool result ──
+   Values are from the recorded run in lib/aloi-recording.ts (FRED, 8 Oct 2026). */
+function AloiViz() {
+  const rows = [
+    { k: "1Y", v: "4.44" },
+    { k: "2Y", v: "4.75", hit: true },
+    { k: "5Y", v: "4.99" },
+    { k: "10Y", v: "5.22", hit: true },
+    { k: "20Y", v: "5.64" },
+    { k: "30Y", v: "5.60" },
+  ];
+  const ry = (i: number) => 34 + i * 24;
+  const chips = [
+    { text: "4.75%", y: 58, row: 1 },
+    { text: "5.22%", y: 106, row: 3 },
+  ];
+  return (
+    <Frame label="From a recorded run: the two percentages in the model's answer are looked up in the yield-curve data the tool returned, and both are found.">
+      <Label x={10} y={22}>ANSWER</Label>
+      <Label x={168} y={22}>FIGURES</Label>
+      <Label x={330} y={22}>TOOL RESULT</Label>
+
+      <rect x={10} y={36} width={140} height={96} rx={6} fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" />
+      <Label x={20} y={58} fill="rgba(255,255,255,0.85)">…the 10Y-2Y spread</Label>
+      <Label x={20} y={74} fill="rgba(255,255,255,0.85)">was +47 bp (10Y</Label>
+      <Label x={20} y={90} fill="rgba(255,255,255,0.85)">5.22% vs 2Y 4.75%),</Label>
+      <Label x={20} y={106} fill="rgba(255,255,255,0.85)">up from +41 bp a</Label>
+      <Label x={20} y={122} fill="rgba(255,255,255,0.85)">month earlier…</Label>
+
+      {chips.map((c, i) => (
+        <g key={c.text}>
+          <path className="flow" d={`M 150 ${c.y + 9} L 166 ${c.y + 9}`} stroke="rgba(255,255,255,0.4)" />
+          <g className="fade-in" style={{ animationDelay: `${0.3 + i * 0.2}s` }}>
+            <rect x={168} y={c.y} width={58} height={18} rx={4} fill="rgba(255,119,89,0.1)" stroke="rgba(255,119,89,0.6)" />
+            <Label x={197} y={c.y + 12.5} anchor="middle" fill={CORAL_SOFT}>{c.text}</Label>
+          </g>
+          <path
+            className="flow"
+            style={{ animationDelay: `${i * 0.2}s` }}
+            d={`M 226 ${c.y + 9} C 274 ${c.y + 9}, 284 ${ry(c.row) + 9}, 326 ${ry(c.row) + 9}`}
+            fill="none"
+            stroke="rgba(255,119,89,0.55)"
+          />
+        </g>
+      ))}
+
+      {rows.map((r, i) => (
+        <g key={r.k} className="fade-in" style={{ animationDelay: `${0.1 + i * 0.07}s` }}>
+          <rect
+            x={330}
+            y={ry(i)}
+            width={150}
+            height={18}
+            rx={3}
+            fill={r.hit ? "rgba(255,119,89,0.14)" : "rgba(255,255,255,0.05)"}
+            stroke={r.hit ? "rgba(255,119,89,0.55)" : "rgba(255,255,255,0.14)"}
+          />
+          <Label x={342} y={ry(i) + 12.5} fill={r.hit ? "rgba(255,255,255,0.9)" : TXT}>{r.k}</Label>
+          <Label x={468} y={ry(i) + 12.5} anchor="end" fill={r.hit ? CORAL_SOFT : TXT}>{r.v}</Label>
+          {r.hit && (
+            <text className="fade-in" style={{ animationDelay: `${1 + i * 0.1}s` }} x={494} y={ry(i) + 13} fontFamily={mono} fontSize={12} fill={CORAL}>
+              ✓ found
+            </text>
+          )}
+        </g>
+      ))}
+
+      <Label x={10} y={190} fill="rgba(255,255,255,0.4)">a figure with no source is flagged, never passed on quietly</Label>
+    </Frame>
+  );
+}
+
 /* ── RAG: hybrid retrieve → answer → cite ────────────────────────── */
 function RagViz() {
   const chunks = [
@@ -411,6 +483,8 @@ export default function Viz({ kind }: { kind: VizKey }) {
       return <TailChart />;
     case "agents":
       return <AgentsViz />;
+    case "aloi":
+      return <AloiViz />;
     case "rag":
       return <RagViz />;
     case "evals":

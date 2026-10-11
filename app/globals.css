@@ -16,6 +16,9 @@
   --color-blue: #1554c0;
   --color-coral: #ff7759;
   --color-coral-soft: #ffad9b;
+  /* Terminal semantics, used only inside dark console cards: a passed check, a warning */
+  --color-mint: #7ddba3;
+  --color-amber: #ffcf70;
 
   /* Surfaces */
   --color-canvas: #ffffff;
@@ -419,12 +422,16 @@ body {
   animation: growx 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* A terminal chart printing itself, left to right (components/AloiReplay.tsx) */
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.wipe { animation: wipe 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
 /* Hold every animation until the card scrolls into view */
 .viz[data-inview="false"] * {
   animation-play-state: paused !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flow, .glow, .fade-in, .bar-grow-x { animation: none; }
+  .flow, .glow, .fade-in, .bar-grow-x, .wipe { animation: none; }
   .draw { animation: none; stroke-dashoffset: 0; }
 }
