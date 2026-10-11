@@ -8,6 +8,8 @@ import CommandPalette from "@/components/CommandPalette";
 import VizPanel from "@/components/VizPanel";
 import AloiReplay from "@/components/AloiReplay";
 import AloiNotes, { AloiUnderTheHood } from "@/components/AloiNotes";
+import AgentDeckDemo from "@/components/AgentDeckDemo";
+import AgentDeckNotes, { AgentDeckUnderTheHood } from "@/components/AgentDeckNotes";
 import { projects, profile } from "@/lib/data";
 
 /**
@@ -17,6 +19,7 @@ import { projects, profile } from "@/lib/data";
 type Part = React.ComponentType;
 const CUSTOM: Record<string, { hero?: Part; notes?: Part; depth?: Part }> = {
   aloi: { hero: AloiReplay, notes: AloiNotes, depth: AloiUnderTheHood },
+  agentdeck: { hero: AgentDeckDemo, notes: AgentDeckNotes, depth: AgentDeckUnderTheHood },
 };
 
 export function generateStaticParams() {
@@ -178,6 +181,11 @@ export default async function ProjectPage({
             {p.code && (
               <a href={p.code} target="_blank" rel="noopener noreferrer" className="btn-secondary mt-7">
                 View code →
+              </a>
+            )}
+            {p.site && (
+              <a href={p.site} target="_blank" rel="noopener noreferrer" className="btn-secondary mt-7">
+                Visit the project site →
               </a>
             )}
           </section>

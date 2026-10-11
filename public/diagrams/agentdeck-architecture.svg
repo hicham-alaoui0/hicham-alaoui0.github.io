@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 512" role="img" aria-label="AgentDeck architecture: Claude Code and Codex send permission requests to a local Rust core through their hooks, and the core also reads their session files. The core serves the island and window on the PC, a listener for the phone on Wi-Fi, and an opt-in relay client. Outside the PC, a Cloudflare Worker relay passes sealed frames to the Android app and cannot read them.">
+<style>
+.h{font:500 10px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.12em;fill:#5f5f6a}
+.t{font:600 13px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.04em;fill:#1d1d23;text-anchor:middle}
+.s{font:400 10.5px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.03em;fill:#4f4f5c;text-anchor:middle}
+.b{fill:#fff;stroke:#44444e;stroke-width:1.2}
+.a{fill:none;stroke:#44444e;stroke-width:1.2}
+.z{fill:none;stroke:#44444e;stroke-width:1;stroke-dasharray:4 4}
+</style>
+<text class="h" x="16" y="20">AGENTDECK — AGENTS CAN ONLY ASK. THE ANSWER COMES FROM YOU, ON THE PC OR THE PHONE</text>
+
+<rect class="b" x="16" y="40" width="244" height="58" rx="4"/><text class="t" x="138" y="64">CLAUDE CODE</text><text class="s" x="138" y="82">permission and stop hooks</text>
+<rect class="b" x="278" y="40" width="244" height="58" rx="4"/><text class="t" x="400" y="64">CODEX</text><text class="s" x="400" y="82">the same, through command hooks</text>
+<rect class="z" x="540" y="40" width="244" height="58" rx="4"/><text class="t" x="662" y="64">SESSION FILES</text><text class="s" x="662" y="82">transcripts and logs, read only</text>
+
+<line class="a" x1="138" y1="98" x2="138" y2="138"/><path class="a" d="M134 138 L138 146 L142 138"/><text class="s" x="148" y="124" style="text-anchor:start">asks, with the ask-only key</text>
+<line class="a" x1="400" y1="98" x2="400" y2="138"/><path class="a" d="M396 138 L400 146 L404 138"/><text class="s" x="410" y="124" style="text-anchor:start">asks</text>
+<line class="a" x1="662" y1="98" x2="662" y2="138"/><path class="a" d="M658 138 L662 146 L666 138"/><text class="s" x="652" y="124" style="text-anchor:end">what each session does</text>
+
+<rect x="16" y="146" width="768" height="66" rx="4" fill="#003c33"/><text class="t" x="400" y="174" style="fill:#fff">CORE · RUST</text><text class="s" x="400" y="193" style="fill:#ffad9b">sessions · approvals · risk rating · rules · history in SQLite</text>
+
+<line class="a" x1="138" y1="220" x2="138" y2="252"/><path class="a" d="M134 220 L138 212 L142 220"/><path class="a" d="M134 252 L138 260 L142 252"/><text class="s" x="148" y="240" style="text-anchor:start">local WebSocket</text>
+<line class="a" x1="400" y1="220" x2="400" y2="252"/><path class="a" d="M396 220 L400 212 L404 220"/><path class="a" d="M396 252 L400 260 L404 252"/>
+<line class="a" x1="662" y1="220" x2="662" y2="252"/><path class="a" d="M658 220 L662 212 L666 220"/><path class="a" d="M658 252 L662 260 L666 252"/>
+
+<rect class="b" x="16" y="260" width="244" height="72" rx="4" stroke-width="2"/><text class="t" x="138" y="284">ISLAND · WINDOW</text><text class="s" x="138" y="301">Tauri + React</text><text class="s" x="138" y="317">the answer key lives in memory</text>
+<rect class="b" x="278" y="260" width="244" height="72" rx="4"/><text class="t" x="400" y="284">PHONE LISTENER</text><text class="s" x="400" y="301">Wi-Fi, off until you turn it on</text><text class="s" x="400" y="317">frames sealed per phone</text>
+<rect class="b" x="540" y="260" width="244" height="72" rx="4"/><text class="t" x="662" y="284">RELAY CLIENT</text><text class="s" x="662" y="301">opt-in, outbound only</text><text class="s" x="662" y="317">carries the same sealed frames</text>
+
+<rect class="z" x="278" y="368" width="506" height="128" rx="4"/><text class="h" x="290" y="388">OUTSIDE THE PC</text>
+<line class="a" x1="400" y1="332" x2="400" y2="398"/><path class="a" d="M396 398 L400 406 L404 398"/><text class="s" x="410" y="352" style="text-anchor:start">Wi-Fi</text>
+<line class="a" x1="662" y1="332" x2="662" y2="398"/><path class="a" d="M658 398 L662 406 L666 398"/><text class="s" x="672" y="352" style="text-anchor:start">wss</text>
+
+<rect class="b" x="290" y="406" width="220" height="78" rx="4" stroke-width="2"/><text class="t" x="400" y="430">ANDROID APP</text><text class="s" x="400" y="447">Tauri, the same React screens</text><text class="s" x="400" y="463">allow · deny · answer · reply</text>
+<rect class="b" x="552" y="406" width="220" height="78" rx="4"/><text class="t" x="662" y="430">RELAY</text><text class="s" x="662" y="447">Cloudflare Worker, a room per PC</text><text class="s" x="662" y="463">passes frames it cannot read</text>
+<line class="a" x1="518" y1="445" x2="544" y2="445"/><path class="a" d="M518 441 L510 445 L518 449"/><path class="a" d="M544 441 L552 445 L544 449"/>
+
+<text class="s" x="16" y="398" style="text-anchor:start">If the core is not running, the</text>
+<text class="s" x="16" y="414" style="text-anchor:start">hooks get no answer and each</text>
+<text class="s" x="16" y="430" style="text-anchor:start">agent asks in its own terminal,</text>
+<text class="s" x="16" y="446" style="text-anchor:start">as it did before AgentDeck.</text>
+<text class="s" x="16" y="470" style="text-anchor:start">A locked phone gets a signal</text>
+<text class="s" x="16" y="486" style="text-anchor:start">with no details in it.</text>
+</svg>

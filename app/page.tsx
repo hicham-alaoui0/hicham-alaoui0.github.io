@@ -50,7 +50,7 @@ function SectionHeader({
 }
 
 // the rotating hero card, in this order; each project needs a `hook` in lib/data.ts
-const HERO = ["evt-pre-trade-limits", "aloi", "rag-methodology-assistant", "llm-eval-harness", "ai-agents-toolkit"];
+const HERO = ["evt-pre-trade-limits", "aloi", "agentdeck", "rag-methodology-assistant", "llm-eval-harness", "ai-agents-toolkit"];
 const heroProjects = HERO.flatMap((slug) => projects.filter((p) => p.slug === slug && p.hook && p.viz));
 
 export default function Home() {

@@ -101,6 +101,16 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                       View code
                     </a>
                   )}
+                  {p.site && (
+                    <a
+                      href={p.site}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue underline underline-offset-4"
+                    >
+                      Project site
+                    </a>
+                  )}
                 </div>
               </div>
             </article>

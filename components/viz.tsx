@@ -173,6 +173,86 @@ function AloiViz() {
   );
 }
 
+/* ── AgentDeck: an agent asks, the island (or the phone) answers ──── */
+function IslandViz() {
+  const agents = [
+    { name: "claude code", line: "needs a yes", waiting: true },
+    { name: "codex", line: "editing 3 files…", waiting: false },
+  ];
+  const ay = (i: number) => 46 + i * 62;
+  return (
+    <Frame label="Illustration: an agent's permission request goes to the island on the PC and, sealed, to the phone. Allow from either one goes back to the agent.">
+      <Label x={10} y={22}>AGENTS</Label>
+      <Label x={280} y={22} anchor="middle">ISLAND · ON THE PC</Label>
+      <Label x={500} y={22} anchor="middle">PHONE</Label>
+
+      {agents.map((a, i) => (
+        <g key={a.name} className="fade-in" style={{ animationDelay: `${0.1 + i * 0.12}s` }}>
+          <rect
+            x={10}
+            y={ay(i)}
+            width={132}
+            height={44}
+            rx={6}
+            fill="rgba(255,255,255,0.06)"
+            stroke={a.waiting ? "rgba(255,119,89,0.55)" : "rgba(255,255,255,0.18)"}
+          />
+          <circle className={a.waiting ? "glow" : undefined} cx={24} cy={ay(i) + 15} r={3.5} fill={a.waiting ? CORAL : DIM} />
+          <Label x={34} y={ay(i) + 18.5} fill="rgba(255,255,255,0.85)">{a.name}</Label>
+          <Label x={20} y={ay(i) + 34} fill={a.waiting ? CORAL_SOFT : TXT}>{a.line}</Label>
+        </g>
+      ))}
+
+      {/* the question travels to the island, the answer travels back */}
+      <path className="flow" d="M 142 60 C 172 60, 176 96, 200 96" fill="none" stroke="rgba(255,255,255,0.4)" />
+      <path
+        className="flow"
+        style={{ animationDirection: "reverse", animationDelay: "0.4s" }}
+        d="M 142 78 C 166 78, 172 128, 200 128"
+        fill="none"
+        stroke="rgba(255,119,89,0.6)"
+      />
+      <Label x={150} y={148} fill={CORAL_SOFT}>allow</Label>
+
+      {/* the island: a pill at the top of the screen, and the request that drops from it */}
+      <rect x={222} y={32} width={116} height={20} rx={10} fill="#000" stroke="rgba(255,255,255,0.3)" />
+      <circle cx={236} cy={42} r={4} fill={CORAL} className="glow" />
+      <circle cx={248} cy={42} r={4} fill="rgba(255,255,255,0.35)" />
+      <Label x={260} y={45.5} fill="rgba(255,255,255,0.85)">1 needs you</Label>
+
+      <g className="fade-in" style={{ animationDelay: "0.5s" }}>
+        <rect x={200} y={60} width={160} height={98} rx={10} fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.22)" />
+        <Label x={212} y={80} fill="rgba(255,255,255,0.9)">webshop wants to run</Label>
+        <rect x={212} y={88} width={136} height={20} rx={4} fill="rgba(0,0,0,0.45)" />
+        <Label x={220} y={101.5} fill="rgba(255,255,255,0.8)">npm test</Label>
+        <Label x={212} y={122} fill={TXT}>medium risk · 12s</Label>
+        <rect x={212} y={130} width={64} height={20} rx={6} fill="rgba(255,255,255,0.08)" />
+        <Label x={244} y={143.5} anchor="middle" fill={TXT}>deny</Label>
+        <rect className="glow" x={284} y={130} width={64} height={20} rx={6} fill={CORAL} />
+        <Label x={316} y={143.5} anchor="middle" fill="#17171c">allow</Label>
+      </g>
+
+      {/* the same request, sealed, on the phone */}
+      <path className="flow" style={{ animationDelay: "0.2s" }} d="M 360 108 L 448 108" fill="none" stroke="rgba(255,255,255,0.4)" />
+      <Label x={404} y={100} anchor="middle" fill={TXT}>sealed</Label>
+      <g className="fade-in" style={{ animationDelay: "0.8s" }}>
+        <rect x={452} y={32} width={96} height={136} rx={14} fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.3)" />
+        <rect x={460} y={42} width={80} height={26} rx={7} fill="rgba(255,255,255,0.1)" />
+        <Label x={468} y={53} fill="rgba(255,255,255,0.85)">AgentDeck</Label>
+        <Label x={468} y={63.5} fill={TXT}>needs you</Label>
+        <circle cx={500} cy={96} r={13} fill="rgba(255,119,89,0.16)" stroke="rgba(255,119,89,0.6)" />
+        <circle cx={495.5} cy={94} r={1.8} fill="#fff" />
+        <circle cx={504.5} cy={94} r={1.8} fill="#fff" />
+        <rect x={462} y={124} width={36} height={16} rx={5} fill="rgba(255,255,255,0.08)" />
+        <rect x={502} y={124} width={36} height={16} rx={5} fill="rgba(255,255,255,0.85)" />
+        <rect x={488} y={152} width={24} height={3} rx={1.5} fill="rgba(255,255,255,0.3)" />
+      </g>
+
+      <Label x={10} y={190} fill="rgba(255,255,255,0.4)">not running? the agent asks in its own terminal, as before</Label>
+    </Frame>
+  );
+}
+
 /* ── RAG: hybrid retrieve → answer → cite ────────────────────────── */
 function RagViz() {
   const chunks = [
@@ -485,6 +565,8 @@ export default function Viz({ kind }: { kind: VizKey }) {
       return <AgentsViz />;
     case "aloi":
       return <AloiViz />;
+    case "island":
+      return <IslandViz />;
     case "rag":
       return <RagViz />;
     case "evals":

@@ -95,6 +95,7 @@ export type VizKey =
   | "tail"
   | "agents"
   | "aloi"
+  | "island"
   | "rag"
   | "evals"
   | "equity"
@@ -126,6 +127,8 @@ export type Project = {
   role?: string;
   timeframe?: string;
   code?: string;
+  /** A public page for the project, when the code itself is private. */
+  site?: string;
   featured: boolean;
   slug?: string;
   viz?: VizKey;
@@ -224,7 +227,61 @@ export const projects: Project[] = [
     ],
   },
 
-  // ── 3 · RAG ────────────────────────────────────────────────────────────
+  // ── 3 · AgentDeck (a tool for working with agents; the page has a sketch you can click) ──
+  {
+    title: "AgentDeck, One Place to Answer Your Coding Agents",
+    category: "AI Engineering · Developer Tools",
+    tags: ["AI Engineering"],
+    status: "shipped",
+    verified: true, // numbers: the 0.18 release (test run, installer), the project site's measurements, the app's own constants
+    metric: { value: "1 place", label: "to answer Claude Code and Codex, on the PC or from a phone" },
+    kpis: [
+      { value: "2", label: "agents covered: Claude Code and Codex" },
+      { value: "122", label: "automated tests in the 0.18 release" },
+      { value: "115 MB", label: "memory when idle, 1.2% CPU while agents work" },
+      { value: "0", label: "network calls of its own until you switch one on" },
+    ],
+    problem:
+      "Coding agents stop and wait for a yes. With several running, the question sits in whichever terminal tab asked it, and you find out ten minutes later. The other failure is clicking yes without reading.",
+    approach:
+      "A small Windows app that brings every agent's permission requests, questions and finished turns to one island at the top of the screen. It rates each request's risk before you see it, and you answer there or from an Android app, over Wi-Fi or an encrypted relay.",
+    impact: [
+      "Claude Code and Codex answered from one island, or from a phone",
+      "Risky requests need a hold; a built-in rule stops force-pushes",
+      "Notifications reach phones without Google services too",
+    ],
+    stack: [
+      "Rust",
+      "Tauri 2",
+      "React + TypeScript",
+      "SQLite",
+      "Cloudflare Workers",
+      "Kotlin (Android)",
+      "NaCl secretbox",
+      "Firebase Cloud Messaging",
+    ],
+    role: "Solo project, built with Claude Code as the coding agent. I set the rules it had to follow, chose the designs, and tested every build on my own PC and phone.",
+    timeframe: "Oct 2026 · public beta",
+    site: "https://hicham-alaoui0.github.io/agentdeck-beta/",
+    featured: true,
+    slug: "agentdeck",
+    viz: "island",
+    vizLabel: "ask → island → answer",
+    hook: "Three agents, three terminal tabs, and one of them has been waiting ten minutes for a yes. AgentDeck brings the question to you.",
+    // no `diagram`: the page draws its own under "Under the hood" (components/AgentDeckNotes.tsx)
+    results:
+      "Version 0.18 is a public beta: a 5 MB installer for Windows and an Android app. It covers the two agents I use, idles at 115 MB of memory, and ships with 122 automated tests that run on every push. What it has not had is other people. I have no usage numbers, because it collects none. The result I can vouch for is my own: I stopped finding questions that had been waiting in a terminal tab, and the hardest bug taught me to put the reason on the screen instead of guessing.",
+    highlights: [
+      "One Rust core for sessions, approvals, risk rating and history; the island is a Tauri window talking to it over a local WebSocket",
+      "Two agents with different hook mechanics behind one interface, including Codex hooks that run inside its sandbox",
+      "Risk is rated before you see a request: the card says why, high risk needs a 0.8 s hold and critical 1.5 s",
+      "Every frame to the phone is sealed with a key only the phone and the PC hold; the relay is a Cloudflare Durable Object that passes what it cannot read",
+      "Two notification paths: Firebase where Google Play services exist, a foreground service with its own connection where they do not",
+      "Each reader of an agent's files checks the format first: if an update changes it, that one feature turns off with a plain message",
+    ],
+  },
+
+  // ── 4 · RAG ────────────────────────────────────────────────────────────
   {
     title: "Index Methodology RAG Assistant",
     category: "AI Engineering · RAG",
