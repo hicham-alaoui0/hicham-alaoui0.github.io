@@ -14,5 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         priority: 0.8,
       })),
+    // project sites published from their own repositories on this host, which only this sitemap can list
+    ...projects
+      .filter((p) => p.site?.startsWith(`${site.url}/`))
+      .map((p) => ({ url: p.site!, priority: 0.8 })),
   ];
 }

@@ -194,7 +194,7 @@ export const projects: Project[] = [
     metric: { value: "27/28", label: "eval questions passed with no figure missing from the fetched data (one run)" },
     kpis: [
       { value: "27/28", label: "tool-use eval questions passed, one run (95% CI 82–99%)" },
-      { value: "48 · 17", label: "tools · playbooks" },
+      { value: "72 · 24", label: "tools · playbooks" },
       { value: "$0.002", label: "cost of the recorded answer on Claude Haiku" },
       { value: "3", label: "systems with a compiled build: Windows, macOS, Linux" },
     ],
@@ -204,12 +204,13 @@ export const projects: Project[] = [
       "A terminal agent with a hand-written tool loop. The model only chooses and explains: fetching, arithmetic and charts are plain Python, and every amount and percentage in an answer is looked up in what the tools returned. Models and data sources are swappable.",
     impact: [
       "Amounts and percentages traced to tool results, or flagged",
-      "48 tools and 17 playbooks, with charts drawn in the terminal",
+      "72 tools and 24 playbooks, with charts drawn in the terminal",
       "Compiled builds for Windows, macOS and Linux from one CI workflow",
     ],
     stack: ["Python", "Anthropic API", "Ollama", "Bloomberg Desktop API", "pydantic", "rich", "Nuitka + PyInstaller", "GitHub Actions"],
     role: "Solo project, built with Claude Code as the coding agent. I set the direction: terminal-first, swappable models and data sources, each user on their own Bloomberg licence.",
     timeframe: "2026 · in progress",
+    site: "https://hicham-alaoui0.github.io/aloi-beta/",
     featured: true,
     slug: "aloi",
     viz: "aloi",
