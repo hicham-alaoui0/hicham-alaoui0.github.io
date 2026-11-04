@@ -1,5 +1,4 @@
 import Nav from "@/components/Nav";
-import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import Typed from "@/components/Typed";
 import CountUp from "@/components/CountUp";
@@ -56,7 +55,6 @@ const heroProjects = HERO.flatMap((slug) => projects.filter((p) => p.slug === sl
 export default function Home() {
   return (
     <div id="top" className="min-h-screen overflow-x-clip bg-white">
-      <AnnouncementBar />
       <Nav />
       <CommandPalette />
       <BackToTop />
@@ -110,19 +108,8 @@ export default function Home() {
               <dd className="text-right text-ink">{profile.location}</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt className="text-slate">Relocation</dt>
-              <dd className="text-right text-ink">{profile.relocation}</dd>
-            </div>
-            <div className="flex justify-between gap-4">
               <dt className="text-slate">Focus</dt>
               <dd className="text-right text-ink">LLM systems · Quant risk</dd>
-            </div>
-            <div className="flex justify-between gap-4">
-              <dt className="text-slate">Status</dt>
-              <dd className="inline-flex items-center gap-2 text-right text-ink">
-                <span className="dot-live" />
-                Open to opportunities
-              </dd>
             </div>
           </dl>
         </div>
@@ -286,7 +273,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <SectionHeader
             n="04"
-            label="Freelance"
+            label="Services"
             title="Engagements I take on."
             lead="Scoped up front, delivered with tests and docs, built so your team can run it without me."
             invert
@@ -318,7 +305,7 @@ export default function Home() {
           <div>
             <p className="t-mono text-slate">05 — Contact</p>
             <h2 className="t-heading mt-5 text-ink">
-              Open to AI engineering roles in Canada or Europe, and select freelance work.
+              Get in touch.
             </h2>
             <p className="t-lead mt-5 text-slate">
               LLM agents, retrieval, and evaluation — on top of solid ML and risk modeling, built for

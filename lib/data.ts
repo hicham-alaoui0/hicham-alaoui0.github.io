@@ -11,7 +11,6 @@ export const profile = {
   subline:
     "I design and ship AI systems that finance teams actually use — agents, RAG, and evals on top of solid ML and risk modeling. Currently building agent tooling for equity-derivatives index operations at Société Générale.",
   location: "Morocco",
-  relocation: "Open to Canada · Europe",
   email: "hichamalaoui975@gmail.com",
   github: "https://github.com/hicham-alaoui0",
   linkedin: "https://www.linkedin.com/in/hicham-alaoui-08ba35206",
