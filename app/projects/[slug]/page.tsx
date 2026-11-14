@@ -11,6 +11,8 @@ import AloiNotes, { AloiUnderTheHood } from "@/components/AloiNotes";
 import AgentDeckDemo from "@/components/AgentDeckDemo";
 import AgentDeckNotes, { AgentDeckUnderTheHood } from "@/components/AgentDeckNotes";
 import { projects, profile } from "@/lib/data";
+import ErpCopilotDemo from "@/components/ErpCopilotDemo";
+import ErpCopilotNotes from "@/components/ErpCopilotNotes";
 
 /**
  * Case studies that go beyond the template: `hero` replaces the animated card at the top,
@@ -18,6 +20,7 @@ import { projects, profile } from "@/lib/data";
  */
 type Part = React.ComponentType;
 const CUSTOM: Record<string, { hero?: Part; notes?: Part; depth?: Part }> = {
+  "erp-copilot": { hero: ErpCopilotDemo, notes: ErpCopilotNotes },
   aloi: { hero: AloiReplay, notes: AloiNotes, depth: AloiUnderTheHood },
   agentdeck: { hero: AgentDeckDemo, notes: AgentDeckNotes, depth: AgentDeckUnderTheHood },
 };

@@ -360,6 +360,45 @@ function EvalsViz() {
   );
 }
 
+/* ── ERP Copilot: a question passes the guard, a DELETE does not ──── */
+function ErpViz() {
+  const MINT = "#7ddba3";
+  return (
+    <Frame label="Illustration: a finance question passes the read-only guard and reads an approved view; a DELETE is stopped at the guard and never reaches the database.">
+      <Label x={10} y={22}>QUESTION</Label>
+      <Label x={280} y={22} anchor="middle">READ-ONLY GUARD</Label>
+      <Label x={550} y={22} anchor="end">APPROVED VIEWS</Label>
+
+      {/* allowed: a finance question */}
+      <rect x={10} y={40} width={160} height={50} rx={6} fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" />
+      <Label x={22} y={61} fill="rgba(255,255,255,0.85)">Who is most overdue</Label>
+      <Label x={22} y={77} fill="rgba(255,255,255,0.85)">past 60 days?</Label>
+      <path className="flow" d="M 170 65 L 214 65" stroke="rgba(255,255,255,0.4)" />
+      <rect x={214} y={50} width={132} height={30} rx={15} fill="rgba(125,219,163,0.1)" stroke="rgba(125,219,163,0.55)" />
+      <Label x={280} y={69} anchor="middle" fill={MINT}>ar_aging() ✓</Label>
+      <path className="flow" style={{ animationDelay: "0.3s" }} d="M 346 65 L 390 65" stroke="rgba(255,255,255,0.4)" />
+      <rect className="fade-in" style={{ animationDelay: "0.6s" }} x={390} y={40} width={160} height={50} rx={6} fill="rgba(255,119,89,0.08)" stroke="rgba(255,119,89,0.45)" />
+      <g className="fade-in" style={{ animationDelay: "0.8s" }}>
+        <Label x={402} y={61} fill="rgba(255,255,255,0.9)">Griffin-Stafford</Label>
+        <Label x={402} y={77} fill={CORAL}>$33,639.41 · SQL shown</Label>
+      </g>
+
+      {/* blocked: a write */}
+      <rect x={10} y={112} width={160} height={50} rx={6} fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
+      <Label x={22} y={133}>DELETE FROM</Label>
+      <Label x={22} y={149}>dbo.arinvc</Label>
+      <path className="flow" style={{ animationDelay: "0.5s" }} d="M 170 137 L 214 137" stroke="rgba(255,119,89,0.5)" />
+      <rect className="fade-in" style={{ animationDelay: "0.9s" }} x={214} y={122} width={132} height={30} rx={15} fill="rgba(255,119,89,0.12)" stroke="rgba(255,119,89,0.6)" />
+      <Label x={280} y={141} anchor="middle" fill={CORAL}>✕ blocked</Label>
+      <line x1={354} y1={137} x2={390} y2={137} stroke={DIM} strokeDasharray="3 4" />
+      <Label x={402} y={133}>never reaches</Label>
+      <Label x={402} y={149}>the database</Label>
+
+      <Label x={10} y={190} fill="rgba(255,255,255,0.4)">login: SELECT on approved views only · every attempt logged</Label>
+    </Frame>
+  );
+}
+
 /* ── Equity curve: strategy vs benchmark ─────────────────────────── */
 function EquityViz() {
   const n = 60;
@@ -571,6 +610,8 @@ export default function Viz({ kind }: { kind: VizKey }) {
       return <RagViz />;
     case "evals":
       return <EvalsViz />;
+    case "erp":
+      return <ErpViz />;
     case "equity":
       return <EquityViz />;
     case "loss":

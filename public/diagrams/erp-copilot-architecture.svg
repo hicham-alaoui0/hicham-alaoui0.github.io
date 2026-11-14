@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 512" role="img" aria-label="ERP Copilot architecture: a finance user asks Claude in plain English. Claude calls the ERP Copilot MCP server over stdio or HTTP with a bearer token. The server's query guard allows one SELECT over approved views, the executor caps rows and time, and every attempt goes to an audit log. The executor connects over ODBC as the read-only login claude_reader, which can only SELECT from fifteen reporting views. The views read the seventeen legacy tables through ownership chaining. The payroll table has no view and an explicit DENY.">
+<style>
+.h{font:500 10px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.12em;fill:#5f5f6a}
+.t{font:600 13px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.04em;fill:#1d1d23;text-anchor:middle}
+.s{font:400 10.5px ui-monospace,'IBM Plex Mono',Consolas,monospace;letter-spacing:.03em;fill:#4f4f5c;text-anchor:middle}
+.b{fill:#fff;stroke:#44444e;stroke-width:1.2}
+.a{fill:none;stroke:#44444e;stroke-width:1.2}
+.z{fill:none;stroke:#44444e;stroke-width:1;stroke-dasharray:4 4}
+.x{fill:#fff;stroke:#d9512f;stroke-width:1.2;stroke-dasharray:4 3}
+</style>
+<text class="h" x="16" y="20">ERP COPILOT — CLAUDE CAN ASK ANYTHING. THE DATABASE ONLY LETS IT READ</text>
+
+<rect class="b" x="16" y="40" width="244" height="58" rx="4"/><text class="t" x="138" y="64">FINANCE USER</text><text class="s" x="138" y="82">asks in plain English</text>
+<line class="a" x1="260" y1="69" x2="292" y2="69"/><path class="a" d="M292 65 L300 69 L292 73"/>
+<rect class="b" x="300" y="40" width="244" height="58" rx="4" stroke-width="2"/><text class="t" x="422" y="64">CLAUDE</text><text class="s" x="422" y="82">Claude Desktop or Claude Code</text>
+<text class="s" x="572" y="62" style="text-anchor:start">Every answer carries the</text>
+<text class="s" x="572" y="78" style="text-anchor:start">SQL that ran, the as-of date</text>
+<text class="s" x="572" y="94" style="text-anchor:start">and its assumptions.</text>
+
+<line class="a" x1="422" y1="98" x2="422" y2="138"/><path class="a" d="M418 138 L422 146 L426 138"/><text class="s" x="432" y="124" style="text-anchor:start">MCP · stdio, or HTTP with a bearer token</text>
+
+<rect x="16" y="146" width="768" height="66" rx="4" fill="#003c33"/><text class="t" x="400" y="174" style="fill:#fff">ERP COPILOT MCP SERVER · PYTHON</text><text class="s" x="400" y="193" style="fill:#ffad9b">7 read-only tools · the data dictionary is the whitelist</text>
+
+<line class="a" x1="138" y1="212" x2="138" y2="244"/><path class="a" d="M134 244 L138 252 L142 244"/><text class="s" x="148" y="233" style="text-anchor:start">every SQL statement</text>
+
+<rect class="b" x="16" y="252" width="244" height="72" rx="4"/><text class="t" x="138" y="276">QUERY GUARD</text><text class="s" x="138" y="293">one SELECT, approved views only</text><text class="s" x="138" y="309">no stacked, EXEC, INTO or sys</text>
+<line class="a" x1="260" y1="288" x2="270" y2="288"/><path class="a" d="M270 284 L278 288 L270 292"/>
+<rect class="b" x="278" y="252" width="244" height="72" rx="4"/><text class="t" x="400" y="276">EXECUTOR</text><text class="s" x="400" y="293">500 rows · 30 s · lock timeout</text><text class="s" x="400" y="309">low deadlock priority</text>
+<line class="a" x1="522" y1="288" x2="532" y2="288"/><path class="a" d="M532 284 L540 288 L532 292"/>
+<rect class="b" x="540" y="252" width="244" height="72" rx="4"/><text class="t" x="662" y="276">AUDIT LOG</text><text class="s" x="662" y="293">one line per attempt, JSONL</text><text class="s" x="662" y="309">allowed or blocked, with purpose</text>
+
+<rect class="z" x="16" y="356" width="768" height="140" rx="4"/><text class="h" x="28" y="376">ERP DATABASE · SQL SERVER 2012, EMULATED</text><text class="s" x="772" y="376" style="text-anchor:end">compatibility level 110</text>
+<line class="a" x1="400" y1="324" x2="400" y2="392"/><path class="a" d="M396 392 L400 400 L404 392"/><text class="s" x="410" y="346" style="text-anchor:start">ODBC as claude_reader</text>
+
+<rect class="b" x="278" y="400" width="244" height="80" rx="4" stroke-width="2"/><text class="t" x="400" y="424">15 REPORTING VIEWS</text><text class="s" x="400" y="441">the only grant: SELECT on</text><text class="s" x="400" y="457">the reporting schema</text>
+<line class="a" x1="278" y1="458" x2="220" y2="458"/><path class="a" d="M220 454 L212 458 L220 462"/><text class="s" x="245" y="428" style="text-anchor:middle">ownership</text><text class="s" x="245" y="442" style="text-anchor:middle">chaining</text>
+<rect class="b" x="32" y="400" width="180" height="80" rx="4"/><text class="t" x="122" y="424">17 LEGACY TABLES</text><text class="s" x="122" y="441">AR, AP, GL, inventory</text><text class="s" x="122" y="457">all denied to the login</text>
+<rect class="x" x="556" y="400" width="212" height="80" rx="4"/><text class="t" x="662" y="424">PAYROLL</text><text class="s" x="662" y="441">no view, explicit DENY</text><text class="s" x="662" y="457">never reachable</text>
+</svg>

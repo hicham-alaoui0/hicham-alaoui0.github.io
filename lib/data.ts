@@ -97,6 +97,7 @@ export type VizKey =
   | "island"
   | "rag"
   | "evals"
+  | "erp"
   | "equity"
   | "loss"
   | "runs"
@@ -278,6 +279,50 @@ export const projects: Project[] = [
       "Every frame to the phone is sealed with a key only the phone and the PC hold; the relay is a Cloudflare Durable Object that passes what it cannot read",
       "Two notification paths: Firebase where Google Play services exist, a foreground service with its own connection where they do not",
       "Each reader of an agent's files checks the format first: if an update changes it, that one feature turns off with a plain message",
+    ],
+  },
+
+  // ── 3b · ERP Copilot (Claude over a legacy ERP; the page has a console you can click) ──
+  {
+    title: "ERP Copilot, Claude on a Legacy ERP That Cannot Write",
+    category: "AI Engineering · MCP",
+    tags: ["AI Engineering", "Data Platforms"],
+    status: "shipped",
+    verified: true, // numbers: the repo's test suite and seed checks, and outputs recorded from the real tools
+    metric: { value: "56/56", label: "attack queries refused by the query guard in the tests" },
+    kpis: [
+      { value: "7 · 15", label: "read-only tools · approved views" },
+      { value: "56/56", label: "attack queries refused by the guard in the tests" },
+      { value: "200", label: "automated tests, incl. security checks run as the read-only login" },
+      { value: "33", label: "checks that the books tie out, e.g. the AR aging equals the GL" },
+    ],
+    problem:
+      "Finance wants to ask the ERP questions in plain English. IT wants a guarantee that nothing can change. And on a SQL Server 2012, Microsoft's ready-made route is closed: Data API builder needs SQL Server 2016 or later.",
+    approach:
+      "A small MCP server between Claude and the database. Claude gets seven read-only tools over fifteen approved views, every answer carries the SQL that ran and its assumptions, and writing is made impossible in layers: a database login that can only read those views, a query guard, row and time limits, and an audit log of every attempt.",
+    impact: [
+      "Finance questions answered with the figure, the as-of date and the SQL",
+      "Writes, payroll and system tables refused by the guard and by the database",
+      "Handoff pack: recommendation, IT checklist, runbook, 2012 login script",
+    ],
+    stack: ["Python", "MCP (FastMCP)", "Claude", "SQL Server · T-SQL 2012", "pyodbc", "sqlglot", "Docker", "pytest"],
+    role: "Solo project, built with Claude Code as the coding agent: the security model, the fake ERP, the tools, the tests and the handoff documents.",
+    timeframe: "2026",
+    featured: true,
+    slug: "erp-copilot",
+    viz: "erp",
+    vizLabel: "ask → guard → read",
+    hook: "Finance asks the ERP in plain English. The database login makes sure Claude can only read.",
+    diagram: "/diagrams/erp-copilot-architecture.svg",
+    results:
+      "On a replica ERP with two years of consistent fake books, Claude answers questions like “who is most overdue past 60 days?” with the figure, the as-of date and the SQL: Griffin-Stafford at $33,639.41, out of $1,419,620.83 open across 156 customers. All 56 attack queries in the tests are refused by the guard, and the security tests check each protection a second time on a raw connection as the read-only login, with the code bypassed. What is not measured yet is answer quality: the 15-question eval is built and its expected figures are checked, but it has not been run against a model.",
+    highlights: [
+      "The database is the last line: one grant, SELECT on the reporting schema; payroll has its own DENY, and the views work through ownership chaining",
+      "The guard parses T-SQL: one SELECT over approved views, no stacked statements, EXEC, SELECT INTO or system tables, and what is checked is exactly what runs",
+      "Named tools rebuild balances from payment history, so an aging on any past date ties to the GL, and they return grand totals so Claude never adds up a cut-off list",
+      "Row cap, query timeout, lock timeout and low deadlock priority, so people working in the ERP are never held up",
+      "SQL Server 2012 is emulated at compatibility level 110, and a lint test rejects any T-SQL newer than 2012",
+      "Two paths written up: this server for 2012 today, Microsoft's Data API builder once a 2016+ reporting copy exists",
     ],
   },
 
